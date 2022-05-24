@@ -3,7 +3,7 @@
   <p>A simple high-performance Redis message queue for Node.js.</p>
   <p>
     <a href="https://github.com/weyoss/redis-smq-common/actions/workflows/tests.yml"><img src="https://github.com/weyoss/redis-smq-common/actions/workflows/tests.yml/badge.svg" alt="Tests" style="max-width:100%;" /></a>
-    <a href="https://coveralls.io/r/weyoss/redis-smq-common?branch=master" rel="nofollow"><img src="https://img.shields.io/coveralls/github/weyoss/redis-smq-common.svg" alt="Coverage Status" /></a>
+    <a href="https://codecov.io/github/weyoss/redis-smq-common?branch=master" rel="nofollow"><img src="https://img.shields.io/codecov/c/github/weyoss/redis-smq-common" alt="Coverage Status" /></a>
     <a href="https://lgtm.com/projects/g/weyoss/redis-smq-common/context:javascript" rel="nofollow"><img src="https://img.shields.io/lgtm/grade/javascript/github/weyoss/redis-smq-common.svg?logo=lgtm&logoWidth=18" alt="Code quality" /></a>
   </p>
 </div>
