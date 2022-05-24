@@ -10,7 +10,7 @@
 
 ## RedisSMQ Common Library
 
-This library contains shared components that are used by [RedisSMQ](https://github.com/weyoss/redis-smq) and other applications/extensions of the message queue.
+[RedisSMQ](https://github.com/weyoss/redis-smq) shared components that may be used by integrated applications and extensions.
 
 ## License
 
