@@ -10,10 +10,12 @@ export abstract class Worker<T extends TWorkerParameters = TWorkerParameters> {
   private readonly powerManager: PowerManager | null = null;
   private readonly managed: boolean;
   protected readonly redisClient: RedisClient;
+  protected readonly params: T;
 
   constructor(redisClient: RedisClient, params: T, managed: boolean) {
     this.redisClient = redisClient;
     this.managed = managed;
+    this.params = params;
     if (!managed) {
       const { timeout = 1000 } = params;
       this.ticker = new Ticker(this.onTick, timeout);
