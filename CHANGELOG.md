@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.0-rc.3 (2022-05-26)
+
+* Update README.md
+* Refactor and clean up Worker and WorkerRunner classes
+
 ## 1.0.0-rc.2 (2022-05-25)
 
 * Allow children of Worker class to access worker params
