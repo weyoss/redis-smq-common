@@ -1,11 +1,4 @@
-import { join } from 'path';
-import { readdir } from 'fs';
-import {
-  ICallback,
-  ICompatibleLogger,
-  TWorkerClassConstructor,
-  TWorkerParameters,
-} from '../../../types';
+import { ICallback, ICompatibleLogger } from '../../../types';
 import { PowerManager } from '../../power-manager/power-manager';
 import { EventEmitter } from 'events';
 import { Ticker } from '../../ticker/ticker';
@@ -13,17 +6,11 @@ import { LockManager } from '../../lock-manager/lock-manager';
 import { RedisClient } from '../../redis-client/redis-client';
 import { events } from '../../events/events';
 import { WorkerPool } from './worker-pool';
-import { EmptyCallbackReplyError } from '../../errors/empty-callback-reply.error';
 import { Worker } from '../worker';
-import { PanicError } from '../../errors/panic.error';
 import { async } from '../../async/async';
 import { LockManagerAcquireError } from '../../lock-manager/errors/lock-manager-acquire.error';
 
-export class WorkerRunner<
-  WorkerParameters extends TWorkerParameters = TWorkerParameters,
-> extends EventEmitter {
-  private readonly workersDir: string;
-  private readonly workerParameters: WorkerParameters;
+export class WorkerRunner extends EventEmitter {
   private readonly powerManager: PowerManager;
   private readonly ticker: Ticker;
   private readonly lockManager: LockManager;
@@ -33,17 +20,13 @@ export class WorkerRunner<
 
   constructor(
     redisClient: RedisClient,
-    workersDir: string,
     keyLock: string,
-    workerParameters: WorkerParameters,
     workerPool: WorkerPool,
     logger: ICompatibleLogger,
   ) {
     super();
     this.powerManager = new PowerManager();
     this.redisClient = redisClient;
-    this.workersDir = workersDir;
-    this.workerParameters = workerParameters;
     this.logger = logger;
     this.lockManager = new LockManager(
       redisClient,
@@ -83,55 +66,6 @@ export class WorkerRunner<
     );
   };
 
-  private init = (cb: ICallback<void>): void => {
-    readdir(this.workersDir, undefined, (err, reply) => {
-      if (err) cb(err);
-      else {
-        async.each(
-          reply ?? [],
-          (filename: string, _, done) => {
-            if (filename.match(/\.worker\.js$/)) {
-              this.addToWorkerPool(filename, done);
-            } else done();
-          },
-          cb,
-        );
-      }
-    });
-  };
-
-  private addToWorkerPool = (filename: string, cb: ICallback<void>): void => {
-    this.createWorkerInstance(filename, (err, instance) => {
-      if (err) cb(err);
-      else if (!instance) cb(new EmptyCallbackReplyError());
-      else if (!this.workerPool)
-        cb(new PanicError(`Expected an instance of WorkerPool`));
-      else {
-        this.workerPool.add(instance);
-        cb();
-      }
-    });
-  };
-
-  private createWorkerInstance = (
-    filename: string,
-    cb: ICallback<Worker>,
-  ): void => {
-    const filepath = join(this.workersDir, filename);
-    import(filepath)
-      .then(
-        (module: { default: TWorkerClassConstructor<TWorkerParameters> }) => {
-          const worker = new module.default(
-            this.redisClient,
-            this.workerParameters,
-            true,
-          );
-          cb(null, worker);
-        },
-      )
-      .catch(cb);
-  };
-
   private clearWorkerPool = (cb: ICallback<void>): void => {
     this.workerPool.clear(cb);
   };
@@ -145,24 +79,19 @@ export class WorkerRunner<
     this.lockManager.releaseLock(cb);
   };
 
+  addWorker(instance: Worker): void {
+    this.workerPool.add(instance);
+  }
+
   run = (): void => {
-    this.powerManager.goingUp();
-    this.init((err) => {
-      if (err) this.emit(events.ERROR, err);
-      else {
-        this.powerManager.commit();
-        this.emit(events.UP);
-        this.ticker.nextTick();
-      }
-    });
+    this.emit(events.UP);
+    this.ticker.nextTick();
   };
 
   quit = (cb: ICallback<void>): void => {
-    this.powerManager.goingDown();
     async.waterfall(
       [this.stopTicker, this.clearWorkerPool, this.releaseLock],
       () => {
-        this.powerManager.commit();
         this.emit(events.DOWN);
         cb();
       },

@@ -1,7 +1,5 @@
 import { KeyType, Pipeline, Redis, RedisOptions } from 'ioredis';
 import { Callback, ClientOpts, Multi, RedisClient as NodeRedis } from 'redis';
-import { Worker } from '../src/worker/worker';
-import { RedisClient } from '../src/redis-client/redis-client';
 import * as Logger from 'bunyan';
 
 export interface IORedisConfig {
@@ -130,14 +128,6 @@ export type TCompatibleRedisClient = (NodeRedis | Redis) & {
 
 export type TRedisClientMulti = (Multi | Pipeline) & {
   hmset(key: string, args: (string | number)[]): void;
-};
-
-export type TWorkerParameters = {
-  timeout?: number;
-};
-
-export type TWorkerClassConstructor<T extends TWorkerParameters> = {
-  new (redisClient: RedisClient, params: T, managed: boolean): Worker<T>;
 };
 
 export interface ICompatibleLogger {

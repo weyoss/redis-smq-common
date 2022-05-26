@@ -1,23 +1,17 @@
 import { Ticker } from '../ticker/ticker';
-import { RedisClient } from '../redis-client/redis-client';
-import { ICallback, TWorkerParameters } from '../../types';
+import { ICallback } from '../../types';
 import { events } from '../events/events';
 import { PowerManager } from '../power-manager/power-manager';
 import { PanicError } from '../errors/panic.error';
 
-export abstract class Worker<T extends TWorkerParameters = TWorkerParameters> {
+export abstract class Worker {
   private readonly ticker: Ticker | null = null;
   private readonly powerManager: PowerManager | null = null;
   private readonly managed: boolean;
-  protected readonly redisClient: RedisClient;
-  protected readonly params: T;
 
-  constructor(redisClient: RedisClient, params: T, managed: boolean) {
-    this.redisClient = redisClient;
+  constructor(managed: boolean, timeout = 1000) {
     this.managed = managed;
-    this.params = params;
     if (!managed) {
-      const { timeout = 1000 } = params;
       this.ticker = new Ticker(this.onTick, timeout);
       this.powerManager = new PowerManager();
     }
