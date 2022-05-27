@@ -5,7 +5,22 @@
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "keywords": [
-    "redis-smq"
+    "redis",
+    "message queue",
+    "message-queue",
+    "message",
+    "queue",
+    "job queue",
+    "job-queue",
+    "jobs",
+    "redis-smq",
+    "priority",
+    "priority queue",
+    "priority-queue",
+    "scheduler",
+    "broker",
+    "message broker",
+    "message-broker"
   ],
   "repository": {
     "type": "git",
