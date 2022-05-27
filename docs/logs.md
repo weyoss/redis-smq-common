@@ -62,14 +62,8 @@ debug(message, ...optionalParams);
 A winston logger instance, for example, can be registered as shown bellow:
 
 ```javascript
-const { setLogger, setConfiguration } = require('redis-smq');
+const { setLogger } = require('redis-smq-common');
 const winston = require('winston');
-
-setConfiguration({
-  logger: {
-    enabled: true, // Do not forget to enable logging
-  }
-});
 
 
 const logger = winston.createLogger({
@@ -80,6 +74,7 @@ const logger = winston.createLogger({
 
 setLogger(logger);
 ```
+
 ## Example log file
 
 ```text
