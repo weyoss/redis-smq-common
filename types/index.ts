@@ -1,6 +1,13 @@
-import { KeyType, Pipeline, Redis, RedisOptions } from 'ioredis';
-import { Callback, ClientOpts, Multi, RedisClient as NodeRedis } from 'redis';
+import { Pipeline, RedisOptions } from 'ioredis';
+import { Callback, ClientOpts, Multi } from 'redis';
 import * as Logger from 'bunyan';
+import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command';
+import {
+  RedisClientOptions,
+  RedisFunctions,
+  RedisModules,
+  RedisScripts,
+} from '@redis/client';
 
 export interface IORedisConfig {
   client: RedisClientName.IOREDIS;
@@ -10,6 +17,7 @@ export interface IORedisConfig {
 export enum RedisClientName {
   REDIS = 'redis',
   IOREDIS = 'ioredis',
+  REDIS_V4 = 'redis_v4',
 }
 
 export interface INodeRedisConfig {
@@ -17,9 +25,23 @@ export interface INodeRedisConfig {
   options?: ClientOpts;
 }
 
-export type TRedisConfig = IORedisConfig | INodeRedisConfig;
+export interface INodeRedisV4Config {
+  client: RedisClientName.REDIS_V4;
+  options?: RedisClientOptions;
+}
 
-///////////
+export type TRedisConfig =
+  | IORedisConfig
+  | INodeRedisConfig
+  | INodeRedisV4Config;
+
+export type TNodeRedisV4Multi = RedisClientMultiCommandType<
+  RedisModules,
+  RedisFunctions,
+  RedisScripts
+>;
+
+export type TRedisClientMulti = Multi | Pipeline | TNodeRedisV4Multi;
 
 declare module 'redis' {
   export interface Commands<R> {
@@ -63,72 +85,6 @@ export type TFunction<TReturn = void, TArgs = any> = (
 ) => TReturn;
 
 export type TUnaryFunction<T, E = void> = (reply: T) => E;
-
-export type TCompatibleRedisClient = (NodeRedis | Redis) & {
-  zadd(
-    key: string,
-    score: number,
-    member: string,
-    cb: ICallback<number | string>,
-  ): void;
-  zrange(key: string, min: number, max: number, cb: ICallback<string[]>): void;
-  zrevrange(
-    key: string,
-    min: number,
-    max: number,
-    cb: ICallback<string[]>,
-  ): void;
-  subscribe(channel: string): void;
-  zrangebyscore(
-    key: string,
-    min: number | string,
-    max: number | string,
-    cb: ICallback<string[]>,
-  ): void;
-  zrangebyscore(
-    key: KeyType,
-    min: number | string,
-    max: number | string,
-    withScores: 'WITHSCORES',
-    cb: ICallback<string[]>,
-  ): void;
-  smembers(key: string, cb: ICallback<string[]>): void;
-  sadd(key: string, member: string, cb: ICallback<number>): void;
-  hset(key: string, field: string, value: string, cb: ICallback<number>): void;
-  hdel(key: string, fields: string | string[], cb: ICallback<number>): void;
-  hmset(key: string, args: (string | number)[], cb: ICallback<string>): void;
-  lpush(key: string, element: string, cb: ICallback<number>): void;
-  rpush(key: string, element: string, cb: ICallback<number>): void;
-  script(arg1: string, arg2: string, cb: ICallback<string>): void;
-  eval: TFunction;
-  evalsha: TFunction;
-  watch(args: string[], cb: ICallback<string>): void;
-  set(key: string, value: string, cb: ICallback<string>): void;
-  set(key: string, value: string, flag: string, cb: ICallback<string>): void;
-  set(
-    key: string,
-    value: string,
-    mode: string,
-    duration: number,
-    cb: ICallback<string>,
-  ): void;
-  set(
-    key: string,
-    value: string,
-    mode: string,
-    duration: number,
-    flag: string,
-    cb: ICallback<string>,
-  ): void;
-  del(key: string | string[], cb: ICallback<number>): void;
-  zrem(key: string, value: string | string[], cb: ICallback<number>): void;
-  hmget(source: string, keys: string[], cb: ICallback<(string | null)[]>): void;
-  exists(key: string, cb: ICallback<number>): void;
-};
-
-export type TRedisClientMulti = (Multi | Pipeline) & {
-  hmset(key: string, args: (string | number)[]): void;
-};
 
 export interface ICompatibleLogger {
   info(message: unknown, ...params: unknown[]): void;

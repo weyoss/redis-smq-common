@@ -1,8 +1,8 @@
 import { ICallback } from '../../types';
-import { RedisClient } from './redis-client';
 import { EmptyCallbackReplyError } from '../errors/empty-callback-reply.error';
-import { RedisClientError } from './redis-client.error';
+import { RedisClientError } from './errors/redis-client.error';
 import { async } from '../async/async';
+import { RedisClient } from './redis-client';
 
 export class LuaScripts {
   protected isLoaded = false;

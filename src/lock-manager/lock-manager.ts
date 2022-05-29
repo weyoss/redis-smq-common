@@ -134,9 +134,13 @@ export class LockManager {
           this.redisClient.set(
             this.lockKey,
             this.lockId,
-            'PX',
-            this.ttl,
-            'NX',
+            {
+              expire: {
+                mode: 'PX',
+                value: this.ttl,
+              },
+              exists: 'NX',
+            },
             (err, reply) => {
               if (err) cb(err);
               else if (this.status === ELockStatus.locking) {
