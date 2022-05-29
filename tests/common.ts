@@ -147,16 +147,20 @@ export async function pubSub(config: TRedisConfig) {
       received = { pattern, channel, message };
     },
   );
+  await delay(5000);
   const r = await publishClient.publishAsync('chan1', 'msg1');
   expect(r).toBe(1);
 
-  await delay(5000);
+  for (; true; ) {
+    if (received) break;
+    await delay(1000);
+  }
   expect(received).toEqual({
     pattern: 'chan*',
     channel: 'chan1',
     message: 'msg1',
   });
-  await subscribeClient.punsubscribe('chan*');
+  subscribeClient.punsubscribe('chan*');
 }
 
 export async function transactionRunning(config: TRedisConfig) {

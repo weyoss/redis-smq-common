@@ -118,7 +118,7 @@ export class NodeRedisV4Client extends RedisClient {
   }
 
   punsubscribe(channel: string): void {
-    this.client.pUnsubscribe(channel);
+    this.client.pUnsubscribe(channel).catch(() => void 0);
   }
 
   zrangebyscore(
@@ -378,7 +378,7 @@ export class NodeRedisV4Client extends RedisClient {
 
   end(flush: boolean): void {
     if (!this.connectionClosed) {
-      this.client.disconnect();
+      this.client.disconnect().catch(() => void 0);
     }
   }
 
