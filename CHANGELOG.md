@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## 1.0.0-rc.6 (2022-05-30)
+## 1.0.0-rc.8 (2022-05-30)
+
+* Add WatchedKeysChangedError class (1e42e80)
+
+## 1.0.0-rc.7 (2022-05-30)
 
 * Fix various redis errors (9349261)
 
