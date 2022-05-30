@@ -299,8 +299,8 @@ export class NodeRedisV4Client extends RedisClient {
 
   del(key: string | string[], cb: ICallback<number>): void {
     this.client
-      .sendCommand(['del', ...(Array.isArray(key) ? key : [key])])
-      .then((reply) => cb(null, Number(reply)))
+      .del(key)
+      .then((reply) => cb(null, reply))
       .catch(cb);
   }
 

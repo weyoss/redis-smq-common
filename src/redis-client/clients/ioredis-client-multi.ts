@@ -55,7 +55,10 @@ export class IoredisClientMulti implements IRedisClientMulti {
   }
 
   srem(key: string, element: string | string[]): this {
-    this.multi.srem(key, ...element);
+    this.multi.srem(
+      key,
+      ...(typeof element === 'string' ? [element] : element),
+    );
     return this;
   }
 
@@ -80,7 +83,7 @@ export class IoredisClientMulti implements IRedisClientMulti {
   }
 
   del(key: string | string[]): this {
-    this.multi.del(...key);
+    this.multi.del(...(typeof key === 'string' ? [key] : key));
     return this;
   }
 

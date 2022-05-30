@@ -185,7 +185,11 @@ export class NodeRedisV3Client extends RedisClient {
   }
 
   hdel(key: string, fields: string | string[], cb: ICallback<number>): void {
-    this.client.hdel(key, fields, cb);
+    this.client.hdel(
+      key,
+      ...(typeof fields === 'string' ? [fields] : fields),
+      cb,
+    );
   }
 
   lrange(
@@ -286,7 +290,7 @@ export class NodeRedisV3Client extends RedisClient {
   }
 
   del(key: string | string[], cb: ICallback<number>): void {
-    this.client.del(key, cb);
+    this.client.del(...(typeof key === 'string' ? [key] : key), cb);
   }
 
   llen(key: string, cb: ICallback<number>): void {
