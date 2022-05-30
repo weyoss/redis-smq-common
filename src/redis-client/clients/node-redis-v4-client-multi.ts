@@ -93,7 +93,7 @@ export class NodeRedisV4ClientMulti implements IRedisClientMulti {
     this.multi
       .exec()
       .then((reply) => cb(null, reply))
-      .catch((err) => {
+      .catch((err: Error) => {
         if (err instanceof WatchError) cb(new WatchedKeysChangedError());
         else cb(err);
       });
