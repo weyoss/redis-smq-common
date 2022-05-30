@@ -85,7 +85,7 @@ export class IoredisClientMulti implements IRedisClientMulti {
   }
 
   exec(cb: ICallback<unknown[]>): void {
-    this.multi.exec((err, reply) => {
+    this.multi.exec((err, reply: [Error | null, unknown][]) => {
       if (err) cb(err);
       else if (!reply)
         cb(

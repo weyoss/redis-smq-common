@@ -85,7 +85,7 @@ export class NodeRedisV3ClientMulti implements IRedisClientMulti {
   }
 
   exec(cb: ICallback<unknown[]>): void {
-    this.multi.exec((err, reply) => {
+    this.multi.exec((err, reply: unknown[]) => {
       if (err) cb(err);
       else if (!reply)
         cb(
