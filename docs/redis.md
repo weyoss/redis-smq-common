@@ -23,8 +23,9 @@ module.exports = {
 
 - `redis` *(object): Optional.* Redis client parameters. If not provided the `redis` client would be used by default.
 
-- `redis.client` *(string): Optional.* Redis client name. Can be either `redis` or `ioredis`.
+- `redis.client` *(string): Optional.* Redis client name. Can be either `ioredis`,`redis`, or `redis_v4`.
 
 - `redis.options` *(object): Optional.* Redis client options.
-    - See https://github.com/NodeRedis/node_redis#options-object-properties for all valid parameters for `redis` client.
-    - See https://github.com/luin/ioredis/blob/master/API.md#new_Redis for all valid `ioredis` parameters.
+    - See https://github.com/luin/ioredis/blob/v4/API.md#new-redisport-host-options for `ioredis` options.
+    - See https://github.com/redis/node-redis/tree/v3.1.2#options-object-properties for `redis` options.
+    - See https://github.com/redis/node-redis/blob/master/docs/client-configuration.md for `redis_v4` options.
