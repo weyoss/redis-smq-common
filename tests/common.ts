@@ -1,5 +1,5 @@
 import { promisifyAll } from 'bluebird';
-import * as redisClient from '../src/redis-client/create-instance';
+import * as redisClient from '../src/redis-client/create-client-instance';
 import { RedisClient } from '../src/redis-client/redis-client';
 import { redisConfig } from './config';
 
@@ -21,7 +21,9 @@ export async function shutdown(): Promise<void> {
 }
 
 export async function getRedisInstance(config = redisConfig) {
-  const c = promisifyAll(await redisClientAsync.createInstanceAsync(config));
+  const c = promisifyAll(
+    await redisClientAsync.createClientInstanceAsync(config),
+  );
   redisClients.push(promisifyAll(c));
   return c;
 }

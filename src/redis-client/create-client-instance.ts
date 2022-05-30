@@ -15,7 +15,7 @@ function getClient(config: TRedisConfig) {
   return new IoredisClient(config.options);
 }
 
-export function createInstance(
+export function createClientInstance(
   config: TRedisConfig,
   cb: ICallback<RedisClient>,
 ): void {

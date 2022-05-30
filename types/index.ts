@@ -61,9 +61,9 @@ export interface IRedisClientMulti {
 
   hdel(key: string, field: string): this;
 
-  del(key: string): this;
+  del(key: string | string[]): this;
 
-  srem(key: string, element: string): this;
+  srem(key: string, element: string | string[]): this;
 
   sadd(key: string, element: string): this;
 

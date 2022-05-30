@@ -57,7 +57,7 @@ export class NodeRedisV4ClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  srem(key: string, element: string): this {
+  srem(key: string, element: string | string[]): this {
     this.multi.sRem(key, element);
     return this;
   }
@@ -82,7 +82,7 @@ export class NodeRedisV4ClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  del(key: string): this {
+  del(key: string | string[]): this {
     this.multi.del(key);
     return this;
   }
