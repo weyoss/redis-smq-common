@@ -1,6 +1,6 @@
-import { events } from '../../../src/events/events';
+import { events } from '../../src/events/events';
 import { delay } from 'bluebird';
-import { Ticker } from '../../../src/ticker/ticker';
+import { Ticker } from '../../src/ticker/ticker';
 
 describe('Ticker', () => {
   test('Case 1', async () => {

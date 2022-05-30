@@ -1,6 +1,6 @@
 import { delay, promisifyAll } from 'bluebird';
-import { LockManager } from '../../../src/lock-manager/lock-manager';
-import { getRedisInstance } from '../../common';
+import { LockManager } from '../../src/lock-manager/lock-manager';
+import { getRedisInstance } from '../common';
 
 test('LockManager: autoExtend', async () => {
   const redisClient = await getRedisInstance();

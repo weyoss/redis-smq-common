@@ -1,10 +1,10 @@
-import { RedisClientName } from '../../../types';
+import { RedisClientName } from '../../types';
 import {
   pubSub,
   scriptRunning,
   standardCommands,
   transactionRunning,
-} from '../../common';
+} from './common';
 
 test('IORedisClient', async () => {
   await standardCommands({ client: RedisClientName.IOREDIS });

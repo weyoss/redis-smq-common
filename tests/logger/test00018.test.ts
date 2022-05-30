@@ -1,4 +1,4 @@
-import { logger } from '../../../src/logger/logger';
+import { logger } from '../../src/logger/logger';
 import * as Logger from 'bunyan';
 
 test('Logger', async () => {
