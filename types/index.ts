@@ -1,9 +1,10 @@
-import { Pipeline, RedisOptions } from 'ioredis';
-import { Callback, ClientOpts, Multi } from 'redis';
+import { RedisOptions } from 'ioredis';
+import { Callback, ClientOpts } from 'redis';
 import * as Logger from 'bunyan';
 import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command';
 import {
   RedisClientOptions,
+  RedisClientType,
   RedisFunctions,
   RedisModules,
   RedisScripts,
@@ -41,7 +42,45 @@ export type TNodeRedisV4Multi = RedisClientMultiCommandType<
   RedisScripts
 >;
 
-export type TRedisClientMulti = Multi | Pipeline | TNodeRedisV4Multi;
+export type TNodeRedisV4Client = RedisClientType<
+  RedisModules,
+  RedisFunctions,
+  RedisScripts
+>;
+
+export interface IRedisClientMulti {
+  lrem(key: string, count: number, element: string): this;
+
+  lpop(key: string): this;
+
+  rpush(key: string, element: string): this;
+
+  rpop(key: string): this;
+
+  lpush(key: string, element: string): this;
+
+  hdel(key: string, field: string): this;
+
+  del(key: string): this;
+
+  srem(key: string, element: string): this;
+
+  sadd(key: string, element: string): this;
+
+  zrem(key: string, element: string): this;
+
+  zadd(key: string, score: number, element: string): this;
+
+  hset(key: string, field: string, value: string): this;
+
+  pexpire(key: string, millis: number): this;
+
+  ltrim(key: string, start: number, stop: number): this;
+
+  rpoplpush(source: string, destination: string): this;
+
+  exec(cb: ICallback<unknown[]>): void;
+}
 
 declare module 'redis' {
   export interface Commands<R> {

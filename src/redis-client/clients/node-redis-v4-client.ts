@@ -1,7 +1,8 @@
 import { RedisClient } from '../redis-client';
-import { ICallback, TNodeRedisV4Multi } from '../../../types';
+import { ICallback } from '../../../types';
 import { RedisClientError } from '../errors/redis-client.error';
 import { createClient, RedisClientOptions } from '@redis/client';
+import { NodeRedisV4ClientMulti } from './node-redis-v4-client-multi';
 
 export class NodeRedisV4Client extends RedisClient {
   protected client;
@@ -52,8 +53,8 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  multi(): TNodeRedisV4Multi {
-    return this.client.multi();
+  multi(): NodeRedisV4ClientMulti {
+    return new NodeRedisV4ClientMulti(this.client);
   }
 
   watch(args: string[], cb: ICallback<string>): void {
@@ -67,21 +68,6 @@ export class NodeRedisV4Client extends RedisClient {
     this.client
       .unwatch()
       .then((reply) => cb(null, reply))
-      .catch(cb);
-  }
-
-  execMulti(multi: TNodeRedisV4Multi, cb: ICallback<unknown[]>): void {
-    multi
-      .exec()
-      .then((reply) => {
-        if (!reply)
-          cb(
-            new RedisClientError(
-              `Redis transaction has been abandoned. Try again.`,
-            ),
-          );
-        else cb(null, reply);
-      })
       .catch(cb);
   }
 

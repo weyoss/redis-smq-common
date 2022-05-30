@@ -165,6 +165,24 @@ export async function pubSub(config: TRedisConfig) {
 
 export async function transactionRunning(config: TRedisConfig) {
   const client = await getRedisInstance(config);
-  const multi = client.multi();
-  // todo
+  const multi = promisifyAll(client.multi());
+  multi.del('k1');
+  multi.hdel('k2', 'f1');
+  multi.hset('k3', 'f1', 'v1');
+  multi.sadd('k4', 'v1');
+  multi.hset('k5', 'f1', 'v1');
+  multi.rpoplpush('k6', 'k7');
+  multi.pexpire('k8', 5000);
+  multi.srem('k9', 'v1');
+  multi.zrem('k10', 'v1');
+  multi.zadd('k11', 1, 'v1');
+  multi.rpush('k12', 'v1');
+  multi.rpop('k13');
+  multi.lpush('k14', 'v1');
+  multi.lpop('k15');
+  multi.lrem('k16', 1, 'v1');
+  multi.ltrim('k17', 0, 10);
+  const r = await multi.execAsync();
+  expect(Array.isArray(r)).toBe(true);
+  expect(r.length).toEqual(16);
 }

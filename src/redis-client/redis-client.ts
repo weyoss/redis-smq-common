@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import { LuaScripts } from './lua-scripts';
-import { ICallback, TRedisClientMulti } from '../../types';
+import { ICallback, IRedisClientMulti } from '../../types';
 import { RedisClientError } from './errors/redis-client.error';
 import { EmptyCallbackReplyError } from '../errors/empty-callback-reply.error';
 import * as fs from 'fs';
@@ -49,13 +49,11 @@ export abstract class RedisClient extends EventEmitter {
     cb: ICallback<number | string>,
   ): void;
 
-  abstract multi(): TRedisClientMulti;
+  abstract multi(): IRedisClientMulti;
 
   abstract watch(args: string[], cb: ICallback<string>): void;
 
   abstract unwatch(cb: ICallback<string>): void;
-
-  abstract execMulti(multi: TRedisClientMulti, cb: ICallback<unknown[]>): void;
 
   abstract sismember(key: string, member: string, cb: ICallback<number>): void;
 

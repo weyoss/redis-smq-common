@@ -1,8 +1,9 @@
 import { RedisClient } from '../redis-client';
-import { Pipeline, Redis, RedisOptions } from 'ioredis';
+import { Redis, RedisOptions } from 'ioredis';
 import { ICallback } from '../../../types';
 import { RedisClientError } from '../errors/redis-client.error';
 import * as IORedis from 'ioredis';
+import { IoredisClientMulti } from './ioredis-client-multi';
 
 export class IoredisClient extends RedisClient {
   protected client: Redis;
@@ -62,8 +63,8 @@ export class IoredisClient extends RedisClient {
     this.client.zadd(key, score, member, cb);
   }
 
-  multi(): Pipeline {
-    return this.client.multi();
+  multi(): IoredisClientMulti {
+    return new IoredisClientMulti(this.client);
   }
 
   watch(args: string[], cb: ICallback<string>): void {
@@ -72,38 +73,6 @@ export class IoredisClient extends RedisClient {
 
   unwatch(cb: ICallback<string>): void {
     this.client.unwatch(cb);
-  }
-
-  execMulti<T>(multi: Pipeline, cb: ICallback<T[]>): void {
-    multi.exec((err?: Error | null, reply?: Array<[Error | null, T]>) => {
-      if (err) cb(err);
-      else if (!reply)
-        cb(
-          new RedisClientError(
-            `Redis transaction has been abandoned. Try again.`,
-          ),
-        );
-      else {
-        const lengths: T[] = [];
-        let err: Error | null = null;
-        for (const i of reply) {
-          if (!Array.isArray(i)) {
-            err = new RedisClientError(
-              'Expected an array reply from multi.exec()',
-            );
-            break;
-          }
-          const [error, result] = i;
-          if (error instanceof Error) {
-            err = error;
-            break;
-          }
-          lengths.push(result);
-        }
-        if (err) cb(err);
-        else cb(null, lengths);
-      }
-    });
   }
 
   sismember(key: string, member: string, cb: ICallback<number>): void {

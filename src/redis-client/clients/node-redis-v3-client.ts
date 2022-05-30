@@ -1,13 +1,9 @@
 import { RedisClient } from '../redis-client';
 import { EventEmitter } from 'events';
 import { ICallback } from '../../../types';
-import {
-  ClientOpts,
-  createClient,
-  Multi,
-  RedisClient as NodeRedis,
-} from 'redis';
+import { ClientOpts, createClient, RedisClient as NodeRedis } from 'redis';
 import { RedisClientError } from '../errors/redis-client.error';
+import { NodeRedisV3ClientMulti } from './node-redis-v3-client-multi';
 
 /**
  * client.end() does unregister all event listeners which causes the 'end' event not being emitted.
@@ -124,8 +120,8 @@ export class NodeRedisV3Client extends RedisClient {
     this.client.zadd(key, score, member, cb);
   }
 
-  multi(): Multi {
-    return this.client.multi();
+  multi(): NodeRedisV3ClientMulti {
+    return new NodeRedisV3ClientMulti(this.client);
   }
 
   watch(args: string[], cb: ICallback<string>): void {
@@ -134,19 +130,6 @@ export class NodeRedisV3Client extends RedisClient {
 
   unwatch(cb: ICallback<string>): void {
     this.client.unwatch(cb);
-  }
-
-  execMulti(multi: Multi, cb: ICallback<unknown[]>): void {
-    multi.exec((err, reply: unknown[]) => {
-      if (err) cb(err);
-      else if (!reply)
-        cb(
-          new RedisClientError(
-            `Redis transaction has been abandoned. Try again.`,
-          ),
-        );
-      else cb(null, reply);
-    });
   }
 
   sismember(key: string, member: string, cb: ICallback<number>): void {
