@@ -2,6 +2,10 @@
 
 ## 1.0.0-rc.6 (2022-05-30)
 
+* Fix various redis errors (9349261)
+
+## 1.0.0-rc.6 (2022-05-30)
+
 * Fix missing RedisClient from package exports (88f90f0)
 
 ## 1.0.0-rc.5 (2022-05-30)
