@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## 1.0.0-rc.6 (2022-05-30)
+
+* Fix missing RedisClient from package exports (88f90f0)
+
 ## 1.0.0-rc.5 (2022-05-30)
 
-Update IRedisClientMulti interface (be1c534)
+* Update IRedisClientMulti interface (be1c534)
 
 ## 1.0.0-rc.4 (2022-05-30)
 
