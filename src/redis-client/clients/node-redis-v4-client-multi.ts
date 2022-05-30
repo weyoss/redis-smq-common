@@ -4,6 +4,8 @@ import {
   TNodeRedisV4Client,
   TNodeRedisV4Multi,
 } from '../../../types';
+import { WatchError } from '@redis/client';
+import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
 
 export class NodeRedisV4ClientMulti implements IRedisClientMulti {
   protected multi: TNodeRedisV4Multi;
@@ -91,6 +93,9 @@ export class NodeRedisV4ClientMulti implements IRedisClientMulti {
     this.multi
       .exec()
       .then((reply) => cb(null, reply))
-      .catch(cb);
+      .catch((err) => {
+        if (err instanceof WatchError) cb(new WatchedKeysChangedError());
+        else cb(err);
+      });
   }
 }

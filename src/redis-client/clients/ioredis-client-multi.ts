@@ -1,6 +1,7 @@
 import { ICallback, IRedisClientMulti } from '../../../types';
 import { RedisClientError } from '../errors/redis-client.error';
 import { Pipeline, Redis } from 'ioredis';
+import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
 
 export class IoredisClientMulti implements IRedisClientMulti {
   protected multi: Pipeline;
@@ -90,12 +91,7 @@ export class IoredisClientMulti implements IRedisClientMulti {
   exec(cb: ICallback<unknown[]>): void {
     this.multi.exec((err, reply: [Error | null, unknown][]) => {
       if (err) cb(err);
-      else if (!reply)
-        cb(
-          new RedisClientError(
-            `Redis transaction has been abandoned. Try again.`,
-          ),
-        );
+      else if (!reply) cb(new WatchedKeysChangedError());
       else {
         const lengths: unknown[] = [];
         let err: Error | null = null;

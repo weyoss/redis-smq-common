@@ -1,6 +1,6 @@
 import { ICallback, IRedisClientMulti } from '../../../types';
 import { Multi, RedisClient } from 'redis';
-import { RedisClientError } from '../errors/redis-client.error';
+import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
 
 export class NodeRedisV3ClientMulti implements IRedisClientMulti {
   protected multi: Multi;
@@ -87,12 +87,7 @@ export class NodeRedisV3ClientMulti implements IRedisClientMulti {
   exec(cb: ICallback<unknown[]>): void {
     this.multi.exec((err, reply: unknown[]) => {
       if (err) cb(err);
-      else if (!reply)
-        cb(
-          new RedisClientError(
-            `Redis transaction has been abandoned. Try again.`,
-          ),
-        );
+      else if (!reply) cb(new WatchedKeysChangedError());
       else cb(null, reply);
     });
   }
