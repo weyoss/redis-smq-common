@@ -116,6 +116,7 @@ declare module 'ioredis' {
 
 export interface ICallback<T> {
   (err?: Error | null, reply?: T): void;
+  (err: undefined | null, reply: T): void;
 }
 
 export type TFunction<TReturn = void, TArgs = any> = (
