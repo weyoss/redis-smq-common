@@ -39,7 +39,7 @@ export abstract class RedisClient extends EventEmitter {
       expire?: { mode: 'EX' | 'PX'; value: number };
       exists?: 'NX' | 'XX';
     },
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void;
 
   abstract zadd(
@@ -83,7 +83,7 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract hgetall(key: string, cb: ICallback<Record<string, string>>): void;
 
-  abstract hget(key: string, field: string, cb: ICallback<string>): void;
+  abstract hget(key: string, field: string, cb: ICallback<string | null>): void;
 
   abstract hset(
     key: string,
@@ -113,13 +113,13 @@ export abstract class RedisClient extends EventEmitter {
     source: string,
     destination: string,
     timeout: number,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void;
 
   abstract rpoplpush(
     source: string,
     destination: string,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void;
 
   zpophgetrpush(
@@ -159,7 +159,11 @@ export abstract class RedisClient extends EventEmitter {
     );
   }
 
-  lpoprpush(source: string, destination: string, cb: ICallback<string>): void {
+  lpoprpush(
+    source: string,
+    destination: string,
+    cb: ICallback<string | null>,
+  ): void {
     if (this.validateRedisVersion(6, 2)) {
       this.lmove(source, destination, 'LEFT', 'RIGHT', cb);
     } else {
@@ -183,7 +187,7 @@ export abstract class RedisClient extends EventEmitter {
     cb: ICallback<Record<string, string>>,
   ): void;
 
-  abstract rpop(key: string, cb: ICallback<string>): void;
+  abstract rpop(key: string, cb: ICallback<string | null>): void;
 
   abstract lrem(
     key: string,
@@ -208,7 +212,7 @@ export abstract class RedisClient extends EventEmitter {
     cb: (err?: Error | null, res?: unknown) => void,
   ): void;
 
-  abstract get(key: string, cb: ICallback<string>): void;
+  abstract get(key: string, cb: ICallback<string | null>): void;
 
   abstract del(key: string | string[], cb: ICallback<number>): void;
 
@@ -219,7 +223,7 @@ export abstract class RedisClient extends EventEmitter {
     destination: string,
     from: 'LEFT' | 'RIGHT',
     to: 'LEFT' | 'RIGHT',
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void;
 
   abstract zremrangebyscore(

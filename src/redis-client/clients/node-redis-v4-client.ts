@@ -28,7 +28,7 @@ export class NodeRedisV4Client extends RedisClient {
       expire?: { mode: 'EX' | 'PX'; value: number };
       exists?: 'NX' | 'XX';
     },
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     this.client
       .set(key, value, {
@@ -140,10 +140,10 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  hget(key: string, field: string, cb: ICallback<string>): void {
+  hget(key: string, field: string, cb: ICallback<string | null>): void {
     this.client
       .hGet(key, field)
-      .then((reply) => cb(null, reply))
+      .then((reply) => cb(null, reply ?? null))
       .catch(cb);
   }
 
@@ -191,7 +191,7 @@ export class NodeRedisV4Client extends RedisClient {
     source: string,
     destination: string,
     timeout: number,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     this.client
       .brPopLPush(source, destination, timeout)
@@ -199,7 +199,11 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  rpoplpush(source: string, destination: string, cb: ICallback<string>): void {
+  rpoplpush(
+    source: string,
+    destination: string,
+    cb: ICallback<string | null>,
+  ): void {
     this.client
       .rPopLPush(source, destination)
       .then((reply) => cb(null, reply))
@@ -224,7 +228,7 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  rpop(key: string, cb: ICallback<string>): void {
+  rpop(key: string, cb: ICallback<string | null>): void {
     this.client
       .rPop(key)
       .then((reply) => cb(null, reply))
@@ -290,7 +294,7 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  get(key: string, cb: ICallback<string>): void {
+  get(key: string, cb: ICallback<string | null>): void {
     this.client
       .sendCommand(['get', key])
       .then((reply) => cb(null, typeof reply === 'string' ? reply : null))
@@ -316,7 +320,7 @@ export class NodeRedisV4Client extends RedisClient {
     destination: string,
     from: 'LEFT' | 'RIGHT',
     to: 'LEFT' | 'RIGHT',
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     if (!this.validateRedisVersion(6, 2)) {
       cb(

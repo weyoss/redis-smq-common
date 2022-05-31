@@ -85,7 +85,7 @@ export class NodeRedisV3Client extends RedisClient {
       expire?: { mode: 'EX' | 'PX'; value: number };
       exists?: 'NX' | 'XX';
     },
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     if (options.exists && options.expire) {
       this.client.set(
@@ -176,7 +176,7 @@ export class NodeRedisV3Client extends RedisClient {
     });
   }
 
-  hget(key: string, field: string, cb: ICallback<string>): void {
+  hget(key: string, field: string, cb: ICallback<string | null>): void {
     this.client.hget(key, field, cb);
   }
 
@@ -213,12 +213,16 @@ export class NodeRedisV3Client extends RedisClient {
     source: string,
     destination: string,
     timeout: number,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     this.client.brpoplpush(source, destination, timeout, cb);
   }
 
-  rpoplpush(source: string, destination: string, cb: ICallback<string>): void {
+  rpoplpush(
+    source: string,
+    destination: string,
+    cb: ICallback<string | null>,
+  ): void {
     this.client.rpoplpush(source, destination, cb);
   }
 
@@ -246,7 +250,7 @@ export class NodeRedisV3Client extends RedisClient {
     });
   }
 
-  rpop(key: string, cb: ICallback<string>): void {
+  rpop(key: string, cb: ICallback<string | null>): void {
     this.client.rpop(key, cb);
   }
 
@@ -285,7 +289,7 @@ export class NodeRedisV3Client extends RedisClient {
     );
   }
 
-  get(key: string, cb: ICallback<string>): void {
+  get(key: string, cb: ICallback<string | null>): void {
     this.client.get(key, cb);
   }
 
@@ -302,7 +306,7 @@ export class NodeRedisV3Client extends RedisClient {
     destination: string,
     from: 'LEFT' | 'RIGHT',
     to: 'LEFT' | 'RIGHT',
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     if (!this.validateRedisVersion(6, 2)) {
       cb(

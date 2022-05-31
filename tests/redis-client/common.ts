@@ -160,5 +160,5 @@ export async function transactionRunning(config: TRedisConfig) {
   multi.ltrim('k17', 0, 10);
   const r = await multi.execAsync();
   expect(Array.isArray(r)).toBe(true);
-  expect(r.length).toEqual(16);
+  expect((r ?? []).length).toEqual(16);
 }
