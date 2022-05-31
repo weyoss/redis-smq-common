@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.0-rc.9 (2022-05-31)
+
+* Improve RedisClient typings (27219a6)
+* Set up codecov (98293bd)
+* Fix type coverage (2f4a722)
+
 ## 1.0.0-rc.8 (2022-05-30)
 
 * Add WatchedKeysChangedError class (1e42e80)
