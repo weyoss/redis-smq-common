@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.0-rc.11 (2022-05-31)
+
+* Update RedisClient and IRedisClientMulti interfaces (8732c97)
+
 ## 1.0.0-rc.10 (2022-05-31)
 
 * Fix broken promisify(All) because of ICallback typing (4250e32)
