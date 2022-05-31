@@ -45,8 +45,11 @@ export class IoredisClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  zrem(key: string, element: string): this {
-    this.multi.zrem(key, element);
+  zrem(key: string, element: string | string[]): this {
+    this.multi.zrem(
+      key,
+      ...(typeof element === 'string' ? [element] : element),
+    );
     return this;
   }
 
@@ -68,13 +71,23 @@ export class IoredisClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  hdel(key: string, field: string): this {
-    this.multi.hdel(key, field);
+  hdel(key: string, field: string | string[]): this {
+    this.multi.hdel(key, ...(typeof field === 'string' ? [field] : field));
+    return this;
+  }
+
+  hincrby(key: string, field: string, by: number): this {
+    this.multi.hincrby(key, field, by);
     return this;
   }
 
   pexpire(key: string, millis: number): this {
     this.multi.pexpire(key, millis);
+    return this;
+  }
+
+  expire(key: string, secs: number): this {
+    this.multi.expire(key, secs);
     return this;
   }
 

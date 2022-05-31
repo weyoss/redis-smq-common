@@ -70,6 +70,10 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract punsubscribe(channel: string): void;
 
+  abstract subscribe(channel: string): void;
+
+  abstract unsubscribe(channel: string): void;
+
   abstract zrangebyscore(
     key: string,
     min: number | string,

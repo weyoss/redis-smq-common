@@ -1,6 +1,7 @@
 import { RedisClientName } from '../../types';
 import {
-  pubSub,
+  pubSubChannel,
+  pubSubPattern,
   scriptRunning,
   standardCommands,
   transactionRunning,
@@ -9,6 +10,7 @@ import {
 test('NodeRedisClient', async () => {
   await standardCommands({ client: RedisClientName.REDIS });
   await scriptRunning({ client: RedisClientName.REDIS });
-  await pubSub({ client: RedisClientName.REDIS });
+  await pubSubChannel({ client: RedisClientName.REDIS });
+  await pubSubPattern({ client: RedisClientName.REDIS });
   await transactionRunning({ client: RedisClientName.REDIS });
 });

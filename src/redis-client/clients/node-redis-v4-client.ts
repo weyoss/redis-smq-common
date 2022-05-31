@@ -107,6 +107,16 @@ export class NodeRedisV4Client extends RedisClient {
     this.client.pUnsubscribe(channel).catch(() => void 0);
   }
 
+  subscribe(channel: string): void {
+    this.client.subscribe(channel, (message, channel) => {
+      this.client.emit('message', channel, message);
+    });
+  }
+
+  unsubscribe(channel: string): void {
+    this.client.unsubscribe(channel).catch(() => void 0);
+  }
+
   zrangebyscore(
     key: string,
     min: number | string,

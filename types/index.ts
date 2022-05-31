@@ -59,7 +59,9 @@ export interface IRedisClientMulti {
 
   lpush(key: string, element: string): this;
 
-  hdel(key: string, field: string): this;
+  hdel(key: string, field: string | string[]): this;
+
+  hincrby(key: string, field: string, by: number): this;
 
   del(key: string | string[]): this;
 
@@ -67,13 +69,15 @@ export interface IRedisClientMulti {
 
   sadd(key: string, element: string): this;
 
-  zrem(key: string, element: string): this;
+  zrem(key: string, element: string | string[]): this;
 
   zadd(key: string, score: number, element: string): this;
 
   hset(key: string, field: string, value: string): this;
 
   pexpire(key: string, millis: number): this;
+
+  expire(key: string, secs: number): this;
 
   ltrim(key: string, start: number, stop: number): this;
 

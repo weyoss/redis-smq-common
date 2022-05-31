@@ -110,7 +110,7 @@ export async function scriptRunning(config: TRedisConfig) {
   expect(r).toBe(1);
 }
 
-export async function pubSub(config: TRedisConfig) {
+export async function pubSubPattern(config: TRedisConfig) {
   const subscribeClient = await getRedisInstance(config);
   const publishClient = await getRedisInstance(config);
 
@@ -139,6 +139,30 @@ export async function pubSub(config: TRedisConfig) {
   subscribeClient.punsubscribe('chan*');
 }
 
+export async function pubSubChannel(config: TRedisConfig) {
+  const subscribeClient = await getRedisInstance(config);
+  const publishClient = await getRedisInstance(config);
+
+  let received: { channel: string; message: string } | null = null;
+  subscribeClient.subscribe('chan1');
+  subscribeClient.on('message', (channel: string, message: string) => {
+    received = { channel, message };
+  });
+  await delay(5000);
+  const r = await publishClient.publishAsync('chan1', 'msg1');
+  expect(r).toBe(1);
+
+  for (; true; ) {
+    if (received) break;
+    await delay(1000);
+  }
+  expect(received).toEqual({
+    channel: 'chan1',
+    message: 'msg1',
+  });
+  subscribeClient.unsubscribe('chan1');
+}
+
 export async function transactionRunning(config: TRedisConfig) {
   const client = await getRedisInstance(config);
   const multi = promisifyAll(client.multi());
@@ -158,7 +182,9 @@ export async function transactionRunning(config: TRedisConfig) {
   multi.lpop('k15');
   multi.lrem('k16', 1, 'v1');
   multi.ltrim('k17', 0, 10);
+  multi.expire('k18', 3);
+  multi.hincrby('k19', 'f1', 10);
   const r = await multi.execAsync();
   expect(Array.isArray(r)).toBe(true);
-  expect((r ?? []).length).toEqual(16);
+  expect((r ?? []).length).toEqual(18);
 }

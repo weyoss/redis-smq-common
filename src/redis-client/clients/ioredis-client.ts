@@ -95,6 +95,14 @@ export class IoredisClient extends RedisClient {
     this.client.punsubscribe(channel);
   }
 
+  subscribe(channel: string): void {
+    this.client.subscribe(channel);
+  }
+
+  unsubscribe(channel: string): void {
+    this.client.unsubscribe(channel);
+  }
+
   zrangebyscore(
     key: string,
     min: number | string,
