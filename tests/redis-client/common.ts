@@ -47,6 +47,9 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.saddAsync('key5', 'value');
   expect(r).toBe(1);
 
+  r = await client.sismemberAsync('key5', 'value');
+  expect(r).toEqual(1);
+
   r = await client.smembersAsync('key5');
   expect(r).toEqual(['value']);
 
@@ -89,17 +92,32 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.rpopAsync('key7');
   expect(r).toEqual(null);
 
+  r = await client.lpoprpushAsync('key7', 'key8');
+  expect(r).toEqual(null);
+
   r = await client.lremAsync('key7', 1, 'value');
   expect(r).toEqual(0);
 
   r = await client.watchAsync(['key7']);
   expect(r).toEqual('OK');
 
+  r = await client.zpophgetrpushAsync('key9', 'key10', 'key11');
+  expect(r).toEqual(null);
+
+  r = await client.lpoprpushextraAsync('key12', 'key13', 100, 10000);
+  expect(r).toEqual(null);
+
   r = await client.unwatchAsync();
   expect(r).toEqual('OK');
 
   r = await client.getInfoAsync();
   expect(typeof r).toBe('string');
+
+  r = await client.flushallAsync();
+  expect(typeof r).toBe('string');
+
+  await client.quitAsync(); // does exec quit command
+  await client.quitAsync(); // does not exec quit
 }
 
 export async function scriptRunning(config: TRedisConfig) {

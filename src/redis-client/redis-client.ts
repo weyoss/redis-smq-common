@@ -130,7 +130,7 @@ export abstract class RedisClient extends EventEmitter {
     source: string,
     sourceHash: string,
     destination: string,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     this.runScript(
       ELuaScriptName.ZPOPHGETRPUSH,
@@ -138,8 +138,7 @@ export abstract class RedisClient extends EventEmitter {
       [],
       (err, res?: unknown) => {
         if (err) cb(err);
-        else if (typeof res !== 'string') cb();
-        else cb(null, res);
+        else cb(null, typeof res === 'string' ? res : null);
       },
     );
   }
@@ -149,7 +148,7 @@ export abstract class RedisClient extends EventEmitter {
     destination: string,
     listSize: number,
     expire: number,
-    cb: ICallback<string>,
+    cb: ICallback<string | null>,
   ): void {
     this.runScript(
       ELuaScriptName.LPOPRPUSHEXTRA,
@@ -157,8 +156,7 @@ export abstract class RedisClient extends EventEmitter {
       [listSize, expire],
       (err, res?: unknown) => {
         if (err) cb(err);
-        else if (typeof res !== 'string') cb();
-        else cb(null, res);
+        else cb(null, typeof res === 'string' ? res : null);
       },
     );
   }
@@ -177,8 +175,7 @@ export abstract class RedisClient extends EventEmitter {
         [],
         (err, res?: unknown) => {
           if (err) cb(err);
-          else if (typeof res !== 'string') cb();
-          else cb(null, res);
+          else cb(null, typeof res === 'string' ? res : null);
         },
       );
     }

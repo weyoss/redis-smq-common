@@ -267,7 +267,7 @@ export class NodeRedisV4Client extends RedisClient {
   flushall(cb: ICallback<string>): void {
     this.client
       .flushAll()
-      .then(() => cb())
+      .then((reply) => cb(null, reply))
       .catch(cb);
   }
 
