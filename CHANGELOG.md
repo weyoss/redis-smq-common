@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 1.0.0 (20220-06-18)
+
+* Rename logger/test00018 (f20fdf9)
+* Test PowerManager (8d6f5e6)
+* Complete async tests to reach 9x% code coverage (ea57f8f)
+* Test async.waterfall() (ae4a283)
+* Increase code coverage (c5e3f2b)
+
 ## 1.0.0-rc.11 (2022-05-31)
 
 * Update RedisClient and IRedisClientMulti interfaces (8732c97)
