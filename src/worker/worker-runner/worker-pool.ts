@@ -4,24 +4,14 @@ import { async } from '../../async/async';
 
 export class WorkerPool {
   private pool: Worker[] = [];
-  private index = 0;
-
-  private getCurrentPoolItem = (): Worker | null => {
-    if (this.pool.length) {
-      const worker = this.pool[this.index];
-      this.index += 1;
-      if (this.index >= this.pool.length) {
-        this.index = 0;
-      }
-      return worker;
-    }
-    return null;
-  };
 
   work = (cb: ICallback<void>): void => {
-    const worker = this.getCurrentPoolItem();
-    if (worker) worker.work(cb);
-    else cb();
+    if (this.pool.length) {
+      const tasks = this.pool.map(
+        (worker) => (cb: ICallback<void>) => worker.work(cb),
+      );
+      async.waterfall(tasks, cb);
+    } else cb();
   };
 
   add = (worker: Worker): number => {
@@ -37,7 +27,6 @@ export class WorkerPool {
       },
       () => {
         this.pool = [];
-        this.index = 0;
         cb();
       },
     );
