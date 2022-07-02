@@ -20,7 +20,7 @@ const eachOf = <T>(
       iteratee(collection[idx], idx, (err) => {
         idx += 1;
         if (err || idx >= collection.length) callback(err);
-        else iterate();
+        else setTimeout(() => iterate(), 0);
       });
     };
     iterate();
@@ -42,7 +42,7 @@ const eachIn = <T>(
       iteratee(collection[key], key, (err) => {
         idx += 1;
         if (err || idx >= keys.length) callback(err);
-        else iterate();
+        else setTimeout(() => iterate(), 0);
       });
     };
     iterate();
@@ -69,8 +69,10 @@ const waterfall = <T>(tasks: TFunction[], callback: ICallback<T>): void => {
       if (err) {
         callback(err);
       } else if (idx < tasks.length) {
-        if (args.length) tasks[idx](...args, exec);
-        else tasks[idx](exec);
+        setTimeout(() => {
+          if (args.length) tasks[idx](...args, exec);
+          else tasks[idx](exec);
+        }, 0);
       } else if (args.length) {
         callback(null, args[0]);
       } else callback();
