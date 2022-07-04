@@ -2,7 +2,7 @@ import { Ticker } from '../ticker/ticker';
 import { ICallback } from '../../types';
 import { events } from '../events/events';
 import { PowerManager } from '../power-manager/power-manager';
-import { PanicError } from '../errors/panic.error';
+import { WorkerError } from './worker-error';
 
 export abstract class Worker {
   private readonly ticker: Ticker | null = null;
@@ -19,14 +19,14 @@ export abstract class Worker {
 
   private getTicker = (): Ticker => {
     if (!this.ticker) {
-      throw new PanicError(`Expected an instance of Ticker`);
+      throw new WorkerError(`Expected an instance of Ticker`);
     }
     return this.ticker;
   };
 
   private getPowerManager(): PowerManager {
     if (!this.powerManager) {
-      throw new PanicError('Expected an instance of PowerManager');
+      throw new WorkerError('Expected an instance of PowerManager');
     }
     return this.powerManager;
   }
@@ -40,7 +40,7 @@ export abstract class Worker {
 
   run = (): void => {
     if (this.managed) {
-      throw new PanicError('You can not run a managed worker');
+      throw new WorkerError('You can not run a managed worker');
     }
     const powerManager = this.getPowerManager();
     powerManager.goingUp();
