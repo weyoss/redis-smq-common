@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.1 (2022-07-07)
+
+* Remove unused WorkerRunnerError (48e7206)
+* Use namespaced WorkerError (517224c)
+* Make array looping asynchronous (cd66e51)
+* Run workers one by one without a delay (099b488)
+
 ## 1.0.0 (20220-06-18)
 
 * Rename logger/test00018 (f20fdf9)
