@@ -2,7 +2,7 @@ import { ICallback, ICompatibleLogger } from '../../../types';
 import { PowerManager } from '../../power-manager/power-manager';
 import { EventEmitter } from 'events';
 import { Ticker } from '../../ticker/ticker';
-import { LockManager } from '../../lock-manager/lock-manager';
+import { ELockStatus, LockManager } from '../../lock-manager/lock-manager';
 import { RedisClient } from '../../redis-client/redis-client';
 import { events } from '../../events/events';
 import { WorkerPool } from './worker-pool';
@@ -28,13 +28,7 @@ export class WorkerRunner extends EventEmitter {
     this.powerManager = new PowerManager();
     this.redisClient = redisClient;
     this.logger = logger;
-    this.lockManager = new LockManager(
-      redisClient,
-      keyLock,
-      10000,
-      false,
-      true,
-    );
+    this.lockManager = new LockManager(redisClient, keyLock, 60000);
     this.ticker = new Ticker(this.onTick);
     this.workerPool = workerPool;
   }
@@ -43,16 +37,14 @@ export class WorkerRunner extends EventEmitter {
     async.waterfall(
       [
         (cb: ICallback<void>) => {
-          if (!this.lockManager.isLocked()) {
-            this.lockManager.acquireLock((err) => {
-              if (!err) {
-                this.logger.info(
-                  `Workers are exclusively running from this instance (Lock ID ${this.lockManager.getId()}).`,
-                );
-              }
-              cb(err);
-            });
-          } else cb();
+          this.lockManager.acquireOrExtend((err, status) => {
+            if (status === ELockStatus.locked) {
+              this.logger.info(
+                `Workers are exclusively running from this instance (Lock ID ${this.lockManager.getId()}).`,
+              );
+            }
+            cb(err);
+          });
         },
         (cb: ICallback<void>) => {
           this.workerPool.work(cb);

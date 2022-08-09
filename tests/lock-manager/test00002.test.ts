@@ -1,42 +1,30 @@
-import { delay, promisifyAll } from 'bluebird';
+import { promisifyAll } from 'bluebird';
+
 import { LockManager } from '../../src/lock-manager/lock-manager';
 import { getRedisInstance } from '../common';
+import { LockManagerAcquireError } from '../../src/lock-manager/errors/lock-manager-acquire.error';
 
-test('LockManager: acquireLock(), extendLock(), releaseLock()', async () => {
+test('LockManager: retryOnFail', async () => {
   const redisClient = await getRedisInstance();
   const lockManager = promisifyAll(
-    new LockManager(redisClient, 'key1', 5000, false),
+    new LockManager(redisClient, 'key1', 20000, false),
   );
 
   await lockManager.acquireLockAsync();
 
-  await expect(lockManager.acquireLockAsync()).rejects.toThrow(
-    `The lock is currently not released or a pending operation is in progress`,
+  const lockManager2 = promisifyAll(
+    new LockManager(redisClient, 'key1', 10000, false),
   );
 
-  await delay(10000);
-  await expect(lockManager.extendLockAsync()).rejects.toThrow(
-    'Acquired lock could not be extended',
+  await expect(lockManager2.acquireLockAsync()).rejects.toThrow(
+    LockManagerAcquireError,
   );
 
-  await lockManager.acquireLockAsync();
-
-  await lockManager.extendLockAsync();
-
-  await expect(
-    Promise.all([
-      lockManager.releaseLockAsync(),
-      lockManager.releaseLockAsync(),
-    ]),
-  ).rejects.toThrow('A pending releaseLock() call is in progress');
-
-  await delay(5000);
-  await lockManager.releaseLockAsync();
-  await lockManager.releaseLockAsync();
-
-  await expect(lockManager.extendLockAsync()).rejects.toThrow(
-    `The lock is currently not acquired or a pending operation is in progress`,
+  const lockManager3 = promisifyAll(
+    new LockManager(redisClient, 'key1', 10000, true),
   );
 
-  await lockManager.acquireLockAsync();
+  await lockManager3.acquireLockAsync();
+
+  await lockManager3.extendLockAsync();
 });

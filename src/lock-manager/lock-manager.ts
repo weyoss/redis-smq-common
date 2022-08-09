@@ -1,18 +1,21 @@
 import { ICallback } from '../../types';
 import { RedisClient } from '../redis-client/redis-client';
 import { v4 as uuid } from 'uuid';
-import { LockManagerError } from './errors/lock-manager.error';
 import { LockManagerAbortError } from './errors/lock-manager-abort.error';
 import { LockManagerExtendError } from './errors/lock-manager-extend.error';
 import { LockManagerAcquireError } from './errors/lock-manager-acquire.error';
 import * as fs from 'fs';
+import { LockManagerMethodNotAllowedError } from './errors/lock-manager-method-not-allowed.error';
+import { LockManagerNotAcquiredError } from './errors/lock-manager-not-acquired.error';
+import { LockManagerNotReleasedError } from './errors/lock-manager-not-released.error';
 
-enum ELockStatus {
+export enum ELockStatus {
   unlocked,
   locking,
   locked,
   releasing,
   extending,
+  extended,
 }
 
 export enum ELuaScript {
@@ -40,6 +43,7 @@ export class LockManager {
   protected status: ELockStatus = ELockStatus.unlocked;
   protected lockingTimer: NodeJS.Timeout | null = null;
   protected autoExtendTimer: NodeJS.Timeout | null = null;
+  protected throwExceptions = true;
 
   constructor(
     redisClient: RedisClient,
@@ -47,6 +51,7 @@ export class LockManager {
     ttl: number,
     retryOnFail = false,
     autoExtend = false,
+    throwExceptions = true,
   ) {
     this.lockKey = lockKey;
     this.ttl = ttl;
@@ -54,6 +59,7 @@ export class LockManager {
     this.lockId = uuid();
     this.redisClient = redisClient;
     this.autoExtend = autoExtend;
+    this.throwExceptions = throwExceptions;
   }
 
   protected resetTimers(): void {
@@ -75,14 +81,13 @@ export class LockManager {
     this.status = ELockStatus.locked;
   }
 
+  protected setExtended(): void {
+    this.status = ELockStatus.extended;
+  }
+
   protected extend(cb: ICallback<void>): void {
-    if (this.status !== ELockStatus.locked) {
-      cb(
-        new LockManagerError(
-          'The lock is currently not acquired or a pending operation is in progress',
-        ),
-      );
-    } else {
+    if (!this.isLocked()) cb(new LockManagerNotAcquiredError());
+    else {
       this.status = ELockStatus.extending;
       this.redisClient.runScript(
         ELuaScript.EXTEND_LOCK,
@@ -96,7 +101,7 @@ export class LockManager {
                 this.setUnlocked();
                 cb(new LockManagerExtendError());
               } else {
-                this.setLocked();
+                this.setExtended();
                 cb();
               }
             } else {
@@ -114,20 +119,19 @@ export class LockManager {
       () =>
         this.extend((err) => {
           if (!err) this.runAutoExtendTimer();
-          else if (!(err instanceof LockManagerAbortError)) throw err;
+          else if (
+            this.throwExceptions &&
+            !(err instanceof LockManagerAbortError)
+          )
+            throw err;
         }),
       ms,
     );
   }
 
   acquireLock(cb: ICallback<void>): void {
-    if (this.status !== ELockStatus.unlocked) {
-      cb(
-        new LockManagerError(
-          `The lock is currently not released or a pending operation is in progress`,
-        ),
-      );
-    } else {
+    if (!this.isReleased()) cb(new LockManagerNotReleasedError());
+    else {
       this.status = ELockStatus.locking;
       const lock = () => {
         if (this.status === ELockStatus.locking) {
@@ -172,20 +176,14 @@ export class LockManager {
   }
 
   extendLock(cb: ICallback<void>): void {
-    if (this.autoExtend) {
-      cb(
-        new LockManagerError(
-          `Can not extend a lock when autoExtend is enabled`,
-        ),
-      );
-    } else this.extend(cb);
+    if (this.autoExtend) cb(new LockManagerMethodNotAllowedError());
+    else this.extend(cb);
   }
 
   releaseLock(cb: ICallback<void>): void {
     const status = this.status;
-    if (status === ELockStatus.releasing)
-      cb(new LockManagerError('A pending releaseLock() call is in progress'));
-    else if (status === ELockStatus.unlocked) cb();
+    if (status === ELockStatus.unlocked) cb();
+    else if (!this.isLocked()) cb(new LockManagerNotAcquiredError());
     else {
       this.resetTimers();
       this.status = ELockStatus.releasing;
@@ -204,11 +202,34 @@ export class LockManager {
     }
   }
 
+  acquireOrExtend(cb: ICallback<ELockStatus>): void {
+    if (this.autoExtend) cb(new LockManagerMethodNotAllowedError());
+    else {
+      const lock = () => {
+        this.acquireLock((err) => {
+          if (err) cb(err);
+          else cb(null, ELockStatus.locked);
+        });
+      };
+      if (this.isLocked())
+        this.extend((err) => {
+          if (err) {
+            if (err instanceof LockManagerExtendError) lock();
+            else cb(err);
+          } else cb(null, ELockStatus.extended);
+        });
+      else lock();
+    }
+  }
+
   isLocked(): boolean {
     return (
-      this.status === ELockStatus.locked ||
-      this.status === ELockStatus.extending
+      this.status === ELockStatus.locked || this.status === ELockStatus.extended
     );
+  }
+
+  isReleased(): boolean {
+    return this.status === ELockStatus.unlocked;
   }
 
   getId(): string {
