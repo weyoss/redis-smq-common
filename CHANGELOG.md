@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.2 (2022-08-10)
+
+* Update LockManager tests (321c8c4)
+* Fix "LockManagerExtendError: Acquired lock could not be extended" (fa3a8e5)
+
 ## 1.0.1 (2022-07-07)
 
 * Remove unused WorkerRunnerError (48e7206)
