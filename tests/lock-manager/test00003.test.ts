@@ -1,6 +1,7 @@
 import { delay, promisifyAll } from 'bluebird';
 import { LockManager } from '../../src/lock-manager/lock-manager';
 import { getRedisInstance } from '../common';
+import { LockManagerMethodNotAllowedError } from '../../src/lock-manager/errors/lock-manager-method-not-allowed.error';
 
 test('LockManager: autoExtend', async () => {
   const redisClient = await getRedisInstance();
@@ -10,8 +11,8 @@ test('LockManager: autoExtend', async () => {
 
   await lockManager.acquireLockAsync();
 
-  await expect(lockManager.extendLockAsync()).rejects.toThrow(
-    `Can not extend a lock when autoExtend is enabled`,
+  await expect(lockManager.extendLockAsync()).rejects.toThrowError(
+    LockManagerMethodNotAllowedError,
   );
 
   await delay(20000);
