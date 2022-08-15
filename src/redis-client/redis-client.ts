@@ -85,6 +85,11 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract sscan(key: string, cb: ICallback<string[]>): void;
 
+  sscanFallback(key: string, cb: ICallback<string[]>): void {
+    if (this.validateRedisVersion(2, 8)) this.sscan(key, cb);
+    else this.smembers(key, cb);
+  }
+
   abstract sadd(key: string, member: string, cb: ICallback<number>): void;
 
   abstract hgetall(key: string, cb: ICallback<Record<string, string>>): void;

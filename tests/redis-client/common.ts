@@ -120,7 +120,7 @@ export async function standardCommands(config: TRedisConfig) {
   await client.saddAsync('key14', 'value2');
   await client.saddAsync('key14', 'value3');
   await client.saddAsync('key14', 'value4');
-  const m = await client.sscanAsync('key14');
+  const m = await client.sscanFallbackAsync('key14');
   expect(m.sort()).toEqual(['value1', 'value2', 'value3', 'value4']);
 
   await client.quitAsync(); // does exec quit command
