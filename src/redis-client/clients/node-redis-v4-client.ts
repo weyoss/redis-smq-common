@@ -136,6 +136,21 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
+  sscan(key: string, cb: ICallback<string[]>): void {
+    const result = new Set<string>();
+    const iterate = (position: number, cb: ICallback<string[]>) => {
+      this.client
+        .sScan(key, position)
+        .then(({ cursor, members }) => {
+          members.forEach((i) => result.add(i));
+          if (cursor === 0) cb(null, [...result]);
+          else iterate(cursor, cb);
+        })
+        .catch(cb);
+    };
+    iterate(0, cb);
+  }
+
   sadd(key: string, member: string, cb: ICallback<number>): void {
     this.client
       .sAdd(key, member)

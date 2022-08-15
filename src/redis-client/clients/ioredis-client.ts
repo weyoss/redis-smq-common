@@ -79,6 +79,21 @@ export class IoredisClient extends RedisClient {
     this.client.sismember(key, member, cb);
   }
 
+  sscan(key: string, cb: ICallback<string[]>): void {
+    const result = new Set<string>();
+    const iterate = (position: string, cb: ICallback<string[]>) => {
+      this.client.sscan(key, position, (err, [cursor, items]) => {
+        if (err) cb(err);
+        else {
+          items.forEach((i) => result.add(i));
+          if (cursor === '0') cb(null, [...result]);
+          else iterate(cursor, cb);
+        }
+      });
+    };
+    iterate('0', cb);
+  }
+
   zcard(key: string, cb: ICallback<number>): void {
     this.client.zcard(key, cb);
   }
