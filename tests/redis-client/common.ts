@@ -116,12 +116,20 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.flushallAsync();
   expect(typeof r).toBe('string');
 
-  await client.saddAsync('key14', 'value1');
-  await client.saddAsync('key14', 'value2');
-  await client.saddAsync('key14', 'value3');
-  await client.saddAsync('key14', 'value4');
+  const members: number[] = [];
+  for (let i = 0; i < 1000; i += 1) {
+    await client.saddAsync('key14', `${i}`);
+    members.push(i);
+  }
   const m = await client.sscanFallbackAsync('key14');
-  expect(m.sort()).toEqual(['value1', 'value2', 'value3', 'value4']);
+  expect(m.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(members);
+
+  if (client.validateRedisVersion(2, 8)) {
+    const m2 = await client.sscanAsync('key14', { MATCH: '9*', COUNT: 10 });
+    expect(m2.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(
+      members.filter((i) => String(i).indexOf('9') === 0).sort((a, b) => a - b),
+    );
+  }
 
   await client.quitAsync(); // does exec quit command
   await client.quitAsync(); // does not exec quit

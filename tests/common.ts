@@ -22,6 +22,6 @@ export async function shutdown(): Promise<void> {
 
 export async function getRedisInstance(config = redisConfig) {
   const c = promisifyAll(await createClientInstanceAsync(config));
-  redisClients.push(promisifyAll(c));
+  redisClients.push(c);
   return c;
 }
