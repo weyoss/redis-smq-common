@@ -136,19 +136,26 @@ export class NodeRedisV3Client extends RedisClient {
     this.client.sismember(key, member, cb);
   }
 
-  sscan(key: string, cb: ICallback<string[]>): void {
+  sscan(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<string[]>,
+  ): void {
     const result = new Set<string>();
-    const iterate = (position: string, cb: ICallback<string[]>) => {
-      this.client.sscan(key, position, (err, [cursor, items]) => {
+    const iterate = (position: string) => {
+      const args: string[] = [key, position];
+      if (options.MATCH) args.push('MATCH', options.MATCH);
+      if (options.COUNT) args.push('COUNT', String(options.COUNT));
+      this.client.sscan(...args, (err, [cursor, items]) => {
         if (err) cb(err);
         else {
           items.forEach((i) => result.add(i));
           if (cursor === '0') cb(null, [...result]);
-          else iterate(cursor, cb);
+          else iterate(cursor);
         }
       });
     };
-    iterate('0', cb);
+    iterate('0');
   }
 
   zcard(key: string, cb: ICallback<number>): void {
