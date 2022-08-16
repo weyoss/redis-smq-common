@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.0.3 (2022-08-16)
+
+* [RedisClient] Update tests (6f1fd51)
+* [RedisClient] Make validateRedisVersion() public (c2fccb3)
+* [RedisClient] Support MATCH and COUNT options for sscan (12b24ac)
+* [RedisClient] Fallback to smembers when sscan is not supported (8a4409f)
+* [RedisClient] Test sscan command (17b8279)
+* [RedisClient] Add sscan command (b771873)
+
 ## 1.0.2 (2022-08-10)
 
 * Update LockManager tests (321c8c4)
