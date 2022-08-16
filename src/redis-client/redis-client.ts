@@ -17,11 +17,7 @@ export abstract class RedisClient extends EventEmitter {
   protected static luaScripts = new LuaScripts();
   protected connectionClosed = true;
 
-  protected validateRedisVersion(
-    major: number,
-    feature = 0,
-    minor = 0,
-  ): boolean {
+  validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
     if (!RedisClient.redisServerVersion)
       throw new RedisClientError('Unknown Redis server version.');
     return (
