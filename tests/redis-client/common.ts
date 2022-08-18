@@ -124,6 +124,9 @@ export async function standardCommands(config: TRedisConfig) {
   const m = await client.sscanFallbackAsync('key14');
   expect(m.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(members);
 
+  r = await client.sremAsync('key14', '0');
+  expect(r).toEqual(1);
+
   if (client.validateRedisVersion(2, 8)) {
     const m2 = await client.sscanAsync('key14', { MATCH: '9*', COUNT: 10 });
     expect(m2.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(
