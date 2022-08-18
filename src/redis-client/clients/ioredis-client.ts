@@ -142,6 +142,10 @@ export class IoredisClient extends RedisClient {
     this.client.sadd(key, member, cb);
   }
 
+  srem(key: string, member: string, cb: ICallback<number>): void {
+    this.client.srem(key, member, cb);
+  }
+
   hgetall(key: string, cb: ICallback<Record<string, string>>): void {
     this.client.hgetall(key, cb);
   }

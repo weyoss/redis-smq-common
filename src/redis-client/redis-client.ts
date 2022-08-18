@@ -92,6 +92,8 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract sadd(key: string, member: string, cb: ICallback<number>): void;
 
+  abstract srem(key: string, member: string, cb: ICallback<number>): void;
+
   abstract hgetall(key: string, cb: ICallback<Record<string, string>>): void;
 
   abstract hget(key: string, field: string, cb: ICallback<string | null>): void;

@@ -167,6 +167,13 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
+  srem(key: string, member: string, cb: ICallback<number>): void {
+    this.client
+      .sRem(key, member)
+      .then((reply) => cb(null, reply))
+      .catch(cb);
+  }
+
   hgetall(key: string, cb: ICallback<Record<string, string>>): void {
     this.client
       .hGetAll(key)
