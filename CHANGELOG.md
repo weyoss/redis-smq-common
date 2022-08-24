@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.4 (2022-08-24)
+
+* test(redis-client): cover srem command (caf3837)
+* feat(redis-client): add support for srem command (7ddaf24)
+
+
 ## 1.0.3 (2022-08-16)
 
 * [RedisClient] Update tests (6f1fd51)
