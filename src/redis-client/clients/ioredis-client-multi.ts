@@ -1,12 +1,12 @@
 import { ICallback, IRedisClientMulti } from '../../../types';
 import { RedisClientError } from '../errors/redis-client.error';
-import { Pipeline, Redis } from 'ioredis';
+import { Cluster, Pipeline, Redis } from 'ioredis';
 import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
 
 export class IoredisClientMulti implements IRedisClientMulti {
   protected multi: Pipeline;
 
-  constructor(client: Redis) {
+  constructor(client: Redis | Cluster) {
     this.multi = client.multi();
   }
 

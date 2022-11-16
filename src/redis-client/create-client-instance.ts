@@ -12,7 +12,7 @@ function getClient(config: TRedisConfig) {
   if (config.client === RedisClientName.REDIS_V4) {
     return new NodeRedisV4Client(config.options);
   }
-  return new IoredisClient(config.options);
+  return new IoredisClient(config.options, config.startupNodes);
 }
 
 export function createClientInstance(

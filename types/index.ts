@@ -1,4 +1,4 @@
-import { RedisOptions } from 'ioredis';
+import { ClusterNode, ClusterOptions, RedisOptions } from 'ioredis';
 import { Callback, ClientOpts } from 'redis';
 import * as Logger from 'bunyan';
 import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command';
@@ -12,7 +12,8 @@ import {
 
 export interface IORedisConfig {
   client: RedisClientName.IOREDIS;
-  options?: RedisOptions;
+  options?: RedisOptions | ClusterOptions;
+  startupNodes?: ClusterNode[];
 }
 
 export enum RedisClientName {

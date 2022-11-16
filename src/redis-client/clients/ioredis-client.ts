@@ -1,16 +1,29 @@
 import { RedisClient } from '../redis-client';
-import { Redis, RedisOptions } from 'ioredis';
+import {
+  Cluster,
+  ClusterNode,
+  ClusterOptions,
+  Redis,
+  RedisOptions,
+} from 'ioredis';
 import { ICallback } from '../../../types';
 import { RedisClientError } from '../errors/redis-client.error';
 import * as IORedis from 'ioredis';
 import { IoredisClientMulti } from './ioredis-client-multi';
 
 export class IoredisClient extends RedisClient {
-  protected client: Redis;
+  protected client: Redis | Cluster;
 
-  constructor(config: RedisOptions = {}) {
+  constructor(
+    config: RedisOptions | ClusterOptions = {},
+    startupNodes?: ClusterNode[],
+  ) {
     super();
-    this.client = new IORedis(config);
+    if (startupNodes && startupNodes.length > 0) {
+      this.client = new IORedis.Cluster(startupNodes, config);
+    } else {
+      this.client = new IORedis(config);
+    }
     this.client.once('ready', () => {
       this.connectionClosed = false;
       this.emit('ready');
