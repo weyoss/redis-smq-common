@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.5 (2023-01-06)
+
+* chore: update license (9b817d2)
+* build: update NPM dependencies to latest releases (b03795b)
+* docs(readme): replace lgtm badge with code quality badge (ea6545a)
+* build: migrate from lgtm to github code scanning (de3dcd4)
+
 ## 1.0.4 (2022-08-24)
 
 * test(redis-client): cover srem command (caf3837)
