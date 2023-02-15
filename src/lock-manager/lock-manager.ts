@@ -8,6 +8,7 @@ import * as fs from 'fs';
 import { LockManagerMethodNotAllowedError } from './errors/lock-manager-method-not-allowed.error';
 import { LockManagerNotAcquiredError } from './errors/lock-manager-not-acquired.error';
 import { LockManagerNotReleasedError } from './errors/lock-manager-not-released.error';
+import { resolve } from 'path';
 
 export enum ELockStatus {
   unlocked,
@@ -25,11 +26,15 @@ export enum ELuaScript {
 
 RedisClient.addScript(
   ELuaScript.RELEASE_LOCK,
-  fs.readFileSync(`${__dirname}/redis-client/lua/release-lock.lua`).toString(),
+  fs
+    .readFileSync(resolve(__dirname, './redis-client/lua/release-lock.lua'))
+    .toString(),
 );
 RedisClient.addScript(
   ELuaScript.EXTEND_LOCK,
-  fs.readFileSync(`${__dirname}/redis-client/lua/extend-lock.lua`).toString(),
+  fs
+    .readFileSync(resolve(__dirname, './redis-client/lua/extend-lock.lua'))
+    .toString(),
 );
 
 export class LockManager {

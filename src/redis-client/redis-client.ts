@@ -4,6 +4,7 @@ import { ICallback, IRedisClientMulti } from '../../types';
 import { RedisClientError } from './errors/redis-client.error';
 import { EmptyCallbackReplyError } from '../errors/empty-callback-reply.error';
 import * as fs from 'fs';
+import { resolve } from 'path';
 
 export enum ELuaScriptName {
   LPOPRPUSH = 'LPOPRPUSH',
@@ -301,13 +302,13 @@ export abstract class RedisClient extends EventEmitter {
 
 RedisClient.addScript(
   ELuaScriptName.ZPOPHGETRPUSH,
-  fs.readFileSync(`${__dirname}/lua/zpophgetrpush.lua`).toString(),
+  fs.readFileSync(resolve(__dirname, './lua/zpophgetrpush.lua')).toString(),
 );
 RedisClient.addScript(
   ELuaScriptName.LPOPRPUSH,
-  fs.readFileSync(`${__dirname}/lua/lpoprpush.lua`).toString(),
+  fs.readFileSync(resolve(__dirname, './lua/lpoprpush.lua')).toString(),
 );
 RedisClient.addScript(
   ELuaScriptName.LPOPRPUSHEXTRA,
-  fs.readFileSync(`${__dirname}/lua/lpoprpushextra.lua`).toString(),
+  fs.readFileSync(resolve(__dirname, './lua/lpoprpushextra.lua')).toString(),
 );
