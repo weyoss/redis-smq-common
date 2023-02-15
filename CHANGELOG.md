@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.6 (2023-02-15)
+
+*  fix: use path.resolve() to fix 'no such file or directory' error (2d33599)
+
 ## 1.0.5 (2023-01-06)
 
 * chore: update license (9b817d2)
