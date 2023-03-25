@@ -121,10 +121,17 @@ export class NodeRedisV4Client extends RedisClient {
     key: string,
     min: number | string,
     max: number | string,
+    offset: number,
+    count: number,
     cb: ICallback<string[]>,
   ): void {
     this.client
-      .zRangeByScore(key, min, max)
+      .zRangeByScore(key, min, max, {
+        LIMIT: {
+          offset,
+          count,
+        },
+      })
       .then((reply) => cb(null, reply))
       .catch(cb);
   }

@@ -35,7 +35,7 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.zrangeAsync('key4', 0, 200);
   expect(r).toEqual(['value']);
 
-  r = await client.zrangebyscoreAsync('key4', 0, 200);
+  r = await client.zrangebyscoreAsync('key4', 0, 200, 0, 100);
   expect(r).toEqual(['value']);
 
   r = await client.zrangebyscorewithscoresAsync('key4', 0, 200);

@@ -75,6 +75,8 @@ export abstract class RedisClient extends EventEmitter {
     key: string,
     min: number | string,
     max: number | string,
+    offset: number,
+    count: number,
     cb: ICallback<string[]>,
   ): void;
 

@@ -186,9 +186,11 @@ export class NodeRedisV3Client extends RedisClient {
     key: string,
     min: number | string,
     max: number | string,
+    offset: number,
+    count: number,
     cb: ICallback<string[]>,
   ): void {
-    this.client.zrangebyscore(key, min, max, cb);
+    this.client.zrangebyscore(key, min, max, 'LIMIT', offset, count, cb);
   }
 
   smembers(key: string, cb: ICallback<string[]>): void {
