@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.0
+
+* feat(redis-client): support offset and count for zrangebyscore() (2ec00e0)
+
 ## 1.0.6 (2023-02-15)
 
 *  fix: use path.resolve() to fix 'no such file or directory' error (2d33599)
