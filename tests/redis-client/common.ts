@@ -56,6 +56,12 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.hsetAsync('key6', 'k', 'v');
   expect(r).toBe(1);
 
+  r = await client.hsetAsync('key6', 'k1', 'v1');
+  expect(r).toBe(1);
+
+  r = await client.hsetAsync('key6', 'k2', 'v2');
+  expect(r).toBe(1);
+
   r = await client.hgetAsync('key6', 'k');
   expect(r).toBe('v');
 
@@ -63,18 +69,39 @@ export async function standardCommands(config: TRedisConfig) {
   expect(r).toEqual(['v']);
 
   r = await client.hgetallAsync('key6');
-  expect(r).toEqual({ k: 'v' });
+  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
+
+  r = await client.hscanFallbackAsync('key6');
+  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
+
+  r = await client.hscanAsync('key6', {});
+  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
 
   r = await client.hkeysAsync('key6');
-  expect(r).toEqual(['k']);
+  expect(r).toEqual(['k', 'k1', 'k2']);
 
   r = await client.hlenAsync('key6');
-  expect(r).toEqual(1);
+  expect(r).toEqual(3);
 
   r = await client.hdelAsync('key6', 'k');
   expect(r).toEqual(1);
 
   r = await client.hgetallAsync('key6');
+  expect(r).toEqual({ k1: 'v1', k2: 'v2' });
+
+  r = await client.hdelAsync('key6', 'k1');
+  expect(r).toEqual(1);
+
+  r = await client.hgetallAsync('key6');
+  expect(r).toEqual({ k2: 'v2' });
+
+  r = await client.hdelAsync('key6', 'k2');
+  expect(r).toEqual(1);
+
+  r = await client.hgetallAsync('key6');
+  expect(r).toEqual({});
+
+  r = await client.hscanAsync('key6', {});
   expect(r).toEqual({});
 
   r = await client.llenAsync('key7');
