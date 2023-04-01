@@ -70,8 +70,12 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.hscanFallbackAsync('key6');
   expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
-  r = await client.hscanAsync('key6', {});
-  expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
+  if (client.validateRedisVersion(2, 8)) {
+    r = await client.hscanAsync('key6', {});
+    expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(
+      1100,
+    );
+  }
 
   r = await client.hkeysAsync('key6');
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -97,8 +101,10 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.hgetallAsync('key6');
   expect(r).toEqual({});
 
-  r = await client.hscanAsync('key6', {});
-  expect(r).toEqual({});
+  if (client.validateRedisVersion(2, 8)) {
+    r = await client.hscanAsync('key6', {});
+    expect(r).toEqual({});
+  }
 
   r = await client.llenAsync('key7');
   expect(r).toEqual(0);
