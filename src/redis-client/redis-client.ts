@@ -89,7 +89,7 @@ export abstract class RedisClient extends EventEmitter {
   ): void;
 
   sscanFallback(key: string, cb: ICallback<string[]>): void {
-    if (this.validateRedisVersion(2, 8)) this.sscan(key, {}, cb);
+    if (this.validateRedisVersion(2, 8)) this.sscan(key, { COUNT: 1000 }, cb);
     else this.smembers(key, cb);
   }
 
