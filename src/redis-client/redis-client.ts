@@ -99,6 +99,17 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract hgetall(key: string, cb: ICallback<Record<string, string>>): void;
 
+  abstract hscan(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<Record<string, string>>,
+  ): void;
+
+  hscanFallback(key: string, cb: ICallback<Record<string, string>>): void {
+    if (this.validateRedisVersion(2, 8)) this.hscan(key, { COUNT: 1000 }, cb);
+    else this.hgetall(key, cb);
+  }
+
   abstract hget(key: string, field: string, cb: ICallback<string | null>): void;
 
   abstract hset(

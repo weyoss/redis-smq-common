@@ -152,6 +152,31 @@ export class IoredisClient extends RedisClient {
     this.client.hgetall(key, cb);
   }
 
+  hscan(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<Record<string, string>>,
+  ): void {
+    const result: Record<string, string> = {};
+    const iterate = (position: string) => {
+      const args: [string, string] = [key, position];
+      if (options.MATCH) args.push('MATCH', options.MATCH);
+      if (options.COUNT) args.push('COUNT', String(options.COUNT));
+      this.client.hscan(...args, (err, [cursor, items]) => {
+        if (err) cb(err);
+        else {
+          while (items.length) {
+            const key = String(items.shift());
+            result[key] = String(items.shift());
+          }
+          if (cursor === '0') cb(null, result);
+          else iterate(cursor);
+        }
+      });
+    };
+    iterate('0');
+  }
+
   hget(key: string, field: string, cb: ICallback<string | null>): void {
     this.client.hget(key, field, cb);
   }

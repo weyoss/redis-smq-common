@@ -188,6 +188,33 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
+  hscan(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<Record<string, string>>,
+  ): void {
+    const result: Record<string, string> = {};
+    const iterate = (position: number) => {
+      const args: [string, number, { MATCH?: string; COUNT?: number }] = [
+        key,
+        position,
+        options,
+      ];
+      this.client
+        .hScan(...args)
+        .then(({ cursor, tuples }) => {
+          while (tuples.length) {
+            const item = tuples.shift();
+            if (item) result[item.field] = item.value;
+          }
+          if (cursor === 0) cb(null, result);
+          else iterate(cursor);
+        })
+        .catch(cb);
+    };
+    iterate(0);
+  }
+
   hget(key: string, field: string, cb: ICallback<string | null>): void {
     this.client
       .hGet(key, field)
