@@ -53,50 +53,46 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.smembersAsync('key5');
   expect(r).toEqual(['value']);
 
-  r = await client.hsetAsync('key6', 'k', 'v');
-  expect(r).toBe(1);
+  for (let i = 0; i < 1100; i += 1) {
+    r = await client.hsetAsync('key6', `k${i}`, `v${i}`);
+    expect(r).toBe(1);
+  }
 
-  r = await client.hsetAsync('key6', 'k1', 'v1');
-  expect(r).toBe(1);
+  r = await client.hgetAsync('key6', 'k1');
+  expect(r).toBe('v1');
 
-  r = await client.hsetAsync('key6', 'k2', 'v2');
-  expect(r).toBe(1);
-
-  r = await client.hgetAsync('key6', 'k');
-  expect(r).toBe('v');
-
-  r = await client.hmgetAsync('key6', ['k']);
-  expect(r).toEqual(['v']);
+  r = await client.hmgetAsync('key6', ['k2', 'k300']);
+  expect(r).toEqual(['v2', 'v300']);
 
   r = await client.hgetallAsync('key6');
-  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
+  expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
   r = await client.hscanFallbackAsync('key6');
-  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
+  expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
   r = await client.hscanAsync('key6', {});
-  expect(r).toEqual({ k: 'v', k1: 'v1', k2: 'v2' });
+  expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
   r = await client.hkeysAsync('key6');
-  expect(r).toEqual(['k', 'k1', 'k2']);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  expect(r.length).toEqual(1100);
 
   r = await client.hlenAsync('key6');
-  expect(r).toEqual(3);
-
-  r = await client.hdelAsync('key6', 'k');
-  expect(r).toEqual(1);
-
-  r = await client.hgetallAsync('key6');
-  expect(r).toEqual({ k1: 'v1', k2: 'v2' });
+  expect(r).toEqual(1100);
 
   r = await client.hdelAsync('key6', 'k1');
   expect(r).toEqual(1);
 
   r = await client.hgetallAsync('key6');
-  expect(r).toEqual({ k2: 'v2' });
+  expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1099);
 
-  r = await client.hdelAsync('key6', 'k2');
-  expect(r).toEqual(1);
+  r = await client.hdelAsync('key6', 'k1');
+  expect(r).toEqual(0);
+
+  for (let i = 0; i < 1100; i += 1) {
+    await client.hdelAsync('key6', `k${i}`);
+  }
 
   r = await client.hgetallAsync('key6');
   expect(r).toEqual({});
