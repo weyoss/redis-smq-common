@@ -112,8 +112,24 @@ export class NodeRedisV4Client extends RedisClient {
     max: number,
     cb: ICallback<string[]>,
   ): void {
+    // For redis server 2.8 an error is thrown: [ErrorReply: ERR syntax error]
+    //
+    // this.client
+    //   .zRange(key, min, max, { REV: true })
+    //   .then((reply) =>
+    //     cb(
+    //       null,
+    //       (Array.isArray(reply) ? reply : []).map((i) => String(i)),
+    //     ),
+    //   )
+    //   .catch((err: Error) => {
+    //     console.log('III', err);
+    //     cb(err);
+    //   });
+
+    // Sending a raw command
     this.client
-      .zRange(key, min, max, { REV: true })
+      .sendCommand(['ZREVRANGE', key, String(min), String(max)])
       .then((reply) =>
         cb(
           null,
