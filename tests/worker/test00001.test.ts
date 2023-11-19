@@ -1,3 +1,12 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { Worker } from '../../src/worker/worker';
 import { delay } from 'bluebird';
 import { WorkerRunner } from '../../src/worker/worker-runner/worker-runner';
@@ -7,9 +16,11 @@ import { ICallback } from '../../types';
 
 class UnmanagedCounterWorker extends Worker {
   count = 0;
+
   constructor() {
     super(false);
   }
+
   override work(cb: ICallback<void>) {
     if (this.count >= 3) this.quit(() => void 0);
     else this.count += 1;
@@ -19,9 +30,11 @@ class UnmanagedCounterWorker extends Worker {
 
 class ManagedCounterWorker extends Worker {
   count = 0;
+
   constructor() {
     super(true);
   }
+
   override work(cb: ICallback<void>) {
     if (this.count < 3) this.count += 1;
     cb();

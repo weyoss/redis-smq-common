@@ -1,9 +1,18 @@
-import { TRedisConfig } from '../../types';
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
+import { IRedisConfig } from '../../types';
 import { RedisClient } from '../../src/redis-client/redis-client';
 import { delay, promisifyAll } from 'bluebird';
 import { getRedisInstance } from '../common';
 
-export async function standardCommands(config: TRedisConfig) {
+export async function standardCommands(config: IRedisConfig) {
   const client = await getRedisInstance(config);
 
   let r: unknown = await client.setAsync('key1', 'value', {});
@@ -29,20 +38,29 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.zaddAsync('key4', 100, 'value');
   expect(r).toBe(1);
 
-  r = await client.zcardAsync('key4');
+  r = await client.zaddAsync('key4', 200, 'value2');
   expect(r).toBe(1);
 
+  r = await client.zcardAsync('key4');
+  expect(r).toBe(2);
+
   r = await client.zrangeAsync('key4', 0, 200);
-  expect(r).toEqual(['value']);
+  expect(r).toEqual(['value', 'value2']);
+
+  r = await client.zscanAsync('key4', '0', {});
+  expect(r).toEqual({ cursor: '0', items: ['value', 'value2'] });
+
+  r = await client.zrevrangeAsync('key4', 0, 200);
+  expect(r).toEqual(['value2', 'value']);
 
   r = await client.zrangebyscoreAsync('key4', 0, 200, 0, 100);
-  expect(r).toEqual(['value']);
+  expect(r).toEqual(['value', 'value2']);
 
   r = await client.zrangebyscorewithscoresAsync('key4', 0, 200);
-  expect(r).toEqual({ 100: 'value' });
+  expect(r).toEqual({ 100: 'value', 200: 'value2' });
 
   r = await client.zremrangebyscoreAsync('key4', 0, 200);
-  expect(r).toEqual(1);
+  expect(r).toEqual(2);
 
   r = await client.saddAsync('key5', 'value');
   expect(r).toBe(1);
@@ -67,11 +85,11 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.hgetallAsync('key6');
   expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
-  r = await client.hscanFallbackAsync('key6');
+  r = await client.hscanAllAsync('key6', {});
   expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(1100);
 
   if (client.validateRedisVersion(2, 8)) {
-    r = await client.hscanAsync('key6', {});
+    r = await client.hscanAllAsync('key6', {});
     expect(Object.keys(r && typeof r === 'object' ? r : {}).length).toEqual(
       1100,
     );
@@ -102,7 +120,7 @@ export async function standardCommands(config: TRedisConfig) {
   expect(r).toEqual({});
 
   if (client.validateRedisVersion(2, 8)) {
-    r = await client.hscanAsync('key6', {});
+    r = await client.hscanAllAsync('key6', {});
     expect(r).toEqual({});
   }
 
@@ -130,11 +148,11 @@ export async function standardCommands(config: TRedisConfig) {
   r = await client.watchAsync(['key7']);
   expect(r).toEqual('OK');
 
-  r = await client.zpophgetrpushAsync('key9', 'key10', 'key11');
+  r = await client.zpoprpushAsync('key9', 'key11');
   expect(r).toEqual(null);
 
-  r = await client.lpoprpushextraAsync('key12', 'key13', 100, 10000);
-  expect(r).toEqual(null);
+  r = await client.zremAsync('key14', 'key15');
+  expect(r).toEqual(0);
 
   r = await client.unwatchAsync();
   expect(r).toEqual('OK');
@@ -150,14 +168,14 @@ export async function standardCommands(config: TRedisConfig) {
     await client.saddAsync('key14', `${i}`);
     members.push(i);
   }
-  const m = await client.sscanFallbackAsync('key14');
+  const m = await client.sscanAllAsync('key14', {});
   expect(m.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(members);
 
   r = await client.sremAsync('key14', '0');
   expect(r).toEqual(1);
 
   if (client.validateRedisVersion(2, 8)) {
-    const m2 = await client.sscanAsync('key14', { MATCH: '9*', COUNT: 10 });
+    const m2 = await client.sscanAllAsync('key14', { MATCH: '9*', COUNT: 10 });
     expect(m2.map((i) => Number(i)).sort((a, b) => a - b)).toEqual(
       members.filter((i) => String(i).indexOf('9') === 0).sort((a, b) => a - b),
     );
@@ -167,7 +185,7 @@ export async function standardCommands(config: TRedisConfig) {
   await client.quitAsync(); // does not exec quit
 }
 
-export async function scriptRunning(config: TRedisConfig) {
+export async function scriptRunning(config: IRedisConfig) {
   const client = await getRedisInstance(config);
   RedisClient.addScript('test_script', 'return 1');
   await client.loadScriptsAsync();
@@ -175,7 +193,7 @@ export async function scriptRunning(config: TRedisConfig) {
   expect(r).toBe(1);
 }
 
-export async function pubSubPattern(config: TRedisConfig) {
+export async function pubSubPattern(config: IRedisConfig) {
   const subscribeClient = await getRedisInstance(config);
   const publishClient = await getRedisInstance(config);
 
@@ -192,6 +210,7 @@ export async function pubSubPattern(config: TRedisConfig) {
   const r = await publishClient.publishAsync('chan1', 'msg1');
   expect(r).toBe(1);
 
+  // eslint-disable-next-line no-constant-condition
   for (; true; ) {
     if (received) break;
     await delay(1000);
@@ -204,7 +223,7 @@ export async function pubSubPattern(config: TRedisConfig) {
   subscribeClient.punsubscribe('chan*');
 }
 
-export async function pubSubChannel(config: TRedisConfig) {
+export async function pubSubChannel(config: IRedisConfig) {
   const subscribeClient = await getRedisInstance(config);
   const publishClient = await getRedisInstance(config);
 
@@ -217,6 +236,7 @@ export async function pubSubChannel(config: TRedisConfig) {
   const r = await publishClient.publishAsync('chan1', 'msg1');
   expect(r).toBe(1);
 
+  // eslint-disable-next-line no-constant-condition
   for (; true; ) {
     if (received) break;
     await delay(1000);
@@ -228,7 +248,7 @@ export async function pubSubChannel(config: TRedisConfig) {
   subscribeClient.unsubscribe('chan1');
 }
 
-export async function transactionRunning(config: TRedisConfig) {
+export async function transactionRunning(config: IRedisConfig) {
   const client = await getRedisInstance(config);
   const multi = promisifyAll(client.multi());
   multi.del('k1');
