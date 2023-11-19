@@ -15,10 +15,11 @@ types/**
 coverage/**
 .github/**
 *.map
-docs/**/*
-misc/**/*
+docs/**
+misc/**
 tsconfig.tsbuildinfo
 logo.png
 .husky
 scripts/**
 .codecov.yml
+
