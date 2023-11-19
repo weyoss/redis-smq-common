@@ -41,7 +41,7 @@ test('Logger', async () => {
   > = jest.spyOn(console, 'info').mockImplementation();
   logger2.info('info');
   expect(console.info).toHaveBeenCalledTimes(1);
-  expect(console.info).toHaveBeenLastCalledWith(`[ns] info`);
+  expect(console.info).toHaveBeenLastCalledWith(`ns | info`);
   mock1.mockRestore();
 
   const mock2: jest.SpyInstance<
@@ -51,7 +51,7 @@ test('Logger', async () => {
   > = jest.spyOn(console, 'error').mockImplementation();
   logger2.error('error');
   expect(console.error).toHaveBeenCalledTimes(1);
-  expect(console.error).toHaveBeenLastCalledWith(`[ns] error`);
+  expect(console.error).toHaveBeenLastCalledWith(`ns | error`);
   mock2.mockRestore();
 
   const mock3: jest.SpyInstance<
@@ -61,7 +61,7 @@ test('Logger', async () => {
   > = jest.spyOn(console, 'debug').mockImplementation();
   logger2.debug('debug');
   expect(console.debug).toHaveBeenCalledTimes(1);
-  expect(console.debug).toHaveBeenLastCalledWith(`[ns] debug`);
+  expect(console.debug).toHaveBeenLastCalledWith(`ns | debug`);
   mock3.mockRestore();
 
   const mock4: jest.SpyInstance<
@@ -71,6 +71,6 @@ test('Logger', async () => {
   > = jest.spyOn(console, 'warn').mockImplementation();
   logger2.warn('warn');
   expect(console.warn).toHaveBeenCalledTimes(1);
-  expect(console.warn).toHaveBeenLastCalledWith(`[ns] warn`);
+  expect(console.warn).toHaveBeenLastCalledWith(`ns | warn`);
   mock4.mockRestore();
 });
