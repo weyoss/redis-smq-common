@@ -6,25 +6,25 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/PowerSwitch.md#constructor)
+- [constructor](../classes/PowerSwitch.md#constructor)
 
 ### Methods
 
-- [commit](docs/api/classes/PowerSwitch.md#commit)
-- [goingDown](docs/api/classes/PowerSwitch.md#goingdown)
-- [goingUp](docs/api/classes/PowerSwitch.md#goingup)
-- [isDown](docs/api/classes/PowerSwitch.md#isdown)
-- [isGoingDown](docs/api/classes/PowerSwitch.md#isgoingdown)
-- [isGoingUp](docs/api/classes/PowerSwitch.md#isgoingup)
-- [isRunning](docs/api/classes/PowerSwitch.md#isrunning)
-- [isUp](docs/api/classes/PowerSwitch.md#isup)
-- [rollback](docs/api/classes/PowerSwitch.md#rollback)
+- [commit](../classes/PowerSwitch.md#commit)
+- [goingDown](../classes/PowerSwitch.md#goingdown)
+- [goingUp](../classes/PowerSwitch.md#goingup)
+- [isDown](../classes/PowerSwitch.md#isdown)
+- [isGoingDown](../classes/PowerSwitch.md#isgoingdown)
+- [isGoingUp](../classes/PowerSwitch.md#isgoingup)
+- [isRunning](../classes/PowerSwitch.md#isrunning)
+- [isUp](../classes/PowerSwitch.md#isup)
+- [rollback](../classes/PowerSwitch.md#rollback)
 
 ## Constructors
 
 ### constructor
 
-• **new PowerSwitch**(`throwExceptionOnError?`): [`PowerSwitch`](docs/api/classes/PowerSwitch.md)
+• **new PowerSwitch**(`throwExceptionOnError?`): [`PowerSwitch`](../classes/PowerSwitch.md)
 
 #### Parameters
 
@@ -34,7 +34,7 @@
 
 #### Returns
 
-[`PowerSwitch`](docs/api/classes/PowerSwitch.md)
+[`PowerSwitch`](../classes/PowerSwitch.md)
 
 ## Methods
 

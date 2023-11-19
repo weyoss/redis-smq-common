@@ -6,19 +6,19 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/Worker.md#constructor)
+- [constructor](../classes/Worker.md#constructor)
 
 ### Methods
 
-- [quit](docs/api/classes/Worker.md#quit)
-- [run](docs/api/classes/Worker.md#run)
-- [work](docs/api/classes/Worker.md#work)
+- [quit](../classes/Worker.md#quit)
+- [run](../classes/Worker.md#run)
+- [work](../classes/Worker.md#work)
 
 ## Constructors
 
 ### constructor
 
-• **new Worker**(`managed`, `timeout?`): [`Worker`](docs/api/classes/Worker.md)
+• **new Worker**(`managed`, `timeout?`): [`Worker`](../classes/Worker.md)
 
 #### Parameters
 
@@ -29,7 +29,7 @@
 
 #### Returns
 
-[`Worker`](docs/api/classes/Worker.md)
+[`Worker`](../classes/Worker.md)
 
 ## Methods
 
@@ -41,7 +41,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -67,7 +67,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 

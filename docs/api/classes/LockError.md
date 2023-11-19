@@ -4,48 +4,48 @@
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](../classes/RedisSMQError.md)
 
   ↳ **`LockError`**
 
-  ↳↳ [`LockAbortError`](docs/api/classes/LockAbortError.md)
+  ↳↳ [`LockAbortError`](../classes/LockAbortError.md)
 
-  ↳↳ [`LockAcquireError`](docs/api/classes/LockAcquireError.md)
+  ↳↳ [`LockAcquireError`](../classes/LockAcquireError.md)
 
-  ↳↳ [`LockExtendError`](docs/api/classes/LockExtendError.md)
+  ↳↳ [`LockExtendError`](../classes/LockExtendError.md)
 
-  ↳↳ [`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
+  ↳↳ [`LockMethodNotAllowedError`](../classes/LockMethodNotAllowedError.md)
 
-  ↳↳ [`LockNotAcquiredError`](docs/api/classes/LockNotAcquiredError.md)
+  ↳↳ [`LockNotAcquiredError`](../classes/LockNotAcquiredError.md)
 
-  ↳↳ [`LockNotReleasedError`](docs/api/classes/LockNotReleasedError.md)
+  ↳↳ [`LockNotReleasedError`](../classes/LockNotReleasedError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockError.md#constructor)
+- [constructor](../classes/LockError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/LockError.md#message)
-- [stack](docs/api/classes/LockError.md#stack)
-- [prepareStackTrace](docs/api/classes/LockError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/LockError.md#stacktracelimit)
+- [message](../classes/LockError.md#message)
+- [stack](../classes/LockError.md#stack)
+- [prepareStackTrace](../classes/LockError.md#preparestacktrace)
+- [stackTraceLimit](../classes/LockError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/LockError.md#name)
+- [name](../classes/LockError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/LockError.md#capturestacktrace)
+- [captureStackTrace](../classes/LockError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new LockError**(`message?`): [`LockError`](docs/api/classes/LockError.md)
+• **new LockError**(`message?`): [`LockError`](../classes/LockError.md)
 
 #### Parameters
 
@@ -55,11 +55,11 @@
 
 #### Returns
 
-[`LockError`](docs/api/classes/LockError.md)
+[`LockError`](../classes/LockError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](../classes/RedisSMQError.md).[constructor](../classes/RedisSMQError.md#constructor)
 
 ## Properties
 
@@ -69,7 +69,7 @@
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[message](docs/api/classes/RedisSMQError.md#message)
+[RedisSMQError](../classes/RedisSMQError.md).[message](../classes/RedisSMQError.md#message)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[stack](docs/api/classes/RedisSMQError.md#stack)
+[RedisSMQError](../classes/RedisSMQError.md).[stack](../classes/RedisSMQError.md#stack)
 
 ___
 
@@ -110,7 +110,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[prepareStackTrace](docs/api/classes/RedisSMQError.md#preparestacktrace)
+[RedisSMQError](../classes/RedisSMQError.md).[prepareStackTrace](../classes/RedisSMQError.md#preparestacktrace)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[stackTraceLimit](docs/api/classes/RedisSMQError.md#stacktracelimit)
+[RedisSMQError](../classes/RedisSMQError.md).[stackTraceLimit](../classes/RedisSMQError.md#stacktracelimit)
 
 ## Accessors
 
@@ -157,4 +157,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[captureStackTrace](docs/api/classes/RedisSMQError.md#capturestacktrace)
+[RedisSMQError](../classes/RedisSMQError.md).[captureStackTrace](../classes/RedisSMQError.md#capturestacktrace)

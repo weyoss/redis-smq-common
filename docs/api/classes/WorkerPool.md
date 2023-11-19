@@ -6,23 +6,23 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/WorkerPool.md#constructor)
+- [constructor](../classes/WorkerPool.md#constructor)
 
 ### Methods
 
-- [add](docs/api/classes/WorkerPool.md#add)
-- [clear](docs/api/classes/WorkerPool.md#clear)
-- [work](docs/api/classes/WorkerPool.md#work)
+- [add](../classes/WorkerPool.md#add)
+- [clear](../classes/WorkerPool.md#clear)
+- [work](../classes/WorkerPool.md#work)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerPool**(): [`WorkerPool`](docs/api/classes/WorkerPool.md)
+• **new WorkerPool**(): [`WorkerPool`](../classes/WorkerPool.md)
 
 #### Returns
 
-[`WorkerPool`](docs/api/classes/WorkerPool.md)
+[`WorkerPool`](../classes/WorkerPool.md)
 
 ## Methods
 
@@ -34,7 +34,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `worker` | [`Worker`](docs/api/classes/Worker.md) |
+| `worker` | [`Worker`](../classes/Worker.md) |
 
 #### Returns
 
@@ -50,7 +50,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -66,7 +66,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 

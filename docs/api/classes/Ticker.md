@@ -12,63 +12,63 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/Ticker.md#constructor)
+- [constructor](../classes/Ticker.md#constructor)
 
 ### Properties
 
-- [captureRejectionSymbol](docs/api/classes/Ticker.md#capturerejectionsymbol)
-- [captureRejections](docs/api/classes/Ticker.md#capturerejections)
-- [defaultMaxListeners](docs/api/classes/Ticker.md#defaultmaxlisteners)
-- [errorMonitor](docs/api/classes/Ticker.md#errormonitor)
+- [captureRejectionSymbol](../classes/Ticker.md#capturerejectionsymbol)
+- [captureRejections](../classes/Ticker.md#capturerejections)
+- [defaultMaxListeners](../classes/Ticker.md#defaultmaxlisteners)
+- [errorMonitor](../classes/Ticker.md#errormonitor)
 
 ### Methods
 
-- [[captureRejectionSymbol]](docs/api/classes/Ticker.md#[capturerejectionsymbol])
-- [abort](docs/api/classes/Ticker.md#abort)
-- [addListener](docs/api/classes/Ticker.md#addlistener)
-- [emit](docs/api/classes/Ticker.md#emit)
-- [eventNames](docs/api/classes/Ticker.md#eventnames)
-- [getMaxListeners](docs/api/classes/Ticker.md#getmaxlisteners)
-- [isTicking](docs/api/classes/Ticker.md#isticking)
-- [listenerCount](docs/api/classes/Ticker.md#listenercount)
-- [listeners](docs/api/classes/Ticker.md#listeners)
-- [nextTick](docs/api/classes/Ticker.md#nexttick)
-- [nextTickFn](docs/api/classes/Ticker.md#nexttickfn)
-- [off](docs/api/classes/Ticker.md#off)
-- [on](docs/api/classes/Ticker.md#on)
-- [once](docs/api/classes/Ticker.md#once)
-- [prependListener](docs/api/classes/Ticker.md#prependlistener)
-- [prependOnceListener](docs/api/classes/Ticker.md#prependoncelistener)
-- [quit](docs/api/classes/Ticker.md#quit)
-- [rawListeners](docs/api/classes/Ticker.md#rawlisteners)
-- [removeAllListeners](docs/api/classes/Ticker.md#removealllisteners)
-- [removeListener](docs/api/classes/Ticker.md#removelistener)
-- [runTimer](docs/api/classes/Ticker.md#runtimer)
-- [setMaxListeners](docs/api/classes/Ticker.md#setmaxlisteners)
-- [addAbortListener](docs/api/classes/Ticker.md#addabortlistener)
-- [getEventListeners](docs/api/classes/Ticker.md#geteventlisteners)
-- [getMaxListeners](docs/api/classes/Ticker.md#getmaxlisteners-1)
-- [listenerCount](docs/api/classes/Ticker.md#listenercount-1)
-- [on](docs/api/classes/Ticker.md#on-1)
-- [once](docs/api/classes/Ticker.md#once-1)
-- [setMaxListeners](docs/api/classes/Ticker.md#setmaxlisteners-1)
+- [[captureRejectionSymbol]](../classes/Ticker.md#[capturerejectionsymbol])
+- [abort](../classes/Ticker.md#abort)
+- [addListener](../classes/Ticker.md#addlistener)
+- [emit](../classes/Ticker.md#emit)
+- [eventNames](../classes/Ticker.md#eventnames)
+- [getMaxListeners](../classes/Ticker.md#getmaxlisteners)
+- [isTicking](../classes/Ticker.md#isticking)
+- [listenerCount](../classes/Ticker.md#listenercount)
+- [listeners](../classes/Ticker.md#listeners)
+- [nextTick](../classes/Ticker.md#nexttick)
+- [nextTickFn](../classes/Ticker.md#nexttickfn)
+- [off](../classes/Ticker.md#off)
+- [on](../classes/Ticker.md#on)
+- [once](../classes/Ticker.md#once)
+- [prependListener](../classes/Ticker.md#prependlistener)
+- [prependOnceListener](../classes/Ticker.md#prependoncelistener)
+- [quit](../classes/Ticker.md#quit)
+- [rawListeners](../classes/Ticker.md#rawlisteners)
+- [removeAllListeners](../classes/Ticker.md#removealllisteners)
+- [removeListener](../classes/Ticker.md#removelistener)
+- [runTimer](../classes/Ticker.md#runtimer)
+- [setMaxListeners](../classes/Ticker.md#setmaxlisteners)
+- [addAbortListener](../classes/Ticker.md#addabortlistener)
+- [getEventListeners](../classes/Ticker.md#geteventlisteners)
+- [getMaxListeners](../classes/Ticker.md#getmaxlisteners-1)
+- [listenerCount](../classes/Ticker.md#listenercount-1)
+- [on](../classes/Ticker.md#on-1)
+- [once](../classes/Ticker.md#once-1)
+- [setMaxListeners](../classes/Ticker.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new Ticker**(`onTickFn?`, `time?`): [`Ticker`](docs/api/classes/Ticker.md)
+• **new Ticker**(`onTickFn?`, `time?`): [`Ticker`](../classes/Ticker.md)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `onTickFn` | [`TFunction`](docs/api/README.md#tfunction)<`void`, `any`> | `undefined` |
+| `onTickFn` | [`TFunction`](../README.md#tfunction)<`void`, `any`> | `undefined` |
 | `time` | `number` | `1000` |
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 #### Overrides
 
@@ -78,7 +78,7 @@ EventEmitter.constructor
 
 ### captureRejectionSymbol
 
-▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](docs/api/classes/RedisClient.md#capturerejectionsymbol)
+▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](../classes/RedisClient.md#capturerejectionsymbol)
 
 #### Inherited from
 
@@ -110,7 +110,7 @@ ___
 
 ### errorMonitor
 
-▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](docs/api/classes/RedisClient.md#errormonitor)
+▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](../classes/RedisClient.md#errormonitor)
 
 This symbol shall be used to install a listener for only monitoring `'error'`
 events. Listeners installed using this symbol are called before the regular
@@ -160,7 +160,7 @@ ___
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **addListener**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -173,7 +173,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -287,7 +287,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](docs/api/classes/Ticker.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](../classes/Ticker.md#defaultmaxlisteners).
 
 #### Returns
 
@@ -395,7 +395,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `fn` | [`TFunction`](docs/api/README.md#tfunction)<`void`, `any`> |
+| `fn` | [`TFunction`](../README.md#tfunction)<`void`, `any`> |
 
 #### Returns
 
@@ -405,7 +405,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **off**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -418,7 +418,7 @@ Alias for `emitter.removeListener()`.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -432,7 +432,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **on**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -469,7 +469,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -483,7 +483,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **once**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -518,7 +518,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -532,7 +532,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **prependListener**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -556,7 +556,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -570,7 +570,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -592,7 +592,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -667,7 +667,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **removeAllListeners**(`event?`): [`Ticker`](../classes/Ticker.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -685,7 +685,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -699,7 +699,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **removeListener**(`eventName`, `listener`): [`Ticker`](../classes/Ticker.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -787,7 +787,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 
@@ -811,7 +811,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`Ticker`](docs/api/classes/Ticker.md)
+▸ **setMaxListeners**(`n`): [`Ticker`](../classes/Ticker.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -828,7 +828,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`Ticker`](docs/api/classes/Ticker.md)
+[`Ticker`](../classes/Ticker.md)
 
 **`Since`**
 

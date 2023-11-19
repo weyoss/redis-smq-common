@@ -4,68 +4,68 @@
 
 ## Implemented by
 
-- [`RedisClient`](docs/api/classes/RedisClient.md)
+- [`RedisClient`](../classes/RedisClient.md)
 
 ## Table of contents
 
 ### Methods
 
-- [brpoplpush](docs/api/interfaces/IRedisClient.md#brpoplpush)
-- [del](docs/api/interfaces/IRedisClient.md#del)
-- [end](docs/api/interfaces/IRedisClient.md#end)
-- [evalsha](docs/api/interfaces/IRedisClient.md#evalsha)
-- [flushall](docs/api/interfaces/IRedisClient.md#flushall)
-- [get](docs/api/interfaces/IRedisClient.md#get)
-- [getInfo](docs/api/interfaces/IRedisClient.md#getinfo)
-- [halt](docs/api/interfaces/IRedisClient.md#halt)
-- [hdel](docs/api/interfaces/IRedisClient.md#hdel)
-- [hget](docs/api/interfaces/IRedisClient.md#hget)
-- [hgetall](docs/api/interfaces/IRedisClient.md#hgetall)
-- [hkeys](docs/api/interfaces/IRedisClient.md#hkeys)
-- [hlen](docs/api/interfaces/IRedisClient.md#hlen)
-- [hmget](docs/api/interfaces/IRedisClient.md#hmget)
-- [hscan](docs/api/interfaces/IRedisClient.md#hscan)
-- [hscanAll](docs/api/interfaces/IRedisClient.md#hscanall)
-- [hset](docs/api/interfaces/IRedisClient.md#hset)
-- [llen](docs/api/interfaces/IRedisClient.md#llen)
-- [lmove](docs/api/interfaces/IRedisClient.md#lmove)
-- [loadScript](docs/api/interfaces/IRedisClient.md#loadscript)
-- [loadScripts](docs/api/interfaces/IRedisClient.md#loadscripts)
-- [lpoprpush](docs/api/interfaces/IRedisClient.md#lpoprpush)
-- [lrange](docs/api/interfaces/IRedisClient.md#lrange)
-- [lrem](docs/api/interfaces/IRedisClient.md#lrem)
-- [multi](docs/api/interfaces/IRedisClient.md#multi)
-- [psubscribe](docs/api/interfaces/IRedisClient.md#psubscribe)
-- [publish](docs/api/interfaces/IRedisClient.md#publish)
-- [punsubscribe](docs/api/interfaces/IRedisClient.md#punsubscribe)
-- [quit](docs/api/interfaces/IRedisClient.md#quit)
-- [rpop](docs/api/interfaces/IRedisClient.md#rpop)
-- [rpoplpush](docs/api/interfaces/IRedisClient.md#rpoplpush)
-- [runScript](docs/api/interfaces/IRedisClient.md#runscript)
-- [sadd](docs/api/interfaces/IRedisClient.md#sadd)
-- [set](docs/api/interfaces/IRedisClient.md#set)
-- [sismember](docs/api/interfaces/IRedisClient.md#sismember)
-- [smembers](docs/api/interfaces/IRedisClient.md#smembers)
-- [srem](docs/api/interfaces/IRedisClient.md#srem)
-- [sscan](docs/api/interfaces/IRedisClient.md#sscan)
-- [sscanAll](docs/api/interfaces/IRedisClient.md#sscanall)
-- [subscribe](docs/api/interfaces/IRedisClient.md#subscribe)
-- [unsubscribe](docs/api/interfaces/IRedisClient.md#unsubscribe)
-- [unwatch](docs/api/interfaces/IRedisClient.md#unwatch)
-- [updateServerVersion](docs/api/interfaces/IRedisClient.md#updateserverversion)
-- [validateRedisServerSupport](docs/api/interfaces/IRedisClient.md#validateredisserversupport)
-- [validateRedisVersion](docs/api/interfaces/IRedisClient.md#validateredisversion)
-- [watch](docs/api/interfaces/IRedisClient.md#watch)
-- [zadd](docs/api/interfaces/IRedisClient.md#zadd)
-- [zcard](docs/api/interfaces/IRedisClient.md#zcard)
-- [zpoprpush](docs/api/interfaces/IRedisClient.md#zpoprpush)
-- [zrange](docs/api/interfaces/IRedisClient.md#zrange)
-- [zrangebyscore](docs/api/interfaces/IRedisClient.md#zrangebyscore)
-- [zrangebyscorewithscores](docs/api/interfaces/IRedisClient.md#zrangebyscorewithscores)
-- [zrem](docs/api/interfaces/IRedisClient.md#zrem)
-- [zremrangebyscore](docs/api/interfaces/IRedisClient.md#zremrangebyscore)
-- [zrevrange](docs/api/interfaces/IRedisClient.md#zrevrange)
-- [zscan](docs/api/interfaces/IRedisClient.md#zscan)
+- [brpoplpush](../interfaces/IRedisClient.md#brpoplpush)
+- [del](../interfaces/IRedisClient.md#del)
+- [end](../interfaces/IRedisClient.md#end)
+- [evalsha](../interfaces/IRedisClient.md#evalsha)
+- [flushall](../interfaces/IRedisClient.md#flushall)
+- [get](../interfaces/IRedisClient.md#get)
+- [getInfo](../interfaces/IRedisClient.md#getinfo)
+- [halt](../interfaces/IRedisClient.md#halt)
+- [hdel](../interfaces/IRedisClient.md#hdel)
+- [hget](../interfaces/IRedisClient.md#hget)
+- [hgetall](../interfaces/IRedisClient.md#hgetall)
+- [hkeys](../interfaces/IRedisClient.md#hkeys)
+- [hlen](../interfaces/IRedisClient.md#hlen)
+- [hmget](../interfaces/IRedisClient.md#hmget)
+- [hscan](../interfaces/IRedisClient.md#hscan)
+- [hscanAll](../interfaces/IRedisClient.md#hscanall)
+- [hset](../interfaces/IRedisClient.md#hset)
+- [llen](../interfaces/IRedisClient.md#llen)
+- [lmove](../interfaces/IRedisClient.md#lmove)
+- [loadScript](../interfaces/IRedisClient.md#loadscript)
+- [loadScripts](../interfaces/IRedisClient.md#loadscripts)
+- [lpoprpush](../interfaces/IRedisClient.md#lpoprpush)
+- [lrange](../interfaces/IRedisClient.md#lrange)
+- [lrem](../interfaces/IRedisClient.md#lrem)
+- [multi](../interfaces/IRedisClient.md#multi)
+- [psubscribe](../interfaces/IRedisClient.md#psubscribe)
+- [publish](../interfaces/IRedisClient.md#publish)
+- [punsubscribe](../interfaces/IRedisClient.md#punsubscribe)
+- [quit](../interfaces/IRedisClient.md#quit)
+- [rpop](../interfaces/IRedisClient.md#rpop)
+- [rpoplpush](../interfaces/IRedisClient.md#rpoplpush)
+- [runScript](../interfaces/IRedisClient.md#runscript)
+- [sadd](../interfaces/IRedisClient.md#sadd)
+- [set](../interfaces/IRedisClient.md#set)
+- [sismember](../interfaces/IRedisClient.md#sismember)
+- [smembers](../interfaces/IRedisClient.md#smembers)
+- [srem](../interfaces/IRedisClient.md#srem)
+- [sscan](../interfaces/IRedisClient.md#sscan)
+- [sscanAll](../interfaces/IRedisClient.md#sscanall)
+- [subscribe](../interfaces/IRedisClient.md#subscribe)
+- [unsubscribe](../interfaces/IRedisClient.md#unsubscribe)
+- [unwatch](../interfaces/IRedisClient.md#unwatch)
+- [updateServerVersion](../interfaces/IRedisClient.md#updateserverversion)
+- [validateRedisServerSupport](../interfaces/IRedisClient.md#validateredisserversupport)
+- [validateRedisVersion](../interfaces/IRedisClient.md#validateredisversion)
+- [watch](../interfaces/IRedisClient.md#watch)
+- [zadd](../interfaces/IRedisClient.md#zadd)
+- [zcard](../interfaces/IRedisClient.md#zcard)
+- [zpoprpush](../interfaces/IRedisClient.md#zpoprpush)
+- [zrange](../interfaces/IRedisClient.md#zrange)
+- [zrangebyscore](../interfaces/IRedisClient.md#zrangebyscore)
+- [zrangebyscorewithscores](../interfaces/IRedisClient.md#zrangebyscorewithscores)
+- [zrem](../interfaces/IRedisClient.md#zrem)
+- [zremrangebyscore](../interfaces/IRedisClient.md#zremrangebyscore)
+- [zrevrange](../interfaces/IRedisClient.md#zrevrange)
+- [zscan](../interfaces/IRedisClient.md#zscan)
 
 ## Methods
 
@@ -80,7 +80,7 @@
 | `source` | `string` |
 | `destination` | `string` |
 | `timeout` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -97,7 +97,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -147,7 +147,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -164,7 +164,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -180,7 +180,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -196,7 +196,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -214,7 +214,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `fields` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -232,7 +232,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `field` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -249,7 +249,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -266,7 +266,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -283,7 +283,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -301,7 +301,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `keys` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<(``null`` \| `string`)[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<(``null`` \| `string`)[]> |
 
 #### Returns
 
@@ -322,7 +322,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `result`: `Record`<`string`, `string`>  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `result`: `Record`<`string`, `string`>  }> |
 
 #### Returns
 
@@ -342,7 +342,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -361,7 +361,7 @@ ___
 | `key` | `string` |
 | `field` | `string` |
 | `value` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -378,7 +378,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -398,7 +398,7 @@ ___
 | `destination` | `string` |
 | `from` | ``"LEFT"`` \| ``"RIGHT"`` |
 | `to` | ``"LEFT"`` \| ``"RIGHT"`` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -415,7 +415,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `script` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -431,7 +431,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -449,7 +449,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -468,7 +468,7 @@ ___
 | `key` | `string` |
 | `start` | `number` |
 | `stop` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -487,7 +487,7 @@ ___
 | `key` | `string` |
 | `count` | `number` |
 | `element` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -497,11 +497,11 @@ ___
 
 ### multi
 
-▸ **multi**(): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **multi**(): [`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 ___
 
@@ -531,7 +531,7 @@ ___
 | :------ | :------ |
 | `channel` | `string` |
 | `message` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -563,7 +563,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -580,7 +580,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -598,7 +598,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -617,7 +617,7 @@ ___
 | `scriptName` | `string` |
 | `keys` | (`string` \| `number`)[] |
 | `args` | (`string` \| `number`)[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`unknown`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`unknown`> |
 
 #### Returns
 
@@ -635,7 +635,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -658,7 +658,7 @@ ___
 | `options.expire?` | `Object` |
 | `options.expire.mode` | ``"EX"`` \| ``"PX"`` |
 | `options.expire.value` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -676,7 +676,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -693,7 +693,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -711,7 +711,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -732,7 +732,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
 
 #### Returns
 
@@ -752,7 +752,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -800,7 +800,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -816,7 +816,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -832,7 +832,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -867,7 +867,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `args` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -886,7 +886,7 @@ ___
 | `key` | `string` |
 | `score` | `number` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string` \| `number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string` \| `number`> |
 
 #### Returns
 
@@ -903,7 +903,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -921,7 +921,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -940,7 +940,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -961,7 +961,7 @@ ___
 | `max` | `string` \| `number` |
 | `offset` | `number` |
 | `count` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -980,7 +980,7 @@ ___
 | `source` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -998,7 +998,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `id` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1017,7 +1017,7 @@ ___
 | `source` | `string` |
 | `min` | `string` \| `number` |
 | `max` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1036,7 +1036,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -1057,7 +1057,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
 
 #### Returns
 

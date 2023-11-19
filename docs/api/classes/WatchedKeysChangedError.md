@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-- [`RedisClientError`](docs/api/classes/RedisClientError.md)
+- [`RedisClientError`](../classes/RedisClientError.md)
 
   ↳ **`WatchedKeysChangedError`**
 
@@ -12,28 +12,28 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/WatchedKeysChangedError.md#constructor)
+- [constructor](../classes/WatchedKeysChangedError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/WatchedKeysChangedError.md#message)
-- [stack](docs/api/classes/WatchedKeysChangedError.md#stack)
-- [prepareStackTrace](docs/api/classes/WatchedKeysChangedError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/WatchedKeysChangedError.md#stacktracelimit)
+- [message](../classes/WatchedKeysChangedError.md#message)
+- [stack](../classes/WatchedKeysChangedError.md#stack)
+- [prepareStackTrace](../classes/WatchedKeysChangedError.md#preparestacktrace)
+- [stackTraceLimit](../classes/WatchedKeysChangedError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/WatchedKeysChangedError.md#name)
+- [name](../classes/WatchedKeysChangedError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/WatchedKeysChangedError.md#capturestacktrace)
+- [captureStackTrace](../classes/WatchedKeysChangedError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new WatchedKeysChangedError**(`msg?`): [`WatchedKeysChangedError`](docs/api/classes/WatchedKeysChangedError.md)
+• **new WatchedKeysChangedError**(`msg?`): [`WatchedKeysChangedError`](../classes/WatchedKeysChangedError.md)
 
 #### Parameters
 
@@ -43,11 +43,11 @@
 
 #### Returns
 
-[`WatchedKeysChangedError`](docs/api/classes/WatchedKeysChangedError.md)
+[`WatchedKeysChangedError`](../classes/WatchedKeysChangedError.md)
 
 #### Overrides
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[constructor](docs/api/classes/RedisClientError.md#constructor)
+[RedisClientError](../classes/RedisClientError.md).[constructor](../classes/RedisClientError.md#constructor)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Inherited from
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[message](docs/api/classes/RedisClientError.md#message)
+[RedisClientError](../classes/RedisClientError.md).[message](../classes/RedisClientError.md#message)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Inherited from
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[stack](docs/api/classes/RedisClientError.md#stack)
+[RedisClientError](../classes/RedisClientError.md).[stack](../classes/RedisClientError.md#stack)
 
 ___
 
@@ -98,7 +98,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[prepareStackTrace](docs/api/classes/RedisClientError.md#preparestacktrace)
+[RedisClientError](../classes/RedisClientError.md).[prepareStackTrace](../classes/RedisClientError.md#preparestacktrace)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Inherited from
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[stackTraceLimit](docs/api/classes/RedisClientError.md#stacktracelimit)
+[RedisClientError](../classes/RedisClientError.md).[stackTraceLimit](../classes/RedisClientError.md#stacktracelimit)
 
 ## Accessors
 
@@ -145,4 +145,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[RedisClientError](docs/api/classes/RedisClientError.md).[captureStackTrace](docs/api/classes/RedisClientError.md#capturestacktrace)
+[RedisClientError](../classes/RedisClientError.md).[captureStackTrace](../classes/RedisClientError.md#capturestacktrace)

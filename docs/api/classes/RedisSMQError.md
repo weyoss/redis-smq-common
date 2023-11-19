@@ -8,48 +8,48 @@
 
   ↳ **`RedisSMQError`**
 
-  ↳↳ [`CallbackEmptyReplyError`](docs/api/classes/CallbackEmptyReplyError.md)
+  ↳↳ [`CallbackEmptyReplyError`](../classes/CallbackEmptyReplyError.md)
 
-  ↳↳ [`CallbackInvalidReplyError`](docs/api/classes/CallbackInvalidReplyError.md)
+  ↳↳ [`CallbackInvalidReplyError`](../classes/CallbackInvalidReplyError.md)
 
-  ↳↳ [`PanicError`](docs/api/classes/PanicError.md)
+  ↳↳ [`PanicError`](../classes/PanicError.md)
 
-  ↳↳ [`LoggerError`](docs/api/classes/LoggerError.md)
+  ↳↳ [`LoggerError`](../classes/LoggerError.md)
 
-  ↳↳ [`TickerError`](docs/api/classes/TickerError.md)
+  ↳↳ [`TickerError`](../classes/TickerError.md)
 
-  ↳↳ [`LockError`](docs/api/classes/LockError.md)
+  ↳↳ [`LockError`](../classes/LockError.md)
 
-  ↳↳ [`RedisClientError`](docs/api/classes/RedisClientError.md)
+  ↳↳ [`RedisClientError`](../classes/RedisClientError.md)
 
-  ↳↳ [`PowerSwitchError`](docs/api/classes/PowerSwitchError.md)
+  ↳↳ [`PowerSwitchError`](../classes/PowerSwitchError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/RedisSMQError.md#constructor)
+- [constructor](../classes/RedisSMQError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/RedisSMQError.md#message)
-- [stack](docs/api/classes/RedisSMQError.md#stack)
-- [prepareStackTrace](docs/api/classes/RedisSMQError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/RedisSMQError.md#stacktracelimit)
+- [message](../classes/RedisSMQError.md#message)
+- [stack](../classes/RedisSMQError.md#stack)
+- [prepareStackTrace](../classes/RedisSMQError.md#preparestacktrace)
+- [stackTraceLimit](../classes/RedisSMQError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/RedisSMQError.md#name)
+- [name](../classes/RedisSMQError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/RedisSMQError.md#capturestacktrace)
+- [captureStackTrace](../classes/RedisSMQError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisSMQError**(`message?`): [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+• **new RedisSMQError**(`message?`): [`RedisSMQError`](../classes/RedisSMQError.md)
 
 #### Parameters
 
@@ -59,7 +59,7 @@
 
 #### Returns
 
-[`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+[`RedisSMQError`](../classes/RedisSMQError.md)
 
 #### Overrides
 

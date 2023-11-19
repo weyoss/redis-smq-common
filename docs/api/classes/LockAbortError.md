@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-- [`LockError`](docs/api/classes/LockError.md)
+- [`LockError`](../classes/LockError.md)
 
   ↳ **`LockAbortError`**
 
@@ -12,28 +12,28 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockAbortError.md#constructor)
+- [constructor](../classes/LockAbortError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/LockAbortError.md#message)
-- [stack](docs/api/classes/LockAbortError.md#stack)
-- [prepareStackTrace](docs/api/classes/LockAbortError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/LockAbortError.md#stacktracelimit)
+- [message](../classes/LockAbortError.md#message)
+- [stack](../classes/LockAbortError.md#stack)
+- [prepareStackTrace](../classes/LockAbortError.md#preparestacktrace)
+- [stackTraceLimit](../classes/LockAbortError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/LockAbortError.md#name)
+- [name](../classes/LockAbortError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/LockAbortError.md#capturestacktrace)
+- [captureStackTrace](../classes/LockAbortError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new LockAbortError**(`message?`): [`LockAbortError`](docs/api/classes/LockAbortError.md)
+• **new LockAbortError**(`message?`): [`LockAbortError`](../classes/LockAbortError.md)
 
 #### Parameters
 
@@ -43,11 +43,11 @@
 
 #### Returns
 
-[`LockAbortError`](docs/api/classes/LockAbortError.md)
+[`LockAbortError`](../classes/LockAbortError.md)
 
 #### Overrides
 
-[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
+[LockError](../classes/LockError.md).[constructor](../classes/LockError.md#constructor)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Inherited from
 
-[LockError](docs/api/classes/LockError.md).[message](docs/api/classes/LockError.md#message)
+[LockError](../classes/LockError.md).[message](../classes/LockError.md#message)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Inherited from
 
-[LockError](docs/api/classes/LockError.md).[stack](docs/api/classes/LockError.md#stack)
+[LockError](../classes/LockError.md).[stack](../classes/LockError.md#stack)
 
 ___
 
@@ -98,7 +98,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[LockError](docs/api/classes/LockError.md).[prepareStackTrace](docs/api/classes/LockError.md#preparestacktrace)
+[LockError](../classes/LockError.md).[prepareStackTrace](../classes/LockError.md#preparestacktrace)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Inherited from
 
-[LockError](docs/api/classes/LockError.md).[stackTraceLimit](docs/api/classes/LockError.md#stacktracelimit)
+[LockError](../classes/LockError.md).[stackTraceLimit](../classes/LockError.md#stacktracelimit)
 
 ## Accessors
 
@@ -145,4 +145,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[LockError](docs/api/classes/LockError.md).[captureStackTrace](docs/api/classes/LockError.md#capturestacktrace)
+[LockError](../classes/LockError.md).[captureStackTrace](../classes/LockError.md#capturestacktrace)

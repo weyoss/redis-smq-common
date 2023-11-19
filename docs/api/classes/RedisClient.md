@@ -10,109 +10,109 @@
 
 ## Implements
 
-- [`IRedisClient`](docs/api/interfaces/IRedisClient.md)
+- [`IRedisClient`](../interfaces/IRedisClient.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/RedisClient.md#constructor)
+- [constructor](../classes/RedisClient.md#constructor)
 
 ### Properties
 
-- [captureRejectionSymbol](docs/api/classes/RedisClient.md#capturerejectionsymbol)
-- [captureRejections](docs/api/classes/RedisClient.md#capturerejections)
-- [defaultMaxListeners](docs/api/classes/RedisClient.md#defaultmaxlisteners)
-- [errorMonitor](docs/api/classes/RedisClient.md#errormonitor)
+- [captureRejectionSymbol](../classes/RedisClient.md#capturerejectionsymbol)
+- [captureRejections](../classes/RedisClient.md#capturerejections)
+- [defaultMaxListeners](../classes/RedisClient.md#defaultmaxlisteners)
+- [errorMonitor](../classes/RedisClient.md#errormonitor)
 
 ### Methods
 
-- [[captureRejectionSymbol]](docs/api/classes/RedisClient.md#[capturerejectionsymbol])
-- [addListener](docs/api/classes/RedisClient.md#addlistener)
-- [brpoplpush](docs/api/classes/RedisClient.md#brpoplpush)
-- [del](docs/api/classes/RedisClient.md#del)
-- [emit](docs/api/classes/RedisClient.md#emit)
-- [end](docs/api/classes/RedisClient.md#end)
-- [evalsha](docs/api/classes/RedisClient.md#evalsha)
-- [eventNames](docs/api/classes/RedisClient.md#eventnames)
-- [flushall](docs/api/classes/RedisClient.md#flushall)
-- [get](docs/api/classes/RedisClient.md#get)
-- [getInfo](docs/api/classes/RedisClient.md#getinfo)
-- [getMaxListeners](docs/api/classes/RedisClient.md#getmaxlisteners)
-- [halt](docs/api/classes/RedisClient.md#halt)
-- [hdel](docs/api/classes/RedisClient.md#hdel)
-- [hget](docs/api/classes/RedisClient.md#hget)
-- [hgetall](docs/api/classes/RedisClient.md#hgetall)
-- [hkeys](docs/api/classes/RedisClient.md#hkeys)
-- [hlen](docs/api/classes/RedisClient.md#hlen)
-- [hmget](docs/api/classes/RedisClient.md#hmget)
-- [hscan](docs/api/classes/RedisClient.md#hscan)
-- [hscanAll](docs/api/classes/RedisClient.md#hscanall)
-- [hset](docs/api/classes/RedisClient.md#hset)
-- [listenerCount](docs/api/classes/RedisClient.md#listenercount)
-- [listeners](docs/api/classes/RedisClient.md#listeners)
-- [llen](docs/api/classes/RedisClient.md#llen)
-- [lmove](docs/api/classes/RedisClient.md#lmove)
-- [loadScript](docs/api/classes/RedisClient.md#loadscript)
-- [loadScripts](docs/api/classes/RedisClient.md#loadscripts)
-- [lpoprpush](docs/api/classes/RedisClient.md#lpoprpush)
-- [lrange](docs/api/classes/RedisClient.md#lrange)
-- [lrem](docs/api/classes/RedisClient.md#lrem)
-- [multi](docs/api/classes/RedisClient.md#multi)
-- [off](docs/api/classes/RedisClient.md#off)
-- [on](docs/api/classes/RedisClient.md#on)
-- [once](docs/api/classes/RedisClient.md#once)
-- [prependListener](docs/api/classes/RedisClient.md#prependlistener)
-- [prependOnceListener](docs/api/classes/RedisClient.md#prependoncelistener)
-- [psubscribe](docs/api/classes/RedisClient.md#psubscribe)
-- [publish](docs/api/classes/RedisClient.md#publish)
-- [punsubscribe](docs/api/classes/RedisClient.md#punsubscribe)
-- [quit](docs/api/classes/RedisClient.md#quit)
-- [rawListeners](docs/api/classes/RedisClient.md#rawlisteners)
-- [removeAllListeners](docs/api/classes/RedisClient.md#removealllisteners)
-- [removeListener](docs/api/classes/RedisClient.md#removelistener)
-- [rpop](docs/api/classes/RedisClient.md#rpop)
-- [rpoplpush](docs/api/classes/RedisClient.md#rpoplpush)
-- [runScript](docs/api/classes/RedisClient.md#runscript)
-- [sadd](docs/api/classes/RedisClient.md#sadd)
-- [set](docs/api/classes/RedisClient.md#set)
-- [setMaxListeners](docs/api/classes/RedisClient.md#setmaxlisteners)
-- [sismember](docs/api/classes/RedisClient.md#sismember)
-- [smembers](docs/api/classes/RedisClient.md#smembers)
-- [srem](docs/api/classes/RedisClient.md#srem)
-- [sscan](docs/api/classes/RedisClient.md#sscan)
-- [sscanAll](docs/api/classes/RedisClient.md#sscanall)
-- [subscribe](docs/api/classes/RedisClient.md#subscribe)
-- [unsubscribe](docs/api/classes/RedisClient.md#unsubscribe)
-- [unwatch](docs/api/classes/RedisClient.md#unwatch)
-- [updateServerVersion](docs/api/classes/RedisClient.md#updateserverversion)
-- [validateRedisServerSupport](docs/api/classes/RedisClient.md#validateredisserversupport)
-- [validateRedisVersion](docs/api/classes/RedisClient.md#validateredisversion)
-- [watch](docs/api/classes/RedisClient.md#watch)
-- [zadd](docs/api/classes/RedisClient.md#zadd)
-- [zcard](docs/api/classes/RedisClient.md#zcard)
-- [zpoprpush](docs/api/classes/RedisClient.md#zpoprpush)
-- [zrange](docs/api/classes/RedisClient.md#zrange)
-- [zrangebyscore](docs/api/classes/RedisClient.md#zrangebyscore)
-- [zrangebyscorewithscores](docs/api/classes/RedisClient.md#zrangebyscorewithscores)
-- [zrem](docs/api/classes/RedisClient.md#zrem)
-- [zremrangebyscore](docs/api/classes/RedisClient.md#zremrangebyscore)
-- [zrevrange](docs/api/classes/RedisClient.md#zrevrange)
-- [zscan](docs/api/classes/RedisClient.md#zscan)
-- [addAbortListener](docs/api/classes/RedisClient.md#addabortlistener)
-- [addScript](docs/api/classes/RedisClient.md#addscript)
-- [getEventListeners](docs/api/classes/RedisClient.md#geteventlisteners)
-- [getMaxListeners](docs/api/classes/RedisClient.md#getmaxlisteners-1)
-- [listenerCount](docs/api/classes/RedisClient.md#listenercount-1)
-- [on](docs/api/classes/RedisClient.md#on-1)
-- [once](docs/api/classes/RedisClient.md#once-1)
-- [setMaxListeners](docs/api/classes/RedisClient.md#setmaxlisteners-1)
+- [[captureRejectionSymbol]](../classes/RedisClient.md#[capturerejectionsymbol])
+- [addListener](../classes/RedisClient.md#addlistener)
+- [brpoplpush](../classes/RedisClient.md#brpoplpush)
+- [del](../classes/RedisClient.md#del)
+- [emit](../classes/RedisClient.md#emit)
+- [end](../classes/RedisClient.md#end)
+- [evalsha](../classes/RedisClient.md#evalsha)
+- [eventNames](../classes/RedisClient.md#eventnames)
+- [flushall](../classes/RedisClient.md#flushall)
+- [get](../classes/RedisClient.md#get)
+- [getInfo](../classes/RedisClient.md#getinfo)
+- [getMaxListeners](../classes/RedisClient.md#getmaxlisteners)
+- [halt](../classes/RedisClient.md#halt)
+- [hdel](../classes/RedisClient.md#hdel)
+- [hget](../classes/RedisClient.md#hget)
+- [hgetall](../classes/RedisClient.md#hgetall)
+- [hkeys](../classes/RedisClient.md#hkeys)
+- [hlen](../classes/RedisClient.md#hlen)
+- [hmget](../classes/RedisClient.md#hmget)
+- [hscan](../classes/RedisClient.md#hscan)
+- [hscanAll](../classes/RedisClient.md#hscanall)
+- [hset](../classes/RedisClient.md#hset)
+- [listenerCount](../classes/RedisClient.md#listenercount)
+- [listeners](../classes/RedisClient.md#listeners)
+- [llen](../classes/RedisClient.md#llen)
+- [lmove](../classes/RedisClient.md#lmove)
+- [loadScript](../classes/RedisClient.md#loadscript)
+- [loadScripts](../classes/RedisClient.md#loadscripts)
+- [lpoprpush](../classes/RedisClient.md#lpoprpush)
+- [lrange](../classes/RedisClient.md#lrange)
+- [lrem](../classes/RedisClient.md#lrem)
+- [multi](../classes/RedisClient.md#multi)
+- [off](../classes/RedisClient.md#off)
+- [on](../classes/RedisClient.md#on)
+- [once](../classes/RedisClient.md#once)
+- [prependListener](../classes/RedisClient.md#prependlistener)
+- [prependOnceListener](../classes/RedisClient.md#prependoncelistener)
+- [psubscribe](../classes/RedisClient.md#psubscribe)
+- [publish](../classes/RedisClient.md#publish)
+- [punsubscribe](../classes/RedisClient.md#punsubscribe)
+- [quit](../classes/RedisClient.md#quit)
+- [rawListeners](../classes/RedisClient.md#rawlisteners)
+- [removeAllListeners](../classes/RedisClient.md#removealllisteners)
+- [removeListener](../classes/RedisClient.md#removelistener)
+- [rpop](../classes/RedisClient.md#rpop)
+- [rpoplpush](../classes/RedisClient.md#rpoplpush)
+- [runScript](../classes/RedisClient.md#runscript)
+- [sadd](../classes/RedisClient.md#sadd)
+- [set](../classes/RedisClient.md#set)
+- [setMaxListeners](../classes/RedisClient.md#setmaxlisteners)
+- [sismember](../classes/RedisClient.md#sismember)
+- [smembers](../classes/RedisClient.md#smembers)
+- [srem](../classes/RedisClient.md#srem)
+- [sscan](../classes/RedisClient.md#sscan)
+- [sscanAll](../classes/RedisClient.md#sscanall)
+- [subscribe](../classes/RedisClient.md#subscribe)
+- [unsubscribe](../classes/RedisClient.md#unsubscribe)
+- [unwatch](../classes/RedisClient.md#unwatch)
+- [updateServerVersion](../classes/RedisClient.md#updateserverversion)
+- [validateRedisServerSupport](../classes/RedisClient.md#validateredisserversupport)
+- [validateRedisVersion](../classes/RedisClient.md#validateredisversion)
+- [watch](../classes/RedisClient.md#watch)
+- [zadd](../classes/RedisClient.md#zadd)
+- [zcard](../classes/RedisClient.md#zcard)
+- [zpoprpush](../classes/RedisClient.md#zpoprpush)
+- [zrange](../classes/RedisClient.md#zrange)
+- [zrangebyscore](../classes/RedisClient.md#zrangebyscore)
+- [zrangebyscorewithscores](../classes/RedisClient.md#zrangebyscorewithscores)
+- [zrem](../classes/RedisClient.md#zrem)
+- [zremrangebyscore](../classes/RedisClient.md#zremrangebyscore)
+- [zrevrange](../classes/RedisClient.md#zrevrange)
+- [zscan](../classes/RedisClient.md#zscan)
+- [addAbortListener](../classes/RedisClient.md#addabortlistener)
+- [addScript](../classes/RedisClient.md#addscript)
+- [getEventListeners](../classes/RedisClient.md#geteventlisteners)
+- [getMaxListeners](../classes/RedisClient.md#getmaxlisteners-1)
+- [listenerCount](../classes/RedisClient.md#listenercount-1)
+- [on](../classes/RedisClient.md#on-1)
+- [once](../classes/RedisClient.md#once-1)
+- [setMaxListeners](../classes/RedisClient.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisClient**(`options?`): [`RedisClient`](docs/api/classes/RedisClient.md)
+• **new RedisClient**(`options?`): [`RedisClient`](../classes/RedisClient.md)
 
 #### Parameters
 
@@ -122,7 +122,7 @@
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 #### Inherited from
 
@@ -132,7 +132,7 @@ EventEmitter.constructor
 
 ### captureRejectionSymbol
 
-▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](docs/api/classes/RedisClient.md#capturerejectionsymbol)
+▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](../classes/RedisClient.md#capturerejectionsymbol)
 
 #### Inherited from
 
@@ -164,7 +164,7 @@ ___
 
 ### errorMonitor
 
-▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](docs/api/classes/RedisClient.md#errormonitor)
+▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](../classes/RedisClient.md#errormonitor)
 
 This symbol shall be used to install a listener for only monitoring `'error'`
 events. Listeners installed using this symbol are called before the regular
@@ -204,7 +204,7 @@ ___
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **addListener**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -217,7 +217,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -240,7 +240,7 @@ ___
 | `source` | `string` |
 | `destination` | `string` |
 | `timeout` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -248,7 +248,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[brpoplpush](docs/api/interfaces/IRedisClient.md#brpoplpush)
+[IRedisClient](../interfaces/IRedisClient.md).[brpoplpush](../interfaces/IRedisClient.md#brpoplpush)
 
 ___
 
@@ -261,7 +261,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -269,7 +269,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[del](docs/api/interfaces/IRedisClient.md#del)
+[IRedisClient](../interfaces/IRedisClient.md).[del](../interfaces/IRedisClient.md#del)
 
 ___
 
@@ -352,7 +352,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[end](docs/api/interfaces/IRedisClient.md#end)
+[IRedisClient](../interfaces/IRedisClient.md).[end](../interfaces/IRedisClient.md#end)
 
 ___
 
@@ -374,7 +374,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[evalsha](docs/api/interfaces/IRedisClient.md#evalsha)
+[IRedisClient](../interfaces/IRedisClient.md).[evalsha](../interfaces/IRedisClient.md#evalsha)
 
 ___
 
@@ -420,7 +420,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -428,7 +428,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[flushall](docs/api/interfaces/IRedisClient.md#flushall)
+[IRedisClient](../interfaces/IRedisClient.md).[flushall](../interfaces/IRedisClient.md#flushall)
 
 ___
 
@@ -441,7 +441,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -449,7 +449,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[get](docs/api/interfaces/IRedisClient.md#get)
+[IRedisClient](../interfaces/IRedisClient.md).[get](../interfaces/IRedisClient.md#get)
 
 ___
 
@@ -461,7 +461,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -469,7 +469,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[getInfo](docs/api/interfaces/IRedisClient.md#getinfo)
+[IRedisClient](../interfaces/IRedisClient.md).[getInfo](../interfaces/IRedisClient.md#getinfo)
 
 ___
 
@@ -478,7 +478,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](docs/api/classes/RedisClient.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](../classes/RedisClient.md#defaultmaxlisteners).
 
 #### Returns
 
@@ -502,7 +502,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -510,7 +510,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[halt](docs/api/interfaces/IRedisClient.md#halt)
+[IRedisClient](../interfaces/IRedisClient.md).[halt](../interfaces/IRedisClient.md#halt)
 
 ___
 
@@ -524,7 +524,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `fields` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -532,7 +532,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hdel](docs/api/interfaces/IRedisClient.md#hdel)
+[IRedisClient](../interfaces/IRedisClient.md).[hdel](../interfaces/IRedisClient.md#hdel)
 
 ___
 
@@ -546,7 +546,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `field` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -554,7 +554,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hget](docs/api/interfaces/IRedisClient.md#hget)
+[IRedisClient](../interfaces/IRedisClient.md).[hget](../interfaces/IRedisClient.md#hget)
 
 ___
 
@@ -567,7 +567,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -575,7 +575,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hgetall](docs/api/interfaces/IRedisClient.md#hgetall)
+[IRedisClient](../interfaces/IRedisClient.md).[hgetall](../interfaces/IRedisClient.md#hgetall)
 
 ___
 
@@ -588,7 +588,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -596,7 +596,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hkeys](docs/api/interfaces/IRedisClient.md#hkeys)
+[IRedisClient](../interfaces/IRedisClient.md).[hkeys](../interfaces/IRedisClient.md#hkeys)
 
 ___
 
@@ -609,7 +609,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -617,7 +617,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hlen](docs/api/interfaces/IRedisClient.md#hlen)
+[IRedisClient](../interfaces/IRedisClient.md).[hlen](../interfaces/IRedisClient.md#hlen)
 
 ___
 
@@ -631,7 +631,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `keys` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<(``null`` \| `string`)[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<(``null`` \| `string`)[]> |
 
 #### Returns
 
@@ -639,7 +639,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hmget](docs/api/interfaces/IRedisClient.md#hmget)
+[IRedisClient](../interfaces/IRedisClient.md).[hmget](../interfaces/IRedisClient.md#hmget)
 
 ___
 
@@ -656,7 +656,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `result`: `Record`<`string`, `string`>  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `result`: `Record`<`string`, `string`>  }> |
 
 #### Returns
 
@@ -664,7 +664,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hscan](docs/api/interfaces/IRedisClient.md#hscan)
+[IRedisClient](../interfaces/IRedisClient.md).[hscan](../interfaces/IRedisClient.md#hscan)
 
 ___
 
@@ -680,7 +680,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -688,7 +688,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hscanAll](docs/api/interfaces/IRedisClient.md#hscanall)
+[IRedisClient](../interfaces/IRedisClient.md).[hscanAll](../interfaces/IRedisClient.md#hscanall)
 
 ___
 
@@ -703,7 +703,7 @@ ___
 | `key` | `string` |
 | `field` | `string` |
 | `value` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -711,7 +711,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hset](docs/api/interfaces/IRedisClient.md#hset)
+[IRedisClient](../interfaces/IRedisClient.md).[hset](../interfaces/IRedisClient.md#hset)
 
 ___
 
@@ -788,7 +788,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -796,7 +796,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[llen](docs/api/interfaces/IRedisClient.md#llen)
+[IRedisClient](../interfaces/IRedisClient.md).[llen](../interfaces/IRedisClient.md#llen)
 
 ___
 
@@ -812,7 +812,7 @@ ___
 | `destination` | `string` |
 | `from` | ``"LEFT"`` \| ``"RIGHT"`` |
 | `to` | ``"LEFT"`` \| ``"RIGHT"`` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -820,7 +820,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lmove](docs/api/interfaces/IRedisClient.md#lmove)
+[IRedisClient](../interfaces/IRedisClient.md).[lmove](../interfaces/IRedisClient.md#lmove)
 
 ___
 
@@ -833,7 +833,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `script` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -841,7 +841,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[loadScript](docs/api/interfaces/IRedisClient.md#loadscript)
+[IRedisClient](../interfaces/IRedisClient.md).[loadScript](../interfaces/IRedisClient.md#loadscript)
 
 ___
 
@@ -853,7 +853,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -861,7 +861,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[loadScripts](docs/api/interfaces/IRedisClient.md#loadscripts)
+[IRedisClient](../interfaces/IRedisClient.md).[loadScripts](../interfaces/IRedisClient.md#loadscripts)
 
 ___
 
@@ -875,7 +875,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -883,7 +883,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lpoprpush](docs/api/interfaces/IRedisClient.md#lpoprpush)
+[IRedisClient](../interfaces/IRedisClient.md).[lpoprpush](../interfaces/IRedisClient.md#lpoprpush)
 
 ___
 
@@ -898,7 +898,7 @@ ___
 | `key` | `string` |
 | `start` | `number` |
 | `stop` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -906,7 +906,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lrange](docs/api/interfaces/IRedisClient.md#lrange)
+[IRedisClient](../interfaces/IRedisClient.md).[lrange](../interfaces/IRedisClient.md#lrange)
 
 ___
 
@@ -921,7 +921,7 @@ ___
 | `key` | `string` |
 | `count` | `number` |
 | `element` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -929,27 +929,27 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lrem](docs/api/interfaces/IRedisClient.md#lrem)
+[IRedisClient](../interfaces/IRedisClient.md).[lrem](../interfaces/IRedisClient.md#lrem)
 
 ___
 
 ### multi
 
-▸ **multi**(): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **multi**(): [`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[multi](docs/api/interfaces/IRedisClient.md#multi)
+[IRedisClient](../interfaces/IRedisClient.md).[multi](../interfaces/IRedisClient.md#multi)
 
 ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **off**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -962,7 +962,7 @@ Alias for `emitter.removeListener()`.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -976,7 +976,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **on**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -1013,7 +1013,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1027,7 +1027,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **once**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -1062,7 +1062,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1076,7 +1076,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **prependListener**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -1100,7 +1100,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1114,7 +1114,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -1136,7 +1136,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1164,7 +1164,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[psubscribe](docs/api/interfaces/IRedisClient.md#psubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[psubscribe](../interfaces/IRedisClient.md#psubscribe)
 
 ___
 
@@ -1178,7 +1178,7 @@ ___
 | :------ | :------ |
 | `channel` | `string` |
 | `message` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1186,7 +1186,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[publish](docs/api/interfaces/IRedisClient.md#publish)
+[IRedisClient](../interfaces/IRedisClient.md).[publish](../interfaces/IRedisClient.md#publish)
 
 ___
 
@@ -1206,7 +1206,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[punsubscribe](docs/api/interfaces/IRedisClient.md#punsubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[punsubscribe](../interfaces/IRedisClient.md#punsubscribe)
 
 ___
 
@@ -1218,7 +1218,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -1226,7 +1226,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[quit](docs/api/interfaces/IRedisClient.md#quit)
+[IRedisClient](../interfaces/IRedisClient.md).[quit](../interfaces/IRedisClient.md#quit)
 
 ___
 
@@ -1283,7 +1283,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **removeAllListeners**(`event?`): [`RedisClient`](../classes/RedisClient.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -1301,7 +1301,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1315,7 +1315,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **removeListener**(`eventName`, `listener`): [`RedisClient`](../classes/RedisClient.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -1403,7 +1403,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1424,7 +1424,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -1432,7 +1432,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[rpop](docs/api/interfaces/IRedisClient.md#rpop)
+[IRedisClient](../interfaces/IRedisClient.md).[rpop](../interfaces/IRedisClient.md#rpop)
 
 ___
 
@@ -1446,7 +1446,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -1454,7 +1454,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[rpoplpush](docs/api/interfaces/IRedisClient.md#rpoplpush)
+[IRedisClient](../interfaces/IRedisClient.md).[rpoplpush](../interfaces/IRedisClient.md#rpoplpush)
 
 ___
 
@@ -1469,7 +1469,7 @@ ___
 | `scriptName` | `string` |
 | `keys` | (`string` \| `number`)[] |
 | `args` | (`string` \| `number`)[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`unknown`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`unknown`> |
 
 #### Returns
 
@@ -1477,7 +1477,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[runScript](docs/api/interfaces/IRedisClient.md#runscript)
+[IRedisClient](../interfaces/IRedisClient.md).[runScript](../interfaces/IRedisClient.md#runscript)
 
 ___
 
@@ -1491,7 +1491,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1499,7 +1499,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sadd](docs/api/interfaces/IRedisClient.md#sadd)
+[IRedisClient](../interfaces/IRedisClient.md).[sadd](../interfaces/IRedisClient.md#sadd)
 
 ___
 
@@ -1518,7 +1518,7 @@ ___
 | `options.expire?` | `Object` |
 | `options.expire.mode` | ``"EX"`` \| ``"PX"`` |
 | `options.expire.value` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -1526,13 +1526,13 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[set](docs/api/interfaces/IRedisClient.md#set)
+[IRedisClient](../interfaces/IRedisClient.md).[set](../interfaces/IRedisClient.md#set)
 
 ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`RedisClient`](docs/api/classes/RedisClient.md)
+▸ **setMaxListeners**(`n`): [`RedisClient`](../classes/RedisClient.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -1549,7 +1549,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](../classes/RedisClient.md)
 
 **`Since`**
 
@@ -1571,7 +1571,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1579,7 +1579,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sismember](docs/api/interfaces/IRedisClient.md#sismember)
+[IRedisClient](../interfaces/IRedisClient.md).[sismember](../interfaces/IRedisClient.md#sismember)
 
 ___
 
@@ -1592,7 +1592,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -1600,7 +1600,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[smembers](docs/api/interfaces/IRedisClient.md#smembers)
+[IRedisClient](../interfaces/IRedisClient.md).[smembers](../interfaces/IRedisClient.md#smembers)
 
 ___
 
@@ -1614,7 +1614,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1622,7 +1622,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[srem](docs/api/interfaces/IRedisClient.md#srem)
+[IRedisClient](../interfaces/IRedisClient.md).[srem](../interfaces/IRedisClient.md#srem)
 
 ___
 
@@ -1639,7 +1639,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
 
 #### Returns
 
@@ -1647,7 +1647,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sscan](docs/api/interfaces/IRedisClient.md#sscan)
+[IRedisClient](../interfaces/IRedisClient.md).[sscan](../interfaces/IRedisClient.md#sscan)
 
 ___
 
@@ -1663,7 +1663,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -1671,7 +1671,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sscanAll](docs/api/interfaces/IRedisClient.md#sscanall)
+[IRedisClient](../interfaces/IRedisClient.md).[sscanAll](../interfaces/IRedisClient.md#sscanall)
 
 ___
 
@@ -1691,7 +1691,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[subscribe](docs/api/interfaces/IRedisClient.md#subscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[subscribe](../interfaces/IRedisClient.md#subscribe)
 
 ___
 
@@ -1711,7 +1711,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[unsubscribe](docs/api/interfaces/IRedisClient.md#unsubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[unsubscribe](../interfaces/IRedisClient.md#unsubscribe)
 
 ___
 
@@ -1723,7 +1723,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -1731,7 +1731,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[unwatch](docs/api/interfaces/IRedisClient.md#unwatch)
+[IRedisClient](../interfaces/IRedisClient.md).[unwatch](../interfaces/IRedisClient.md#unwatch)
 
 ___
 
@@ -1743,7 +1743,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -1751,7 +1751,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[updateServerVersion](docs/api/interfaces/IRedisClient.md#updateserverversion)
+[IRedisClient](../interfaces/IRedisClient.md).[updateServerVersion](../interfaces/IRedisClient.md#updateserverversion)
 
 ___
 
@@ -1763,7 +1763,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -1771,7 +1771,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[validateRedisServerSupport](docs/api/interfaces/IRedisClient.md#validateredisserversupport)
+[IRedisClient](../interfaces/IRedisClient.md).[validateRedisServerSupport](../interfaces/IRedisClient.md#validateredisserversupport)
 
 ___
 
@@ -1793,7 +1793,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[validateRedisVersion](docs/api/interfaces/IRedisClient.md#validateredisversion)
+[IRedisClient](../interfaces/IRedisClient.md).[validateRedisVersion](../interfaces/IRedisClient.md#validateredisversion)
 
 ___
 
@@ -1806,7 +1806,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `args` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`> |
 
 #### Returns
 
@@ -1814,7 +1814,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[watch](docs/api/interfaces/IRedisClient.md#watch)
+[IRedisClient](../interfaces/IRedisClient.md).[watch](../interfaces/IRedisClient.md#watch)
 
 ___
 
@@ -1829,7 +1829,7 @@ ___
 | `key` | `string` |
 | `score` | `number` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string` \| `number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string` \| `number`> |
 
 #### Returns
 
@@ -1837,7 +1837,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zadd](docs/api/interfaces/IRedisClient.md#zadd)
+[IRedisClient](../interfaces/IRedisClient.md).[zadd](../interfaces/IRedisClient.md#zadd)
 
 ___
 
@@ -1850,7 +1850,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1858,7 +1858,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zcard](docs/api/interfaces/IRedisClient.md#zcard)
+[IRedisClient](../interfaces/IRedisClient.md).[zcard](../interfaces/IRedisClient.md#zcard)
 
 ___
 
@@ -1872,7 +1872,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<``null`` \| `string`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<``null`` \| `string`> |
 
 #### Returns
 
@@ -1880,7 +1880,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zpoprpush](docs/api/interfaces/IRedisClient.md#zpoprpush)
+[IRedisClient](../interfaces/IRedisClient.md).[zpoprpush](../interfaces/IRedisClient.md#zpoprpush)
 
 ___
 
@@ -1895,7 +1895,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -1903,7 +1903,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrange](docs/api/interfaces/IRedisClient.md#zrange)
+[IRedisClient](../interfaces/IRedisClient.md).[zrange](../interfaces/IRedisClient.md#zrange)
 
 ___
 
@@ -1920,7 +1920,7 @@ ___
 | `max` | `string` \| `number` |
 | `offset` | `number` |
 | `count` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -1928,7 +1928,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrangebyscore](docs/api/interfaces/IRedisClient.md#zrangebyscore)
+[IRedisClient](../interfaces/IRedisClient.md).[zrangebyscore](../interfaces/IRedisClient.md#zrangebyscore)
 
 ___
 
@@ -1943,7 +1943,7 @@ ___
 | `source` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`Record`<`string`, `string`>> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`Record`<`string`, `string`>> |
 
 #### Returns
 
@@ -1951,7 +1951,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrangebyscorewithscores](docs/api/interfaces/IRedisClient.md#zrangebyscorewithscores)
+[IRedisClient](../interfaces/IRedisClient.md).[zrangebyscorewithscores](../interfaces/IRedisClient.md#zrangebyscorewithscores)
 
 ___
 
@@ -1965,7 +1965,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `id` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1973,7 +1973,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrem](docs/api/interfaces/IRedisClient.md#zrem)
+[IRedisClient](../interfaces/IRedisClient.md).[zrem](../interfaces/IRedisClient.md#zrem)
 
 ___
 
@@ -1988,7 +1988,7 @@ ___
 | `source` | `string` |
 | `min` | `string` \| `number` |
 | `max` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`number`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`number`> |
 
 #### Returns
 
@@ -1996,7 +1996,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zremrangebyscore](docs/api/interfaces/IRedisClient.md#zremrangebyscore)
+[IRedisClient](../interfaces/IRedisClient.md).[zremrangebyscore](../interfaces/IRedisClient.md#zremrangebyscore)
 
 ___
 
@@ -2011,7 +2011,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`string`[]> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`string`[]> |
 
 #### Returns
 
@@ -2019,7 +2019,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrevrange](docs/api/interfaces/IRedisClient.md#zrevrange)
+[IRedisClient](../interfaces/IRedisClient.md).[zrevrange](../interfaces/IRedisClient.md#zrevrange)
 
 ___
 
@@ -2036,7 +2036,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<\{ `cursor`: `string` ; `items`: `string`[]  }> |
 
 #### Returns
 
@@ -2044,7 +2044,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zscan](docs/api/interfaces/IRedisClient.md#zscan)
+[IRedisClient](../interfaces/IRedisClient.md).[zscan](../interfaces/IRedisClient.md#zscan)
 
 ___
 

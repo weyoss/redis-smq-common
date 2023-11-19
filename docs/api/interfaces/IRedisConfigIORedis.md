@@ -6,14 +6,14 @@
 
 ### Properties
 
-- [client](docs/api/interfaces/IRedisConfigIORedis.md#client)
-- [options](docs/api/interfaces/IRedisConfigIORedis.md#options)
+- [client](../interfaces/IRedisConfigIORedis.md#client)
+- [options](../interfaces/IRedisConfigIORedis.md#options)
 
 ## Properties
 
 ### client
 
-• **client**: [`IOREDIS`](docs/api/enums/ERedisConfigClient.md#ioredis)
+• **client**: [`IOREDIS`](../enums/ERedisConfigClient.md#ioredis)
 
 ___
 

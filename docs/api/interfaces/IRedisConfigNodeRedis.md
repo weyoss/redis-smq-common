@@ -6,14 +6,14 @@
 
 ### Properties
 
-- [client](docs/api/interfaces/IRedisConfigNodeRedis.md#client)
-- [options](docs/api/interfaces/IRedisConfigNodeRedis.md#options)
+- [client](../interfaces/IRedisConfigNodeRedis.md#client)
+- [options](../interfaces/IRedisConfigNodeRedis.md#options)
 
 ## Properties
 
 ### client
 
-• **client**: [`REDIS`](docs/api/enums/ERedisConfigClient.md#redis)
+• **client**: [`REDIS`](../enums/ERedisConfigClient.md#redis)
 
 ___
 

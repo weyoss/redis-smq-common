@@ -6,8 +6,8 @@
 
 ### Properties
 
-- [enabled](docs/api/interfaces/ILoggerConfig.md#enabled)
-- [options](docs/api/interfaces/ILoggerConfig.md#options)
+- [enabled](../interfaces/ILoggerConfig.md#enabled)
+- [options](../interfaces/ILoggerConfig.md#options)
 
 ## Properties
 
@@ -19,4 +19,4 @@ ___
 
 ### options
 
-• `Optional` **options**: `Partial`<`LoggerOptions`>
+• `Optional` **options**: `Partial`<[`LoggerOptions`](https://github.com/trentm/node-bunyan#constructor-api)>

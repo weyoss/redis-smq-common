@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](../classes/RedisSMQError.md)
 
   ↳ **`TickerError`**
 
@@ -12,28 +12,28 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/TickerError.md#constructor)
+- [constructor](../classes/TickerError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/TickerError.md#message)
-- [stack](docs/api/classes/TickerError.md#stack)
-- [prepareStackTrace](docs/api/classes/TickerError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/TickerError.md#stacktracelimit)
+- [message](../classes/TickerError.md#message)
+- [stack](../classes/TickerError.md#stack)
+- [prepareStackTrace](../classes/TickerError.md#preparestacktrace)
+- [stackTraceLimit](../classes/TickerError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/TickerError.md#name)
+- [name](../classes/TickerError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/TickerError.md#capturestacktrace)
+- [captureStackTrace](../classes/TickerError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new TickerError**(`message?`): [`TickerError`](docs/api/classes/TickerError.md)
+• **new TickerError**(`message?`): [`TickerError`](../classes/TickerError.md)
 
 #### Parameters
 
@@ -43,11 +43,11 @@
 
 #### Returns
 
-[`TickerError`](docs/api/classes/TickerError.md)
+[`TickerError`](../classes/TickerError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](../classes/RedisSMQError.md).[constructor](../classes/RedisSMQError.md#constructor)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[message](docs/api/classes/RedisSMQError.md#message)
+[RedisSMQError](../classes/RedisSMQError.md).[message](../classes/RedisSMQError.md#message)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[stack](docs/api/classes/RedisSMQError.md#stack)
+[RedisSMQError](../classes/RedisSMQError.md).[stack](../classes/RedisSMQError.md#stack)
 
 ___
 
@@ -98,7 +98,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[prepareStackTrace](docs/api/classes/RedisSMQError.md#preparestacktrace)
+[RedisSMQError](../classes/RedisSMQError.md).[prepareStackTrace](../classes/RedisSMQError.md#preparestacktrace)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[stackTraceLimit](docs/api/classes/RedisSMQError.md#stacktracelimit)
+[RedisSMQError](../classes/RedisSMQError.md).[stackTraceLimit](../classes/RedisSMQError.md#stacktracelimit)
 
 ## Accessors
 
@@ -145,4 +145,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[captureStackTrace](docs/api/classes/RedisSMQError.md#capturestacktrace)
+[RedisSMQError](../classes/RedisSMQError.md).[captureStackTrace](../classes/RedisSMQError.md#capturestacktrace)

@@ -6,10 +6,10 @@
 
 ### Methods
 
-- [debug](docs/api/interfaces/ILogger.md#debug)
-- [error](docs/api/interfaces/ILogger.md#error)
-- [info](docs/api/interfaces/ILogger.md#info)
-- [warn](docs/api/interfaces/ILogger.md#warn)
+- [debug](../interfaces/ILogger.md#debug)
+- [error](../interfaces/ILogger.md#error)
+- [info](../interfaces/ILogger.md#info)
+- [warn](../interfaces/ILogger.md#warn)
 
 ## Methods
 

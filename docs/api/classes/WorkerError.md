@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
-- [`PanicError`](docs/api/classes/PanicError.md)
+- [`PanicError`](../classes/PanicError.md)
 
   ↳ **`WorkerError`**
 
@@ -12,28 +12,28 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/WorkerError.md#constructor)
+- [constructor](../classes/WorkerError.md#constructor)
 
 ### Properties
 
-- [message](docs/api/classes/WorkerError.md#message)
-- [stack](docs/api/classes/WorkerError.md#stack)
-- [prepareStackTrace](docs/api/classes/WorkerError.md#preparestacktrace)
-- [stackTraceLimit](docs/api/classes/WorkerError.md#stacktracelimit)
+- [message](../classes/WorkerError.md#message)
+- [stack](../classes/WorkerError.md#stack)
+- [prepareStackTrace](../classes/WorkerError.md#preparestacktrace)
+- [stackTraceLimit](../classes/WorkerError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](docs/api/classes/WorkerError.md#name)
+- [name](../classes/WorkerError.md#name)
 
 ### Methods
 
-- [captureStackTrace](docs/api/classes/WorkerError.md#capturestacktrace)
+- [captureStackTrace](../classes/WorkerError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerError**(`message?`): [`WorkerError`](docs/api/classes/WorkerError.md)
+• **new WorkerError**(`message?`): [`WorkerError`](../classes/WorkerError.md)
 
 #### Parameters
 
@@ -43,11 +43,11 @@
 
 #### Returns
 
-[`WorkerError`](docs/api/classes/WorkerError.md)
+[`WorkerError`](../classes/WorkerError.md)
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[constructor](docs/api/classes/PanicError.md#constructor)
+[PanicError](../classes/PanicError.md).[constructor](../classes/PanicError.md#constructor)
 
 ## Properties
 
@@ -57,7 +57,7 @@
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[message](docs/api/classes/PanicError.md#message)
+[PanicError](../classes/PanicError.md).[message](../classes/PanicError.md#message)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[stack](docs/api/classes/PanicError.md#stack)
+[PanicError](../classes/PanicError.md).[stack](../classes/PanicError.md#stack)
 
 ___
 
@@ -98,7 +98,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[prepareStackTrace](docs/api/classes/PanicError.md#preparestacktrace)
+[PanicError](../classes/PanicError.md).[prepareStackTrace](../classes/PanicError.md#preparestacktrace)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[stackTraceLimit](docs/api/classes/PanicError.md#stacktracelimit)
+[PanicError](../classes/PanicError.md).[stackTraceLimit](../classes/PanicError.md#stacktracelimit)
 
 ## Accessors
 
@@ -145,4 +145,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[PanicError](docs/api/classes/PanicError.md).[captureStackTrace](docs/api/classes/PanicError.md#capturestacktrace)
+[PanicError](../classes/PanicError.md).[captureStackTrace](../classes/PanicError.md#capturestacktrace)

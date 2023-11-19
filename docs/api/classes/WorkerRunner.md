@@ -12,62 +12,62 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/WorkerRunner.md#constructor)
+- [constructor](../classes/WorkerRunner.md#constructor)
 
 ### Properties
 
-- [captureRejectionSymbol](docs/api/classes/WorkerRunner.md#capturerejectionsymbol)
-- [captureRejections](docs/api/classes/WorkerRunner.md#capturerejections)
-- [defaultMaxListeners](docs/api/classes/WorkerRunner.md#defaultmaxlisteners)
-- [errorMonitor](docs/api/classes/WorkerRunner.md#errormonitor)
+- [captureRejectionSymbol](../classes/WorkerRunner.md#capturerejectionsymbol)
+- [captureRejections](../classes/WorkerRunner.md#capturerejections)
+- [defaultMaxListeners](../classes/WorkerRunner.md#defaultmaxlisteners)
+- [errorMonitor](../classes/WorkerRunner.md#errormonitor)
 
 ### Methods
 
-- [[captureRejectionSymbol]](docs/api/classes/WorkerRunner.md#[capturerejectionsymbol])
-- [addListener](docs/api/classes/WorkerRunner.md#addlistener)
-- [addWorker](docs/api/classes/WorkerRunner.md#addworker)
-- [emit](docs/api/classes/WorkerRunner.md#emit)
-- [eventNames](docs/api/classes/WorkerRunner.md#eventnames)
-- [getMaxListeners](docs/api/classes/WorkerRunner.md#getmaxlisteners)
-- [listenerCount](docs/api/classes/WorkerRunner.md#listenercount)
-- [listeners](docs/api/classes/WorkerRunner.md#listeners)
-- [off](docs/api/classes/WorkerRunner.md#off)
-- [on](docs/api/classes/WorkerRunner.md#on)
-- [once](docs/api/classes/WorkerRunner.md#once)
-- [prependListener](docs/api/classes/WorkerRunner.md#prependlistener)
-- [prependOnceListener](docs/api/classes/WorkerRunner.md#prependoncelistener)
-- [quit](docs/api/classes/WorkerRunner.md#quit)
-- [rawListeners](docs/api/classes/WorkerRunner.md#rawlisteners)
-- [removeAllListeners](docs/api/classes/WorkerRunner.md#removealllisteners)
-- [removeListener](docs/api/classes/WorkerRunner.md#removelistener)
-- [run](docs/api/classes/WorkerRunner.md#run)
-- [setMaxListeners](docs/api/classes/WorkerRunner.md#setmaxlisteners)
-- [addAbortListener](docs/api/classes/WorkerRunner.md#addabortlistener)
-- [getEventListeners](docs/api/classes/WorkerRunner.md#geteventlisteners)
-- [getMaxListeners](docs/api/classes/WorkerRunner.md#getmaxlisteners-1)
-- [listenerCount](docs/api/classes/WorkerRunner.md#listenercount-1)
-- [on](docs/api/classes/WorkerRunner.md#on-1)
-- [once](docs/api/classes/WorkerRunner.md#once-1)
-- [setMaxListeners](docs/api/classes/WorkerRunner.md#setmaxlisteners-1)
+- [[captureRejectionSymbol]](../classes/WorkerRunner.md#[capturerejectionsymbol])
+- [addListener](../classes/WorkerRunner.md#addlistener)
+- [addWorker](../classes/WorkerRunner.md#addworker)
+- [emit](../classes/WorkerRunner.md#emit)
+- [eventNames](../classes/WorkerRunner.md#eventnames)
+- [getMaxListeners](../classes/WorkerRunner.md#getmaxlisteners)
+- [listenerCount](../classes/WorkerRunner.md#listenercount)
+- [listeners](../classes/WorkerRunner.md#listeners)
+- [off](../classes/WorkerRunner.md#off)
+- [on](../classes/WorkerRunner.md#on)
+- [once](../classes/WorkerRunner.md#once)
+- [prependListener](../classes/WorkerRunner.md#prependlistener)
+- [prependOnceListener](../classes/WorkerRunner.md#prependoncelistener)
+- [quit](../classes/WorkerRunner.md#quit)
+- [rawListeners](../classes/WorkerRunner.md#rawlisteners)
+- [removeAllListeners](../classes/WorkerRunner.md#removealllisteners)
+- [removeListener](../classes/WorkerRunner.md#removelistener)
+- [run](../classes/WorkerRunner.md#run)
+- [setMaxListeners](../classes/WorkerRunner.md#setmaxlisteners)
+- [addAbortListener](../classes/WorkerRunner.md#addabortlistener)
+- [getEventListeners](../classes/WorkerRunner.md#geteventlisteners)
+- [getMaxListeners](../classes/WorkerRunner.md#getmaxlisteners-1)
+- [listenerCount](../classes/WorkerRunner.md#listenercount-1)
+- [on](../classes/WorkerRunner.md#on-1)
+- [once](../classes/WorkerRunner.md#once-1)
+- [setMaxListeners](../classes/WorkerRunner.md#setmaxlisteners-1)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerRunner**(`redisClient`, `keyLock`, `workerPool`, `logger`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+• **new WorkerRunner**(`redisClient`, `keyLock`, `workerPool`, `logger`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `redisClient` | [`RedisClient`](docs/api/classes/RedisClient.md) |
+| `redisClient` | [`RedisClient`](../classes/RedisClient.md) |
 | `keyLock` | `string` |
-| `workerPool` | [`WorkerPool`](docs/api/classes/WorkerPool.md) |
-| `logger` | [`ILogger`](docs/api/interfaces/ILogger.md) |
+| `workerPool` | [`WorkerPool`](../classes/WorkerPool.md) |
+| `logger` | [`ILogger`](../interfaces/ILogger.md) |
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 #### Overrides
 
@@ -77,7 +77,7 @@ EventEmitter.constructor
 
 ### captureRejectionSymbol
 
-▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](docs/api/classes/RedisClient.md#capturerejectionsymbol)
+▪ `Static` `Readonly` **captureRejectionSymbol**: typeof [`captureRejectionSymbol`](../classes/RedisClient.md#capturerejectionsymbol)
 
 #### Inherited from
 
@@ -109,7 +109,7 @@ ___
 
 ### errorMonitor
 
-▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](docs/api/classes/RedisClient.md#errormonitor)
+▪ `Static` `Readonly` **errorMonitor**: typeof [`errorMonitor`](../classes/RedisClient.md#errormonitor)
 
 This symbol shall be used to install a listener for only monitoring `'error'`
 events. Listeners installed using this symbol are called before the regular
@@ -149,7 +149,7 @@ ___
 
 ### addListener
 
-▸ **addListener**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **addListener**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -162,7 +162,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -182,7 +182,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `instance` | [`Worker`](docs/api/classes/Worker.md) |
+| `instance` | [`Worker`](../classes/Worker.md) |
 
 #### Returns
 
@@ -292,7 +292,7 @@ ___
 ▸ **getMaxListeners**(): `number`
 
 Returns the current max listener value for the `EventEmitter` which is either
-set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](docs/api/classes/WorkerRunner.md#defaultmaxlisteners).
+set by `emitter.setMaxListeners(n)` or defaults to [defaultMaxListeners](../classes/WorkerRunner.md#defaultmaxlisteners).
 
 #### Returns
 
@@ -374,7 +374,7 @@ ___
 
 ### off
 
-▸ **off**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **off**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Alias for `emitter.removeListener()`.
 
@@ -387,7 +387,7 @@ Alias for `emitter.removeListener()`.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -401,7 +401,7 @@ ___
 
 ### on
 
-▸ **on**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **on**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Adds the `listener` function to the end of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -438,7 +438,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -452,7 +452,7 @@ ___
 
 ### once
 
-▸ **once**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **once**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Adds a **one-time**`listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -487,7 +487,7 @@ myEE.emit('foo');
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -501,7 +501,7 @@ ___
 
 ### prependListener
 
-▸ **prependListener**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **prependListener**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -525,7 +525,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -539,7 +539,7 @@ ___
 
 ### prependOnceListener
 
-▸ **prependOnceListener**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **prependOnceListener**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array. The next time `eventName` is triggered, this
 listener is removed, and then invoked.
@@ -561,7 +561,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -581,7 +581,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
 
 #### Returns
 
@@ -642,7 +642,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**(`event?`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **removeAllListeners**(`event?`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -660,7 +660,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -674,7 +674,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**(`eventName`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **removeListener**(`eventName`, `listener`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 Removes the specified `listener` from the listener array for the event named`eventName`.
 
@@ -762,7 +762,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 
@@ -786,7 +786,7 @@ ___
 
 ### setMaxListeners
 
-▸ **setMaxListeners**(`n`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **setMaxListeners**(`n`): [`WorkerRunner`](../classes/WorkerRunner.md)
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are
 added for a particular event. This is a useful default that helps finding
@@ -803,7 +803,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](../classes/WorkerRunner.md)
 
 **`Since`**
 

@@ -6,9 +6,9 @@
 
 ### Enumeration Members
 
-- [IOREDIS](docs/api/enums/ERedisConfigClient.md#ioredis)
-- [REDIS](docs/api/enums/ERedisConfigClient.md#redis)
-- [REDIS\_V4](docs/api/enums/ERedisConfigClient.md#redis_v4)
+- [IOREDIS](../enums/ERedisConfigClient.md#ioredis)
+- [REDIS](../enums/ERedisConfigClient.md#redis)
+- [REDIS\_V4](../enums/ERedisConfigClient.md#redis_v4)
 
 ## Enumeration Members
 
