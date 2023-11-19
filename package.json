@@ -1,7 +1,7 @@
 {
   "name": "redis-smq-common",
   "version": "2.0.0",
-  "description": "RedisSMQ shared components that may be used by integrated applications and extensions.",
+  "description": "RedisSMQ Common Library provides many components that are mainly used by RedisSMQ and RedisSMQ Monitor.",
   "author": "Weyoss <weyoss@protonmail.com>",
   "license": "MIT",
   "keywords": [
