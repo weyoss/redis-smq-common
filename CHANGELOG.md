@@ -1,6 +1,4 @@
-# CHANGELOG
-
-## 2.0.0
+## 2.0.0 (2023-03-25)
 
 * feat(redis-client): support offset and count for zrangebyscore() (2ec00e0)
 
