@@ -12,7 +12,13 @@
     <a href="https://codecov.io/github/weyoss/redis-smq-common?branch=master" rel="nofollow"><img src="https://img.shields.io/codecov/c/github/weyoss/redis-smq-common" alt="Coverage Status" /></a>
 </p>
 
-[RedisSMQ](https://github.com/weyoss/redis-smq) shared components that may be used by integrated applications and extensions.
+RedisSMQ Common Library provides many components that are mainly used by [RedisSMQ](https://github.com/weyoss/redis-smq) and [RedisSMQ Monitor](https://github.com/weyoss/redis-smq-monitor).
+
+This library is included as part of RedisSMQ and not intended to be installed separately as a stand-alone package.
+
+## Documentation
+
+See [Docs](docs/README.md) for more details.
 
 ## License
 

@@ -1,12 +1,14 @@
+> [RedisSMQ Common Library](../README.md) / [Docs](./README.md) / Logs
+
 # Logs
 
-> By default, logging is disabled. Logging can affect message processing performance (due to I/O operations). To enable logging, set `logger.enabled` to true in your configuration object. 
+> By default, logging is disabled. Logging can affect message processing performance (due to I/O operations). To enable logging, set `logger.enabled` to true in your configuration object.
 
 ## Built-in RedisSMQ logger
 
 RedisSMQ comes with a built-in JSON logger using [Bunyan](https://github.com/trentm/node-bunyan).
 
-You can make use of the built-in RedisSMQ logger by enabled it and also setting up its configuration parameters. 
+You can make use of the built-in RedisSMQ logger by enabled it and also setting up its configuration parameters.
 
 When the built-in logger is used, you can make use of the bunyan utility to pretty format the output:
 
@@ -14,7 +16,13 @@ When the built-in logger is used, you can make use of the bunyan utility to pret
 $ node consumer | ./node_modules/.bin/bunyan
 ```
 
-### Configuration
+## Configuration
+
+### Configuration Parameters
+
+See [ILoggerConfig](api/interfaces/ILoggerConfig.md) for more details.
+
+### Configuration Example
 
 ```javascript
 'use strict';
@@ -38,12 +46,10 @@ module.exports = {
 };
 ```
 
-**Parameters**
+#### Parameters
 
 - `logger` *(object): Optional.* Configuration placeholder object for logging parameters.
-
 - `logger.enabled` *(boolean): Optional.* Enable/disable logging. By default logging is disabled.
-
 - `logger.options` *(object): Optional.* All valid Bunyan configuration options are accepted. See [Bunyan repository](https://github.com/trentm/node-bunyan) for more details.
 
 ## Setting up a custom logger
@@ -100,4 +106,3 @@ setLogger(logger);
 [2022-01-27T14:04:30.675Z]  INFO: redis-smq/165159 on leno: [MonitorServer] Down.
 
 ```
-
