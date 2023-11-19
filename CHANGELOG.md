@@ -1,5 +1,13 @@
 
 
+## [3.0.0-rc.4](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.3...v3.0.0-rc.4) (2023-11-19)
+
+
+### Misc
+
+* add typescript declaration file entry ([453f103](https://github.com/weyoss/redis-smq-common/commit/453f1036cb0c89cf10372c14d44b336b19add370))
+* update .npmignore ([6b41b6d](https://github.com/weyoss/redis-smq-common/commit/6b41b6dad1c9d587001b331f29d401d653c066b3))
+
 ## [3.0.0-rc.3](https://github.com/weyoss/redis-smq-common/compare/v2.0.0...v3.0.0-rc.3) (2023-11-19)
 
 
