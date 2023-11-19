@@ -1,3 +1,38 @@
+
+
+## [3.0.0-rc.3](https://github.com/weyoss/redis-smq-common/compare/v2.0.0...v3.0.0-rc.3) (2023-11-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* support cjs/esm modules, refactor codebase, improve typings
+
+### Features
+
+* **redis-client:** add hscan support ([7672617](https://github.com/weyoss/redis-smq-common/commit/7672617c5438b677420f24591cc849082084602f))
+* support cjs/esm modules, refactor codebase, improve typings ([3da25b9](https://github.com/weyoss/redis-smq-common/commit/3da25b91dfce72051df0e409de00b1ef40e91d1c))
+
+
+### Bug Fixes
+
+* **NodeRedisV4Client:** fix zrevrange() error for Redis v2.8 ([f0d9e25](https://github.com/weyoss/redis-smq-common/commit/f0d9e2563821c161aba92b1518249b89da448b76))
+
+
+### Misc
+
+* fix broken links ([6b2e9cf](https://github.com/weyoss/redis-smq-common/commit/6b2e9cf222eff79bf9355d46d9677d378347b740))
+* improve documentation, add API reference, clean up ([53169a1](https://github.com/weyoss/redis-smq-common/commit/53169a1b459a7f0db9907bba18f900dc179cc366))
+* **logger:** fix getLogger() tests when called with the 2nd param ([df43847](https://github.com/weyoss/redis-smq-common/commit/df438470cdc306311cc70aca72e19f3b1dcd2c46))
+* **redis-client:** fix 'ERR unknown command HSCAN' error ([70a5c98](https://github.com/weyoss/redis-smq-common/commit/70a5c98ae5281b0f0a04ab6f2414da620cad2ae7))
+* **redis-client:** increase code coverage ([34fccba](https://github.com/weyoss/redis-smq-common/commit/34fccba189078cb56b1c86b83662f9d927a28182))
+* **redis-client:** test hscan support ([939a0ad](https://github.com/weyoss/redis-smq-common/commit/939a0ad1eb417e3d5e5607306ad9d172285c4c5d))
+* **redis-client:** Use count param for sscan ([8705086](https://github.com/weyoss/redis-smq-common/commit/87050869cf580e778bc9a5e8ede19e02884f8a87))
+* update .gitignore ([6fbc308](https://github.com/weyoss/redis-smq-common/commit/6fbc3087b74395ac3558e310bf58c378184608e3))
+* update CHANGELOG.md template ([aae81f3](https://github.com/weyoss/redis-smq-common/commit/aae81f376c3404a13a8647774d26175eff58b39d))
+* update minimal supported versions for nodejs and redis ([4a31852](https://github.com/weyoss/redis-smq-common/commit/4a31852a889cffb82eac2b3454dac323a39da79a))
+* update package description ([776a240](https://github.com/weyoss/redis-smq-common/commit/776a24029a6d79c132d5b861139926c6ffc7288b))
+* update tests and fix various errors ([c915fb2](https://github.com/weyoss/redis-smq-common/commit/c915fb240cf8f8781f98bd6aa77023b26e1a0fde))
+
 ## 2.0.0 (2023-03-25)
 
 * feat(redis-client): support offset and count for zrangebyscore() (2ec00e0)
