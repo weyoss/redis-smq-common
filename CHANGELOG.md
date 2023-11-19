@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.5](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.4...v3.0.0-rc.5) (2023-11-19)
+
+
+### Documentation
+
+* remove logs.md and redis.md, update README.md ([be2ebd8](https://github.com/weyoss/redis-smq-common/commit/be2ebd8ef0b8acbbcb37572363528dfcf968679a))
+
 ## [3.0.0-rc.4](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.3...v3.0.0-rc.4) (2023-11-19)
 
 
