@@ -1,34 +1,43 @@
-import { ICallback, ICompatibleLogger } from '../../../types';
-import { PowerManager } from '../../power-manager/power-manager';
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
+import { ICallback, ILogger } from '../../../types';
+import { PowerSwitch } from '../../power-switch/power-switch';
 import { EventEmitter } from 'events';
 import { Ticker } from '../../ticker/ticker';
-import { ELockStatus, LockManager } from '../../lock-manager/lock-manager';
+import { ELockStatus, Lock } from '../../lock/lock';
 import { RedisClient } from '../../redis-client/redis-client';
 import { events } from '../../events/events';
 import { WorkerPool } from './worker-pool';
 import { Worker } from '../worker';
 import { async } from '../../async/async';
-import { LockManagerAcquireError } from '../../lock-manager/errors/lock-manager-acquire.error';
+import { LockAcquireError } from '../../lock/errors';
 
 export class WorkerRunner extends EventEmitter {
-  private readonly powerManager: PowerManager;
+  private readonly powerManager: PowerSwitch;
   private readonly ticker: Ticker;
-  private readonly lockManager: LockManager;
+  private readonly lock: Lock;
   private readonly redisClient: RedisClient;
-  private readonly logger: ICompatibleLogger;
+  private readonly logger: ILogger;
   private readonly workerPool: WorkerPool;
 
   constructor(
     redisClient: RedisClient,
     keyLock: string,
     workerPool: WorkerPool,
-    logger: ICompatibleLogger,
+    logger: ILogger,
   ) {
     super();
-    this.powerManager = new PowerManager();
+    this.powerManager = new PowerSwitch();
     this.redisClient = redisClient;
     this.logger = logger;
-    this.lockManager = new LockManager(redisClient, keyLock, 60000);
+    this.lock = new Lock(redisClient, keyLock, 60000);
     this.ticker = new Ticker(this.onTick);
     this.workerPool = workerPool;
   }
@@ -37,10 +46,10 @@ export class WorkerRunner extends EventEmitter {
     async.waterfall(
       [
         (cb: ICallback<void>) => {
-          this.lockManager.acquireOrExtend((err, status) => {
+          this.lock.acquireOrExtend((err, status) => {
             if (status === ELockStatus.locked) {
               this.logger.info(
-                `Workers are exclusively running from this instance (Lock ID ${this.lockManager.getId()}).`,
+                `Workers are exclusively running from this instance (Lock ID ${this.lock.getId()}).`,
               );
             }
             cb(err);
@@ -51,8 +60,7 @@ export class WorkerRunner extends EventEmitter {
         },
       ],
       (err) => {
-        if (!err || err instanceof LockManagerAcquireError)
-          this.ticker.nextTick();
+        if (!err || err instanceof LockAcquireError) this.ticker.nextTick();
         else this.emit(events.ERROR, err);
       },
     );
@@ -68,7 +76,7 @@ export class WorkerRunner extends EventEmitter {
   };
 
   private releaseLock = (cb: ICallback<void>) => {
-    this.lockManager.releaseLock(cb);
+    this.lock.releaseLock(cb);
   };
 
   addWorker(instance: Worker): void {

@@ -1,15 +1,13 @@
-import { ArgumentError } from './argument.error';
-import { EmptyCallbackReplyError } from './empty-callback-reply.error';
-import { GenericError } from './generic.error';
-import { InvalidCallbackReplyError } from './invalid-callback-reply.error';
-import { PanicError } from './panic.error';
-import { RedisSMQError } from './redis-smq.error';
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
 
-export const errors = {
-  ArgumentError,
-  EmptyCallbackReplyError,
-  GenericError,
-  InvalidCallbackReplyError,
-  PanicError,
-  RedisSMQError,
-};
+export { CallbackEmptyReplyError } from './callback-empty-reply.error';
+export { CallbackInvalidReplyError } from './callback-invalid-reply.error';
+export { PanicError } from './panic.error';
+export { RedisSMQError } from './redis-smq.error';

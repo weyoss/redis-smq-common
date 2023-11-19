@@ -1,19 +1,28 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { Ticker } from '../ticker/ticker';
 import { ICallback } from '../../types';
 import { events } from '../events/events';
-import { PowerManager } from '../power-manager/power-manager';
-import { WorkerError } from './worker-error';
+import { PowerSwitch } from '../power-switch/power-switch';
+import { WorkerError } from './errors';
 
 export abstract class Worker {
   private readonly ticker: Ticker | null = null;
-  private readonly powerManager: PowerManager | null = null;
+  private readonly powerManager: PowerSwitch | null = null;
   private readonly managed: boolean;
 
   constructor(managed: boolean, timeout = 1000) {
     this.managed = managed;
     if (!managed) {
       this.ticker = new Ticker(this.onTick, timeout);
-      this.powerManager = new PowerManager();
+      this.powerManager = new PowerSwitch();
     }
   }
 
@@ -24,9 +33,9 @@ export abstract class Worker {
     return this.ticker;
   };
 
-  private getPowerManager(): PowerManager {
+  private getPowerManager(): PowerSwitch {
     if (!this.powerManager) {
-      throw new WorkerError('Expected an instance of PowerManager');
+      throw new WorkerError('Expected an instance of PowerSwitch');
     }
     return this.powerManager;
   }

@@ -1,9 +1,18 @@
-import { ICallback, IRedisClientMulti } from '../../../types';
-import { RedisClientError } from '../errors/redis-client.error';
-import { Pipeline, Redis } from 'ioredis';
-import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
 
-export class IoredisClientMulti implements IRedisClientMulti {
+import { ICallback, IRedisTransaction } from '../../../types';
+import { RedisClientError } from '../errors';
+import { Pipeline, Redis } from 'ioredis';
+import { WatchedKeysChangedError } from '../errors';
+
+export class IoredisClientMulti implements IRedisTransaction {
   protected multi: Pipeline;
 
   constructor(client: Redis) {
@@ -66,7 +75,7 @@ export class IoredisClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  hset(key: string, field: string, value: string): this {
+  hset(key: string, field: string, value: string | number): this {
     this.multi.hset(key, field, value);
     return this;
   }

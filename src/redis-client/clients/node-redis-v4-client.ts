@@ -1,6 +1,15 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { RedisClient } from '../redis-client';
 import { ICallback } from '../../../types';
-import { RedisClientError } from '../errors/redis-client.error';
+import { RedisClientError } from '../errors';
 import { createClient, RedisClientOptions } from '@redis/client';
 import { NodeRedisV4ClientMulti } from './node-redis-v4-client-multi';
 
@@ -97,6 +106,30 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
+  zrevrange(
+    key: string,
+    min: number,
+    max: number,
+    cb: ICallback<string[]>,
+  ): void {
+    this.client
+      .zRange(key, min, max, { REV: true })
+      .then((reply) =>
+        cb(
+          null,
+          (Array.isArray(reply) ? reply : []).map((i) => String(i)),
+        ),
+      )
+      .catch(cb);
+  }
+
+  zrem(source: string, id: string, cb: ICallback<number>): void {
+    this.client
+      .zRem(source, id)
+      .then((reply) => cb(null, reply))
+      .catch(cb);
+  }
+
   psubscribe(pattern: string): void {
     this.client.pSubscribe(pattern, (message, channel) => {
       this.client.emit('pmessage', pattern, channel, message);
@@ -143,28 +176,46 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  sscan(
+  override sscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<string[]>,
+    cb: ICallback<{ cursor: string; items: string[] }>,
   ): void {
-    const result = new Set<string>();
-    const iterate = (position: number) => {
-      const args: [string, number, { MATCH?: string; COUNT?: number }] = [
-        key,
-        position,
-        options,
-      ];
-      this.client
-        .sScan(...args)
-        .then(({ cursor, members }) => {
-          members.forEach((i) => result.add(i));
-          if (cursor === 0) cb(null, [...result]);
-          else iterate(cursor);
-        })
-        .catch(cb);
-    };
-    iterate(0);
+    const args: [string, number, { MATCH?: string; COUNT?: number }] = [
+      key,
+      Number(cursor),
+      options,
+    ];
+    this.client
+      .sScan(...args)
+      .then(({ cursor, members }) => {
+        cb(null, { cursor: String(cursor), items: members });
+      })
+      .catch(cb);
+  }
+
+  override zscan(
+    key: string,
+    cursor: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<{ cursor: string; items: string[] }>,
+  ): void {
+    const args: [string, number, { MATCH?: string; COUNT?: number }] = [
+      key,
+      Number(cursor),
+      options,
+    ];
+    this.client
+      .zScan(...args)
+      .then(({ cursor, members }) => {
+        const result = new Set<string>();
+        for (const i of members) {
+          result.add(i.value);
+        }
+        cb(null, { cursor: String(cursor), items: [...result] });
+      })
+      .catch(cb);
   }
 
   sadd(key: string, member: string, cb: ICallback<number>): void {
@@ -188,31 +239,28 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  hscan(
+  override hscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<Record<string, string>>,
+    cb: ICallback<{ cursor: string; result: Record<string, string> }>,
   ): void {
-    const result: Record<string, string> = {};
-    const iterate = (position: number) => {
-      const args: [string, number, { MATCH?: string; COUNT?: number }] = [
-        key,
-        position,
-        options,
-      ];
-      this.client
-        .hScan(...args)
-        .then(({ cursor, tuples }) => {
-          while (tuples.length) {
-            const item = tuples.shift();
-            if (item) result[item.field] = item.value;
-          }
-          if (cursor === 0) cb(null, result);
-          else iterate(cursor);
-        })
-        .catch(cb);
-    };
-    iterate(0);
+    const args: [string, number, { MATCH?: string; COUNT?: number }] = [
+      key,
+      Number(cursor),
+      options,
+    ];
+    this.client
+      .hScan(...args)
+      .then(({ cursor, tuples }) => {
+        const result: Record<string, string> = {};
+        while (tuples.length) {
+          const item = tuples.shift();
+          if (item) result[item.field] = item.value;
+        }
+        cb(null, { cursor: String(cursor), result });
+      })
+      .catch(cb);
   }
 
   hget(key: string, field: string, cb: ICallback<string | null>): void {
@@ -222,7 +270,12 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  hset(key: string, field: string, value: string, cb: ICallback<number>): void {
+  hset(
+    key: string,
+    field: string,
+    value: string | number,
+    cb: ICallback<number>,
+  ): void {
     this.client
       .hSet(key, field, value)
       .then((reply) => cb(null, reply))
@@ -437,11 +490,12 @@ export class NodeRedisV4Client extends RedisClient {
   halt(cb: ICallback<void>): void {
     if (!this.connectionClosed) {
       this.client.once('end', cb);
-      this.end(true);
+      this.end();
     } else cb();
   }
 
-  end(flush: boolean): void {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  end(): void {
     if (!this.connectionClosed) {
       this.client.disconnect().catch(() => void 0);
     }
@@ -461,7 +515,7 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  override on(event: string, listener: (...args: unknown[]) => any): this {
+  override on(event: string, listener: (...args: unknown[]) => unknown): this {
     this.client.on(event, listener);
     return this;
   }

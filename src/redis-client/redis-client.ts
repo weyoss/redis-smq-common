@@ -1,32 +1,48 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { EventEmitter } from 'events';
-import { LuaScripts } from './lua-scripts';
-import { ICallback, IRedisClientMulti } from '../../types';
-import { RedisClientError } from './errors/redis-client.error';
-import { EmptyCallbackReplyError } from '../errors/empty-callback-reply.error';
-import * as fs from 'fs';
-import { resolve } from 'path';
+import { ELuaScriptName, LuaScript } from './lua-script';
+import { ICallback, IRedisClient, IRedisTransaction } from '../../types';
+import { RedisClientError } from './errors';
+import { CallbackEmptyReplyError } from '../errors';
 
-export enum ELuaScriptName {
-  LPOPRPUSH = 'LPOPRPUSH',
-  ZPOPHGETRPUSH = 'ZPOPHGETRPUSH',
-  LPOPRPUSHEXTRA = 'LPOPRPUSHEXTRA',
-}
+const minimalSupportedVersion: [number, number, number] = [2, 8, 0];
 
-export abstract class RedisClient extends EventEmitter {
+export abstract class RedisClient extends EventEmitter implements IRedisClient {
   protected static redisServerVersion: number[] | null = null;
-  protected static scriptsLoaded = false;
-  protected static luaScripts = new LuaScripts();
   protected connectionClosed = true;
 
   validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
     if (!RedisClient.redisServerVersion)
-      throw new RedisClientError('Unknown Redis server version.');
+      throw new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION');
     return (
       RedisClient.redisServerVersion[0] > major ||
       (RedisClient.redisServerVersion[0] === major &&
         RedisClient.redisServerVersion[1] >= feature &&
         RedisClient.redisServerVersion[2] >= minor)
     );
+  }
+
+  validateRedisServerSupport(cb: ICallback<void>): void {
+    const validate = (cb: ICallback<void>) => {
+      const [major, feature, minor] = minimalSupportedVersion;
+      if (!this.validateRedisVersion(major, feature, minor))
+        cb(new RedisClientError('UNSUPPORTED_REDIS_SERVER_VERSION'));
+      else cb();
+    };
+    if (!RedisClient.redisServerVersion) {
+      this.updateServerVersion((err) => {
+        if (err) cb(err);
+        else validate(cb);
+      });
+    } else validate(cb);
   }
 
   abstract set(
@@ -46,7 +62,7 @@ export abstract class RedisClient extends EventEmitter {
     cb: ICallback<number | string>,
   ): void;
 
-  abstract multi(): IRedisClientMulti;
+  abstract multi(): IRedisTransaction;
 
   abstract watch(args: string[], cb: ICallback<string>): void;
 
@@ -57,6 +73,13 @@ export abstract class RedisClient extends EventEmitter {
   abstract zcard(key: string, cb: ICallback<number>): void;
 
   abstract zrange(
+    key: string,
+    min: number,
+    max: number,
+    cb: ICallback<string[]>,
+  ): void;
+
+  abstract zrevrange(
     key: string,
     min: number,
     max: number,
@@ -84,13 +107,29 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract sscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<string[]>,
+    cb: ICallback<{ cursor: string; items: string[] }>,
   ): void;
 
-  sscanFallback(key: string, cb: ICallback<string[]>): void {
-    if (this.validateRedisVersion(2, 8)) this.sscan(key, { COUNT: 1000 }, cb);
-    else this.smembers(key, cb);
+  sscanAll(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<string[]>,
+  ): void {
+    const result = new Set<string>();
+    const iterate = (cursor: string) => {
+      this.sscan(key, cursor, options, (err, reply) => {
+        if (err) cb(err);
+        else if (!reply) cb(new CallbackEmptyReplyError());
+        else {
+          reply.items.forEach((i) => result.add(i));
+          if (reply.cursor === '0') cb(null, [...result]);
+          else iterate(reply.cursor);
+        }
+      });
+    };
+    iterate('0');
   }
 
   abstract sadd(key: string, member: string, cb: ICallback<number>): void;
@@ -101,13 +140,29 @@ export abstract class RedisClient extends EventEmitter {
 
   abstract hscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<Record<string, string>>,
+    cb: ICallback<{ cursor: string; result: Record<string, string> }>,
   ): void;
 
-  hscanFallback(key: string, cb: ICallback<Record<string, string>>): void {
-    if (this.validateRedisVersion(2, 8)) this.hscan(key, { COUNT: 1000 }, cb);
-    else this.hgetall(key, cb);
+  hscanAll(
+    key: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<Record<string, string>>,
+  ): void {
+    const result: Record<string, string> = {};
+    const iterate = (cursor: string) => {
+      this.hscan(key, cursor, options, (err, reply) => {
+        if (err) cb(err);
+        else if (!reply) cb(new CallbackEmptyReplyError());
+        else {
+          Object.assign(result, reply.result);
+          if (reply.cursor === '0') cb(null, result);
+          else iterate(reply.cursor);
+        }
+      });
+    };
+    iterate('0');
   }
 
   abstract hget(key: string, field: string, cb: ICallback<string | null>): void;
@@ -115,7 +170,7 @@ export abstract class RedisClient extends EventEmitter {
   abstract hset(
     key: string,
     field: string,
-    value: string,
+    value: string | number,
     cb: ICallback<number>,
   ): void;
 
@@ -149,15 +204,14 @@ export abstract class RedisClient extends EventEmitter {
     cb: ICallback<string | null>,
   ): void;
 
-  zpophgetrpush(
+  zpoprpush(
     source: string,
-    sourceHash: string,
     destination: string,
     cb: ICallback<string | null>,
   ): void {
     this.runScript(
-      ELuaScriptName.ZPOPHGETRPUSH,
-      [source, sourceHash, destination],
+      ELuaScriptName.ZPOPRPUSH,
+      [source, destination],
       [],
       (err, res?: unknown) => {
         if (err) cb(err);
@@ -166,23 +220,12 @@ export abstract class RedisClient extends EventEmitter {
     );
   }
 
-  lpoprpushextra(
-    source: string,
-    destination: string,
-    listSize: number,
-    expire: number,
-    cb: ICallback<string | null>,
-  ): void {
-    this.runScript(
-      ELuaScriptName.LPOPRPUSHEXTRA,
-      [source, destination],
-      [listSize, expire],
-      (err, res?: unknown) => {
-        if (err) cb(err);
-        else cb(null, typeof res === 'string' ? res : null);
-      },
-    );
-  }
+  abstract zscan(
+    key: string,
+    cursor: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<{ cursor: string; items: string[] }>,
+  ): void;
 
   lpoprpush(
     source: string,
@@ -210,6 +253,8 @@ export abstract class RedisClient extends EventEmitter {
     max: number,
     cb: ICallback<Record<string, string>>,
   ): void;
+
+  abstract zrem(source: string, id: string, cb: ICallback<number>): void;
 
   abstract rpop(key: string, cb: ICallback<string | null>): void;
 
@@ -275,7 +320,7 @@ export abstract class RedisClient extends EventEmitter {
     if (!RedisClient.redisServerVersion) {
       this.getInfo((err, res) => {
         if (err) cb(err);
-        else if (!res) cb(new EmptyCallbackReplyError());
+        else if (!res) cb(new CallbackEmptyReplyError());
         else {
           RedisClient.redisServerVersion = res
             .split('\r\n')[1]
@@ -289,16 +334,16 @@ export abstract class RedisClient extends EventEmitter {
   }
 
   loadScripts(cb: ICallback<void>): void {
-    RedisClient.luaScripts.loadScripts(this, cb);
+    LuaScript.getInstance().loadScripts(this, cb);
   }
 
   runScript(
     scriptName: string,
-    keys: string[],
+    keys: (string | number)[],
     args: (string | number)[],
     cb: ICallback<unknown>,
   ): void {
-    const sha = RedisClient.luaScripts.getScriptId(scriptName);
+    const sha = LuaScript.getInstance().getScriptId(scriptName);
     this.evalsha(sha, [keys.length, ...keys, ...args], (err, res?: unknown) => {
       if (err) cb(err);
       else cb(null, res);
@@ -306,22 +351,8 @@ export abstract class RedisClient extends EventEmitter {
   }
 
   static addScript(name: string, content: string): void {
-    if (this.luaScripts.hasScript(name)) {
+    if (!LuaScript.getInstance().addScript(name, content)) {
       throw new RedisClientError(`A script with name [${name}] already exists`);
     }
-    this.luaScripts.addScript(name, content);
   }
 }
-
-RedisClient.addScript(
-  ELuaScriptName.ZPOPHGETRPUSH,
-  fs.readFileSync(resolve(__dirname, './lua/zpophgetrpush.lua')).toString(),
-);
-RedisClient.addScript(
-  ELuaScriptName.LPOPRPUSH,
-  fs.readFileSync(resolve(__dirname, './lua/lpoprpush.lua')).toString(),
-);
-RedisClient.addScript(
-  ELuaScriptName.LPOPRPUSHEXTRA,
-  fs.readFileSync(resolve(__dirname, './lua/lpoprpushextra.lua')).toString(),
-);

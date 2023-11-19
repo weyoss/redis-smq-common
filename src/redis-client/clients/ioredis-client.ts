@@ -1,9 +1,18 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { RedisClient } from '../redis-client';
-import { Redis, RedisOptions } from 'ioredis';
+import IORedis, { Redis, RedisOptions } from 'ioredis';
 import { ICallback } from '../../../types';
-import { RedisClientError } from '../errors/redis-client.error';
-import * as IORedis from 'ioredis';
+import { RedisClientError } from '../errors';
 import { IoredisClientMulti } from './ioredis-client-multi';
+import { CallbackEmptyReplyError } from '../../errors';
 
 export class IoredisClient extends RedisClient {
   protected client: Redis;
@@ -79,26 +88,19 @@ export class IoredisClient extends RedisClient {
     this.client.sismember(key, member, cb);
   }
 
-  sscan(
+  override sscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<string[]>,
+    cb: ICallback<{ cursor: string; items: string[] }>,
   ): void {
-    const result = new Set<string>();
-    const iterate = (position: string) => {
-      const args: [string, string] = [key, position];
-      if (options.MATCH) args.push('MATCH', options.MATCH);
-      if (options.COUNT) args.push('COUNT', String(options.COUNT));
-      this.client.sscan(...args, (err, [cursor, items]) => {
-        if (err) cb(err);
-        else {
-          items.forEach((i) => result.add(i));
-          if (cursor === '0') cb(null, [...result]);
-          else iterate(cursor);
-        }
-      });
-    };
-    iterate('0');
+    const args: [string, string] = [key, cursor];
+    if (options.MATCH) args.push('MATCH', options.MATCH);
+    if (options.COUNT) args.push('COUNT', String(options.COUNT));
+    this.client.sscan(...args, (err, [cursor, items]) => {
+      if (err) cb(err);
+      else cb(null, { cursor, items });
+    });
   }
 
   zcard(key: string, cb: ICallback<number>): void {
@@ -107,6 +109,45 @@ export class IoredisClient extends RedisClient {
 
   zrange(key: string, min: number, max: number, cb: ICallback<string[]>): void {
     this.client.zrange(key, min, max, cb);
+  }
+
+  override zscan(
+    key: string,
+    cursor: string,
+    options: { MATCH?: string; COUNT?: number },
+    cb: ICallback<{ cursor: string; items: string[] }>,
+  ): void {
+    const args: [string, string] = [key, cursor];
+    if (options.MATCH) args.push('MATCH', options.MATCH);
+    if (options.COUNT) args.push('COUNT', String(options.COUNT));
+    this.client.zscan(...args, (err, reply) => {
+      if (err) cb(err);
+      else if (!reply) cb(new CallbackEmptyReplyError());
+      else {
+        const result = new Set<string>();
+        const [cursor, items] = reply;
+        while (items.length) {
+          const item = String(items.shift());
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          const score = String(items.shift());
+          result.add(item);
+        }
+        cb(null, { cursor, items: [...result] });
+      }
+    });
+  }
+
+  zrevrange(
+    key: string,
+    min: number,
+    max: number,
+    cb: ICallback<string[]>,
+  ): void {
+    this.client.zrevrange(key, min, max, cb);
+  }
+
+  zrem(source: string, id: string, cb: ICallback<number>): void {
+    this.client.zrem(source, id, cb);
   }
 
   psubscribe(pattern: string): void {
@@ -152,36 +193,38 @@ export class IoredisClient extends RedisClient {
     this.client.hgetall(key, cb);
   }
 
-  hscan(
+  override hscan(
     key: string,
+    cursor: string,
     options: { MATCH?: string; COUNT?: number },
-    cb: ICallback<Record<string, string>>,
+    cb: ICallback<{ cursor: string; result: Record<string, string> }>,
   ): void {
-    const result: Record<string, string> = {};
-    const iterate = (position: string) => {
-      const args: [string, string] = [key, position];
-      if (options.MATCH) args.push('MATCH', options.MATCH);
-      if (options.COUNT) args.push('COUNT', String(options.COUNT));
-      this.client.hscan(...args, (err, [cursor, items]) => {
-        if (err) cb(err);
-        else {
-          while (items.length) {
-            const key = String(items.shift());
-            result[key] = String(items.shift());
-          }
-          if (cursor === '0') cb(null, result);
-          else iterate(cursor);
+    const args: [string, string] = [key, cursor];
+    if (options.MATCH) args.push('MATCH', options.MATCH);
+    if (options.COUNT) args.push('COUNT', String(options.COUNT));
+    this.client.hscan(...args, (err, [cursor, items]) => {
+      if (err) cb(err);
+      else {
+        const result: Record<string, string> = {};
+        while (items.length) {
+          const key = String(items.shift());
+          result[key] = String(items.shift());
         }
-      });
-    };
-    iterate('0');
+        cb(null, { cursor, result });
+      }
+    });
   }
 
   hget(key: string, field: string, cb: ICallback<string | null>): void {
     this.client.hget(key, field, cb);
   }
 
-  hset(key: string, field: string, value: string, cb: ICallback<number>): void {
+  hset(
+    key: string,
+    field: string,
+    value: string | number,
+    cb: ICallback<number>,
+  ): void {
     this.client.hset(key, field, value, cb);
   }
 
@@ -334,11 +377,11 @@ export class IoredisClient extends RedisClient {
   halt(cb: ICallback<void>): void {
     if (!this.connectionClosed) {
       this.client.once('end', cb);
-      this.end(true);
+      this.end();
     } else cb();
   }
 
-  end(flush: boolean): void {
+  end(): void {
     if (!this.connectionClosed) {
       this.client.disconnect(false);
     }
@@ -355,7 +398,7 @@ export class IoredisClient extends RedisClient {
     this.client.info(cb);
   }
 
-  override on(event: string, listener: (...args: unknown[]) => any): this {
+  override on(event: string, listener: (...args: unknown[]) => unknown): this {
     this.client.on(event, listener);
     return this;
   }

@@ -3,13 +3,13 @@ dist/examples
 examples
 src/**
 tests/**
-.eslintrc.js
+.eslintrc.cjs
 .gitignore
 .npmignore
 .prettierrc
 index.ts
 tsconfig.json
-jest.config.js
+jest.config.cjs
 .idea
 types/**
 coverage/**
@@ -20,3 +20,5 @@ misc/**/*
 tsconfig.tsbuildinfo
 logo.png
 .husky
+scripts/**
+.codecov.yml

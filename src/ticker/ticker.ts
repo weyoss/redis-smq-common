@@ -1,18 +1,27 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { TFunction } from '../../types';
 import { EventEmitter } from 'events';
 import { events } from '../events/events';
-import { PowerManager } from '../power-manager/power-manager';
-import { TickerError } from './ticker.error';
-import { PanicError } from '../errors/panic.error';
+import { PowerSwitch } from '../power-switch/power-switch';
+import { TickerError } from './errors';
+import { PanicError } from '../errors';
 
 export class Ticker extends EventEmitter {
-  protected powerManager = new PowerManager();
+  protected powerManager = new PowerSwitch();
   protected onTickFn: TFunction;
   protected onNextTickFn: TFunction | null = null;
   protected time: number;
 
   protected timeout: NodeJS.Timeout | null = null;
-  protected interval: NodeJS.Timer | null = null;
+  protected interval: NodeJS.Timeout | null = null;
   protected shutdownTimeout: NodeJS.Timeout | null = null;
   protected aborted = false;
 

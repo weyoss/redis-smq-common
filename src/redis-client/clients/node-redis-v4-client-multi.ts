@@ -1,16 +1,25 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import {
   ICallback,
-  IRedisClientMulti,
-  TNodeRedisV4Client,
-  TNodeRedisV4Multi,
+  IRedisTransaction,
+  TRedisClientNodeRedisV4,
+  TRedisTransactionNodeRedisV4,
 } from '../../../types';
 import { WatchError } from '@redis/client';
-import { WatchedKeysChangedError } from '../errors/watched-keys-changed.error';
+import { WatchedKeysChangedError } from '../errors';
 
-export class NodeRedisV4ClientMulti implements IRedisClientMulti {
-  protected multi: TNodeRedisV4Multi;
+export class NodeRedisV4ClientMulti implements IRedisTransaction {
+  protected multi: TRedisTransactionNodeRedisV4;
 
-  constructor(client: TNodeRedisV4Client) {
+  constructor(client: TRedisClientNodeRedisV4) {
     this.multi = client.multi();
   }
 
@@ -64,7 +73,7 @@ export class NodeRedisV4ClientMulti implements IRedisClientMulti {
     return this;
   }
 
-  hset(key: string, field: string, value: string): this {
+  hset(key: string, field: string, value: string | number): this {
     this.multi.hSet(key, field, value);
     return this;
   }

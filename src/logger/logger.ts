@@ -1,6 +1,15 @@
+/*
+ * Copyright (c)
+ * Weyoss <weyoss@protonmail.com>
+ * https://github.com/weyoss
+ *
+ * This source code is licensed under the MIT license found in the LICENSE file
+ * in the root directory of this source tree.
+ */
+
 import { createLogger } from 'bunyan';
-import { ICompatibleLogger, TLoggerConfig } from '../../types';
-import { LoggerError } from './logger.error';
+import { LoggerError } from './errors';
+import { ILogger, ILoggerConfig } from '../../types';
 
 const noop = () => void 0;
 const dummyLogger = {
@@ -10,59 +19,46 @@ const dummyLogger = {
   error: noop,
 };
 
-let loggerInstance: ICompatibleLogger | null = null;
+let instance: ILogger | null = null;
 
-function createDefaultLogger(cfg: TLoggerConfig): ICompatibleLogger {
-  return createLogger({ ...(cfg.options ?? {}), name: 'redis-smq' });
+function destroy(): void {
+  instance = null;
 }
 
-function reset(): void {
-  loggerInstance = null;
-}
-
-function setLogger<T extends ICompatibleLogger>(logger: T): void {
-  if (loggerInstance) {
+function setLogger<T extends ILogger>(logger: T): void {
+  if (instance) {
     throw new LoggerError('Logger has been already initialized.');
   }
-  loggerInstance = logger;
+  instance = logger;
 }
 
-function getLogger(cfg: TLoggerConfig): ICompatibleLogger {
+function getLogger(cfg: ILoggerConfig, ns?: string): ILogger {
   if (!cfg.enabled) {
     return dummyLogger;
   }
-  if (!loggerInstance) {
-    loggerInstance = createDefaultLogger(cfg);
+  if (!instance) {
+    instance = createLogger({ ...(cfg.options ?? {}), name: 'redis-smq' });
   }
-  return loggerInstance;
-}
-
-function getNamespacedLogger(
-  cfg: TLoggerConfig,
-  namespace: string,
-): ICompatibleLogger {
-  const instance = getLogger(cfg);
-  if (!cfg.enabled) {
-    return instance;
-  }
-  const wrap =
-    (key: keyof ICompatibleLogger) =>
-    (message: unknown, ...params: unknown[]): void => {
-      const msg =
-        typeof message === 'string' ? `[${namespace}] ${message}` : message;
-      return instance[key](msg, ...params);
+  if (ns) {
+    const wrap =
+      (key: keyof ILogger, logger: ILogger) =>
+      (message: unknown, ...params: unknown[]): void => {
+        const msg =
+          typeof message === 'string' ? `${ns} | ${message}` : message;
+        return logger[key](msg, ...params);
+      };
+    return {
+      info: wrap('info', instance),
+      warn: wrap('warn', instance),
+      debug: wrap('debug', instance),
+      error: wrap('error', instance),
     };
-  return {
-    info: wrap('info'),
-    warn: wrap('warn'),
-    debug: wrap('debug'),
-    error: wrap('error'),
-  };
+  }
+  return instance;
 }
 
 export const logger = {
   getLogger,
-  getNamespacedLogger,
   setLogger,
-  reset,
+  destroy,
 };
