@@ -13,7 +13,7 @@ import { ICallback, IRedisClient, IRedisTransaction } from '../../types';
 import { RedisClientError } from './errors';
 import { CallbackEmptyReplyError } from '../errors';
 
-const minimalSupportedVersion: [number, number, number] = [2, 8, 0];
+const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 
 export abstract class RedisClient extends EventEmitter implements IRedisClient {
   protected static redisServerVersion: number[] | null = null;
