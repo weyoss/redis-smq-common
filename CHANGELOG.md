@@ -1,5 +1,21 @@
 
 
+## [3.0.0-rc.6](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2023-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **redis-client:** support redis server starting from 4.0.0
+
+### Features
+
+* **redis-client:** support redis server starting from 4.0.0 ([84d6b66](https://github.com/weyoss/redis-smq-common/commit/84d6b6686e366568002b58a454d7684fa4e7a646))
+
+
+### Continuous Integration
+
+* drop support for redis server 2.8 and 3 ([444d1fd](https://github.com/weyoss/redis-smq-common/commit/444d1fde37385f21576dc4f8b9cada07bff1c373))
+
 ## [3.0.0-rc.5](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.4...v3.0.0-rc.5) (2023-11-19)
 
 
