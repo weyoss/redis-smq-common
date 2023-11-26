@@ -1,5 +1,26 @@
 
 
+## [3.0.0-rc.7](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2023-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **event-emitter:** add typed EventEmitter, remove legacy events
+
+### Features
+
+* **event-emitter:** add typed EventEmitter, remove legacy events ([65d57c3](https://github.com/weyoss/redis-smq-common/commit/65d57c31639add4808edfb5d2db4ed6a4cb6bf58))
+
+
+### Documentation
+
+* add typed EventEmitter, remove legacy events ([a9f979a](https://github.com/weyoss/redis-smq-common/commit/a9f979a24f334ed345b6e0caf15357d4a5a1fd92))
+
+
+### Tests
+
+* add typed EventEmitter, remove legacy events ([4ba6ec8](https://github.com/weyoss/redis-smq-common/commit/4ba6ec8bf8c1d37e849e6f25de70ea0b660506d0))
+
 ## [3.0.0-rc.6](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2023-11-20)
 
 
