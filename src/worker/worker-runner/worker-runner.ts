@@ -7,19 +7,18 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, ILogger } from '../../../types';
+import { ICallback, ILogger, TEvent } from '../../../types';
 import { PowerSwitch } from '../../power-switch/power-switch';
-import { EventEmitter } from 'events';
 import { Ticker } from '../../ticker/ticker';
 import { ELockStatus, Lock } from '../../lock/lock';
 import { RedisClient } from '../../redis-client/redis-client';
-import { events } from '../../events/events';
 import { WorkerPool } from './worker-pool';
 import { Worker } from '../worker';
 import { async } from '../../async/async';
 import { LockAcquireError } from '../../lock/errors';
+import { EventEmitter } from '../../event';
 
-export class WorkerRunner extends EventEmitter {
+export class WorkerRunner extends EventEmitter<TEvent> {
   private readonly powerManager: PowerSwitch;
   private readonly ticker: Ticker;
   private readonly lock: Lock;
@@ -61,7 +60,7 @@ export class WorkerRunner extends EventEmitter {
       ],
       (err) => {
         if (!err || err instanceof LockAcquireError) this.ticker.nextTick();
-        else this.emit(events.ERROR, err);
+        else this.emit('error', err);
       },
     );
   };
@@ -71,7 +70,7 @@ export class WorkerRunner extends EventEmitter {
   };
 
   private stopTicker = (cb: ICallback<void>) => {
-    this.ticker.once(events.DOWN, cb);
+    this.ticker.once('down', cb);
     this.ticker.quit();
   };
 
@@ -84,7 +83,7 @@ export class WorkerRunner extends EventEmitter {
   }
 
   run = (): void => {
-    this.emit(events.UP);
+    this.emit('up');
     this.ticker.nextTick();
   };
 
@@ -92,7 +91,7 @@ export class WorkerRunner extends EventEmitter {
     async.waterfall(
       [this.stopTicker, this.clearWorkerPool, this.releaseLock],
       () => {
-        this.emit(events.DOWN);
+        this.emit('down');
         cb();
       },
     );

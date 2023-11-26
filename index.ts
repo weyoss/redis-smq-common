@@ -22,7 +22,7 @@ export { Ticker } from './src/ticker/ticker';
 export { Worker } from './src/worker/worker';
 export { WorkerRunner } from './src/worker/worker-runner/worker-runner';
 export { WorkerPool } from './src/worker/worker-runner/worker-pool';
-export { events } from './src/events/events';
 export { logger } from './src/logger/logger';
 export { async } from './src/async/async';
 export { redis } from './src/redis-client';
+export * from './src/event';

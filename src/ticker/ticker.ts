@@ -7,14 +7,13 @@
  * in the root directory of this source tree.
  */
 
-import { TFunction } from '../../types';
-import { EventEmitter } from 'events';
-import { events } from '../events/events';
+import { TFunction, TEvent } from '../../types';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { TickerError } from './errors';
 import { PanicError } from '../errors';
+import { EventEmitter } from '../event';
 
-export class Ticker extends EventEmitter {
+export class Ticker extends EventEmitter<TEvent> {
   protected powerManager = new PowerSwitch();
   protected onTickFn: TFunction;
   protected onNextTickFn: TFunction | null = null;
@@ -37,7 +36,7 @@ export class Ticker extends EventEmitter {
       clearTimeout(this.shutdownTimeout);
     }
     this.powerManager.commit();
-    this.emit(events.DOWN);
+    this.emit('down');
   }
 
   protected onTick(): void {
@@ -48,7 +47,7 @@ export class Ticker extends EventEmitter {
       this.onNextTickFn = null;
       tickFn();
     } else {
-      this.emit(events.ERROR, new PanicError(`Unexpected call`));
+      this.emit('error', new PanicError(`Unexpected call`));
     }
   }
 
@@ -63,9 +62,9 @@ export class Ticker extends EventEmitter {
   quit(): void {
     if (this.powerManager.isGoingUp()) {
       this.powerManager.rollback();
-      this.emit(events.DOWN);
+      this.emit('down');
     } else if (this.aborted && this.powerManager.isDown()) {
-      this.emit(events.DOWN);
+      this.emit('down');
     } else {
       this.powerManager.goingDown();
       if (this.timeout) {

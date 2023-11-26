@@ -9,7 +9,6 @@
 
 import { Ticker } from '../ticker/ticker';
 import { ICallback } from '../../types';
-import { events } from '../events/events';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { WorkerError } from './errors';
 
@@ -63,7 +62,7 @@ export abstract class Worker {
       const powerManager = this.getPowerManager();
       powerManager.goingDown();
       const ticker = this.getTicker();
-      ticker.on(events.DOWN, () => {
+      ticker.on('down', () => {
         powerManager.commit();
         cb();
       });

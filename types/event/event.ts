@@ -7,11 +7,12 @@
  * in the root directory of this source tree.
  */
 
-export const events = {
-  GOING_UP: 'going_up',
-  UP: 'up',
-  GOING_DOWN: 'going_down',
-  DOWN: 'down',
-  ERROR: 'error',
-  TICK: 'tick',
+export type TEvent = {
+  error: (err: Error) => void;
+  next: () => void;
+  up: () => void;
+  down: () => void;
+  goingUp: () => void;
+  goingDown: () => void;
+  tick: () => void;
 };
