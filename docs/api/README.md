@@ -12,6 +12,7 @@
 
 - [CallbackEmptyReplyError](./classes/CallbackEmptyReplyError.md)
 - [CallbackInvalidReplyError](./classes/CallbackInvalidReplyError.md)
+- [EventEmitter](./classes/EventEmitter.md)
 - [Lock](./classes/Lock.md)
 - [LockAbortError](./classes/LockAbortError.md)
 - [LockAcquireError](./classes/LockAcquireError.md)
@@ -49,6 +50,8 @@
 ### Type Aliases
 
 - [IRedisConfig](./README.md#iredisconfig)
+- [TEvent](./README.md#tevent)
+- [TEventEmitterEvent](./README.md#teventemitterevent)
 - [TFunction](./README.md#tfunction)
 - [TRedisClientNodeRedisV4](./README.md#tredisclientnoderedisv4)
 - [TRedisTransactionNodeRedisV4](./README.md#tredistransactionnoderedisv4)
@@ -57,7 +60,6 @@
 ### Variables
 
 - [async](./README.md#async)
-- [events](./README.md#events)
 - [logger](./README.md#logger)
 - [redis](./README.md#redis)
 
@@ -65,7 +67,32 @@
 
 ### IRedisConfig
 
-Ƭ **IRedisConfig**: [`IRedisConfigIORedis`](./interfaces/IRedisConfigIORedis.md) | [`IRedisConfigNodeRedis`](./interfaces/IRedisConfigNodeRedis.md) | [`IRedisConfigNodeRedisV4`](./interfaces/IRedisConfigNodeRedisV4.md)
+Ƭ **IRedisConfig**: [`IRedisConfigIORedis`](./interfaces/IRedisConfigIORedis.md) \| [`IRedisConfigNodeRedis`](interfaces/IRedisConfigNodeRedis.md) \| [`IRedisConfigNodeRedisV4`](interfaces/IRedisConfigNodeRedisV4.md)
+
+---
+
+### TEvent
+
+Ƭ **TEvent**: `Object`
+
+#### Type declaration
+
+
+| Name        | Type                       |
+| :------------ | :--------------------------- |
+| `down`      | () =>`void`                |
+| `error`     | (`err`: `Error`) => `void` |
+| `goingDown` | () =>`void`                |
+| `goingUp`   | () =>`void`                |
+| `next`      | () =>`void`                |
+| `tick`      | () =>`void`                |
+| `up`        | () =>`void`                |
+
+---
+
+### TEventEmitterEvent
+
+Ƭ **TEventEmitterEvent**: `Record`\<`string` \| `symbol`, (...`args`: `any`) => `any`\>
 
 ---
 
@@ -146,30 +173,12 @@
 #### Type declaration
 
 
-| Name        | Type                                                                                                                                                                                                                                                    |
-| :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `each`      | <T>(`collection`: `Record`<`string`, `T`> \| `T`[], `iteratee`: (`item`: `T`, `key`: `string` \| `number`, `callback`: [`ICallback`](interfaces/ICallback.md)<`void`>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)<`void`>) => `void` |
-| `eachIn`    | <T>(`collection`: `Record`<`string`, `T`>, `iteratee`: (`item`: `T`, `key`: `string`, `callback`: [`ICallback`](./interfaces/ICallback.md)<`void`>) => `void`, `callback`: [`ICallback`](./interfaces/ICallback.md)<`void`>) => `void`    |
-| `eachOf`    | <T>(`collection`: `T`[], `iteratee`: (`item`: `T`, `key`: `number`, `callback`: [`ICallback`](./interfaces/ICallback.md)<`void`>) => `void`, `callback`: [`ICallback`](./interfaces/ICallback.md)<`void`>) => `void`                      |
-| `waterfall` | <T>(`tasks`: [`TFunction`](./README.md#tfunction)<`void`, `any`>[], `callback`: [`ICallback`](./interfaces/ICallback.md)<`T`>) => `void`                                                                                                  |
-
----
-
-### events
-
-• `Const` **events**: `Object`
-
-#### Type declaration
-
-
-| Name         | Type     |
-| :------------- | :--------- |
-| `DOWN`       | `string` |
-| `ERROR`      | `string` |
-| `GOING_DOWN` | `string` |
-| `GOING_UP`   | `string` |
-| `TICK`       | `string` |
-| `UP`         | `string` |
+| Name        | Type                                                                                                                                                                                                                                                            |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `each`      | \<T\>(`collection`: `Record`\<`string`, `T`\> \| `T`[], `iteratee`: (`item`: `T`, `key`: `string` \| `number`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void` |
+| `eachIn`    | \<T\>(`collection`: `Record`\<`string`, `T`\>, `iteratee`: (`item`: `T`, `key`: `string`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`                      |
+| `eachOf`    | \<T\>(`collection`: `T`[], `iteratee`: (`item`: `T`, `key`: `number`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`                                          |
+| `waterfall` | \<T\>(`tasks`: [`TFunction`](./README.md#tfunction)[], `callback`: [`ICallback`](interfaces/ICallback.md)\<`T`\>) => `void`                                                                                                                                      |
 
 ---
 
