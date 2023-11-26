@@ -7,7 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { events } from '../../src/events/events';
 import { delay } from 'bluebird';
 import { Ticker } from '../../src/ticker/ticker';
 
@@ -18,7 +17,7 @@ describe('Ticker', () => {
     ticker.nextTick();
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
 
     await delay(2000);
     expect(down).toBe(0);
@@ -30,7 +29,7 @@ describe('Ticker', () => {
     const ticker = new Ticker(() => (changedFromTicker += 1), 0);
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
     ticker.quit();
 
     await delay(1000);
@@ -44,7 +43,7 @@ describe('Ticker', () => {
     ticker.nextTick();
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
     ticker.quit();
 
     await delay(1000);
@@ -58,7 +57,7 @@ describe('Ticker', () => {
     ticker.nextTick();
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
     ticker.quit();
 
     await delay(5000);
@@ -72,7 +71,7 @@ describe('Ticker', () => {
     ticker.runTimer();
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
     ticker.quit();
 
     await delay(1000);
@@ -86,7 +85,7 @@ describe('Ticker', () => {
     ticker.runTimer();
 
     let down = 0;
-    ticker.once(events.DOWN, () => (down += 1));
+    ticker.once('down', () => (down += 1));
     ticker.quit();
 
     await delay(5000);
