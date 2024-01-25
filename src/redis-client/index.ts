@@ -8,18 +8,14 @@
  */
 
 import { ERedisConfigClient, ICallback, IRedisConfig } from '../../types';
-import { NodeRedisV3Client } from './clients/node-redis-v3-client';
-import { NodeRedisV4Client } from './clients/node-redis-v4-client';
+import { NodeRedisClient } from './clients/node-redis-client';
 import { IoredisClient } from './clients/ioredis-client';
 import { RedisClient } from './redis-client';
 import { async } from '../async/async';
 
 function getClient(config: IRedisConfig) {
   if (config.client === ERedisConfigClient.REDIS) {
-    return new NodeRedisV3Client(config.options);
-  }
-  if (config.client === ERedisConfigClient.REDIS_V4) {
-    return new NodeRedisV4Client(config.options);
+    return new NodeRedisClient(config.options);
   }
   return new IoredisClient(config.options);
 }

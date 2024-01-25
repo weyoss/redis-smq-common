@@ -11,9 +11,9 @@ import { RedisClient } from '../redis-client';
 import { ICallback } from '../../../types';
 import { RedisClientError } from '../errors';
 import { createClient, RedisClientOptions } from '@redis/client';
-import { NodeRedisV4ClientMulti } from './node-redis-v4-client-multi';
+import { NodeRedisClientMulti } from './node-redis-client-multi';
 
-export class NodeRedisV4Client extends RedisClient {
+export class NodeRedisClient extends RedisClient {
   protected client;
 
   constructor(config: RedisClientOptions = {}) {
@@ -62,8 +62,8 @@ export class NodeRedisV4Client extends RedisClient {
       .catch(cb);
   }
 
-  multi(): NodeRedisV4ClientMulti {
-    return new NodeRedisV4ClientMulti(this.client);
+  multi(): NodeRedisClientMulti {
+    return new NodeRedisClientMulti(this.client);
   }
 
   watch(args: string[], cb: ICallback<string>): void {

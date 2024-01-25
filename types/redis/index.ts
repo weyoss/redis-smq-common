@@ -18,13 +18,13 @@ import { ICallback } from '../common';
 
 export * from './config';
 
-export type TRedisTransactionNodeRedisV4 = RedisClientMultiCommandType<
+export type TRedisTransactionNodeRedis = RedisClientMultiCommandType<
   RedisModules,
   RedisFunctions,
   RedisScripts
 >;
 
-export type TRedisClientNodeRedisV4 = RedisClientType<
+export type TRedisClientNodeRedis = RedisClientType<
   RedisModules,
   RedisFunctions,
   RedisScripts
@@ -293,25 +293,6 @@ export interface IRedisTransaction {
 
 declare module 'ioredis' {
   export interface Commands {
-    // Add missing method
-    lmove(
-      source: string,
-      destination: string,
-      from: 'LEFT' | 'RIGHT',
-      to: 'LEFT' | 'RIGHT',
-      cb: ICallback<string>,
-    ): void;
-  }
-}
-
-declare module 'redis' {
-  export interface Commands<R> {
-    // Overwrite bad declaration from @types/redis
-    info(cb?: Callback<string>): R;
-    info(section?: string | string[], cb?: Callback<string>): R;
-    INFO(cb?: Callback<string>): R;
-    INFO(section?: string | string[], cb?: Callback<string>): R;
-
     // Add missing method
     lmove(
       source: string,

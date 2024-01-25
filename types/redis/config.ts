@@ -8,7 +8,6 @@
  */
 
 import { RedisOptions } from 'ioredis';
-import { ClientOpts } from 'redis';
 import { RedisClientOptions } from '@redis/client';
 
 export interface IRedisConfigIORedis {
@@ -17,22 +16,13 @@ export interface IRedisConfigIORedis {
 }
 
 export enum ERedisConfigClient {
-  REDIS = 'redis',
   IOREDIS = 'ioredis',
-  REDIS_V4 = 'redis_v4',
+  REDIS = 'redis',
 }
 
 export interface IRedisConfigNodeRedis {
   client: ERedisConfigClient.REDIS;
-  options?: ClientOpts;
-}
-
-export interface IRedisConfigNodeRedisV4 {
-  client: ERedisConfigClient.REDIS_V4;
   options?: RedisClientOptions;
 }
 
-export type IRedisConfig =
-  | IRedisConfigIORedis
-  | IRedisConfigNodeRedis
-  | IRedisConfigNodeRedisV4;
+export type IRedisConfig = IRedisConfigIORedis | IRedisConfigNodeRedis;

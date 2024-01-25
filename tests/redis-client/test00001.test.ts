@@ -16,10 +16,10 @@ import {
   transactionRunning,
 } from './common';
 
-test('NodeRedisV4Client', async () => {
-  await standardCommands({ client: ERedisConfigClient.REDIS_V4 });
-  await scriptRunning({ client: ERedisConfigClient.REDIS_V4 });
-  await pubSubChannel({ client: ERedisConfigClient.REDIS_V4 });
-  await pubSubPattern({ client: ERedisConfigClient.REDIS_V4 });
-  await transactionRunning({ client: ERedisConfigClient.REDIS_V4 });
+test('NodeRedisClient', async () => {
+  await standardCommands({ client: ERedisConfigClient.REDIS });
+  await scriptRunning({ client: ERedisConfigClient.REDIS });
+  await pubSubChannel({ client: ERedisConfigClient.REDIS });
+  await pubSubPattern({ client: ERedisConfigClient.REDIS });
+  await transactionRunning({ client: ERedisConfigClient.REDIS });
 });

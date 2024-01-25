@@ -7,84 +7,89 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, IRedisTransaction } from '../../../types';
-import { Multi, RedisClient } from 'redis';
+import {
+  ICallback,
+  IRedisTransaction,
+  TRedisClientNodeRedis,
+  TRedisTransactionNodeRedis,
+} from '../../../types';
+import { WatchError } from '@redis/client';
 import { WatchedKeysChangedError } from '../errors';
 
-export class NodeRedisV3ClientMulti implements IRedisTransaction {
-  protected multi: Multi;
+export class NodeRedisClientMulti implements IRedisTransaction {
+  protected multi: TRedisTransactionNodeRedis;
 
-  constructor(client: RedisClient) {
+  constructor(client: TRedisClientNodeRedis) {
     this.multi = client.multi();
   }
 
   lrem(key: string, count: number, element: string): this {
-    this.multi.lrem(key, count, element);
+    this.multi.lRem(key, count, element);
     return this;
   }
 
   lpop(key: string): this {
-    this.multi.lpop(key);
+    this.multi.lPop(key);
     return this;
   }
 
   lpush(key: string, element: string): this {
-    this.multi.lpush(key, element);
+    this.multi.lPush(key, element);
     return this;
   }
 
   ltrim(key: string, start: number, stop: number): this {
-    this.multi.ltrim(key, start, stop);
+    this.multi.lTrim(key, start, stop);
     return this;
   }
 
   rpop(key: string): this {
-    this.multi.rpop(key);
+    this.multi.rPop(key);
     return this;
   }
 
   rpush(key: string, element: string): this {
-    this.multi.rpush(key, element);
+    this.multi.rPush(key, element);
     return this;
   }
 
   zadd(key: string, score: number, element: string): this {
-    this.multi.zadd(key, score, element);
+    this.multi.zAdd(key, { score, value: element });
     return this;
   }
 
   zrem(key: string, element: string | string[]): this {
-    this.multi.zrem(key, element);
+    this.multi.zRem(key, element);
     return this;
   }
 
   sadd(key: string, element: string): this {
-    this.multi.sadd(key, element);
+    this.multi.sAdd(key, element);
     return this;
   }
 
   srem(key: string, element: string | string[]): this {
-    this.multi.srem(key, element);
+    this.multi.sRem(key, element);
     return this;
   }
 
   hset(key: string, field: string, value: string | number): this {
-    this.multi.hset(key, field, String(value));
+    this.multi.hSet(key, field, value);
     return this;
   }
 
   hdel(key: string, field: string | string[]): this {
-    this.multi.hdel(key, field);
+    this.multi.hDel(key, field);
     return this;
   }
 
   hincrby(key: string, field: string, by: number): this {
-    this.multi.hincrby(key, field, by);
+    this.multi.hIncrBy(key, field, by);
     return this;
   }
 
   pexpire(key: string, millis: number): this {
-    this.multi.pexpire(key, millis);
+    this.multi.pExpire(key, millis);
     return this;
   }
 
@@ -94,7 +99,7 @@ export class NodeRedisV3ClientMulti implements IRedisTransaction {
   }
 
   rpoplpush(source: string, destination: string): this {
-    this.multi.rpoplpush(source, destination);
+    this.multi.rPopLPush(source, destination);
     return this;
   }
 
@@ -104,10 +109,12 @@ export class NodeRedisV3ClientMulti implements IRedisTransaction {
   }
 
   exec(cb: ICallback<unknown[]>): void {
-    this.multi.exec((err, reply: unknown[]) => {
-      if (err) cb(err);
-      else if (!reply) cb(new WatchedKeysChangedError());
-      else cb(null, reply);
-    });
+    this.multi
+      .exec()
+      .then((reply) => cb(null, reply))
+      .catch((err: Error) => {
+        if (err instanceof WatchError) cb(new WatchedKeysChangedError());
+        else cb(err);
+      });
   }
 }
