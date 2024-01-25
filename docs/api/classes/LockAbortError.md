@@ -1,10 +1,10 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockAbortError
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockAbortError
 
 # Class: LockAbortError
 
 ## Hierarchy
 
-- [`LockError`](../classes/LockError.md)
+- [`LockError`](docs/api/classes/LockError.md)
 
   ↳ **`LockAbortError`**
 
@@ -12,28 +12,17 @@
 
 ### Constructors
 
-- [constructor](../classes/LockAbortError.md#constructor)
-
-### Properties
-
-- [message](../classes/LockAbortError.md#message)
-- [stack](../classes/LockAbortError.md#stack)
-- [prepareStackTrace](../classes/LockAbortError.md#preparestacktrace)
-- [stackTraceLimit](../classes/LockAbortError.md#stacktracelimit)
+- [constructor](docs/api/classes/LockAbortError.md#constructor)
 
 ### Accessors
 
-- [name](../classes/LockAbortError.md#name)
-
-### Methods
-
-- [captureStackTrace](../classes/LockAbortError.md#capturestacktrace)
+- [name](docs/api/classes/LockAbortError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockAbortError**(`message?`): [`LockAbortError`](../classes/LockAbortError.md)
+• **new LockAbortError**(`message?`): [`LockAbortError`](docs/api/classes/LockAbortError.md)
 
 #### Parameters
 
@@ -43,72 +32,11 @@
 
 #### Returns
 
-[`LockAbortError`](../classes/LockAbortError.md)
+[`LockAbortError`](docs/api/classes/LockAbortError.md)
 
 #### Overrides
 
-[LockError](../classes/LockError.md).[constructor](../classes/LockError.md#constructor)
-
-## Properties
-
-### message
-
-• **message**: `string`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[message](../classes/LockError.md#message)
-
-___
-
-### stack
-
-• `Optional` **stack**: `string`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[stack](../classes/LockError.md#stack)
-
-___
-
-### prepareStackTrace
-
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
-
-#### Type declaration
-
-▸ (`err`, `stackTraces`): `any`
-
-Optional override for formatting stack traces
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
-
-##### Returns
-
-`any`
-
-**`See`**
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[prepareStackTrace](../classes/LockError.md#preparestacktrace)
-
-___
-
-### stackTraceLimit
-
-▪ `Static` **stackTraceLimit**: `number`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[stackTraceLimit](../classes/LockError.md#stacktracelimit)
+[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
 
 ## Accessors
 
@@ -123,26 +51,3 @@ ___
 #### Inherited from
 
 LockError.name
-
-## Methods
-
-### captureStackTrace
-
-▸ **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
-
-Create .stack property on a target object
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
-| `constructorOpt?` | `Function` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[captureStackTrace](../classes/LockError.md#capturestacktrace)

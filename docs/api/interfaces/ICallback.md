@@ -1,6 +1,6 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ICallback
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / ICallback
 
-# Interface: ICallback<T>
+# Interface: ICallback\<T\>
 
 ## Type parameters
 

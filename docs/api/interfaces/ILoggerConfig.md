@@ -1,4 +1,4 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ILoggerConfig
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / ILoggerConfig
 
 # Interface: ILoggerConfig
 
@@ -6,8 +6,8 @@
 
 ### Properties
 
-- [enabled](../interfaces/ILoggerConfig.md#enabled)
-- [options](../interfaces/ILoggerConfig.md#options)
+- [enabled](docs/api/interfaces/ILoggerConfig.md#enabled)
+- [options](docs/api/interfaces/ILoggerConfig.md#options)
 
 ## Properties
 

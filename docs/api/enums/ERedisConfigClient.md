@@ -1,4 +1,4 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ERedisConfigClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / ERedisConfigClient
 
 # Enumeration: ERedisConfigClient
 
@@ -6,9 +6,8 @@
 
 ### Enumeration Members
 
-- [IOREDIS](../enums/ERedisConfigClient.md#ioredis)
-- [REDIS](../enums/ERedisConfigClient.md#redis)
-- [REDIS\_V4](../enums/ERedisConfigClient.md#redis_v4)
+- [IOREDIS](docs/api/enums/ERedisConfigClient.md#ioredis)
+- [REDIS](docs/api/enums/ERedisConfigClient.md#redis)
 
 ## Enumeration Members
 
@@ -21,9 +20,3 @@ ___
 ### REDIS
 
 • **REDIS** = ``"redis"``
-
-___
-
-### REDIS\_V4
-
-• **REDIS\_V4** = ``"redis_v4"``

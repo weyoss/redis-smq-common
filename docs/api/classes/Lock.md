@@ -1,4 +1,4 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / Lock
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / Lock
 
 # Class: Lock
 
@@ -6,29 +6,29 @@
 
 ### Constructors
 
-- [constructor](../classes/Lock.md#constructor)
+- [constructor](docs/api/classes/Lock.md#constructor)
 
 ### Methods
 
-- [acquireLock](../classes/Lock.md#acquirelock)
-- [acquireOrExtend](../classes/Lock.md#acquireorextend)
-- [extendLock](../classes/Lock.md#extendlock)
-- [getId](../classes/Lock.md#getid)
-- [isLocked](../classes/Lock.md#islocked)
-- [isReleased](../classes/Lock.md#isreleased)
-- [releaseLock](../classes/Lock.md#releaselock)
+- [acquireLock](docs/api/classes/Lock.md#acquirelock)
+- [acquireOrExtend](docs/api/classes/Lock.md#acquireorextend)
+- [extendLock](docs/api/classes/Lock.md#extendlock)
+- [getId](docs/api/classes/Lock.md#getid)
+- [isLocked](docs/api/classes/Lock.md#islocked)
+- [isReleased](docs/api/classes/Lock.md#isreleased)
+- [releaseLock](docs/api/classes/Lock.md#releaselock)
 
 ## Constructors
 
 ### constructor
 
-• **new Lock**(`redisClient`, `lockKey`, `ttl`, `retryOnFail?`, `autoExtend?`, `throwExceptions?`): [`Lock`](../classes/Lock.md)
+• **new Lock**(`redisClient`, `lockKey`, `ttl`, `retryOnFail?`, `autoExtend?`, `throwExceptions?`): [`Lock`](docs/api/classes/Lock.md)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `redisClient` | [`RedisClient`](../classes/RedisClient.md) | `undefined` |
+| `redisClient` | [`RedisClient`](docs/api/classes/RedisClient.md) | `undefined` |
 | `lockKey` | `string` | `undefined` |
 | `ttl` | `number` | `undefined` |
 | `retryOnFail` | `boolean` | `false` |
@@ -37,7 +37,7 @@
 
 #### Returns
 
-[`Lock`](../classes/Lock.md)
+[`Lock`](docs/api/classes/Lock.md)
 
 ## Methods
 
@@ -49,7 +49,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -65,7 +65,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`ELockStatus`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`ELockStatus`\> |
 
 #### Returns
 
@@ -81,7 +81,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -127,7 +127,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 

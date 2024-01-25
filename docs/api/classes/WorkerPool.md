@@ -1,4 +1,4 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerPool
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / WorkerPool
 
 # Class: WorkerPool
 
@@ -6,23 +6,23 @@
 
 ### Constructors
 
-- [constructor](../classes/WorkerPool.md#constructor)
+- [constructor](docs/api/classes/WorkerPool.md#constructor)
 
 ### Methods
 
-- [add](../classes/WorkerPool.md#add)
-- [clear](../classes/WorkerPool.md#clear)
-- [work](../classes/WorkerPool.md#work)
+- [add](docs/api/classes/WorkerPool.md#add)
+- [clear](docs/api/classes/WorkerPool.md#clear)
+- [work](docs/api/classes/WorkerPool.md#work)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerPool**(): [`WorkerPool`](../classes/WorkerPool.md)
+• **new WorkerPool**(): [`WorkerPool`](docs/api/classes/WorkerPool.md)
 
 #### Returns
 
-[`WorkerPool`](../classes/WorkerPool.md)
+[`WorkerPool`](docs/api/classes/WorkerPool.md)
 
 ## Methods
 
@@ -34,7 +34,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `worker` | [`Worker`](../classes/Worker.md) |
+| `worker` | [`Worker`](docs/api/classes/Worker.md) |
 
 #### Returns
 
@@ -50,7 +50,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -66,7 +66,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)<`void`> |
+| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 

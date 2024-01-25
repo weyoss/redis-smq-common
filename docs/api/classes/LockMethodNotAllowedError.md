@@ -1,10 +1,10 @@
->[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockMethodNotAllowedError
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockMethodNotAllowedError
 
 # Class: LockMethodNotAllowedError
 
 ## Hierarchy
 
-- [`LockError`](../classes/LockError.md)
+- [`LockError`](docs/api/classes/LockError.md)
 
   ↳ **`LockMethodNotAllowedError`**
 
@@ -12,28 +12,17 @@
 
 ### Constructors
 
-- [constructor](../classes/LockMethodNotAllowedError.md#constructor)
-
-### Properties
-
-- [message](../classes/LockMethodNotAllowedError.md#message)
-- [stack](../classes/LockMethodNotAllowedError.md#stack)
-- [prepareStackTrace](../classes/LockMethodNotAllowedError.md#preparestacktrace)
-- [stackTraceLimit](../classes/LockMethodNotAllowedError.md#stacktracelimit)
+- [constructor](docs/api/classes/LockMethodNotAllowedError.md#constructor)
 
 ### Accessors
 
-- [name](../classes/LockMethodNotAllowedError.md#name)
-
-### Methods
-
-- [captureStackTrace](../classes/LockMethodNotAllowedError.md#capturestacktrace)
+- [name](docs/api/classes/LockMethodNotAllowedError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockMethodNotAllowedError**(`message?`): [`LockMethodNotAllowedError`](../classes/LockMethodNotAllowedError.md)
+• **new LockMethodNotAllowedError**(`message?`): [`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
 
 #### Parameters
 
@@ -43,72 +32,11 @@
 
 #### Returns
 
-[`LockMethodNotAllowedError`](../classes/LockMethodNotAllowedError.md)
+[`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
 
 #### Overrides
 
-[LockError](../classes/LockError.md).[constructor](../classes/LockError.md#constructor)
-
-## Properties
-
-### message
-
-• **message**: `string`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[message](../classes/LockError.md#message)
-
-___
-
-### stack
-
-• `Optional` **stack**: `string`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[stack](../classes/LockError.md#stack)
-
-___
-
-### prepareStackTrace
-
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
-
-#### Type declaration
-
-▸ (`err`, `stackTraces`): `any`
-
-Optional override for formatting stack traces
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
-
-##### Returns
-
-`any`
-
-**`See`**
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[prepareStackTrace](../classes/LockError.md#preparestacktrace)
-
-___
-
-### stackTraceLimit
-
-▪ `Static` **stackTraceLimit**: `number`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[stackTraceLimit](../classes/LockError.md#stacktracelimit)
+[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
 
 ## Accessors
 
@@ -123,26 +51,3 @@ ___
 #### Inherited from
 
 LockError.name
-
-## Methods
-
-### captureStackTrace
-
-▸ **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
-
-Create .stack property on a target object
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
-| `constructorOpt?` | `Function` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[LockError](../classes/LockError.md).[captureStackTrace](../classes/LockError.md#capturestacktrace)

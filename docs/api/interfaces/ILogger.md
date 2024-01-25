@@ -1,4 +1,4 @@
-> [RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ILogger
+[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / ILogger
 
 # Interface: ILogger
 
@@ -6,10 +6,10 @@
 
 ### Methods
 
-- [debug](../interfaces/ILogger.md#debug)
-- [error](../interfaces/ILogger.md#error)
-- [info](../interfaces/ILogger.md#info)
-- [warn](../interfaces/ILogger.md#warn)
+- [debug](docs/api/interfaces/ILogger.md#debug)
+- [error](docs/api/interfaces/ILogger.md#error)
+- [info](docs/api/interfaces/ILogger.md#info)
+- [warn](docs/api/interfaces/ILogger.md#warn)
 
 ## Methods
 
@@ -19,17 +19,16 @@
 
 #### Parameters
 
-
-| Name        | Type        |
-| :------------ | :------------ |
-| `message`   | `unknown`   |
+| Name | Type |
+| :------ | :------ |
+| `message` | `unknown` |
 | `...params` | `unknown`[] |
 
 #### Returns
 
 `void`
 
----
+___
 
 ### error
 
@@ -37,17 +36,16 @@
 
 #### Parameters
 
-
-| Name        | Type        |
-| :------------ | :------------ |
-| `message`   | `unknown`   |
+| Name | Type |
+| :------ | :------ |
+| `message` | `unknown` |
 | `...params` | `unknown`[] |
 
 #### Returns
 
 `void`
 
----
+___
 
 ### info
 
@@ -55,17 +53,16 @@
 
 #### Parameters
 
-
-| Name        | Type        |
-| :------------ | :------------ |
-| `message`   | `unknown`   |
+| Name | Type |
+| :------ | :------ |
+| `message` | `unknown` |
 | `...params` | `unknown`[] |
 
 #### Returns
 
 `void`
 
----
+___
 
 ### warn
 
@@ -73,10 +70,9 @@
 
 #### Parameters
 
-
-| Name        | Type        |
-| :------------ | :------------ |
-| `message`   | `unknown`   |
+| Name | Type |
+| :------ | :------ |
+| `message` | `unknown` |
 | `...params` | `unknown`[] |
 
 #### Returns
