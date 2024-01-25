@@ -1,5 +1,21 @@
 
 
+## [3.0.0-rc.8](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.7...v3.0.0-rc.8) (2024-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for node-redis v3
+
+### Documentation
+
+* drop support for node-redis v3 ([3481d53](https://github.com/weyoss/redis-smq-common/commit/3481d53de1df805e9a4fc9ec244c6f6b7e131947))
+
+
+### Codebase Refactoring
+
+* drop support for node-redis v3 ([0b89843](https://github.com/weyoss/redis-smq-common/commit/0b8984396ec0ccb57eb1e183e9b7b0a6f1935e9b))
+
 ## [3.0.0-rc.7](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2023-11-26)
 
 
