@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.9](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.8...v3.0.0-rc.9) (2024-01-25)
+
+
+### Misc
+
+* update package-lock.json ([d001ba1](https://github.com/weyoss/redis-smq-common/commit/d001ba1938ed34e4a76f5da1814de56dde72ca99))
+
 ## [3.0.0-rc.8](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.7...v3.0.0-rc.8) (2024-01-25)
 
 
