@@ -10,19 +10,21 @@
 import { PowerSwitch } from '../../src/power-switch/power-switch';
 
 test('PowerSwitch: case 2', () => {
-  const powerSwitch = new PowerSwitch(false);
+  const powerSwitch = new PowerSwitch();
   expect(powerSwitch.isDown()).toBe(true);
   expect(powerSwitch.isRunning()).toBe(false);
 
   expect(powerSwitch.goingUp()).toBe(true);
   expect(powerSwitch.goingUp()).toBe(false);
 
-  powerSwitch.commit();
+  expect(powerSwitch.commit()).toBe(true);
+  expect(powerSwitch.commit()).toBe(false);
   expect(powerSwitch.goingUp()).toBe(false);
 
   expect(powerSwitch.goingDown()).toBe(true);
   expect(powerSwitch.goingDown()).toBe(false);
 
-  powerSwitch.commit();
+  expect(powerSwitch.commit()).toBe(true);
+  expect(powerSwitch.commit()).toBe(false);
   expect(powerSwitch.goingDown()).toBe(false);
 });
