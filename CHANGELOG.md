@@ -1,5 +1,26 @@
 
 
+## [3.0.0-rc.10](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.9...v3.0.0-rc.10) (2024-02-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* do not throw errors within async functions
+
+### Documentation
+
+* update documentation ([a513ea8](https://github.com/weyoss/redis-smq-common/commit/a513ea83cf1284e3dcba09351674006bb3193aef))
+
+
+### Codebase Refactoring
+
+* do not throw errors within async functions ([74dfbb6](https://github.com/weyoss/redis-smq-common/commit/74dfbb654a9a62d1802b3ed80485b76a40c85976))
+
+
+### Tests
+
+* do not throw errors within async function ([a77eaf2](https://github.com/weyoss/redis-smq-common/commit/a77eaf28c384114f02aef22ffe8abe93da692d91))
+
 ## [3.0.0-rc.9](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.8...v3.0.0-rc.9) (2024-01-25)
 
 
