@@ -75,10 +75,10 @@ export class LuaScript {
     } else cb();
   }
 
-  getScriptId(name: string): string {
+  getScriptId(name: string): string | RedisClientError {
     const { id } = this.scripts.get(name) ?? {};
     if (!id) {
-      throw new RedisClientError(`ID of script [${name}] is missing`);
+      return new RedisClientError(`ID of script [${name}] is missing`);
     }
     return id;
   }

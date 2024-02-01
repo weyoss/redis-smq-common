@@ -32,7 +32,7 @@ function createInstance(
         (cb: ICallback<void>) => client.loadScripts(cb),
       ],
       (err) => {
-        if (err) throw err;
+        if (err) cb(err);
         else cb(null, client);
       },
     );

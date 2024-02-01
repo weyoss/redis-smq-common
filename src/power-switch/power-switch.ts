@@ -7,31 +7,18 @@
  * in the root directory of this source tree.
  */
 
-import { PowerSwitchError } from './errors';
-
 export class PowerSwitch {
-  protected throwExceptionOnError: boolean;
   protected isPowered = false;
   protected pendingState: boolean | null = null;
 
-  constructor(throwExceptionOnError = true) {
-    this.throwExceptionOnError = throwExceptionOnError;
-  }
-
   protected switch(s: boolean): boolean {
     if (this.pendingState !== null) {
-      if (this.throwExceptionOnError) {
-        throw new PowerSwitchError(
-          'Can not switch state while another state transition is in progress.',
-        );
-      }
+      // Can not switch state while another state transition is in progress
       return false;
     }
 
     if (s === this.isPowered) {
-      if (this.throwExceptionOnError) {
-        throw new PowerSwitchError('Can not switch to the same current state.');
-      }
+      // Can not switch to the same current state
       return false;
     }
 
@@ -67,18 +54,22 @@ export class PowerSwitch {
     return this.switch(false);
   }
 
-  commit(): void {
+  commit(): boolean {
     if (this.pendingState === null) {
-      throw new PowerSwitchError(`Expected a pending state`);
+      // Expected a pending state
+      return false;
     }
     this.isPowered = this.pendingState;
     this.pendingState = null;
+    return true;
   }
 
-  rollback(): void {
+  rollback(): boolean {
     if (this.pendingState === null) {
-      throw new PowerSwitchError(`Expected a pending state`);
+      // Expected a pending state
+      return false;
     }
     this.pendingState = null;
+    return true;
   }
 }

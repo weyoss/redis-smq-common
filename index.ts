@@ -14,7 +14,6 @@ export * from './src/ticker/errors';
 export * from './src/lock/errors';
 export * from './src/redis-client/errors';
 export * from './src/worker/errors';
-export * from './src/power-switch/errors';
 export { Lock } from './src/lock/lock';
 export { PowerSwitch } from './src/power-switch/power-switch';
 export { RedisClient } from './src/redis-client/redis-client';

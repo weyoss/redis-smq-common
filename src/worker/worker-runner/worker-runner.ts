@@ -82,9 +82,10 @@ export class WorkerRunner extends EventEmitter<TEvent> {
     this.workerPool.add(instance);
   }
 
-  run = (): void => {
-    this.emit('up');
+  run = (cb: ICallback<void>): void => {
     this.ticker.nextTick();
+    this.emit('up');
+    cb();
   };
 
   quit = (cb: ICallback<void>): void => {

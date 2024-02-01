@@ -11,6 +11,7 @@ import { Ticker } from '../ticker/ticker';
 import { ICallback } from '../../types';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { WorkerError } from './errors';
+import { getEventBusInstance } from '../event';
 
 export abstract class Worker {
   private readonly ticker: Ticker | null = null;
@@ -41,20 +42,21 @@ export abstract class Worker {
 
   private onTick = (): void => {
     this.work((err) => {
-      if (err) throw err;
-      this.getTicker().nextTick();
+      if (err) getEventBusInstance().emit('error', err);
+      else this.getTicker().nextTick();
     });
   };
 
-  run = (): void => {
-    if (this.managed) {
-      throw new WorkerError('You can not run a managed worker');
+  run = (cb: ICallback<void>): void => {
+    if (this.managed) cb(new WorkerError('You can not run a managed worker'));
+    else {
+      const powerManager = this.getPowerManager();
+      powerManager.goingUp();
+      const ticker = this.getTicker();
+      ticker.nextTick();
+      powerManager.commit();
+      cb();
     }
-    const powerManager = this.getPowerManager();
-    powerManager.goingUp();
-    const ticker = this.getTicker();
-    ticker.nextTick();
-    powerManager.commit();
   };
 
   quit = (cb: ICallback<void>): void => {

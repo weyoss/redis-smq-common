@@ -11,7 +11,7 @@ import { TFunction, TEvent } from '../../types';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { TickerError } from './errors';
 import { PanicError } from '../errors';
-import { EventEmitter } from '../event';
+import { EventEmitter, getEventBusInstance } from '../event';
 
 export class Ticker extends EventEmitter<TEvent> {
   protected powerManager = new PowerSwitch();
@@ -47,7 +47,7 @@ export class Ticker extends EventEmitter<TEvent> {
       this.onNextTickFn = null;
       tickFn();
     } else {
-      this.emit('error', new PanicError(`Unexpected call`));
+      getEventBusInstance().emit('error', new PanicError(`Unexpected call`));
     }
   }
 
@@ -92,19 +92,23 @@ export class Ticker extends EventEmitter<TEvent> {
 
   nextTick(): void {
     if (this.isTicking()) {
-      throw new TickerError('A timer is already running');
-    }
-    if (this.powerManager.isGoingDown()) {
-      this.shutdown();
+      getEventBusInstance().emit(
+        'error',
+        new TickerError('A timer is already running'),
+      );
     } else {
-      if (this.powerManager.isGoingUp()) {
-        this.powerManager.commit();
-      }
-      if (this.powerManager.isRunning()) {
-        this.timeout = setTimeout(() => {
-          this.timeout = null;
-          this.onTick();
-        }, this.time);
+      if (this.powerManager.isGoingDown()) {
+        this.shutdown();
+      } else {
+        if (this.powerManager.isGoingUp()) {
+          this.powerManager.commit();
+        }
+        if (this.powerManager.isRunning()) {
+          this.timeout = setTimeout(() => {
+            this.timeout = null;
+            this.onTick();
+          }, this.time);
+        }
       }
     }
   }
@@ -116,13 +120,17 @@ export class Ticker extends EventEmitter<TEvent> {
 
   runTimer(): void {
     if (this.isTicking()) {
-      throw new TickerError('A timer is already running');
-    }
-    if (this.powerManager.isGoingUp()) {
-      this.powerManager.commit();
-    }
-    if (this.powerManager.isRunning()) {
-      this.interval = setInterval(() => this.onTick(), this.time);
+      getEventBusInstance().emit(
+        'error',
+        new TickerError('A timer is already running'),
+      );
+    } else {
+      if (this.powerManager.isGoingUp()) {
+        this.powerManager.commit();
+      }
+      if (this.powerManager.isRunning()) {
+        this.interval = setInterval(() => this.onTick(), this.time);
+      }
     }
   }
 }

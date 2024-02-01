@@ -12,6 +12,7 @@ import { ELuaScriptName, LuaScript } from './lua-script';
 import { ICallback, IRedisClient, IRedisTransaction } from '../../types';
 import { RedisClientError } from './errors';
 import { CallbackEmptyReplyError } from '../errors';
+import { getEventBusInstance } from '../event';
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 
@@ -20,8 +21,13 @@ export abstract class RedisClient extends EventEmitter implements IRedisClient {
   protected connectionClosed = true;
 
   validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
-    if (!RedisClient.redisServerVersion)
-      throw new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION');
+    if (!RedisClient.redisServerVersion) {
+      getEventBusInstance().emit(
+        'error',
+        new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION'),
+      );
+      return false;
+    }
     return (
       RedisClient.redisServerVersion[0] > major ||
       (RedisClient.redisServerVersion[0] === major &&
@@ -344,10 +350,17 @@ export abstract class RedisClient extends EventEmitter implements IRedisClient {
     cb: ICallback<unknown>,
   ): void {
     const sha = LuaScript.getInstance().getScriptId(scriptName);
-    this.evalsha(sha, [keys.length, ...keys, ...args], (err, res?: unknown) => {
-      if (err) cb(err);
-      else cb(null, res);
-    });
+    if (sha instanceof Error) cb(sha);
+    else {
+      this.evalsha(
+        sha,
+        [keys.length, ...keys, ...args],
+        (err, res?: unknown) => {
+          if (err) cb(err);
+          else cb(null, res);
+        },
+      );
+    }
   }
 
   static addScript(name: string, content: string): void {

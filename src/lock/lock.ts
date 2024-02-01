@@ -19,6 +19,7 @@ import {
   LockNotReleasedError,
 } from './errors';
 import { ELuaScript } from './redis-client/redis-client';
+import { getEventBusInstance } from '../event';
 
 export enum ELockStatus {
   unlocked,
@@ -40,7 +41,6 @@ export class Lock {
   protected status: ELockStatus = ELockStatus.unlocked;
   protected lockingTimer: NodeJS.Timeout | null = null;
   protected autoExtendTimer: NodeJS.Timeout | null = null;
-  protected throwExceptions = true;
 
   constructor(
     redisClient: RedisClient,
@@ -48,7 +48,6 @@ export class Lock {
     ttl: number,
     retryOnFail = false,
     autoExtend = false,
-    throwExceptions = true,
   ) {
     this.lockKey = lockKey;
     this.ttl = ttl;
@@ -56,7 +55,6 @@ export class Lock {
     this.lockId = uuid();
     this.redisClient = redisClient;
     this.autoExtend = autoExtend;
-    this.throwExceptions = throwExceptions;
   }
 
   protected resetTimers(): void {
@@ -115,9 +113,10 @@ export class Lock {
     this.autoExtendTimer = setTimeout(
       () =>
         this.extend((err) => {
-          if (!err) this.runAutoExtendTimer();
-          else if (this.throwExceptions && !(err instanceof LockAbortError))
-            throw err;
+          if (err) {
+            if (!(err instanceof LockAbortError))
+              getEventBusInstance().emit('error', err);
+          } else this.runAutoExtendTimer();
         }),
       ms,
     );
