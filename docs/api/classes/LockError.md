@@ -1,40 +1,40 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockError
 
 # Class: LockError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`LockError`**
 
-  ↳↳ [`LockAbortError`](docs/api/classes/LockAbortError.md)
+  ↳↳ [`LockAbortError`](LockAbortError.md)
 
-  ↳↳ [`LockAcquireError`](docs/api/classes/LockAcquireError.md)
+  ↳↳ [`LockAcquireError`](LockAcquireError.md)
 
-  ↳↳ [`LockExtendError`](docs/api/classes/LockExtendError.md)
+  ↳↳ [`LockExtendError`](LockExtendError.md)
 
-  ↳↳ [`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
+  ↳↳ [`LockMethodNotAllowedError`](LockMethodNotAllowedError.md)
 
-  ↳↳ [`LockNotAcquiredError`](docs/api/classes/LockNotAcquiredError.md)
+  ↳↳ [`LockNotAcquiredError`](LockNotAcquiredError.md)
 
-  ↳↳ [`LockNotReleasedError`](docs/api/classes/LockNotReleasedError.md)
+  ↳↳ [`LockNotReleasedError`](LockNotReleasedError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockError.md#constructor)
+- [constructor](LockError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LockError.md#name)
+- [name](LockError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockError**(`message?`): [`LockError`](docs/api/classes/LockError.md)
+• **new LockError**(`message?`): [`LockError`](LockError.md)
 
 #### Parameters
 
@@ -44,11 +44,11 @@
 
 #### Returns
 
-[`LockError`](docs/api/classes/LockError.md)
+[`LockError`](LockError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / WorkerRunner
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerRunner
 
 # Class: WorkerRunner
 
 ## Hierarchy
 
-- [`EventEmitter`](docs/api/classes/EventEmitter.md)\<[`TEvent`](docs/api/README.md#tevent)\>
+- [`EventEmitter`](EventEmitter.md)\<[`TEvent`](../README.md#tevent)\>
 
   ↳ **`WorkerRunner`**
 
@@ -12,40 +12,40 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/WorkerRunner.md#constructor)
+- [constructor](WorkerRunner.md#constructor)
 
 ### Methods
 
-- [addWorker](docs/api/classes/WorkerRunner.md#addworker)
-- [emit](docs/api/classes/WorkerRunner.md#emit)
-- [on](docs/api/classes/WorkerRunner.md#on)
-- [once](docs/api/classes/WorkerRunner.md#once)
-- [quit](docs/api/classes/WorkerRunner.md#quit)
-- [removeAllListeners](docs/api/classes/WorkerRunner.md#removealllisteners)
-- [run](docs/api/classes/WorkerRunner.md#run)
+- [addWorker](WorkerRunner.md#addworker)
+- [emit](WorkerRunner.md#emit)
+- [on](WorkerRunner.md#on)
+- [once](WorkerRunner.md#once)
+- [quit](WorkerRunner.md#quit)
+- [removeAllListeners](WorkerRunner.md#removealllisteners)
+- [run](WorkerRunner.md#run)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerRunner**(`redisClient`, `keyLock`, `workerPool`, `logger`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+• **new WorkerRunner**(`redisClient`, `keyLock`, `workerPool`, `logger`): [`WorkerRunner`](WorkerRunner.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `redisClient` | [`RedisClient`](docs/api/classes/RedisClient.md) |
+| `redisClient` | [`RedisClient`](RedisClient.md) |
 | `keyLock` | `string` |
-| `workerPool` | [`WorkerPool`](docs/api/classes/WorkerPool.md) |
-| `logger` | [`ILogger`](docs/api/interfaces/ILogger.md) |
+| `workerPool` | [`WorkerPool`](WorkerPool.md) |
+| `logger` | [`ILogger`](../interfaces/ILogger.md) |
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](WorkerRunner.md)
 
 #### Overrides
 
-[EventEmitter](docs/api/classes/EventEmitter.md).[constructor](docs/api/classes/EventEmitter.md#constructor)
+[EventEmitter](EventEmitter.md).[constructor](EventEmitter.md#constructor)
 
 ## Methods
 
@@ -57,7 +57,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `instance` | [`Worker`](docs/api/classes/Worker.md) |
+| `instance` | [`Worker`](Worker.md) |
 
 #### Returns
 
@@ -73,14 +73,14 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends keyof [`TEvent`](docs/api/README.md#tevent) |
+| `E` | extends keyof [`TEvent`](../README.md#tevent) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `event` | `E` |
-| `...args` | `Parameters`\<[`TEvent`](docs/api/README.md#tevent)[`E`]\> |
+| `...args` | `Parameters`\<[`TEvent`](../README.md#tevent)[`E`]\> |
 
 #### Returns
 
@@ -88,61 +88,61 @@ ___
 
 #### Inherited from
 
-[EventEmitter](docs/api/classes/EventEmitter.md).[emit](docs/api/classes/EventEmitter.md#emit)
+[EventEmitter](EventEmitter.md).[emit](EventEmitter.md#emit)
 
 ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **on**\<`E`\>(`event`, `listener`): [`WorkerRunner`](WorkerRunner.md)
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends keyof [`TEvent`](docs/api/README.md#tevent) |
+| `E` | extends keyof [`TEvent`](../README.md#tevent) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `event` | `E` |
-| `listener` | [`TEvent`](docs/api/README.md#tevent)[`E`] |
+| `listener` | [`TEvent`](../README.md#tevent)[`E`] |
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](WorkerRunner.md)
 
 #### Inherited from
 
-[EventEmitter](docs/api/classes/EventEmitter.md).[on](docs/api/classes/EventEmitter.md#on)
+[EventEmitter](EventEmitter.md).[on](EventEmitter.md#on)
 
 ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **once**\<`E`\>(`event`, `listener`): [`WorkerRunner`](WorkerRunner.md)
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends keyof [`TEvent`](docs/api/README.md#tevent) |
+| `E` | extends keyof [`TEvent`](../README.md#tevent) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `event` | `E` |
-| `listener` | [`TEvent`](docs/api/README.md#tevent)[`E`] |
+| `listener` | [`TEvent`](../README.md#tevent)[`E`] |
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](WorkerRunner.md)
 
 #### Inherited from
 
-[EventEmitter](docs/api/classes/EventEmitter.md).[once](docs/api/classes/EventEmitter.md#once)
+[EventEmitter](EventEmitter.md).[once](EventEmitter.md#once)
 
 ___
 
@@ -154,7 +154,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -164,13 +164,13 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerRunner`](WorkerRunner.md)
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `E` | extends keyof [`TEvent`](docs/api/README.md#tevent) |
+| `E` | extends keyof [`TEvent`](../README.md#tevent) |
 
 #### Parameters
 
@@ -180,17 +180,23 @@ ___
 
 #### Returns
 
-[`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+[`WorkerRunner`](WorkerRunner.md)
 
 #### Inherited from
 
-[EventEmitter](docs/api/classes/EventEmitter.md).[removeAllListeners](docs/api/classes/EventEmitter.md#removealllisteners)
+[EventEmitter](EventEmitter.md).[removeAllListeners](EventEmitter.md#removealllisteners)
 
 ___
 
 ### run
 
-▸ **run**(): `void`
+▸ **run**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 

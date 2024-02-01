@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / CallbackEmptyReplyError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / CallbackEmptyReplyError
 
 # Class: CallbackEmptyReplyError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`CallbackEmptyReplyError`**
 
@@ -12,25 +12,25 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/CallbackEmptyReplyError.md#constructor)
+- [constructor](CallbackEmptyReplyError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/CallbackEmptyReplyError.md#name)
+- [name](CallbackEmptyReplyError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new CallbackEmptyReplyError**(): [`CallbackEmptyReplyError`](docs/api/classes/CallbackEmptyReplyError.md)
+• **new CallbackEmptyReplyError**(): [`CallbackEmptyReplyError`](CallbackEmptyReplyError.md)
 
 #### Returns
 
-[`CallbackEmptyReplyError`](docs/api/classes/CallbackEmptyReplyError.md)
+[`CallbackEmptyReplyError`](CallbackEmptyReplyError.md)
 
 #### Overrides
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

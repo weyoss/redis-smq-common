@@ -1,4 +1,4 @@
-> [RedisSMQ Common Library](../README.md) / Docs
+[RedisSMQ Common Library](../README.md) / Docs
 
 # Docs
 

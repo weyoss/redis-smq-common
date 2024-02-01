@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / IRedisTransaction
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IRedisTransaction
 
 # Interface: IRedisTransaction
 
@@ -6,30 +6,30 @@
 
 ### Methods
 
-- [del](docs/api/interfaces/IRedisTransaction.md#del)
-- [exec](docs/api/interfaces/IRedisTransaction.md#exec)
-- [expire](docs/api/interfaces/IRedisTransaction.md#expire)
-- [hdel](docs/api/interfaces/IRedisTransaction.md#hdel)
-- [hincrby](docs/api/interfaces/IRedisTransaction.md#hincrby)
-- [hset](docs/api/interfaces/IRedisTransaction.md#hset)
-- [lpop](docs/api/interfaces/IRedisTransaction.md#lpop)
-- [lpush](docs/api/interfaces/IRedisTransaction.md#lpush)
-- [lrem](docs/api/interfaces/IRedisTransaction.md#lrem)
-- [ltrim](docs/api/interfaces/IRedisTransaction.md#ltrim)
-- [pexpire](docs/api/interfaces/IRedisTransaction.md#pexpire)
-- [rpop](docs/api/interfaces/IRedisTransaction.md#rpop)
-- [rpoplpush](docs/api/interfaces/IRedisTransaction.md#rpoplpush)
-- [rpush](docs/api/interfaces/IRedisTransaction.md#rpush)
-- [sadd](docs/api/interfaces/IRedisTransaction.md#sadd)
-- [srem](docs/api/interfaces/IRedisTransaction.md#srem)
-- [zadd](docs/api/interfaces/IRedisTransaction.md#zadd)
-- [zrem](docs/api/interfaces/IRedisTransaction.md#zrem)
+- [del](IRedisTransaction.md#del)
+- [exec](IRedisTransaction.md#exec)
+- [expire](IRedisTransaction.md#expire)
+- [hdel](IRedisTransaction.md#hdel)
+- [hincrby](IRedisTransaction.md#hincrby)
+- [hset](IRedisTransaction.md#hset)
+- [lpop](IRedisTransaction.md#lpop)
+- [lpush](IRedisTransaction.md#lpush)
+- [lrem](IRedisTransaction.md#lrem)
+- [ltrim](IRedisTransaction.md#ltrim)
+- [pexpire](IRedisTransaction.md#pexpire)
+- [rpop](IRedisTransaction.md#rpop)
+- [rpoplpush](IRedisTransaction.md#rpoplpush)
+- [rpush](IRedisTransaction.md#rpush)
+- [sadd](IRedisTransaction.md#sadd)
+- [srem](IRedisTransaction.md#srem)
+- [zadd](IRedisTransaction.md#zadd)
+- [zrem](IRedisTransaction.md#zrem)
 
 ## Methods
 
 ### del
 
-▸ **del**(`key`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **del**(`key`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -39,7 +39,7 @@
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`unknown`[]\> |
+| `cb` | [`ICallback`](ICallback.md)\<`unknown`[]\> |
 
 #### Returns
 
@@ -61,7 +61,7 @@ ___
 
 ### expire
 
-▸ **expire**(`key`, `secs`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **expire**(`key`, `secs`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -72,13 +72,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### hdel
 
-▸ **hdel**(`key`, `field`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **hdel**(`key`, `field`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -89,13 +89,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### hincrby
 
-▸ **hincrby**(`key`, `field`, `by`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **hincrby**(`key`, `field`, `by`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -107,13 +107,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### hset
 
-▸ **hset**(`key`, `field`, `value`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **hset**(`key`, `field`, `value`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -125,13 +125,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### lpop
 
-▸ **lpop**(`key`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **lpop**(`key`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -141,13 +141,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### lpush
 
-▸ **lpush**(`key`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **lpush**(`key`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -158,13 +158,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### lrem
 
-▸ **lrem**(`key`, `count`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **lrem**(`key`, `count`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -176,13 +176,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### ltrim
 
-▸ **ltrim**(`key`, `start`, `stop`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **ltrim**(`key`, `start`, `stop`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -194,13 +194,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### pexpire
 
-▸ **pexpire**(`key`, `millis`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **pexpire**(`key`, `millis`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -211,13 +211,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### rpop
 
-▸ **rpop**(`key`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **rpop**(`key`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -227,13 +227,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### rpoplpush
 
-▸ **rpoplpush**(`source`, `destination`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **rpoplpush**(`source`, `destination`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -244,13 +244,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### rpush
 
-▸ **rpush**(`key`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **rpush**(`key`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -261,13 +261,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### sadd
 
-▸ **sadd**(`key`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **sadd**(`key`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -278,13 +278,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### srem
 
-▸ **srem**(`key`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **srem**(`key`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -295,13 +295,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### zadd
 
-▸ **zadd**(`key`, `score`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **zadd**(`key`, `score`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -313,13 +313,13 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)
 
 ___
 
 ### zrem
 
-▸ **zrem**(`key`, `element`): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **zrem**(`key`, `element`): [`IRedisTransaction`](IRedisTransaction.md)
 
 #### Parameters
 
@@ -330,4 +330,4 @@ ___
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](IRedisTransaction.md)

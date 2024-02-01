@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / ILogger
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ILogger
 
 # Interface: ILogger
 
@@ -6,10 +6,10 @@
 
 ### Methods
 
-- [debug](docs/api/interfaces/ILogger.md#debug)
-- [error](docs/api/interfaces/ILogger.md#error)
-- [info](docs/api/interfaces/ILogger.md#info)
-- [warn](docs/api/interfaces/ILogger.md#warn)
+- [debug](ILogger.md#debug)
+- [error](ILogger.md#error)
+- [info](ILogger.md#info)
+- [warn](ILogger.md#warn)
 
 ## Methods
 

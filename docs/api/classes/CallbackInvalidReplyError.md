@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / CallbackInvalidReplyError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / CallbackInvalidReplyError
 
 # Class: CallbackInvalidReplyError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`CallbackInvalidReplyError`**
 
@@ -12,25 +12,25 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/CallbackInvalidReplyError.md#constructor)
+- [constructor](CallbackInvalidReplyError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/CallbackInvalidReplyError.md#name)
+- [name](CallbackInvalidReplyError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new CallbackInvalidReplyError**(): [`CallbackInvalidReplyError`](docs/api/classes/CallbackInvalidReplyError.md)
+• **new CallbackInvalidReplyError**(): [`CallbackInvalidReplyError`](CallbackInvalidReplyError.md)
 
 #### Returns
 
-[`CallbackInvalidReplyError`](docs/api/classes/CallbackInvalidReplyError.md)
+[`CallbackInvalidReplyError`](CallbackInvalidReplyError.md)
 
 #### Overrides
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

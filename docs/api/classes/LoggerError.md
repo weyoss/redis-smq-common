@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LoggerError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LoggerError
 
 # Class: LoggerError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`LoggerError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LoggerError.md#constructor)
+- [constructor](LoggerError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LoggerError.md#name)
+- [name](LoggerError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LoggerError**(`message?`): [`LoggerError`](docs/api/classes/LoggerError.md)
+• **new LoggerError**(`message?`): [`LoggerError`](LoggerError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`LoggerError`](docs/api/classes/LoggerError.md)
+[`LoggerError`](LoggerError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

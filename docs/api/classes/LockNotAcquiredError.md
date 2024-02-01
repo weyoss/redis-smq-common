@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockNotAcquiredError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockNotAcquiredError
 
 # Class: LockNotAcquiredError
 
 ## Hierarchy
 
-- [`LockError`](docs/api/classes/LockError.md)
+- [`LockError`](LockError.md)
 
   ↳ **`LockNotAcquiredError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockNotAcquiredError.md#constructor)
+- [constructor](LockNotAcquiredError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LockNotAcquiredError.md#name)
+- [name](LockNotAcquiredError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockNotAcquiredError**(`message?`): [`LockNotAcquiredError`](docs/api/classes/LockNotAcquiredError.md)
+• **new LockNotAcquiredError**(`message?`): [`LockNotAcquiredError`](LockNotAcquiredError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`LockNotAcquiredError`](docs/api/classes/LockNotAcquiredError.md)
+[`LockNotAcquiredError`](LockNotAcquiredError.md)
 
 #### Overrides
 
-[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
+[LockError](LockError.md).[constructor](LockError.md#constructor)
 
 ## Accessors
 

@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / PowerSwitch
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / PowerSwitch
 
 # Class: PowerSwitch
 
@@ -6,45 +6,39 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/PowerSwitch.md#constructor)
+- [constructor](PowerSwitch.md#constructor)
 
 ### Methods
 
-- [commit](docs/api/classes/PowerSwitch.md#commit)
-- [goingDown](docs/api/classes/PowerSwitch.md#goingdown)
-- [goingUp](docs/api/classes/PowerSwitch.md#goingup)
-- [isDown](docs/api/classes/PowerSwitch.md#isdown)
-- [isGoingDown](docs/api/classes/PowerSwitch.md#isgoingdown)
-- [isGoingUp](docs/api/classes/PowerSwitch.md#isgoingup)
-- [isRunning](docs/api/classes/PowerSwitch.md#isrunning)
-- [isUp](docs/api/classes/PowerSwitch.md#isup)
-- [rollback](docs/api/classes/PowerSwitch.md#rollback)
+- [commit](PowerSwitch.md#commit)
+- [goingDown](PowerSwitch.md#goingdown)
+- [goingUp](PowerSwitch.md#goingup)
+- [isDown](PowerSwitch.md#isdown)
+- [isGoingDown](PowerSwitch.md#isgoingdown)
+- [isGoingUp](PowerSwitch.md#isgoingup)
+- [isRunning](PowerSwitch.md#isrunning)
+- [isUp](PowerSwitch.md#isup)
+- [rollback](PowerSwitch.md#rollback)
 
 ## Constructors
 
 ### constructor
 
-• **new PowerSwitch**(`throwExceptionOnError?`): [`PowerSwitch`](docs/api/classes/PowerSwitch.md)
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `throwExceptionOnError` | `boolean` | `true` |
+• **new PowerSwitch**(): [`PowerSwitch`](PowerSwitch.md)
 
 #### Returns
 
-[`PowerSwitch`](docs/api/classes/PowerSwitch.md)
+[`PowerSwitch`](PowerSwitch.md)
 
 ## Methods
 
 ### commit
 
-▸ **commit**(): `void`
+▸ **commit**(): `boolean`
 
 #### Returns
 
-`void`
+`boolean`
 
 ___
 
@@ -120,8 +114,8 @@ ___
 
 ### rollback
 
-▸ **rollback**(): `void`
+▸ **rollback**(): `boolean`
 
 #### Returns
 
-`void`
+`boolean`

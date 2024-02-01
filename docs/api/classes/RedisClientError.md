@@ -1,30 +1,30 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / RedisClientError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClientError
 
 # Class: RedisClientError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`RedisClientError`**
 
-  ↳↳ [`WatchedKeysChangedError`](docs/api/classes/WatchedKeysChangedError.md)
+  ↳↳ [`WatchedKeysChangedError`](WatchedKeysChangedError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/RedisClientError.md#constructor)
+- [constructor](RedisClientError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/RedisClientError.md#name)
+- [name](RedisClientError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisClientError**(`message?`): [`RedisClientError`](docs/api/classes/RedisClientError.md)
+• **new RedisClientError**(`message?`): [`RedisClientError`](RedisClientError.md)
 
 #### Parameters
 
@@ -34,11 +34,11 @@
 
 #### Returns
 
-[`RedisClientError`](docs/api/classes/RedisClientError.md)
+[`RedisClientError`](RedisClientError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

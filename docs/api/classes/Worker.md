@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / Worker
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / Worker
 
 # Class: Worker
 
@@ -6,19 +6,19 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/Worker.md#constructor)
+- [constructor](Worker.md#constructor)
 
 ### Methods
 
-- [quit](docs/api/classes/Worker.md#quit)
-- [run](docs/api/classes/Worker.md#run)
-- [work](docs/api/classes/Worker.md#work)
+- [quit](Worker.md#quit)
+- [run](Worker.md#run)
+- [work](Worker.md#work)
 
 ## Constructors
 
 ### constructor
 
-• **new Worker**(`managed`, `timeout?`): [`Worker`](docs/api/classes/Worker.md)
+• **new Worker**(`managed`, `timeout?`): [`Worker`](Worker.md)
 
 #### Parameters
 
@@ -29,7 +29,7 @@
 
 #### Returns
 
-[`Worker`](docs/api/classes/Worker.md)
+[`Worker`](Worker.md)
 
 ## Methods
 
@@ -41,7 +41,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -51,7 +51,13 @@ ___
 
 ### run
 
-▸ **run**(): `void`
+▸ **run**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -67,7 +73,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 

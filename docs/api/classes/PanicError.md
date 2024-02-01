@@ -1,30 +1,30 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / PanicError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / PanicError
 
 # Class: PanicError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`PanicError`**
 
-  ↳↳ [`WorkerError`](docs/api/classes/WorkerError.md)
+  ↳↳ [`WorkerError`](WorkerError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/PanicError.md#constructor)
+- [constructor](PanicError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/PanicError.md#name)
+- [name](PanicError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new PanicError**(`message?`): [`PanicError`](docs/api/classes/PanicError.md)
+• **new PanicError**(`message?`): [`PanicError`](PanicError.md)
 
 #### Parameters
 
@@ -34,11 +34,11 @@
 
 #### Returns
 
-[`PanicError`](docs/api/classes/PanicError.md)
+[`PanicError`](PanicError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / RedisClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClient
 
 # Class: RedisClient
 
@@ -10,79 +10,79 @@
 
 ## Implements
 
-- [`IRedisClient`](docs/api/interfaces/IRedisClient.md)
+- [`IRedisClient`](../interfaces/IRedisClient.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/RedisClient.md#constructor)
+- [constructor](RedisClient.md#constructor)
 
 ### Methods
 
-- [brpoplpush](docs/api/classes/RedisClient.md#brpoplpush)
-- [del](docs/api/classes/RedisClient.md#del)
-- [end](docs/api/classes/RedisClient.md#end)
-- [evalsha](docs/api/classes/RedisClient.md#evalsha)
-- [flushall](docs/api/classes/RedisClient.md#flushall)
-- [get](docs/api/classes/RedisClient.md#get)
-- [getInfo](docs/api/classes/RedisClient.md#getinfo)
-- [halt](docs/api/classes/RedisClient.md#halt)
-- [hdel](docs/api/classes/RedisClient.md#hdel)
-- [hget](docs/api/classes/RedisClient.md#hget)
-- [hgetall](docs/api/classes/RedisClient.md#hgetall)
-- [hkeys](docs/api/classes/RedisClient.md#hkeys)
-- [hlen](docs/api/classes/RedisClient.md#hlen)
-- [hmget](docs/api/classes/RedisClient.md#hmget)
-- [hscan](docs/api/classes/RedisClient.md#hscan)
-- [hscanAll](docs/api/classes/RedisClient.md#hscanall)
-- [hset](docs/api/classes/RedisClient.md#hset)
-- [llen](docs/api/classes/RedisClient.md#llen)
-- [lmove](docs/api/classes/RedisClient.md#lmove)
-- [loadScript](docs/api/classes/RedisClient.md#loadscript)
-- [loadScripts](docs/api/classes/RedisClient.md#loadscripts)
-- [lpoprpush](docs/api/classes/RedisClient.md#lpoprpush)
-- [lrange](docs/api/classes/RedisClient.md#lrange)
-- [lrem](docs/api/classes/RedisClient.md#lrem)
-- [multi](docs/api/classes/RedisClient.md#multi)
-- [psubscribe](docs/api/classes/RedisClient.md#psubscribe)
-- [publish](docs/api/classes/RedisClient.md#publish)
-- [punsubscribe](docs/api/classes/RedisClient.md#punsubscribe)
-- [quit](docs/api/classes/RedisClient.md#quit)
-- [rpop](docs/api/classes/RedisClient.md#rpop)
-- [rpoplpush](docs/api/classes/RedisClient.md#rpoplpush)
-- [runScript](docs/api/classes/RedisClient.md#runscript)
-- [sadd](docs/api/classes/RedisClient.md#sadd)
-- [set](docs/api/classes/RedisClient.md#set)
-- [sismember](docs/api/classes/RedisClient.md#sismember)
-- [smembers](docs/api/classes/RedisClient.md#smembers)
-- [srem](docs/api/classes/RedisClient.md#srem)
-- [sscan](docs/api/classes/RedisClient.md#sscan)
-- [sscanAll](docs/api/classes/RedisClient.md#sscanall)
-- [subscribe](docs/api/classes/RedisClient.md#subscribe)
-- [unsubscribe](docs/api/classes/RedisClient.md#unsubscribe)
-- [unwatch](docs/api/classes/RedisClient.md#unwatch)
-- [updateServerVersion](docs/api/classes/RedisClient.md#updateserverversion)
-- [validateRedisServerSupport](docs/api/classes/RedisClient.md#validateredisserversupport)
-- [validateRedisVersion](docs/api/classes/RedisClient.md#validateredisversion)
-- [watch](docs/api/classes/RedisClient.md#watch)
-- [zadd](docs/api/classes/RedisClient.md#zadd)
-- [zcard](docs/api/classes/RedisClient.md#zcard)
-- [zpoprpush](docs/api/classes/RedisClient.md#zpoprpush)
-- [zrange](docs/api/classes/RedisClient.md#zrange)
-- [zrangebyscore](docs/api/classes/RedisClient.md#zrangebyscore)
-- [zrangebyscorewithscores](docs/api/classes/RedisClient.md#zrangebyscorewithscores)
-- [zrem](docs/api/classes/RedisClient.md#zrem)
-- [zremrangebyscore](docs/api/classes/RedisClient.md#zremrangebyscore)
-- [zrevrange](docs/api/classes/RedisClient.md#zrevrange)
-- [zscan](docs/api/classes/RedisClient.md#zscan)
-- [addScript](docs/api/classes/RedisClient.md#addscript)
+- [brpoplpush](RedisClient.md#brpoplpush)
+- [del](RedisClient.md#del)
+- [end](RedisClient.md#end)
+- [evalsha](RedisClient.md#evalsha)
+- [flushall](RedisClient.md#flushall)
+- [get](RedisClient.md#get)
+- [getInfo](RedisClient.md#getinfo)
+- [halt](RedisClient.md#halt)
+- [hdel](RedisClient.md#hdel)
+- [hget](RedisClient.md#hget)
+- [hgetall](RedisClient.md#hgetall)
+- [hkeys](RedisClient.md#hkeys)
+- [hlen](RedisClient.md#hlen)
+- [hmget](RedisClient.md#hmget)
+- [hscan](RedisClient.md#hscan)
+- [hscanAll](RedisClient.md#hscanall)
+- [hset](RedisClient.md#hset)
+- [llen](RedisClient.md#llen)
+- [lmove](RedisClient.md#lmove)
+- [loadScript](RedisClient.md#loadscript)
+- [loadScripts](RedisClient.md#loadscripts)
+- [lpoprpush](RedisClient.md#lpoprpush)
+- [lrange](RedisClient.md#lrange)
+- [lrem](RedisClient.md#lrem)
+- [multi](RedisClient.md#multi)
+- [psubscribe](RedisClient.md#psubscribe)
+- [publish](RedisClient.md#publish)
+- [punsubscribe](RedisClient.md#punsubscribe)
+- [quit](RedisClient.md#quit)
+- [rpop](RedisClient.md#rpop)
+- [rpoplpush](RedisClient.md#rpoplpush)
+- [runScript](RedisClient.md#runscript)
+- [sadd](RedisClient.md#sadd)
+- [set](RedisClient.md#set)
+- [sismember](RedisClient.md#sismember)
+- [smembers](RedisClient.md#smembers)
+- [srem](RedisClient.md#srem)
+- [sscan](RedisClient.md#sscan)
+- [sscanAll](RedisClient.md#sscanall)
+- [subscribe](RedisClient.md#subscribe)
+- [unsubscribe](RedisClient.md#unsubscribe)
+- [unwatch](RedisClient.md#unwatch)
+- [updateServerVersion](RedisClient.md#updateserverversion)
+- [validateRedisServerSupport](RedisClient.md#validateredisserversupport)
+- [validateRedisVersion](RedisClient.md#validateredisversion)
+- [watch](RedisClient.md#watch)
+- [zadd](RedisClient.md#zadd)
+- [zcard](RedisClient.md#zcard)
+- [zpoprpush](RedisClient.md#zpoprpush)
+- [zrange](RedisClient.md#zrange)
+- [zrangebyscore](RedisClient.md#zrangebyscore)
+- [zrangebyscorewithscores](RedisClient.md#zrangebyscorewithscores)
+- [zrem](RedisClient.md#zrem)
+- [zremrangebyscore](RedisClient.md#zremrangebyscore)
+- [zrevrange](RedisClient.md#zrevrange)
+- [zscan](RedisClient.md#zscan)
+- [addScript](RedisClient.md#addscript)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisClient**(`options?`): [`RedisClient`](docs/api/classes/RedisClient.md)
+• **new RedisClient**(`options?`): [`RedisClient`](RedisClient.md)
 
 #### Parameters
 
@@ -92,7 +92,7 @@
 
 #### Returns
 
-[`RedisClient`](docs/api/classes/RedisClient.md)
+[`RedisClient`](RedisClient.md)
 
 #### Inherited from
 
@@ -111,7 +111,7 @@ EventEmitter.constructor
 | `source` | `string` |
 | `destination` | `string` |
 | `timeout` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -119,7 +119,7 @@ EventEmitter.constructor
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[brpoplpush](docs/api/interfaces/IRedisClient.md#brpoplpush)
+[IRedisClient](../interfaces/IRedisClient.md).[brpoplpush](../interfaces/IRedisClient.md#brpoplpush)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -140,7 +140,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[del](docs/api/interfaces/IRedisClient.md#del)
+[IRedisClient](../interfaces/IRedisClient.md).[del](../interfaces/IRedisClient.md#del)
 
 ___
 
@@ -160,7 +160,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[end](docs/api/interfaces/IRedisClient.md#end)
+[IRedisClient](../interfaces/IRedisClient.md).[end](../interfaces/IRedisClient.md#end)
 
 ___
 
@@ -182,7 +182,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[evalsha](docs/api/interfaces/IRedisClient.md#evalsha)
+[IRedisClient](../interfaces/IRedisClient.md).[evalsha](../interfaces/IRedisClient.md#evalsha)
 
 ___
 
@@ -194,7 +194,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`\> |
 
 #### Returns
 
@@ -202,7 +202,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[flushall](docs/api/interfaces/IRedisClient.md#flushall)
+[IRedisClient](../interfaces/IRedisClient.md).[flushall](../interfaces/IRedisClient.md#flushall)
 
 ___
 
@@ -215,7 +215,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -223,7 +223,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[get](docs/api/interfaces/IRedisClient.md#get)
+[IRedisClient](../interfaces/IRedisClient.md).[get](../interfaces/IRedisClient.md#get)
 
 ___
 
@@ -235,7 +235,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`\> |
 
 #### Returns
 
@@ -243,7 +243,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[getInfo](docs/api/interfaces/IRedisClient.md#getinfo)
+[IRedisClient](../interfaces/IRedisClient.md).[getInfo](../interfaces/IRedisClient.md#getinfo)
 
 ___
 
@@ -255,7 +255,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -263,7 +263,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[halt](docs/api/interfaces/IRedisClient.md#halt)
+[IRedisClient](../interfaces/IRedisClient.md).[halt](../interfaces/IRedisClient.md#halt)
 
 ___
 
@@ -277,7 +277,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `fields` | `string` \| `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -285,7 +285,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hdel](docs/api/interfaces/IRedisClient.md#hdel)
+[IRedisClient](../interfaces/IRedisClient.md).[hdel](../interfaces/IRedisClient.md#hdel)
 
 ___
 
@@ -299,7 +299,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `field` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -307,7 +307,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hget](docs/api/interfaces/IRedisClient.md#hget)
+[IRedisClient](../interfaces/IRedisClient.md).[hget](../interfaces/IRedisClient.md#hget)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
 
 #### Returns
 
@@ -328,7 +328,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hgetall](docs/api/interfaces/IRedisClient.md#hgetall)
+[IRedisClient](../interfaces/IRedisClient.md).[hgetall](../interfaces/IRedisClient.md#hgetall)
 
 ___
 
@@ -341,7 +341,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -349,7 +349,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hkeys](docs/api/interfaces/IRedisClient.md#hkeys)
+[IRedisClient](../interfaces/IRedisClient.md).[hkeys](../interfaces/IRedisClient.md#hkeys)
 
 ___
 
@@ -362,7 +362,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -370,7 +370,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hlen](docs/api/interfaces/IRedisClient.md#hlen)
+[IRedisClient](../interfaces/IRedisClient.md).[hlen](../interfaces/IRedisClient.md#hlen)
 
 ___
 
@@ -384,7 +384,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `keys` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<(``null`` \| `string`)[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<(``null`` \| `string`)[]\> |
 
 #### Returns
 
@@ -392,7 +392,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hmget](docs/api/interfaces/IRedisClient.md#hmget)
+[IRedisClient](../interfaces/IRedisClient.md).[hmget](../interfaces/IRedisClient.md#hmget)
 
 ___
 
@@ -409,7 +409,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<\{ `cursor`: `string` ; `result`: `Record`\<`string`, `string`\>  }\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<\{ `cursor`: `string` ; `result`: `Record`\<`string`, `string`\>  }\> |
 
 #### Returns
 
@@ -417,7 +417,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hscan](docs/api/interfaces/IRedisClient.md#hscan)
+[IRedisClient](../interfaces/IRedisClient.md).[hscan](../interfaces/IRedisClient.md#hscan)
 
 ___
 
@@ -433,7 +433,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
 
 #### Returns
 
@@ -441,7 +441,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hscanAll](docs/api/interfaces/IRedisClient.md#hscanall)
+[IRedisClient](../interfaces/IRedisClient.md).[hscanAll](../interfaces/IRedisClient.md#hscanall)
 
 ___
 
@@ -456,7 +456,7 @@ ___
 | `key` | `string` |
 | `field` | `string` |
 | `value` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -464,7 +464,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[hset](docs/api/interfaces/IRedisClient.md#hset)
+[IRedisClient](../interfaces/IRedisClient.md).[hset](../interfaces/IRedisClient.md#hset)
 
 ___
 
@@ -477,7 +477,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -485,7 +485,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[llen](docs/api/interfaces/IRedisClient.md#llen)
+[IRedisClient](../interfaces/IRedisClient.md).[llen](../interfaces/IRedisClient.md#llen)
 
 ___
 
@@ -501,7 +501,7 @@ ___
 | `destination` | `string` |
 | `from` | ``"LEFT"`` \| ``"RIGHT"`` |
 | `to` | ``"LEFT"`` \| ``"RIGHT"`` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -509,7 +509,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lmove](docs/api/interfaces/IRedisClient.md#lmove)
+[IRedisClient](../interfaces/IRedisClient.md).[lmove](../interfaces/IRedisClient.md#lmove)
 
 ___
 
@@ -522,7 +522,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `script` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`\> |
 
 #### Returns
 
@@ -530,7 +530,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[loadScript](docs/api/interfaces/IRedisClient.md#loadscript)
+[IRedisClient](../interfaces/IRedisClient.md).[loadScript](../interfaces/IRedisClient.md#loadscript)
 
 ___
 
@@ -542,7 +542,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -550,7 +550,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[loadScripts](docs/api/interfaces/IRedisClient.md#loadscripts)
+[IRedisClient](../interfaces/IRedisClient.md).[loadScripts](../interfaces/IRedisClient.md#loadscripts)
 
 ___
 
@@ -564,7 +564,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -572,7 +572,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lpoprpush](docs/api/interfaces/IRedisClient.md#lpoprpush)
+[IRedisClient](../interfaces/IRedisClient.md).[lpoprpush](../interfaces/IRedisClient.md#lpoprpush)
 
 ___
 
@@ -587,7 +587,7 @@ ___
 | `key` | `string` |
 | `start` | `number` |
 | `stop` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -595,7 +595,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lrange](docs/api/interfaces/IRedisClient.md#lrange)
+[IRedisClient](../interfaces/IRedisClient.md).[lrange](../interfaces/IRedisClient.md#lrange)
 
 ___
 
@@ -610,7 +610,7 @@ ___
 | `key` | `string` |
 | `count` | `number` |
 | `element` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -618,21 +618,21 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[lrem](docs/api/interfaces/IRedisClient.md#lrem)
+[IRedisClient](../interfaces/IRedisClient.md).[lrem](../interfaces/IRedisClient.md#lrem)
 
 ___
 
 ### multi
 
-▸ **multi**(): [`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+▸ **multi**(): [`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 #### Returns
 
-[`IRedisTransaction`](docs/api/interfaces/IRedisTransaction.md)
+[`IRedisTransaction`](../interfaces/IRedisTransaction.md)
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[multi](docs/api/interfaces/IRedisClient.md#multi)
+[IRedisClient](../interfaces/IRedisClient.md).[multi](../interfaces/IRedisClient.md#multi)
 
 ___
 
@@ -652,7 +652,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[psubscribe](docs/api/interfaces/IRedisClient.md#psubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[psubscribe](../interfaces/IRedisClient.md#psubscribe)
 
 ___
 
@@ -666,7 +666,7 @@ ___
 | :------ | :------ |
 | `channel` | `string` |
 | `message` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -674,7 +674,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[publish](docs/api/interfaces/IRedisClient.md#publish)
+[IRedisClient](../interfaces/IRedisClient.md).[publish](../interfaces/IRedisClient.md#publish)
 
 ___
 
@@ -694,7 +694,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[punsubscribe](docs/api/interfaces/IRedisClient.md#punsubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[punsubscribe](../interfaces/IRedisClient.md#punsubscribe)
 
 ___
 
@@ -706,7 +706,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -714,7 +714,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[quit](docs/api/interfaces/IRedisClient.md#quit)
+[IRedisClient](../interfaces/IRedisClient.md).[quit](../interfaces/IRedisClient.md#quit)
 
 ___
 
@@ -727,7 +727,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -735,7 +735,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[rpop](docs/api/interfaces/IRedisClient.md#rpop)
+[IRedisClient](../interfaces/IRedisClient.md).[rpop](../interfaces/IRedisClient.md#rpop)
 
 ___
 
@@ -749,7 +749,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -757,7 +757,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[rpoplpush](docs/api/interfaces/IRedisClient.md#rpoplpush)
+[IRedisClient](../interfaces/IRedisClient.md).[rpoplpush](../interfaces/IRedisClient.md#rpoplpush)
 
 ___
 
@@ -772,7 +772,7 @@ ___
 | `scriptName` | `string` |
 | `keys` | (`string` \| `number`)[] |
 | `args` | (`string` \| `number`)[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`unknown`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`unknown`\> |
 
 #### Returns
 
@@ -780,7 +780,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[runScript](docs/api/interfaces/IRedisClient.md#runscript)
+[IRedisClient](../interfaces/IRedisClient.md).[runScript](../interfaces/IRedisClient.md#runscript)
 
 ___
 
@@ -794,7 +794,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -802,7 +802,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sadd](docs/api/interfaces/IRedisClient.md#sadd)
+[IRedisClient](../interfaces/IRedisClient.md).[sadd](../interfaces/IRedisClient.md#sadd)
 
 ___
 
@@ -821,7 +821,7 @@ ___
 | `options.expire?` | `Object` |
 | `options.expire.mode` | ``"EX"`` \| ``"PX"`` |
 | `options.expire.value` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -829,7 +829,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[set](docs/api/interfaces/IRedisClient.md#set)
+[IRedisClient](../interfaces/IRedisClient.md).[set](../interfaces/IRedisClient.md#set)
 
 ___
 
@@ -843,7 +843,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -851,7 +851,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sismember](docs/api/interfaces/IRedisClient.md#sismember)
+[IRedisClient](../interfaces/IRedisClient.md).[sismember](../interfaces/IRedisClient.md#sismember)
 
 ___
 
@@ -864,7 +864,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -872,7 +872,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[smembers](docs/api/interfaces/IRedisClient.md#smembers)
+[IRedisClient](../interfaces/IRedisClient.md).[smembers](../interfaces/IRedisClient.md#smembers)
 
 ___
 
@@ -886,7 +886,7 @@ ___
 | :------ | :------ |
 | `key` | `string` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -894,7 +894,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[srem](docs/api/interfaces/IRedisClient.md#srem)
+[IRedisClient](../interfaces/IRedisClient.md).[srem](../interfaces/IRedisClient.md#srem)
 
 ___
 
@@ -911,7 +911,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<\{ `cursor`: `string` ; `items`: `string`[]  }\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<\{ `cursor`: `string` ; `items`: `string`[]  }\> |
 
 #### Returns
 
@@ -919,7 +919,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sscan](docs/api/interfaces/IRedisClient.md#sscan)
+[IRedisClient](../interfaces/IRedisClient.md).[sscan](../interfaces/IRedisClient.md#sscan)
 
 ___
 
@@ -935,7 +935,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -943,7 +943,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[sscanAll](docs/api/interfaces/IRedisClient.md#sscanall)
+[IRedisClient](../interfaces/IRedisClient.md).[sscanAll](../interfaces/IRedisClient.md#sscanall)
 
 ___
 
@@ -963,7 +963,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[subscribe](docs/api/interfaces/IRedisClient.md#subscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[subscribe](../interfaces/IRedisClient.md#subscribe)
 
 ___
 
@@ -983,7 +983,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[unsubscribe](docs/api/interfaces/IRedisClient.md#unsubscribe)
+[IRedisClient](../interfaces/IRedisClient.md).[unsubscribe](../interfaces/IRedisClient.md#unsubscribe)
 
 ___
 
@@ -995,7 +995,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`\> |
 
 #### Returns
 
@@ -1003,7 +1003,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[unwatch](docs/api/interfaces/IRedisClient.md#unwatch)
+[IRedisClient](../interfaces/IRedisClient.md).[unwatch](../interfaces/IRedisClient.md#unwatch)
 
 ___
 
@@ -1015,7 +1015,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -1023,7 +1023,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[updateServerVersion](docs/api/interfaces/IRedisClient.md#updateserverversion)
+[IRedisClient](../interfaces/IRedisClient.md).[updateServerVersion](../interfaces/IRedisClient.md#updateserverversion)
 
 ___
 
@@ -1035,7 +1035,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`void`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -1043,7 +1043,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[validateRedisServerSupport](docs/api/interfaces/IRedisClient.md#validateredisserversupport)
+[IRedisClient](../interfaces/IRedisClient.md).[validateRedisServerSupport](../interfaces/IRedisClient.md#validateredisserversupport)
 
 ___
 
@@ -1065,7 +1065,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[validateRedisVersion](docs/api/interfaces/IRedisClient.md#validateredisversion)
+[IRedisClient](../interfaces/IRedisClient.md).[validateRedisVersion](../interfaces/IRedisClient.md#validateredisversion)
 
 ___
 
@@ -1078,7 +1078,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `args` | `string`[] |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`\> |
 
 #### Returns
 
@@ -1086,7 +1086,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[watch](docs/api/interfaces/IRedisClient.md#watch)
+[IRedisClient](../interfaces/IRedisClient.md).[watch](../interfaces/IRedisClient.md#watch)
 
 ___
 
@@ -1101,7 +1101,7 @@ ___
 | `key` | `string` |
 | `score` | `number` |
 | `member` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string` \| `number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string` \| `number`\> |
 
 #### Returns
 
@@ -1109,7 +1109,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zadd](docs/api/interfaces/IRedisClient.md#zadd)
+[IRedisClient](../interfaces/IRedisClient.md).[zadd](../interfaces/IRedisClient.md#zadd)
 
 ___
 
@@ -1122,7 +1122,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `key` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -1130,7 +1130,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zcard](docs/api/interfaces/IRedisClient.md#zcard)
+[IRedisClient](../interfaces/IRedisClient.md).[zcard](../interfaces/IRedisClient.md#zcard)
 
 ___
 
@@ -1144,7 +1144,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `destination` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<``null`` \| `string`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<``null`` \| `string`\> |
 
 #### Returns
 
@@ -1152,7 +1152,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zpoprpush](docs/api/interfaces/IRedisClient.md#zpoprpush)
+[IRedisClient](../interfaces/IRedisClient.md).[zpoprpush](../interfaces/IRedisClient.md#zpoprpush)
 
 ___
 
@@ -1167,7 +1167,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -1175,7 +1175,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrange](docs/api/interfaces/IRedisClient.md#zrange)
+[IRedisClient](../interfaces/IRedisClient.md).[zrange](../interfaces/IRedisClient.md#zrange)
 
 ___
 
@@ -1192,7 +1192,7 @@ ___
 | `max` | `string` \| `number` |
 | `offset` | `number` |
 | `count` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -1200,7 +1200,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrangebyscore](docs/api/interfaces/IRedisClient.md#zrangebyscore)
+[IRedisClient](../interfaces/IRedisClient.md).[zrangebyscore](../interfaces/IRedisClient.md#zrangebyscore)
 
 ___
 
@@ -1215,7 +1215,7 @@ ___
 | `source` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`Record`\<`string`, `string`\>\> |
 
 #### Returns
 
@@ -1223,7 +1223,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrangebyscorewithscores](docs/api/interfaces/IRedisClient.md#zrangebyscorewithscores)
+[IRedisClient](../interfaces/IRedisClient.md).[zrangebyscorewithscores](../interfaces/IRedisClient.md#zrangebyscorewithscores)
 
 ___
 
@@ -1237,7 +1237,7 @@ ___
 | :------ | :------ |
 | `source` | `string` |
 | `id` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -1245,7 +1245,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrem](docs/api/interfaces/IRedisClient.md#zrem)
+[IRedisClient](../interfaces/IRedisClient.md).[zrem](../interfaces/IRedisClient.md#zrem)
 
 ___
 
@@ -1260,7 +1260,7 @@ ___
 | `source` | `string` |
 | `min` | `string` \| `number` |
 | `max` | `string` \| `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`number`\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`number`\> |
 
 #### Returns
 
@@ -1268,7 +1268,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zremrangebyscore](docs/api/interfaces/IRedisClient.md#zremrangebyscore)
+[IRedisClient](../interfaces/IRedisClient.md).[zremrangebyscore](../interfaces/IRedisClient.md#zremrangebyscore)
 
 ___
 
@@ -1283,7 +1283,7 @@ ___
 | `key` | `string` |
 | `min` | `number` |
 | `max` | `number` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<`string`[]\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`string`[]\> |
 
 #### Returns
 
@@ -1291,7 +1291,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zrevrange](docs/api/interfaces/IRedisClient.md#zrevrange)
+[IRedisClient](../interfaces/IRedisClient.md).[zrevrange](../interfaces/IRedisClient.md#zrevrange)
 
 ___
 
@@ -1308,7 +1308,7 @@ ___
 | `options` | `Object` |
 | `options.COUNT?` | `number` |
 | `options.MATCH?` | `string` |
-| `cb` | [`ICallback`](docs/api/interfaces/ICallback.md)\<\{ `cursor`: `string` ; `items`: `string`[]  }\> |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<\{ `cursor`: `string` ; `items`: `string`[]  }\> |
 
 #### Returns
 
@@ -1316,7 +1316,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](docs/api/interfaces/IRedisClient.md).[zscan](docs/api/interfaces/IRedisClient.md#zscan)
+[IRedisClient](../interfaces/IRedisClient.md).[zscan](../interfaces/IRedisClient.md#zscan)
 
 ___
 

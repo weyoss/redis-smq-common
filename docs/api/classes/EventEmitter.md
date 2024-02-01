@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / EventEmitter
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / EventEmitter
 
 # Class: EventEmitter\<Events\>
 
@@ -6,7 +6,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `Events` | extends [`TEventEmitterEvent`](docs/api/README.md#teventemitterevent) |
+| `Events` | extends [`TEventEmitterEvent`](../README.md#teventemitterevent) |
 
 ## Hierarchy
 
@@ -14,34 +14,34 @@
 
   ↳ **`EventEmitter`**
 
-  ↳↳ [`Ticker`](docs/api/classes/Ticker.md)
+  ↳↳ [`Ticker`](Ticker.md)
 
-  ↳↳ [`WorkerRunner`](docs/api/classes/WorkerRunner.md)
+  ↳↳ [`WorkerRunner`](WorkerRunner.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/EventEmitter.md#constructor)
+- [constructor](EventEmitter.md#constructor)
 
 ### Methods
 
-- [emit](docs/api/classes/EventEmitter.md#emit)
-- [on](docs/api/classes/EventEmitter.md#on)
-- [once](docs/api/classes/EventEmitter.md#once)
-- [removeAllListeners](docs/api/classes/EventEmitter.md#removealllisteners)
+- [emit](EventEmitter.md#emit)
+- [on](EventEmitter.md#on)
+- [once](EventEmitter.md#once)
+- [removeAllListeners](EventEmitter.md#removealllisteners)
 
 ## Constructors
 
 ### constructor
 
-• **new EventEmitter**\<`Events`\>(`options?`): [`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+• **new EventEmitter**\<`Events`\>(`options?`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `Events` | extends [`TEventEmitterEvent`](docs/api/README.md#teventemitterevent) |
+| `Events` | extends [`TEventEmitterEvent`](../README.md#teventemitterevent) |
 
 #### Parameters
 
@@ -51,7 +51,7 @@
 
 #### Returns
 
-[`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+[`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Inherited from
 
@@ -88,7 +88,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+▸ **on**\<`E`\>(`event`, `listener`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Type parameters
 
@@ -105,7 +105,7 @@ ___
 
 #### Returns
 
-[`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+[`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Overrides
 
@@ -115,7 +115,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+▸ **once**\<`E`\>(`event`, `listener`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Type parameters
 
@@ -132,7 +132,7 @@ ___
 
 #### Returns
 
-[`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+[`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Overrides
 
@@ -142,7 +142,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Type parameters
 
@@ -158,7 +158,7 @@ ___
 
 #### Returns
 
-[`EventEmitter`](docs/api/classes/EventEmitter.md)\<`Events`\>
+[`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Overrides
 

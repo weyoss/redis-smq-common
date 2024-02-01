@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / RedisSMQError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisSMQError
 
 # Class: RedisSMQError
 
@@ -8,37 +8,35 @@
 
   ↳ **`RedisSMQError`**
 
-  ↳↳ [`CallbackEmptyReplyError`](docs/api/classes/CallbackEmptyReplyError.md)
+  ↳↳ [`CallbackEmptyReplyError`](CallbackEmptyReplyError.md)
 
-  ↳↳ [`CallbackInvalidReplyError`](docs/api/classes/CallbackInvalidReplyError.md)
+  ↳↳ [`CallbackInvalidReplyError`](CallbackInvalidReplyError.md)
 
-  ↳↳ [`PanicError`](docs/api/classes/PanicError.md)
+  ↳↳ [`PanicError`](PanicError.md)
 
-  ↳↳ [`LoggerError`](docs/api/classes/LoggerError.md)
+  ↳↳ [`LoggerError`](LoggerError.md)
 
-  ↳↳ [`TickerError`](docs/api/classes/TickerError.md)
+  ↳↳ [`TickerError`](TickerError.md)
 
-  ↳↳ [`LockError`](docs/api/classes/LockError.md)
+  ↳↳ [`LockError`](LockError.md)
 
-  ↳↳ [`RedisClientError`](docs/api/classes/RedisClientError.md)
-
-  ↳↳ [`PowerSwitchError`](docs/api/classes/PowerSwitchError.md)
+  ↳↳ [`RedisClientError`](RedisClientError.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](docs/api/classes/RedisSMQError.md#constructor)
+- [constructor](RedisSMQError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/RedisSMQError.md#name)
+- [name](RedisSMQError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisSMQError**(`message?`): [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+• **new RedisSMQError**(`message?`): [`RedisSMQError`](RedisSMQError.md)
 
 #### Parameters
 
@@ -48,7 +46,7 @@
 
 #### Returns
 
-[`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+[`RedisSMQError`](RedisSMQError.md)
 
 #### Overrides
 

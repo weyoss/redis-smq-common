@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockMethodNotAllowedError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockMethodNotAllowedError
 
 # Class: LockMethodNotAllowedError
 
 ## Hierarchy
 
-- [`LockError`](docs/api/classes/LockError.md)
+- [`LockError`](LockError.md)
 
   ↳ **`LockMethodNotAllowedError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockMethodNotAllowedError.md#constructor)
+- [constructor](LockMethodNotAllowedError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LockMethodNotAllowedError.md#name)
+- [name](LockMethodNotAllowedError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockMethodNotAllowedError**(`message?`): [`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
+• **new LockMethodNotAllowedError**(`message?`): [`LockMethodNotAllowedError`](LockMethodNotAllowedError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`LockMethodNotAllowedError`](docs/api/classes/LockMethodNotAllowedError.md)
+[`LockMethodNotAllowedError`](LockMethodNotAllowedError.md)
 
 #### Overrides
 
-[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
+[LockError](LockError.md).[constructor](LockError.md#constructor)
 
 ## Accessors
 

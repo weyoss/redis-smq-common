@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockAbortError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockAbortError
 
 # Class: LockAbortError
 
 ## Hierarchy
 
-- [`LockError`](docs/api/classes/LockError.md)
+- [`LockError`](LockError.md)
 
   ↳ **`LockAbortError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockAbortError.md#constructor)
+- [constructor](LockAbortError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LockAbortError.md#name)
+- [name](LockAbortError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockAbortError**(`message?`): [`LockAbortError`](docs/api/classes/LockAbortError.md)
+• **new LockAbortError**(`message?`): [`LockAbortError`](LockAbortError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`LockAbortError`](docs/api/classes/LockAbortError.md)
+[`LockAbortError`](LockAbortError.md)
 
 #### Overrides
 
-[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
+[LockError](LockError.md).[constructor](LockError.md#constructor)
 
 ## Accessors
 

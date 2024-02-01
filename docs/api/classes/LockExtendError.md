@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / LockExtendError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockExtendError
 
 # Class: LockExtendError
 
 ## Hierarchy
 
-- [`LockError`](docs/api/classes/LockError.md)
+- [`LockError`](LockError.md)
 
   ↳ **`LockExtendError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/LockExtendError.md#constructor)
+- [constructor](LockExtendError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/LockExtendError.md#name)
+- [name](LockExtendError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new LockExtendError**(`message?`): [`LockExtendError`](docs/api/classes/LockExtendError.md)
+• **new LockExtendError**(`message?`): [`LockExtendError`](LockExtendError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`LockExtendError`](docs/api/classes/LockExtendError.md)
+[`LockExtendError`](LockExtendError.md)
 
 #### Overrides
 
-[LockError](docs/api/classes/LockError.md).[constructor](docs/api/classes/LockError.md#constructor)
+[LockError](LockError.md).[constructor](LockError.md#constructor)
 
 ## Accessors
 

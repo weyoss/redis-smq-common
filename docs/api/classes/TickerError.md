@@ -1,10 +1,10 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / TickerError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / TickerError
 
 # Class: TickerError
 
 ## Hierarchy
 
-- [`RedisSMQError`](docs/api/classes/RedisSMQError.md)
+- [`RedisSMQError`](RedisSMQError.md)
 
   ↳ **`TickerError`**
 
@@ -12,17 +12,17 @@
 
 ### Constructors
 
-- [constructor](docs/api/classes/TickerError.md#constructor)
+- [constructor](TickerError.md#constructor)
 
 ### Accessors
 
-- [name](docs/api/classes/TickerError.md#name)
+- [name](TickerError.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new TickerError**(`message?`): [`TickerError`](docs/api/classes/TickerError.md)
+• **new TickerError**(`message?`): [`TickerError`](TickerError.md)
 
 #### Parameters
 
@@ -32,11 +32,11 @@
 
 #### Returns
 
-[`TickerError`](docs/api/classes/TickerError.md)
+[`TickerError`](TickerError.md)
 
 #### Inherited from
 
-[RedisSMQError](docs/api/classes/RedisSMQError.md).[constructor](docs/api/classes/RedisSMQError.md#constructor)
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Accessors
 

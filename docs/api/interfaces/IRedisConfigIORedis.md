@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](README.md) / [API](docs/api/README.md) / IRedisConfigIORedis
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IRedisConfigIORedis
 
 # Interface: IRedisConfigIORedis
 
@@ -6,14 +6,14 @@
 
 ### Properties
 
-- [client](docs/api/interfaces/IRedisConfigIORedis.md#client)
-- [options](docs/api/interfaces/IRedisConfigIORedis.md#options)
+- [client](IRedisConfigIORedis.md#client)
+- [options](IRedisConfigIORedis.md#options)
 
 ## Properties
 
 ### client
 
-• **client**: [`IOREDIS`](docs/api/enums/ERedisConfigClient.md#ioredis)
+• **client**: [`IOREDIS`](../enums/ERedisConfigClient.md#ioredis)
 
 ___
 
