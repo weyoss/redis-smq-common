@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.11](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.10...v3.0.0-rc.11) (2024-02-01)
+
+
+### Codebase Refactoring
+
+* improve typing ([a3d69ee](https://github.com/weyoss/redis-smq-common/commit/a3d69ee6ba0c5a4745b2ee778f50adeaabf3087a))
+
 ## [3.0.0-rc.10](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.9...v3.0.0-rc.10) (2024-02-01)
 
 
