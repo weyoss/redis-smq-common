@@ -12,7 +12,7 @@ import { TEvent } from '../../types';
 
 let instance: EventEmitter<TEvent> | null = null;
 
-export function getEventBusInstance<T extends TEvent>() {
+export function getEventBusInstance<T extends TEvent>(): EventEmitter<T> {
   if (!instance) {
     instance = new EventEmitter<T>();
   }
