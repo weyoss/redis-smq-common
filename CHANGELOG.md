@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.12](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.11...v3.0.0-rc.12) (2024-02-03)
+
+
+### Codebase Refactoring
+
+* improve error handling ([dd0f49c](https://github.com/weyoss/redis-smq-common/commit/dd0f49cc3f62d89c1f621d3d26a269970efe02f3))
+
 ## [3.0.0-rc.11](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.10...v3.0.0-rc.11) (2024-02-01)
 
 
