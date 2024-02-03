@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../../types';
+import { ICallback, TEvent } from '../../types';
 import { RedisClient } from '../redis-client/redis-client';
 import { v4 as uuid } from 'uuid';
 import {
@@ -19,7 +19,7 @@ import {
   LockNotReleasedError,
 } from './errors';
 import { ELuaScript } from './redis-client/redis-client';
-import { getEventBusInstance } from '../event';
+import { EventEmitter } from '../event';
 
 export enum ELockStatus {
   unlocked,
@@ -30,7 +30,7 @@ export enum ELockStatus {
   extended,
 }
 
-export class Lock {
+export class Lock extends EventEmitter<TEvent> {
   protected readonly lockId: string;
   protected readonly lockKey: string;
   protected readonly retryOnFail: boolean;
@@ -49,6 +49,7 @@ export class Lock {
     retryOnFail = false,
     autoExtend = false,
   ) {
+    super();
     this.lockKey = lockKey;
     this.ttl = ttl;
     this.retryOnFail = retryOnFail;
@@ -92,7 +93,7 @@ export class Lock {
           if (err) cb(err);
           else {
             if (this.status === ELockStatus.extending) {
-              if (!reply) {
+              if (reply !== 1) {
                 this.setUnlocked();
                 cb(new LockExtendError());
               } else {
@@ -114,8 +115,7 @@ export class Lock {
       () =>
         this.extend((err) => {
           if (err) {
-            if (!(err instanceof LockAbortError))
-              getEventBusInstance().emit('error', err);
+            if (!(err instanceof LockAbortError)) this.emit('error', err);
           } else this.runAutoExtendTimer();
         }),
       ms,

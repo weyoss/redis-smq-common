@@ -8,17 +8,18 @@
  */
 
 import { Ticker } from '../ticker/ticker';
-import { ICallback } from '../../types';
+import { ICallback, TEvent } from '../../types';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { WorkerError } from './errors';
-import { getEventBusInstance } from '../event';
+import { EventEmitter } from '../event';
 
-export abstract class Worker {
+export abstract class Worker extends EventEmitter<TEvent> {
   private readonly ticker: Ticker | null = null;
   private readonly powerManager: PowerSwitch | null = null;
   private readonly managed: boolean;
 
   constructor(managed: boolean, timeout = 1000) {
+    super();
     this.managed = managed;
     if (!managed) {
       this.ticker = new Ticker(this.onTick, timeout);
@@ -42,7 +43,7 @@ export abstract class Worker {
 
   private onTick = (): void => {
     this.work((err) => {
-      if (err) getEventBusInstance().emit('error', err);
+      if (err) this.emit('error', err);
       else this.getTicker().nextTick();
     });
   };

@@ -18,6 +18,14 @@ import { ICallback } from '../common';
 
 export * from './config';
 
+export type TRedisClientEvent = {
+  error: (err: Error) => void;
+  ready: () => void;
+  end: () => void;
+  message: (channel: string, message: string) => void;
+  pmessage: (pattern: string, channel: string, message: string) => void;
+};
+
 export type TRedisTransactionNodeRedis = RedisClientMultiCommandType<
   RedisModules,
   RedisFunctions,

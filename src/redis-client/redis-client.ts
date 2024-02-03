@@ -7,25 +7,29 @@
  * in the root directory of this source tree.
  */
 
-import { EventEmitter } from 'events';
 import { ELuaScriptName, LuaScript } from './lua-script';
-import { ICallback, IRedisClient, IRedisTransaction } from '../../types';
+import {
+  ICallback,
+  IRedisClient,
+  IRedisTransaction,
+  TRedisClientEvent,
+} from '../../types';
 import { RedisClientError } from './errors';
 import { CallbackEmptyReplyError } from '../errors';
-import { getEventBusInstance } from '../event';
+import { EventEmitter } from '../event';
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 
-export abstract class RedisClient extends EventEmitter implements IRedisClient {
+export abstract class RedisClient
+  extends EventEmitter<TRedisClientEvent>
+  implements IRedisClient
+{
   protected static redisServerVersion: number[] | null = null;
   protected connectionClosed = true;
 
   validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
     if (!RedisClient.redisServerVersion) {
-      getEventBusInstance().emit(
-        'error',
-        new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION'),
-      );
+      this.emit('error', new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION'));
       return false;
     }
     return (

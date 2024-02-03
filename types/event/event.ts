@@ -9,7 +9,6 @@
 
 export type TEvent = {
   error: (err: Error) => void;
-  next: () => void;
   up: () => void;
   down: () => void;
   goingUp: () => void;

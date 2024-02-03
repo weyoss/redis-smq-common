@@ -10,7 +10,10 @@
 import { delay, promisifyAll } from 'bluebird';
 import { Lock } from '../../src/lock/lock';
 import { getRedisInstance } from '../common';
-import { LockMethodNotAllowedError } from '../../src/lock/errors';
+import {
+  LockAcquireError,
+  LockMethodNotAllowedError,
+} from '../../src/lock/errors';
 
 test('Lock: autoExtend', async () => {
   const redisClient = await getRedisInstance();
@@ -26,9 +29,7 @@ test('Lock: autoExtend', async () => {
 
   const lock2 = promisifyAll(new Lock(redisClient, 'key1', 10000, false));
 
-  await expect(lock2.acquireLockAsync()).rejects.toThrow(
-    `Could not acquire a lock`,
-  );
+  await expect(lock2.acquireLockAsync()).rejects.toThrow(LockAcquireError);
 
   await lock.releaseLockAsync();
   await lock2.releaseLockAsync();

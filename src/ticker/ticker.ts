@@ -11,7 +11,7 @@ import { TFunction, TEvent } from '../../types';
 import { PowerSwitch } from '../power-switch/power-switch';
 import { TickerError } from './errors';
 import { PanicError } from '../errors';
-import { EventEmitter, getEventBusInstance } from '../event';
+import { EventEmitter } from '../event';
 
 export class Ticker extends EventEmitter<TEvent> {
   protected powerManager = new PowerSwitch();
@@ -47,7 +47,7 @@ export class Ticker extends EventEmitter<TEvent> {
       this.onNextTickFn = null;
       tickFn();
     } else {
-      getEventBusInstance().emit('error', new PanicError(`Unexpected call`));
+      this.emit('error', new PanicError(`Unexpected call`));
     }
   }
 
@@ -92,10 +92,7 @@ export class Ticker extends EventEmitter<TEvent> {
 
   nextTick(): void {
     if (this.isTicking()) {
-      getEventBusInstance().emit(
-        'error',
-        new TickerError('A timer is already running'),
-      );
+      this.emit('error', new TickerError('A timer is already running'));
     } else {
       if (this.powerManager.isGoingDown()) {
         this.shutdown();
@@ -120,10 +117,7 @@ export class Ticker extends EventEmitter<TEvent> {
 
   runTimer(): void {
     if (this.isTicking()) {
-      getEventBusInstance().emit(
-        'error',
-        new TickerError('A timer is already running'),
-      );
+      this.emit('error', new TickerError('A timer is already running'));
     } else {
       if (this.powerManager.isGoingUp()) {
         this.powerManager.commit();
