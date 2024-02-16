@@ -7,71 +7,104 @@
  * in the root directory of this source tree.
  */
 
-import { Ticker } from '../ticker/ticker';
-import { ICallback, TEvent } from '../../types';
-import { PowerSwitch } from '../power-switch/power-switch';
-import { WorkerError } from './errors';
+import { ICallback } from '../../types';
+import { Worker as WorkerThread } from 'worker_threads';
+import path from 'path';
+import {
+  EWorkerThreadExecutionCode,
+  EWorkerThreadExitCode,
+  EWorkerType,
+  TWorkerThreadMessage,
+} from '../../types/worker';
+import { WorkerThreadError } from './errors';
 import { EventEmitter } from '../event';
 
-export abstract class Worker extends EventEmitter<TEvent> {
-  private readonly ticker: Ticker | null = null;
-  private readonly powerManager: PowerSwitch | null = null;
-  private readonly managed: boolean;
+export type TWorkerEvent = {
+  'worker.error': (err: Error) => void;
+  'worker.data': (payload: unknown) => void;
+};
 
-  constructor(managed: boolean, timeout = 1000) {
+export abstract class Worker extends EventEmitter<TWorkerEvent> {
+  protected abstract readonly type: EWorkerType;
+  protected readonly workerFilename;
+  protected workerThread: WorkerThread | null = null;
+
+  constructor(workerFilename: string) {
     super();
-    this.managed = managed;
-    if (!managed) {
-      this.ticker = new Ticker(this.onTick, timeout);
-      this.powerManager = new PowerSwitch();
-    }
+    this.workerFilename = workerFilename;
   }
 
-  private getTicker = (): Ticker => {
-    if (!this.ticker) {
-      throw new WorkerError(`Expected an instance of Ticker`);
-    }
-    return this.ticker;
-  };
-
-  private getPowerManager(): PowerSwitch {
-    if (!this.powerManager) {
-      throw new WorkerError('Expected an instance of PowerSwitch');
-    }
-    return this.powerManager;
-  }
-
-  private onTick = (): void => {
-    this.work((err) => {
-      if (err) this.emit('error', err);
-      else this.getTicker().nextTick();
-    });
-  };
-
-  run = (cb: ICallback<void>): void => {
-    if (this.managed) cb(new WorkerError('You can not run a managed worker'));
-    else {
-      const powerManager = this.getPowerManager();
-      powerManager.goingUp();
-      const ticker = this.getTicker();
-      ticker.nextTick();
-      powerManager.commit();
-      cb();
-    }
-  };
-
-  quit = (cb: ICallback<void>): void => {
-    if (!this.managed) {
-      const powerManager = this.getPowerManager();
-      powerManager.goingDown();
-      const ticker = this.getTicker();
-      ticker.on('down', () => {
-        powerManager.commit();
-        cb();
+  protected getWorkerThread(): WorkerThread {
+    if (!this.workerThread) {
+      this.workerThread = new WorkerThread(
+        path.resolve(__dirname, './worker-thread.js'),
+        {
+          workerData: { filename: this.workerFilename, type: this.type },
+        },
+      );
+      this.workerThread.on('messageerror', (err) => {
+        console.error(err);
       });
-      ticker.quit();
-    } else cb();
-  };
+      this.workerThread.on('error', (err) => {
+        console.error(err);
+      });
+      this.workerThread.on('exit', () => {
+        this.workerThread = null;
+      });
+    }
+    return this.workerThread;
+  }
 
-  abstract work(cb: ICallback<void>): void;
+  protected registerEvents(cb: ICallback<unknown> | Worker): void {
+    const worker = this.getWorkerThread();
+    const cleanUp = () => {
+      worker
+        .removeListener('message', onMessage)
+        .removeListener('exit', onExit);
+    };
+    const callback: ICallback<unknown> = (err, data) => {
+      if (err) {
+        if (cb instanceof Worker) {
+          this.emit('worker.error', err);
+        } else cb(err);
+      } else {
+        if (cb instanceof Worker) this.emit('worker.data', data);
+        else cb(null, data);
+      }
+    };
+    const onMessage = (msg: TWorkerThreadMessage) => {
+      cleanUp();
+      if (msg.code !== EWorkerThreadExecutionCode.OK) {
+        console.error(`WorkerThreadError`, msg);
+        callback(new WorkerThreadError(msg));
+      } else callback(null, msg.data);
+    };
+    const onExit = () => {
+      cleanUp();
+      const msg = {
+        code: EWorkerThreadExitCode.TERMINATED,
+        error: null,
+      };
+      console.error('WorkerThreadError', msg);
+      callback(new WorkerThreadError(msg));
+    };
+    worker.once('message', onMessage);
+    worker.once('exit', onExit);
+  }
+
+  protected exec(payload: unknown, cb: ICallback<unknown>): void {
+    this.registerEvents(cb);
+    if (!(payload === null || payload === undefined))
+      this.getWorkerThread().postMessage(payload);
+  }
+
+  quit(cb: ICallback<void>) {
+    const callback = () => {
+      this.workerThread = null;
+      cb();
+    };
+    if (this.workerThread) {
+      this.workerThread.terminate().then(callback).catch(callback);
+    } else cb();
+  }
 }

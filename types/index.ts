@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-export * from './common';
-export * from './redis';
-export * from './logger';
-export * from './event';
+export * from './common.js';
+export * from './redis/index.js';
+export * from './logger/index.js';
+export * from './event/index.js';

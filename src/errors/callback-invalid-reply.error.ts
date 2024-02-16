@@ -7,9 +7,9 @@
  * in the root directory of this source tree.
  */
 
-import { RedisSMQError } from './redis-smq.error';
+import { PanicError } from './panic.error';
 
-export class CallbackInvalidReplyError extends RedisSMQError {
+export class CallbackInvalidReplyError extends PanicError {
   constructor() {
     super(`Invalid reply type`);
   }

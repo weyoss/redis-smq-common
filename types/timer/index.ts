@@ -7,10 +7,14 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from './panic.error.js';
+import { TFunction } from '../common';
 
-export class CallbackEmptyReplyError extends PanicError {
-  constructor() {
-    super(`Expected a non-empty reply`);
-  }
-}
+export type TTimerEvent = {
+  error: (err: Error) => void;
+};
+
+export type TTimer = {
+  timer: NodeJS.Timeout;
+  periodic: boolean;
+  fn: TFunction;
+};

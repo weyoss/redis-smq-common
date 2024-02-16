@@ -7,24 +7,43 @@
  * in the root directory of this source tree.
  */
 
-import { EventEmitter as Base } from 'events';
+import { EventEmitter as NodeEventEmitter } from 'events';
+import { IEventEmitter, TEventEmitterEvent } from '../../types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type TEventEmitterEvent = Record<string | symbol, (...args: any) => any>; // type-coverage:ignore-line
+// A typed EventEmitter around Node's EventEmitter with a limited set of methods
+export class EventEmitter<Events extends TEventEmitterEvent>
+  implements IEventEmitter<Events>
+{
+  protected eventEmitter;
+  constructor() {
+    this.eventEmitter = new NodeEventEmitter();
+  }
 
-export declare interface EventEmitter<Events extends TEventEmitterEvent>
-  extends Base {
-  on<E extends keyof Events>(event: E, listener: Events[E]): this;
-  once<E extends keyof Events>(event: E, listener: Events[E]): this;
+  on<E extends keyof Events>(event: E, listener: Events[E]): this {
+    this.eventEmitter.on(String(event), listener);
+    return this;
+  }
+
+  once<E extends keyof Events>(event: E, listener: Events[E]): this {
+    this.eventEmitter.once(String(event), listener);
+    return this;
+  }
+
   emit<E extends keyof Events>(
     event: E,
     ...args: Parameters<Events[E]>
-  ): boolean;
-  removeAllListeners<E extends keyof Events>(event?: E): this;
-}
+  ): boolean {
+    return this.eventEmitter.emit(String(event), ...args);
+  }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export class EventEmitter<
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Events extends TEventEmitterEvent,
-> extends Base {}
+  removeAllListeners<E extends keyof Events>(event?: Extract<E, string>): this {
+    if (event) this.eventEmitter.removeAllListeners(event);
+    else this.eventEmitter.removeAllListeners();
+    return this;
+  }
+
+  removeListener<E extends keyof Events>(event: E, listener: Events[E]): this {
+    this.eventEmitter.removeListener(String(event), listener);
+    return this;
+  }
+}

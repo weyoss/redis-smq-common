@@ -30,9 +30,8 @@
   "bugs": {
     "url": "https://github.com/weyoss/redis-smq-common/issues"
   },
-  "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "type": "commonjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
     "@redis/client": "1.1.0",
@@ -66,7 +65,7 @@
   "scripts": {
     "build": "scripts/build.sh",
     "test": "scripts/test.sh",
-    "release": "scripts/release.sh",
+    "release": "scripts/release/release.sh",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "lint": "eslint \"{src,tests,types}/**/*.ts\"",
     "type-coverage": "type-coverage --strict --at-least 100  --ignore-files \"dist/**/*\"",

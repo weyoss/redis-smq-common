@@ -154,16 +154,18 @@ export class IoredisClient extends RedisClient {
     this.client.psubscribe(pattern);
   }
 
-  punsubscribe(channel: string): void {
-    this.client.punsubscribe(channel);
+  punsubscribe(channel?: string): void {
+    if (channel) this.client.punsubscribe(channel);
+    else this.client.punsubscribe();
   }
 
   subscribe(channel: string): void {
     this.client.subscribe(channel);
   }
 
-  unsubscribe(channel: string): void {
-    this.client.unsubscribe(channel);
+  unsubscribe(channel?: string): void {
+    if (channel) this.client.unsubscribe(channel);
+    else this.client.unsubscribe();
   }
 
   zrangebyscore(

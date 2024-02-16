@@ -7,10 +7,4 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from './panic.error.js';
-
-export class CallbackEmptyReplyError extends PanicError {
-  constructor() {
-    super(`Expected a non-empty reply`);
-  }
-}
+export * from './worker';

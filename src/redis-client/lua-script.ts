@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, IRedisClient } from '../../types';
+import type { ICallback, IRedisClient } from '../../types';
 import { CallbackEmptyReplyError } from '../errors';
 import { RedisClientError } from './errors';
 import { async } from '../async/async';

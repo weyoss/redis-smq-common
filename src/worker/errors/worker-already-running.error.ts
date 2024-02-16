@@ -7,10 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from './panic.error.js';
+import { WorkerError } from './worker-error';
 
-export class CallbackEmptyReplyError extends PanicError {
+export class WorkerAlreadyRunningError extends WorkerError {
   constructor() {
-    super(`Expected a non-empty reply`);
+    super(`Worker is going/already up`);
   }
 }

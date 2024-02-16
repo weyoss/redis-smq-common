@@ -7,11 +7,4 @@
  * in the root directory of this source tree.
  */
 
-export type TEvent = {
-  error: (err: Error) => void;
-  up: () => void;
-  down: () => void;
-  goingUp: () => void;
-  goingDown: () => void;
-  tick: () => void;
-};
+export { TimerError } from './timer.error';

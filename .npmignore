@@ -9,7 +9,7 @@ tests/**
 .prettierrc
 index.ts
 tsconfig.json
-jest.config.cjs
+jest.config.js
 .idea
 types/**
 coverage/**

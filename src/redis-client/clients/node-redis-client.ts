@@ -152,7 +152,7 @@ export class NodeRedisClient extends RedisClient {
     });
   }
 
-  punsubscribe(channel: string): void {
+  punsubscribe(channel?: string): void {
     this.client.pUnsubscribe(channel).catch(() => void 0);
   }
 
@@ -162,7 +162,7 @@ export class NodeRedisClient extends RedisClient {
     });
   }
 
-  unsubscribe(channel: string): void {
+  unsubscribe(channel?: string): void {
     this.client.unsubscribe(channel).catch(() => void 0);
   }
 

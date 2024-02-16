@@ -7,6 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from '../../errors';
+import { RedisSMQError } from '../../errors';
 
-export class WorkerError extends PanicError {}
+export class WorkerError extends RedisSMQError {}

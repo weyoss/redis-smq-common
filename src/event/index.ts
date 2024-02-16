@@ -8,4 +8,5 @@
  */
 
 export * from './event-emitter';
-export * from './event-bus';
+export * from './event-bus-redis/event-bus-redis';
+export * from './event-bus/event-bus';

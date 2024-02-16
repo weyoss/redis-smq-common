@@ -98,11 +98,11 @@ export abstract class RedisClient
 
   abstract psubscribe(pattern: string): void;
 
-  abstract punsubscribe(channel: string): void;
+  abstract punsubscribe(channel?: string): void;
 
   abstract subscribe(channel: string): void;
 
-  abstract unsubscribe(channel: string): void;
+  abstract unsubscribe(channel?: string): void;
 
   abstract zrangebyscore(
     key: string,

@@ -13,4 +13,3 @@ export { LockAcquireError } from './lock-acquire.error';
 export { LockExtendError } from './lock-extend.error';
 export { LockMethodNotAllowedError } from './lock-method-not-allowed.error';
 export { LockNotAcquiredError } from './lock-not-acquired.error';
-export { LockNotReleasedError } from './lock-not-released.error';

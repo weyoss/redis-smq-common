@@ -12,9 +12,4 @@ set -e
 
 export NODE_ENV=test
 npm run build
-cat >dist/package.json <<!EOF
-{
-    "type": "commonjs"
-}
-!EOF
 jest --runInBand --verbose --collectCoverage "$@"

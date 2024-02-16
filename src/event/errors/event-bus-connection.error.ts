@@ -7,10 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from './panic.error.js';
+import { EventBusError } from './event-bus.error';
 
-export class CallbackEmptyReplyError extends PanicError {
-  constructor() {
-    super(`Expected a non-empty reply`);
-  }
-}
+export class EventBusConnectionError extends EventBusError {}

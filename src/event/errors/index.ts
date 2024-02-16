@@ -7,6 +7,5 @@
  * in the root directory of this source tree.
  */
 
-import { RedisSMQError } from '../../errors';
-
-export class TickerError extends RedisSMQError {}
+export { EventBusError } from './event-bus.error';
+export { EventBusConnectionError } from './event-bus-connection.error';

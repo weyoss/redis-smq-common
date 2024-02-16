@@ -8,3 +8,7 @@
  */
 
 export { WorkerError } from './worker-error';
+export { WorkerThreadError } from './worker-thread.error';
+export { WorkerPayloadRequiredError } from './worker-payload-required.error';
+export { WorkerAlreadyRunningError } from './worker-already-running.error';
+export { WorkerAlreadyDownError } from './worker-already-down.error';

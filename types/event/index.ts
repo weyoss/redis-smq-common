@@ -7,4 +7,5 @@
  * in the root directory of this source tree.
  */
 
-export * from './event';
+export * from './event-emitter';
+export * from './event-bus';

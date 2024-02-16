@@ -10,7 +10,10 @@
 set -x
 set -e
 
+npm run type-coverage
+npm run lint
+npm run format
 rm -rf dist
-tsc
+tsc -p ./tsconfig.json
 cp -r src/redis-client/lua dist/src/redis-client/
-cp -r src/lock/redis-client dist/src/lock/
+cp -r src/locker/redis-client dist/src/locker/

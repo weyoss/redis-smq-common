@@ -8,9 +8,8 @@
  */
 
 import { ICallback, IRedisTransaction } from '../../../types';
-import { RedisClientError } from '../errors';
+import { RedisClientError, WatchedKeysChangedError } from '../errors';
 import { Pipeline, Redis } from 'ioredis';
-import { WatchedKeysChangedError } from '../errors';
 
 export class IoredisClientMulti implements IRedisTransaction {
   protected multi: Pipeline;
