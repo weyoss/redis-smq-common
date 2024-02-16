@@ -8,28 +8,26 @@
  */
 
 import { delay, promisifyAll } from 'bluebird';
-import { Lock } from '../../src/lock/lock';
+import { Locker } from '../../src/locker/locker';
 import { getRedisInstance } from '../common';
-import {
-  LockAcquireError,
-  LockMethodNotAllowedError,
-} from '../../src/lock/errors';
+import { LockMethodNotAllowedError } from '../../src/locker/errors';
 
-test('Lock: autoExtend', async () => {
+test('Locker: autoExtend', async () => {
   const redisClient = await getRedisInstance();
-  const lock = promisifyAll(new Lock(redisClient, 'key1', 10000, false, true));
-
-  await lock.acquireLockAsync();
-
+  const lock = promisifyAll(
+    new Locker(redisClient, console, 'key1', 10000, false, 3000),
+  );
+  await expect(lock.acquireLockAsync()).resolves.toBe(true);
   await expect(lock.extendLockAsync()).rejects.toThrowError(
     LockMethodNotAllowedError,
   );
 
   await delay(20000);
 
-  const lock2 = promisifyAll(new Lock(redisClient, 'key1', 10000, false));
-
-  await expect(lock2.acquireLockAsync()).rejects.toThrow(LockAcquireError);
+  const lock2 = promisifyAll(
+    new Locker(redisClient, console, 'key1', 10000, false),
+  );
+  await expect(lock2.acquireLockAsync()).resolves.toBe(false);
 
   await lock.releaseLockAsync();
   await lock2.releaseLockAsync();

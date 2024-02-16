@@ -7,64 +7,25 @@
  * in the root directory of this source tree.
  */
 
-import { Worker } from '../../src/worker/worker';
-import { delay, promisifyAll } from 'bluebird';
-import { WorkerRunner } from '../../src/worker/worker-runner/worker-runner';
-import { getRedisInstance } from '../common';
-import { WorkerPool } from '../../src/worker/worker-runner/worker-pool';
-import { ICallback } from '../../types';
+import { promisifyAll } from 'bluebird';
+import path from 'path';
+import { WorkerCallable } from '../../src/worker/worker-callable';
+import { WorkerPayloadRequiredError } from '../../src/worker/errors';
 
-class UnmanagedCounterWorker extends Worker {
-  count = 0;
+it('WorkerCallable: case 1', async () => {
+  const filename = path.resolve(__dirname, './workers/worker-ok.worker.js');
+  const worker = promisifyAll(
+    new WorkerCallable<string | null, string>(filename),
+  );
+  const reply = await worker.callAsync('Hello world!');
+  expect(reply).toEqual('Hello world!');
 
-  constructor() {
-    super(false);
-  }
+  await expect(async () => worker.callAsync(null)).rejects.toThrow(
+    WorkerPayloadRequiredError,
+  );
 
-  override work(cb: ICallback<void>) {
-    if (this.count >= 3) this.quit(() => void 0);
-    else this.count += 1;
-    cb();
-  }
-}
+  await worker.quitAsync();
 
-class ManagedCounterWorker extends Worker {
-  count = 0;
-
-  constructor() {
-    super(true);
-  }
-
-  override work(cb: ICallback<void>) {
-    if (this.count < 3) this.count += 1;
-    cb();
-  }
-}
-
-describe('Worker & WorkerRunner', () => {
-  test('Case 1', async () => {
-    const worker = promisifyAll(new UnmanagedCounterWorker());
-    await worker.runAsync();
-    await delay(5000);
-    expect(worker.count).toBe(3);
-  });
-
-  test('Case 2', async () => {
-    const worker1 = promisifyAll(new ManagedCounterWorker());
-    const worker2 = promisifyAll(new ManagedCounterWorker());
-    await expect(worker1.runAsync()).rejects.toThrow(
-      'You can not run a managed worker',
-    );
-    const client = await getRedisInstance();
-    const workerRunner = promisifyAll(
-      new WorkerRunner(client, 'my-runner', new WorkerPool(), console),
-    );
-    workerRunner.addWorker(worker1);
-    workerRunner.addWorker(worker2);
-    await workerRunner.runAsync();
-    await delay(10000);
-    expect(worker1.count).toBe(3);
-    expect(worker2.count).toBe(3);
-    await workerRunner.quitAsync();
-  });
+  // second timer is OK
+  await worker.quitAsync();
 });

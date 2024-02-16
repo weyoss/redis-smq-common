@@ -17,6 +17,7 @@ afterAll(noop);
 
 beforeEach(async () => {
   await startUp();
+  jest.resetModules();
 });
 
 afterEach(async () => {
