@@ -7,14 +7,14 @@
  * in the root directory of this source tree.
  */
 
+import { WatchError } from '@redis/client';
 import {
   ICallback,
   IRedisTransaction,
   TRedisClientNodeRedis,
   TRedisTransactionNodeRedis,
-} from '../../../types';
-import { WatchError } from '@redis/client';
-import { WatchedKeysChangedError } from '../errors';
+} from '../../../types/index.js';
+import { WatchedKeysChangedError } from '../errors/index.js';
 
 export class NodeRedisClientMulti implements IRedisTransaction {
   protected multi: TRedisTransactionNodeRedis;

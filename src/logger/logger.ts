@@ -8,8 +8,8 @@
  */
 
 import { createLogger } from 'bunyan';
-import { LoggerError } from './errors';
-import { ILogger, ILoggerConfig } from '../../types';
+import { ILogger, ILoggerConfig } from '../../types/index.js';
+import { LoggerError } from './errors/index.js';
 
 const noop = () => void 0;
 const dummyLogger = {

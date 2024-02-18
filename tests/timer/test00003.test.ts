@@ -7,9 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { Timer } from '../../src/timer/timer';
+import { expect, it } from '@jest/globals';
+import { Timer } from '../../src/timer/timer.js';
 
-test('Timer.setInterval() always blocks Timer.setTimeout()', async () => {
+it('Timer.setInterval() always blocks Timer.setTimeout()', async () => {
   const ticker = new Timer();
   const r = ticker.setInterval(() => void 0, 5000);
   expect(r).toBe(true);

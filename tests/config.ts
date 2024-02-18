@@ -7,7 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { ERedisConfigClient, ILoggerConfig, IRedisConfig } from '../types';
+import {
+  ERedisConfigClient,
+  ILoggerConfig,
+  IRedisConfig,
+} from '../types/index.js';
 
 const redisHost = process.env.REDIS_HOST || '127.0.0.1';
 const redisPort = Number(process.env.REDIS_PORT) || 6379;

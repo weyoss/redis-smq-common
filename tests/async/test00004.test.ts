@@ -7,9 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { async } from '../../src/async/async';
+import { it } from '@jest/globals';
+import { async } from '../../src/async/async.js';
 
-test('async.waterfall: case 4', async () => {
+it('async.waterfall: case 4', async () => {
   await new Promise<void>((resolve) => {
     async.waterfall([], () => resolve());
   });

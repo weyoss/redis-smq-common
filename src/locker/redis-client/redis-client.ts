@@ -9,18 +9,21 @@
 
 import fs from 'fs';
 import { resolve } from 'path';
-import { RedisClient } from '../../redis-client/redis-client';
+import { getDirname } from '../../env/environment.js';
+import { RedisClient } from '../../redis-client/redis-client.js';
 
 export enum ELuaScript {
   RELEASE_LOCK = 'RELEASE_LOCK',
   EXTEND_LOCK = 'EXTEND_LOCK',
 }
 
+const dir = getDirname();
+
 RedisClient.addScript(
   ELuaScript.RELEASE_LOCK,
-  fs.readFileSync(resolve(__dirname, './lua/release-lock.lua')).toString(),
+  fs.readFileSync(resolve(dir, './lua/release-lock.lua')).toString(),
 );
 RedisClient.addScript(
   ELuaScript.EXTEND_LOCK,
-  fs.readFileSync(resolve(__dirname, './lua/extend-lock.lua')).toString(),
+  fs.readFileSync(resolve(dir, './lua/extend-lock.lua')).toString(),
 );

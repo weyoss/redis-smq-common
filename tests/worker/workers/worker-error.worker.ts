@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../../../types';
+import { ICallback } from '../../../types/index.js';
 
 export default function myWorkerCallable(msg: string, cb: ICallback<string>) {
   cb(new Error('MY_ERROR'));

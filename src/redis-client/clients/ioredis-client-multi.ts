@@ -7,9 +7,9 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, IRedisTransaction } from '../../../types';
-import { RedisClientError, WatchedKeysChangedError } from '../errors';
 import { Pipeline, Redis } from 'ioredis';
+import { ICallback, IRedisTransaction } from '../../../types/index.js';
+import { RedisClientError, WatchedKeysChangedError } from '../errors/index.js';
 
 export class IoredisClientMulti implements IRedisTransaction {
   protected multi: Pipeline;

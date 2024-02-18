@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-export { CallbackEmptyReplyError } from './callback-empty-reply.error';
-export { CallbackInvalidReplyError } from './callback-invalid-reply.error';
-export { PanicError } from './panic.error';
-export { RedisSMQError } from './redis-smq.error';
+export { CallbackEmptyReplyError } from './callback-empty-reply.error.js';
+export { CallbackInvalidReplyError } from './callback-invalid-reply.error.js';
+export { PanicError } from './panic.error.js';
+export { RedisSMQError } from './redis-smq.error.js';

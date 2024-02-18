@@ -7,4 +7,4 @@
  * in the root directory of this source tree.
  */
 
-export { TimerError } from './timer.error';
+export { TimerError } from './timer.error.js';

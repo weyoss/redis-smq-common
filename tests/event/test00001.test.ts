@@ -7,30 +7,33 @@
  * in the root directory of this source tree.
  */
 
-import { promisify, promisifyAll } from 'bluebird';
-import { EventBusConnectionError } from '../../src/event/errors';
-import { EventBus } from '../../src/event';
+import { expect, it, jest } from '@jest/globals';
+import bluebird from 'bluebird';
+import { EventBusConnectionError } from '../../src/event/errors/index.js';
+import { EventBus } from '../../src/event/index.js';
 
 type TEvent = {
   e1: (arg: string) => void;
   'eventBus.disconnect': () => void;
 };
 
-test('EventBus: case 1', async () => {
-  const getInstanceAsync = await promisify(EventBus.getInstance);
-  const eventBusAsync0 = promisifyAll(await getInstanceAsync<TEvent>());
-  const eventBusAsync = promisifyAll(await getInstanceAsync<TEvent>());
+it('EventBus: case 1', async () => {
+  const getInstanceAsync = await bluebird.promisify(EventBus.getInstance);
+  const eventBusAsync0 = bluebird.promisifyAll(
+    await getInstanceAsync<TEvent>(),
+  );
+  const eventBusAsync = bluebird.promisifyAll(await getInstanceAsync<TEvent>());
   expect(eventBusAsync).toBe(eventBusAsync0);
 
   // on
-  const callback = jest.fn<unknown, unknown[], unknown>();
+  const callback = jest.fn();
   eventBusAsync.on('e1', callback);
   eventBusAsync.emit('e1', 'hello');
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenNthCalledWith(1, 'hello');
 
   // once
-  const callback2 = jest.fn<unknown, unknown[], unknown>();
+  const callback2 = jest.fn();
   eventBusAsync.once('e1', callback2);
   eventBusAsync.emit('e1', 'hello1');
   eventBusAsync.emit('e1', 'hello2');
@@ -38,7 +41,7 @@ test('EventBus: case 1', async () => {
   expect(callback2).toHaveBeenNthCalledWith(1, 'hello1');
 
   // removeListener
-  const callback3 = jest.fn<unknown, unknown[], unknown>();
+  const callback3 = jest.fn();
   eventBusAsync.on('e1', callback3);
   eventBusAsync.emit('e1', 'hello3');
   expect(callback3).toHaveBeenCalledTimes(1);
@@ -48,7 +51,7 @@ test('EventBus: case 1', async () => {
   expect(callback3).toHaveBeenCalledTimes(1);
 
   // removeAllListeners of an event
-  const callback4 = jest.fn<unknown, unknown[], unknown>();
+  const callback4 = jest.fn();
   eventBusAsync.on('e1', callback4);
   eventBusAsync.emit('e1', 'hello5');
   expect(callback4).toHaveBeenCalledTimes(1);
@@ -58,7 +61,7 @@ test('EventBus: case 1', async () => {
   expect(callback4).toHaveBeenCalledTimes(1);
 
   // removeAllListeners
-  const callback5 = jest.fn<unknown, unknown[], unknown>();
+  const callback5 = jest.fn();
   eventBusAsync.on('e1', callback5);
   eventBusAsync.emit('e1', 'hello6');
   expect(callback5).toHaveBeenCalledTimes(1);

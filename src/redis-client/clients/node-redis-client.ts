@@ -7,11 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { RedisClient } from '../redis-client';
-import { ICallback } from '../../../types';
-import { RedisClientError } from '../errors';
 import { createClient, RedisClientOptions } from '@redis/client';
-import { NodeRedisClientMulti } from './node-redis-client-multi';
+import { ICallback } from '../../../types/index.js';
+import { RedisClientError } from '../errors/index.js';
+import { RedisClient } from '../redis-client.js';
+import { NodeRedisClientMulti } from './node-redis-client-multi.js';
 
 export class NodeRedisClient extends RedisClient {
   protected client;

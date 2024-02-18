@@ -7,16 +7,16 @@
  * in the root directory of this source tree.
  */
 
-import { ELuaScriptName, LuaScript } from './lua-script';
 import {
   ICallback,
   IRedisClient,
   IRedisTransaction,
   TRedisClientEvent,
-} from '../../types';
-import { RedisClientError } from './errors';
-import { CallbackEmptyReplyError } from '../errors';
-import { EventEmitter } from '../event';
+} from '../../types/index.js';
+import { CallbackEmptyReplyError } from '../errors/index.js';
+import { EventEmitter } from '../event/index.js';
+import { RedisClientError } from './errors/index.js';
+import { ELuaScriptName, LuaScript } from './lua-script.js';
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 

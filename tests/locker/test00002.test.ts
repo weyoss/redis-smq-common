@@ -7,23 +7,24 @@
  * in the root directory of this source tree.
  */
 
-import { promisifyAll } from 'bluebird';
-import { Locker } from '../../src/locker/locker';
-import { getRedisInstance } from '../common';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { Locker } from '../../src/locker/locker.js';
+import { getRedisInstance } from '../common.js';
 
-test('Locker: retryOnFail', async () => {
+it('Locker: retryOnFail', async () => {
   const redisClient = await getRedisInstance();
-  const lock = promisifyAll(
+  const lock = bluebird.promisifyAll(
     new Locker(redisClient, console, 'key1', 20000, false),
   );
   await expect(lock.acquireLockAsync()).resolves.toBe(true);
 
-  const lock2 = promisifyAll(
+  const lock2 = bluebird.promisifyAll(
     new Locker(redisClient, console, 'key1', 10000, false),
   );
   await expect(lock2.acquireLockAsync()).resolves.toBe(false);
 
-  const lock3 = promisifyAll(
+  const lock3 = bluebird.promisifyAll(
     new Locker(redisClient, console, 'key1', 10000, true),
   );
   await expect(lock3.acquireLockAsync()).resolves.toBe(true);

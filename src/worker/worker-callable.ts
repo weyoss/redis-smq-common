@@ -7,10 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { EWorkerType, IWorkerCallable } from '../../types/worker';
-import { Worker } from './worker';
-import { ICallback } from '../../types';
-import { WorkerPayloadRequiredError } from './errors';
+import { ICallback } from '../../types/index.js';
+import { EWorkerType, IWorkerCallable } from '../../types/worker/index.js';
+import { WorkerPayloadRequiredError } from './errors/index.js';
+import { Worker } from './worker.js';
 
 export class WorkerCallable<Payload, Reply>
   extends Worker

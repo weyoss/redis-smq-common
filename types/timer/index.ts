@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { TFunction } from '../common';
+import { TFunction } from '../common.js';
 
 export type TTimerEvent = {
   error: (err: Error) => void;

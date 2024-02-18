@@ -7,6 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { EventBusError } from './event-bus.error';
+import { EventBusError } from './event-bus.error.js';
 
 export class EventBusConnectionError extends EventBusError {}

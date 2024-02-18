@@ -7,16 +7,16 @@
  * in the root directory of this source tree.
  */
 
-import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command';
+import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command.js';
 import {
   RedisClientType,
   RedisFunctions,
   RedisModules,
   RedisScripts,
 } from '@redis/client';
-import { ICallback } from '../common';
+import { ICallback } from '../common.js';
 
-export * from './config';
+export * from './config.js';
 
 export type TRedisClientEvent = {
   error: (err: Error) => void;

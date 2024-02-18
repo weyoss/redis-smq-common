@@ -7,16 +7,17 @@
  * in the root directory of this source tree.
  */
 
-import { ERedisConfigClient } from '../../types';
+import { it } from '@jest/globals';
+import { ERedisConfigClient } from '../../types/index.js';
 import {
   pubSubChannel,
   pubSubPattern,
   scriptRunning,
   standardCommands,
   transactionRunning,
-} from './common';
+} from './common.js';
 
-test('NodeRedisClient', async () => {
+it('NodeRedisClient', async () => {
   await standardCommands({ client: ERedisConfigClient.REDIS });
   await scriptRunning({ client: ERedisConfigClient.REDIS });
   await pubSubChannel({ client: ERedisConfigClient.REDIS });

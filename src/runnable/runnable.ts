@@ -7,22 +7,18 @@
  * in the root directory of this source tree.
  */
 
-import { PowerSwitch } from '../power-switch/power-switch';
-import { ICallback, ILogger, TEventEmitterEvent } from '../../types';
 import { v4 as uuid } from 'uuid';
-import { async } from '../async/async';
-import { EventEmitter } from '../event';
+import { ICallback, ILogger } from '../../types/index.js';
+import { async } from '../async/async.js';
+import { PowerSwitch } from '../power-switch/power-switch.js';
 
-export abstract class Runnable<
-  RunnableEvent extends TEventEmitterEvent,
-> extends EventEmitter<RunnableEvent> {
+export class Runnable {
   protected id;
   protected powerSwitch;
   protected logger;
   protected forceShutdownOnError = true;
 
-  protected constructor(logger: ILogger) {
-    super();
+  constructor(logger: ILogger) {
     this.id = uuid();
     this.powerSwitch = new PowerSwitch();
     this.logger = logger;

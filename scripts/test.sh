@@ -11,5 +11,7 @@ set -x
 set -e
 
 export NODE_ENV=test
-npm run build
+DIRNAME=$(dirname "$0")
+
+. "${DIRNAME}"/build.sh
 jest --runInBand --verbose --collectCoverage "$@"

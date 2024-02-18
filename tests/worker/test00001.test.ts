@@ -7,14 +7,18 @@
  * in the root directory of this source tree.
  */
 
-import { promisifyAll } from 'bluebird';
-import path from 'path';
-import { WorkerCallable } from '../../src/worker/worker-callable';
-import { WorkerPayloadRequiredError } from '../../src/worker/errors';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/environment.js';
+import { WorkerPayloadRequiredError } from '../../src/worker/errors/index.js';
+import { WorkerCallable } from '../../src/worker/worker-callable.js';
+
+const dir = getDirname();
 
 it('WorkerCallable: case 1', async () => {
-  const filename = path.resolve(__dirname, './workers/worker-ok.worker.js');
-  const worker = promisifyAll(
+  const filename = resolve(dir, './workers/worker-ok.worker.js');
+  const worker = bluebird.promisifyAll(
     new WorkerCallable<string | null, string>(filename),
   );
   const reply = await worker.callAsync('Hello world!');

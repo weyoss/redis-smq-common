@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { LockError } from './lock.error';
+import { LockError } from './lock.error.js';
 
 export class LockExtendError extends LockError {
   constructor(message = `Acquired lock could not be extended`) {

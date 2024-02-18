@@ -11,3 +11,5 @@ export * from './common.js';
 export * from './redis/index.js';
 export * from './logger/index.js';
 export * from './event/index.js';
+export * from './worker/index.js';
+export * from './timer/index.js';

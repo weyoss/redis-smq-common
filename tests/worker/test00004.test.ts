@@ -7,23 +7,25 @@
  * in the root directory of this source tree.
  */
 
+import { expect, it, jest } from '@jest/globals';
+import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
-import { delay } from 'bluebird';
-import { EWorkerThreadExecutionCode, EWorkerType } from '../../types/worker';
-import path from 'path';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/environment.js';
+import { EWorkerThreadExecutionCode, EWorkerType } from '../../types/index.js';
+import { mockModule } from '../mock-module.js';
+
+const dir = getDirname();
 
 it('WorkerCallable: case 4', async () => {
   const mockParentPort: EventEmitter & { postMessage?: () => void } =
     new EventEmitter();
   mockParentPort.postMessage = jest.fn();
 
-  const mockFilename = path.resolve(
-    __dirname,
-    './workers/worker-error.worker.js',
-  );
+  const mockFilename = resolve(dir, './workers/worker-error.worker.js');
   const mockType = EWorkerType.CALLABLE;
 
-  jest.mock('worker_threads', () => {
+  mockModule('worker_threads', () => {
     return {
       isMainThread: false,
       parentPort: mockParentPort,
@@ -35,13 +37,13 @@ it('WorkerCallable: case 4', async () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
 
-  await import('../../src/worker/worker-thread');
+  await import('../../src/worker/worker-thread.js');
 
-  await delay(5000);
+  await bluebird.delay(5000);
 
   mockParentPort.emit('message', '123456789');
 
-  await delay(5000);
+  await bluebird.delay(5000);
 
   expect(mockParentPort.postMessage).toHaveBeenCalledTimes(1);
   expect(mockParentPort.postMessage).toHaveBeenCalledWith({

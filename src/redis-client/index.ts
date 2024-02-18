@@ -7,11 +7,15 @@
  * in the root directory of this source tree.
  */
 
-import { ERedisConfigClient, ICallback, IRedisConfig } from '../../types';
-import { NodeRedisClient } from './clients/node-redis-client';
-import { IoredisClient } from './clients/ioredis-client';
-import { RedisClient } from './redis-client';
-import { async } from '../async/async';
+import {
+  ERedisConfigClient,
+  ICallback,
+  IRedisConfig,
+} from '../../types/index.js';
+import { async } from '../async/async.js';
+import { IoredisClient } from './clients/ioredis-client.js';
+import { NodeRedisClient } from './clients/node-redis-client.js';
+import { RedisClient } from './redis-client.js';
 
 function getClient(config: IRedisConfig) {
   if (config.client === ERedisConfigClient.REDIS) {

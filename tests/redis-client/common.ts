@@ -7,10 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { IRedisConfig } from '../../types';
-import { RedisClient } from '../../src/redis-client/redis-client';
-import { delay, promisifyAll } from 'bluebird';
-import { getRedisInstance } from '../common';
+import { expect } from '@jest/globals';
+import bluebird from 'bluebird';
+import { RedisClient } from '../../src/redis-client/redis-client.js';
+import { IRedisConfig } from '../../types/index.js';
+import { getRedisInstance } from '../common.js';
 
 export async function standardCommands(config: IRedisConfig) {
   const client = await getRedisInstance(config);
@@ -206,14 +207,14 @@ export async function pubSubPattern(config: IRedisConfig) {
       received = { pattern, channel, message };
     },
   );
-  await delay(5000);
+  await bluebird.delay(5000);
   const r = await publishClient.publishAsync('chan1', 'msg1');
   expect(r).toBe(1);
 
   // eslint-disable-next-line no-constant-condition
   for (; true; ) {
     if (received) break;
-    await delay(1000);
+    await bluebird.delay(1000);
   }
   expect(received).toEqual({
     pattern: 'chan*',
@@ -232,14 +233,14 @@ export async function pubSubChannel(config: IRedisConfig) {
   subscribeClient.on('message', (channel: string, message: string) => {
     received = { channel, message };
   });
-  await delay(5000);
+  await bluebird.delay(5000);
   const r = await publishClient.publishAsync('chan1', 'msg1');
   expect(r).toBe(1);
 
   // eslint-disable-next-line no-constant-condition
   for (; true; ) {
     if (received) break;
-    await delay(1000);
+    await bluebird.delay(1000);
   }
   expect(received).toEqual({
     channel: 'chan1',
@@ -250,7 +251,7 @@ export async function pubSubChannel(config: IRedisConfig) {
 
 export async function transactionRunning(config: IRedisConfig) {
   const client = await getRedisInstance(config);
-  const multi = promisifyAll(client.multi());
+  const multi = bluebird.promisifyAll(client.multi());
   multi.del('k1');
   multi.hdel('k2', 'f1');
   multi.hset('k3', 'f1', 'v1');

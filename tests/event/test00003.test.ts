@@ -7,24 +7,25 @@
  * in the root directory of this source tree.
  */
 
-import { EventEmitter } from '../../src/event';
+import { expect, it, jest } from '@jest/globals';
+import { EventEmitter } from '../../src/event/index.js';
 
 type TEvent = {
   e1: (arg: string) => void;
 };
 
-test('EventEmitter', async () => {
+it('EventEmitter', async () => {
   const eventEmitter = new EventEmitter<TEvent>();
 
   // on
-  const callback = jest.fn<unknown, unknown[], unknown>();
+  const callback = jest.fn();
   eventEmitter.on('e1', callback);
   eventEmitter.emit('e1', 'hello');
   expect(callback).toHaveBeenCalledTimes(1);
   expect(callback).toHaveBeenNthCalledWith(1, 'hello');
 
   // once
-  const callback2 = jest.fn<unknown, unknown[], unknown>();
+  const callback2 = jest.fn();
   eventEmitter.once('e1', callback2);
   eventEmitter.emit('e1', 'hello1');
   eventEmitter.emit('e1', 'hello2');
@@ -32,7 +33,7 @@ test('EventEmitter', async () => {
   expect(callback2).toHaveBeenNthCalledWith(1, 'hello1');
 
   // removeListener
-  const callback3 = jest.fn<unknown, unknown[], unknown>();
+  const callback3 = jest.fn();
   eventEmitter.on('e1', callback3);
   eventEmitter.emit('e1', 'hello3');
   expect(callback3).toHaveBeenCalledTimes(1);
@@ -42,7 +43,7 @@ test('EventEmitter', async () => {
   expect(callback3).toHaveBeenCalledTimes(1);
 
   // removeAllListeners of an event
-  const callback4 = jest.fn<unknown, unknown[], unknown>();
+  const callback4 = jest.fn();
   eventEmitter.on('e1', callback4);
   eventEmitter.emit('e1', 'hello5');
   expect(callback4).toHaveBeenCalledTimes(1);
@@ -52,7 +53,7 @@ test('EventEmitter', async () => {
   expect(callback4).toHaveBeenCalledTimes(1);
 
   // removeAllListeners
-  const callback5 = jest.fn<unknown, unknown[], unknown>();
+  const callback5 = jest.fn();
   eventEmitter.on('e1', callback5);
   eventEmitter.emit('e1', 'hello6');
   expect(callback5).toHaveBeenCalledTimes(1);

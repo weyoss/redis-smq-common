@@ -7,6 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { RedisSMQError } from '../../errors';
+import { RedisSMQError } from '../../errors/index.js';
 
 export class WorkerError extends RedisSMQError {}

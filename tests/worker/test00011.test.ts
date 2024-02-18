@@ -7,20 +7,21 @@
  * in the root directory of this source tree.
  */
 
-import { promisifyAll } from 'bluebird';
-import path from 'path';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/environment.js';
 import {
   WorkerAlreadyDownError,
   WorkerAlreadyRunningError,
-} from '../../src/worker/errors';
-import { WorkerRunnable } from '../../src/worker/worker-runnable';
+} from '../../src/worker/errors/index.js';
+import { WorkerRunnable } from '../../src/worker/worker-runnable.js';
+
+const dir = getDirname();
 
 it('WorkerRunnable', async () => {
-  const filename = path.resolve(
-    __dirname,
-    './workers/worker-runnable-ok.worker.js',
-  );
-  const worker = promisifyAll(new WorkerRunnable<string>(filename));
+  const filename = resolve(dir, './workers/worker-runnable-ok.worker.js');
+  const worker = bluebird.promisifyAll(new WorkerRunnable<string>(filename));
   // will emit an error upon shutdown
   worker.on('worker.error', (err) => {
     console.error(err);

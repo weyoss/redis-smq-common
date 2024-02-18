@@ -7,9 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { PowerSwitch } from '../../src/power-switch/power-switch';
+import { expect, it } from '@jest/globals';
+import { PowerSwitch } from '../../src/power-switch/power-switch.js';
 
-test('PowerSwitch: case 2', () => {
+it('PowerSwitch: case 2', () => {
   const powerSwitch = new PowerSwitch();
   expect(powerSwitch.isDown()).toBe(true);
   expect(powerSwitch.isRunning()).toBe(false);

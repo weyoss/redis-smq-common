@@ -7,10 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { delay } from 'bluebird';
-import { Timer } from '../../src/timer/timer';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { Timer } from '../../src/timer/timer.js';
 
-test('Timer.setTimeout() should block Timer.setInterval() when not fired', async () => {
+it('Timer.setTimeout() should block Timer.setInterval() when not fired', async () => {
   const ticker = new Timer();
   const r = ticker.setTimeout(() => void 0, 5000);
   expect(r).toBe(true);
@@ -18,7 +19,7 @@ test('Timer.setTimeout() should block Timer.setInterval() when not fired', async
   const r2 = ticker.setInterval(() => void 0, 1000);
   expect(r2).toBe(false);
 
-  await delay(10000);
+  await bluebird.delay(10000);
 
   const r3 = ticker.setInterval(() => void 0, 1000);
   expect(r3).toBe(true);

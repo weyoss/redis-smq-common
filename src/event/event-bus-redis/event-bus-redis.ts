@@ -7,17 +7,17 @@
  * in the root directory of this source tree.
  */
 
-import { RedisClient } from '../../redis-client/redis-client';
 import {
   ICallback,
   IEventBus,
   IRedisConfig,
   TEventEmitterEvent,
-} from '../../../types';
-import { async } from '../../async/async';
-import { EventBusConnectionError } from '../errors';
-import { redis } from '../../redis-client';
-import { EventEmitter } from '../event-emitter';
+} from '../../../types/index.js';
+import { async } from '../../async/async.js';
+import { redis } from '../../redis-client/index.js';
+import { RedisClient } from '../../redis-client/redis-client.js';
+import { EventBusConnectionError } from '../errors/index.js';
+import { EventEmitter } from '../event-emitter.js';
 
 export class EventBusRedis<Events extends TEventEmitterEvent>
   extends EventEmitter<Events>

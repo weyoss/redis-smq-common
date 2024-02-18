@@ -7,8 +7,8 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../common';
-import { IEventEmitter, TEventEmitterEvent } from './event-emitter';
+import { ICallback } from '../common.js';
+import { IEventEmitter, TEventEmitterEvent } from './event-emitter.js';
 
 export interface IEventBus<Events extends TEventEmitterEvent>
   extends IEventEmitter<Events> {

@@ -7,9 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import { async } from '../../src/async/async';
+import { expect, it } from '@jest/globals';
+import { async } from '../../src/async/async.js';
 
-test('async.eachOf: case 3', async () => {
+it('async.eachOf: case 3', async () => {
   const promise = new Promise<string>((resolve, reject) => {
     async.eachOf(
       [],

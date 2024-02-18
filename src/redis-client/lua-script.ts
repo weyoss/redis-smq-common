@@ -7,12 +7,15 @@
  * in the root directory of this source tree.
  */
 
-import type { ICallback, IRedisClient } from '../../types';
-import { CallbackEmptyReplyError } from '../errors';
-import { RedisClientError } from './errors';
-import { async } from '../async/async';
 import fs from 'fs';
 import { resolve } from 'path';
+import type { ICallback, IRedisClient } from '../../types/index.js';
+import { async } from '../async/async.js';
+import { getDirname } from '../env/environment.js';
+import { CallbackEmptyReplyError } from '../errors/index.js';
+import { RedisClientError } from './errors/index.js';
+
+const dir = getDirname();
 
 export enum ELuaScriptName {
   LPOPRPUSH = 'LPOPRPUSH',
@@ -28,11 +31,11 @@ export class LuaScript {
     this.scripts = new Map<string, { id?: string; content: string }>();
     this.addScript(
       ELuaScriptName.ZPOPRPUSH,
-      fs.readFileSync(resolve(__dirname, './lua/zpoprpush.lua')).toString(),
+      fs.readFileSync(resolve(dir, './lua/zpoprpush.lua')).toString(),
     );
     this.addScript(
       ELuaScriptName.LPOPRPUSH,
-      fs.readFileSync(resolve(__dirname, './lua/lpoprpush.lua')).toString(),
+      fs.readFileSync(resolve(dir, './lua/lpoprpush.lua')).toString(),
     );
   }
 

@@ -7,5 +7,5 @@
  * in the root directory of this source tree.
  */
 
-export { RedisClientError } from './redis-client.error';
-export { WatchedKeysChangedError } from './watched-keys-changed.error';
+export { RedisClientError } from './redis-client.error.js';
+export { WatchedKeysChangedError } from './watched-keys-changed.error.js';

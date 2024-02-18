@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { WorkerError } from './worker-error';
+import { WorkerError } from './worker-error.js';
 
 export class WorkerAlreadyDownError extends WorkerError {
   constructor() {

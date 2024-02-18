@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from './panic.error';
+import { PanicError } from './panic.error.js';
 
 export class CallbackInvalidReplyError extends PanicError {
   constructor() {

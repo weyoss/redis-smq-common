@@ -7,34 +7,37 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, ILogger } from '../../types';
-import { RedisClient } from '../redis-client/redis-client';
+import { ICallback, IEventBus, ILogger } from '../../types/index.js';
+import { CallbackEmptyReplyError } from '../errors/callback-empty-reply.error.js';
+import { EventBus } from '../event/event-bus/event-bus.js';
+import { RedisClient } from '../redis-client/redis-client.js';
+import { Runnable } from '../runnable/runnable.js';
+import { Timer } from '../timer/timer.js';
 import {
   LockAbortError,
   LockAcquireError,
   LockExtendError,
   LockMethodNotAllowedError,
   LockNotAcquiredError,
-} from './errors';
-import { ELuaScript } from './redis-client/redis-client';
-import { Runnable } from '../runnable/runnable';
-import { Timer } from '../timer/timer';
+} from './errors/index.js';
+import { ELuaScript } from './redis-client/redis-client.js';
 
 export type TLockerEvent = {
   'locker.up': (id: string) => void;
   'locker.down': (id: string) => void;
   'locker.goingUp': (id: string) => void;
   'locker.goingDown': (id: string) => void;
-  'locker.error': (error: Error) => void;
+  'locker.error': (error: Error, id: string) => void;
 };
 
-export class Locker extends Runnable<TLockerEvent> {
+export class Locker extends Runnable {
   protected readonly lockKey;
   protected readonly retryOnFail;
   protected readonly ttl;
   protected readonly redisClient;
   protected readonly autoExtendInterval;
   protected readonly timer;
+  protected eventBus: IEventBus<TLockerEvent> | null = null;
 
   constructor(
     redisClient: RedisClient,
@@ -48,11 +51,29 @@ export class Locker extends Runnable<TLockerEvent> {
     this.lockKey = lockKey;
     this.ttl = ttl;
     this.retryOnFail = retryOnFail;
-    this.redisClient = redisClient;
     this.autoExtendInterval = autoExtendInterval;
     this.timer = new Timer();
-    this.on('locker.error', (err) => this.handleError(err));
+    this.redisClient = redisClient;
+    this.redisClient.on('error', (err) => this.handleError(err));
   }
+
+  protected setUpEventBus = (cb: ICallback<void>): void => {
+    if (!this.eventBus) {
+      EventBus.getInstance<TLockerEvent>((err, instance) => {
+        if (err) cb(err);
+        else if (!instance) cb(new CallbackEmptyReplyError());
+        else {
+          this.eventBus = instance;
+          cb();
+        }
+      });
+    } else cb();
+  };
+
+  protected tearDownEventBus = (cb: ICallback<void>): void => {
+    if (this.eventBus) this.eventBus.disconnect(cb);
+    else cb();
+  };
 
   protected lock = (cb: ICallback<void>) => {
     this.redisClient.set(
@@ -121,8 +142,7 @@ export class Locker extends Runnable<TLockerEvent> {
         () =>
           this.extend((err) => {
             if (err) {
-              if (!(err instanceof LockAbortError))
-                this.emit('locker.error', err);
+              if (!(err instanceof LockAbortError)) this.handleError(err);
             } else this.autoExtendLock();
           }),
         this.autoExtendInterval,
@@ -131,11 +151,13 @@ export class Locker extends Runnable<TLockerEvent> {
   }
 
   protected override goingUp(): ((cb: ICallback<void>) => void)[] {
-    return super.goingUp().concat([this.lock]);
+    return super.goingUp().concat([this.setUpEventBus, this.lock]);
   }
 
   protected override goingDown(): ((cb: ICallback<void>) => void)[] {
-    return [this.tearDownTicker, this.release].concat(super.goingDown());
+    return [this.tearDownTicker, this.release, this.tearDownEventBus].concat(
+      super.goingDown(),
+    );
   }
 
   override run(cb: ICallback<boolean>) {
@@ -148,6 +170,11 @@ export class Locker extends Runnable<TLockerEvent> {
         cb(null, Boolean(reply));
       }
     });
+  }
+
+  protected override handleError(err: Error) {
+    this.eventBus?.emit('locker.error', err, this.id);
+    super.handleError(err);
   }
 
   acquireLock(cb: ICallback<boolean>) {

@@ -7,25 +7,26 @@
  * in the root directory of this source tree.
  */
 
-import { delay, promisifyAll } from 'bluebird';
-import path from 'path';
-import { WorkerResourceGroup } from '../../src/worker/worker-resource-group';
-import { getRedisInstance } from '../common';
+import { it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/environment.js';
+import { WorkerResourceGroup } from '../../src/worker/worker-resource-group.js';
+import { getRedisInstance } from '../common.js';
+
+const dir = getDirname();
 
 it('WorkerResourceGroup: addWorker()', async () => {
   const redisClient = await getRedisInstance();
-  const workerRunnableResourceGroup = promisifyAll(
+  const workerRunnableResourceGroup = bluebird.promisifyAll(
     new WorkerResourceGroup(redisClient, console, 'mygroupid'),
   );
 
-  const filename = path.resolve(
-    __dirname,
-    './workers/worker-runnable-ok.worker.js',
-  );
+  const filename = resolve(dir, './workers/worker-runnable-ok.worker.js');
   workerRunnableResourceGroup.addWorker(filename, 'hello world');
   await workerRunnableResourceGroup.runAsync();
 
-  await delay(10000);
+  await bluebird.delay(10000);
 
   await workerRunnableResourceGroup.shutdownAsync();
 });

@@ -7,22 +7,22 @@
  * in the root directory of this source tree.
  */
 
-export * from './types';
-export * from './src/errors';
-export * from './src/logger/errors';
-export * from './src/timer/errors';
-export * from './src/locker/errors';
-export * from './src/redis-client/errors';
-export * from './src/worker/errors';
-export { Locker } from './src/locker/locker';
-export { PowerSwitch } from './src/power-switch/power-switch';
-export { RedisClient } from './src/redis-client/redis-client';
-export { Timer } from './src/timer/timer';
-export { Runnable } from './src/runnable/runnable';
-export { WorkerCallable } from './src/worker/worker-callable';
-export { WorkerRunnable } from './src/worker/worker-runnable';
-export { WorkerResourceGroup } from './src/worker/worker-resource-group';
-export { logger } from './src/logger/logger';
-export { async } from './src/async/async';
-export { redis } from './src/redis-client';
-export * from './src/event';
+export * from './types/index.js';
+export * from './src/errors/index.js';
+export * from './src/logger/errors/index.js';
+export * from './src/timer/errors/index.js';
+export * from './src/locker/errors/index.js';
+export * from './src/redis-client/errors/index.js';
+export * from './src/worker/errors/index.js';
+export { Locker } from './src/locker/locker.js';
+export { PowerSwitch } from './src/power-switch/power-switch.js';
+export { RedisClient } from './src/redis-client/redis-client.js';
+export { Timer } from './src/timer/timer.js';
+export { Runnable } from './src/runnable/runnable.js';
+export { WorkerCallable } from './src/worker/worker-callable.js';
+export { WorkerRunnable } from './src/worker/worker-runnable.js';
+export { WorkerResourceGroup } from './src/worker/worker-resource-group.js';
+export { logger } from './src/logger/logger.js';
+export { async } from './src/async/async.js';
+export { redis } from './src/redis-client/index.js';
+export * from './src/event/index.js';

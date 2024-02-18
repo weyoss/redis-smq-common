@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../common';
+import { ICallback } from '../common.js';
 
 export enum EWorkerType {
   CALLABLE,

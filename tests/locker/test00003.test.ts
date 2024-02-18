@@ -7,14 +7,15 @@
  * in the root directory of this source tree.
  */
 
-import { delay, promisifyAll } from 'bluebird';
-import { Locker } from '../../src/locker/locker';
-import { getRedisInstance } from '../common';
-import { LockMethodNotAllowedError } from '../../src/locker/errors';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { LockMethodNotAllowedError } from '../../src/locker/errors/index.js';
+import { Locker } from '../../src/locker/locker.js';
+import { getRedisInstance } from '../common.js';
 
-test('Locker: autoExtend', async () => {
+it('Locker: autoExtend', async () => {
   const redisClient = await getRedisInstance();
-  const lock = promisifyAll(
+  const lock = bluebird.promisifyAll(
     new Locker(redisClient, console, 'key1', 10000, false, 3000),
   );
   await expect(lock.acquireLockAsync()).resolves.toBe(true);
@@ -22,9 +23,9 @@ test('Locker: autoExtend', async () => {
     LockMethodNotAllowedError,
   );
 
-  await delay(20000);
+  await bluebird.delay(20000);
 
-  const lock2 = promisifyAll(
+  const lock2 = bluebird.promisifyAll(
     new Locker(redisClient, console, 'key1', 10000, false),
   );
   await expect(lock2.acquireLockAsync()).resolves.toBe(false);

@@ -7,29 +7,32 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, ILogger } from '../../types';
-import { PowerSwitch } from '../power-switch/power-switch';
-import { Locker } from '../locker/locker';
-import { RedisClient } from '../redis-client/redis-client';
-import { async } from '../async/async';
-import { WorkerRunnable } from './worker-runnable';
-import { Runnable } from '../runnable/runnable';
 import { readdir } from 'fs';
 import path from 'path';
+import { ICallback, IEventBus, ILogger } from '../../types/index.js';
+import { async } from '../async/async.js';
+import { CallbackEmptyReplyError } from '../errors/callback-empty-reply.error.js';
+import { EventBus } from '../event/event-bus/event-bus.js';
+import { Locker, TLockerEvent } from '../locker/locker.js';
+import { PowerSwitch } from '../power-switch/power-switch.js';
+import { RedisClient } from '../redis-client/redis-client.js';
+import { Runnable } from '../runnable/runnable.js';
+import { WorkerRunnable } from './worker-runnable.js';
 
-export type TWorkerResourceGroupEvent = {
+export type TWorkerResourceGroupEvent = TLockerEvent & {
   'workerResourceGroup.error': (
     err: Error,
     workerResourceGroupId: string,
   ) => void;
 };
 
-export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
+export class WorkerResourceGroup extends Runnable {
   protected readonly powerManager: PowerSwitch;
   protected readonly locker: Locker;
   protected readonly redisClient: RedisClient;
   protected workers: { instance: WorkerRunnable<unknown>; payload: unknown }[] =
     [];
+  protected eventBus: IEventBus<TWorkerResourceGroupEvent> | null = null;
 
   constructor(
     redisClient: RedisClient,
@@ -38,8 +41,11 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
   ) {
     super(logger);
     this.powerManager = new PowerSwitch();
-    this.redisClient = redisClient;
     this.logger = logger;
+
+    //
+    this.redisClient = redisClient;
+    this.redisClient.on('error', (err) => this.handleError(err));
 
     // Locker
     this.locker = new Locker(
@@ -50,13 +56,28 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
       true,
       15000,
     );
-    this.locker.on('locker.error', (err) => {
-      this.emit('workerResourceGroup.error', err, this.id);
-    });
-    this.on('workerResourceGroup.error', (err) => {
-      this.handleError(err);
+    this.eventBus?.on('locker.error', (err, id) => {
+      if (id === this.locker.getId()) this.handleError(err);
     });
   }
+
+  protected setUpEventBus = (cb: ICallback<void>): void => {
+    if (!this.eventBus) {
+      EventBus.getInstance<TWorkerResourceGroupEvent>((err, instance) => {
+        if (err) cb(err);
+        else if (!instance) cb(new CallbackEmptyReplyError());
+        else {
+          this.eventBus = instance;
+          cb();
+        }
+      });
+    } else cb();
+  };
+
+  protected tearDownEventBus = (cb: ICallback<void>): void => {
+    if (this.eventBus) this.eventBus.disconnect(cb);
+    else cb();
+  };
 
   protected runWorkers = (): void => {
     async.waterfall(
@@ -84,7 +105,7 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
         },
       ],
       (err) => {
-        if (err) this.emit('workerResourceGroup.error', err, this.id);
+        if (err) this.handleError(err);
       },
     );
   };
@@ -108,9 +129,7 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
 
   addWorker = (filename: string, payload: unknown): void => {
     const worker = new WorkerRunnable(filename);
-    worker.on('worker.error', (err) => {
-      this.emit('workerResourceGroup.error', err, this.id);
-    });
+    worker.on('worker.error', (err) => this.handleError(err));
     this.workers.push({ instance: worker, payload });
   };
 
@@ -137,8 +156,16 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
     });
   };
 
+  protected override goingUp(): ((cb: ICallback<void>) => void)[] {
+    return super.goingUp().concat([this.setUpEventBus]);
+  }
+
   protected override goingDown(): ((cb: ICallback<void>) => void)[] {
-    return [this.shutDownWorkers, this.releaseLock].concat(super.goingDown());
+    return [
+      this.shutDownWorkers,
+      this.releaseLock,
+      this.tearDownEventBus,
+    ].concat(super.goingDown());
   }
 
   protected override up(cb: ICallback<boolean>): void {
@@ -146,5 +173,10 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
       this.runWorkers();
       cb();
     });
+  }
+
+  protected override handleError(err: Error) {
+    this.eventBus?.emit('workerResourceGroup.error', err, this.id);
+    super.handleError(err);
   }
 }

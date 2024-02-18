@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-export * from './config';
+export * from './config.js';
 
 export interface ILogger {
   info(message: unknown, ...params: unknown[]): void;

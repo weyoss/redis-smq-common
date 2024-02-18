@@ -7,65 +7,66 @@
  * in the root directory of this source tree.
  */
 
-import { promisifyAll } from 'bluebird';
-import path from 'path';
-import { WorkerCallable } from '../../src/worker/worker-callable';
+import { expect, it } from '@jest/globals';
+import bluebird from 'bluebird';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/environment.js';
+import { WorkerCallable } from '../../src/worker/worker-callable.js';
+
+const dir = getDirname();
 
 it('WorkerCallable: case 2', async () => {
-  const filename = path.resolve(
-    __dirname,
-    './workers/worker-non-existent.worker.js',
-  );
-  const worker = promisifyAll(new WorkerCallable<string, string>(filename));
-
-  await expect(worker.callAsync('Hello world!')).rejects.toThrow(
-    'Error code: FILE_READ_ERROR',
+  const filename = resolve(dir, './workers/worker-non-existent.worker.js');
+  const worker = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename),
   );
 
   await expect(worker.callAsync('Hello world!')).rejects.toThrow(
     'Error code: FILE_READ_ERROR',
   );
 
-  const filename2 = path.resolve(
-    __dirname,
-    './workers/worker-non-existent.worker.jsc',
+  await expect(worker.callAsync('Hello world!')).rejects.toThrow(
+    'Error code: FILE_READ_ERROR',
   );
-  const worker2 = promisifyAll(new WorkerCallable<string, string>(filename2));
+
+  const filename2 = resolve(dir, './workers/worker-non-existent.worker.jsc');
+  const worker2 = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename2),
+  );
   await expect(worker2.callAsync('Hello world!')).rejects.toThrow(
     'Error code: FILE_EXTENSION_ERROR',
   );
 
-  const filename3 = path.resolve(__dirname, './workers/worker-error.worker.js');
-  const worker3 = promisifyAll(new WorkerCallable<string, string>(filename3));
+  const filename3 = resolve(dir, './workers/worker-error.worker.js');
+  const worker3 = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename3),
+  );
   await expect(worker3.callAsync('Hello world!')).rejects.toThrow(
     'Error code: PROCESSING_ERROR',
   );
   await worker3.quitAsync();
 
-  const filename4 = path.resolve(
-    __dirname,
-    './workers/worker-exception.worker.js',
+  const filename4 = resolve(dir, './workers/worker-exception.worker.js');
+  const worker4 = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename4),
   );
-  const worker4 = promisifyAll(new WorkerCallable<string, string>(filename4));
   await expect(worker4.callAsync('Hello world!')).rejects.toThrow(
     'Error code: PROCESSING_CAUGHT_ERROR',
   );
   await worker4.quitAsync();
 
-  const filename5 = path.resolve(
-    __dirname,
-    './workers/worker-faulty.worker.js',
+  const filename5 = resolve(dir, './workers/worker-faulty.worker.js');
+  const worker5 = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename5),
   );
-  const worker5 = promisifyAll(new WorkerCallable<string, string>(filename5));
   await expect(worker5.callAsync('Hello world!')).rejects.toThrow(
     'Error code: INVALID_WORKER_TYPE',
   );
 
-  const filename6 = path.resolve(
-    __dirname,
-    './workers/worker-faulty-exit.worker.js',
+  const filename6 = resolve(dir, './workers/worker-faulty-exit.worker.js');
+  const worker6 = bluebird.promisifyAll(
+    new WorkerCallable<string, string>(filename6),
   );
-  const worker6 = promisifyAll(new WorkerCallable<string, string>(filename6));
   await expect(worker6.callAsync('Hello world!')).rejects.toThrow(
     'Error code: TERMINATED',
   );

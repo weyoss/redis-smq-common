@@ -7,6 +7,8 @@
  * in the root directory of this source tree.
  */
 
+import { statSync } from 'fs';
+import { extname } from 'path';
 import {
   isMainThread,
   MessagePort,
@@ -22,9 +24,7 @@ import {
   TWorkerFn,
   TWorkerThreadMessage,
   TWorkerThreadMessageCode,
-} from '../../types/worker';
-import path from 'path';
-import { statSync } from 'fs';
+} from '../../types/worker/index.js';
 
 function importWorkerFn(
   filename: string,
@@ -94,7 +94,7 @@ if (!isMainThread && parentPort) {
 
     const { type, filename }: IWorkerData = workerData;
 
-    if (!['.js', '.cjs'].includes(path.extname(filename))) {
+    if (!['.js', '.cjs'].includes(extname(filename))) {
       exit(EWorkerThreadExitCode.FILE_EXTENSION_ERROR);
     }
 

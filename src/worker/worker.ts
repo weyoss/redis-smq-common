@@ -7,22 +7,25 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../../types';
+import { resolve } from 'path';
 import { Worker as WorkerThread } from 'worker_threads';
-import path from 'path';
+import { ICallback } from '../../types/index.js';
 import {
   EWorkerThreadExecutionCode,
   EWorkerThreadExitCode,
   EWorkerType,
   TWorkerThreadMessage,
-} from '../../types/worker';
-import { WorkerThreadError } from './errors';
-import { EventEmitter } from '../event';
+} from '../../types/worker/index.js';
+import { getDirname } from '../env/environment.js';
+import { EventEmitter } from '../event/index.js';
+import { WorkerThreadError } from './errors/index.js';
 
 export type TWorkerEvent = {
   'worker.error': (err: Error) => void;
   'worker.data': (payload: unknown) => void;
 };
+
+const dir = getDirname();
 
 export abstract class Worker extends EventEmitter<TWorkerEvent> {
   protected abstract readonly type: EWorkerType;
@@ -36,12 +39,9 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
 
   protected getWorkerThread(): WorkerThread {
     if (!this.workerThread) {
-      this.workerThread = new WorkerThread(
-        path.resolve(__dirname, './worker-thread.js'),
-        {
-          workerData: { filename: this.workerFilename, type: this.type },
-        },
-      );
+      this.workerThread = new WorkerThread(resolve(dir, './worker-thread.js'), {
+        workerData: { filename: this.workerFilename, type: this.type },
+      });
       this.workerThread.on('messageerror', (err) => {
         console.error(err);
       });

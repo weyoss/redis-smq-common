@@ -7,10 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { async } from '../../src/async/async';
-import { ICallback } from '../../types';
+import { expect, it } from '@jest/globals';
+import { async } from '../../src/async/async.js';
+import { ICallback } from '../../types/index.js';
 
-test('async.waterfall: case 2', async () => {
+it('async.waterfall: case 2', async () => {
   let count = 0;
   await new Promise<void>((resolve, reject) => {
     async.waterfall(

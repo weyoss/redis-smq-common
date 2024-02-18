@@ -7,11 +7,14 @@
  * in the root directory of this source tree.
  */
 
-import { EWorkerType, IWorkerRunnable } from '../../types/worker';
-import { Worker } from './worker';
-import { ICallback } from '../../types';
-import { PowerSwitch } from '../power-switch/power-switch';
-import { WorkerAlreadyDownError, WorkerAlreadyRunningError } from './errors';
+import { ICallback } from '../../types/index.js';
+import { EWorkerType, IWorkerRunnable } from '../../types/worker/index.js';
+import { PowerSwitch } from '../power-switch/power-switch.js';
+import {
+  WorkerAlreadyDownError,
+  WorkerAlreadyRunningError,
+} from './errors/index.js';
+import { Worker } from './worker.js';
 
 export class WorkerRunnable<Payload>
   extends Worker

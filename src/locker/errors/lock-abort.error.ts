@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { LockError } from './lock.error';
+import { LockError } from './lock.error.js';
 
 export class LockAbortError extends LockError {
   constructor(message = `releaseLock() may have been called. Abandoning.`) {

@@ -7,9 +7,13 @@
  * in the root directory of this source tree.
  */
 
-import { EventEmitter } from '../event-emitter';
-import { ICallback, IEventBus, TEventEmitterEvent } from '../../../types';
-import { EventBusConnectionError } from '../errors';
+import {
+  ICallback,
+  IEventBus,
+  TEventEmitterEvent,
+} from '../../../types/index.js';
+import { EventBusConnectionError } from '../errors/index.js';
+import { EventEmitter } from '../event-emitter.js';
 
 export class EventBus<Events extends TEventEmitterEvent>
   extends EventEmitter<Events>

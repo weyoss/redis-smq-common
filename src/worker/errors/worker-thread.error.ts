@@ -7,12 +7,12 @@
  * in the root directory of this source tree.
  */
 
-import { WorkerError } from './worker-error';
 import {
   EWorkerThreadExecutionCode,
   EWorkerThreadExitCode,
   TWorkerThreadMessage,
-} from '../../../types/worker';
+} from '../../../types/worker/index.js';
+import { WorkerError } from './worker-error.js';
 
 export class WorkerThreadError extends WorkerError {
   constructor(msg: TWorkerThreadMessage) {

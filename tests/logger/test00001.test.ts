@@ -7,10 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { logger } from '../../src/logger/logger';
+import { expect, it, jest } from '@jest/globals';
 import Logger from 'bunyan';
+import { logger } from '../../src/logger/logger.js';
 
-test('Logger', async () => {
+it('Logger', async () => {
   logger.destroy();
   const logger0 = logger.getLogger({ enabled: true });
   expect(logger0 instanceof Logger).toBe(true);
@@ -34,41 +35,25 @@ test('Logger', async () => {
     'ns',
   );
 
-  const mock1: jest.SpyInstance<
-    void,
-    [message?: unknown, ...optionalParams: unknown[]],
-    unknown
-  > = jest.spyOn(console, 'info').mockImplementation();
+  const mock1 = jest.spyOn(console, 'info').mockImplementation(() => void 0);
   logger2.info('info');
   expect(console.info).toHaveBeenCalledTimes(1);
   expect(console.info).toHaveBeenLastCalledWith(`ns | info`);
   mock1.mockRestore();
 
-  const mock2: jest.SpyInstance<
-    void,
-    [message?: unknown, ...optionalParams: unknown[]],
-    unknown
-  > = jest.spyOn(console, 'error').mockImplementation();
+  const mock2 = jest.spyOn(console, 'error').mockImplementation(() => void 0);
   logger2.error('error');
   expect(console.error).toHaveBeenCalledTimes(1);
   expect(console.error).toHaveBeenLastCalledWith(`ns | error`);
   mock2.mockRestore();
 
-  const mock3: jest.SpyInstance<
-    void,
-    [message?: unknown, ...optionalParams: unknown[]],
-    unknown
-  > = jest.spyOn(console, 'debug').mockImplementation();
+  const mock3 = jest.spyOn(console, 'debug').mockImplementation(() => void 0);
   logger2.debug('debug');
   expect(console.debug).toHaveBeenCalledTimes(1);
   expect(console.debug).toHaveBeenLastCalledWith(`ns | debug`);
   mock3.mockRestore();
 
-  const mock4: jest.SpyInstance<
-    void,
-    [message?: unknown, ...optionalParams: unknown[]],
-    unknown
-  > = jest.spyOn(console, 'warn').mockImplementation();
+  const mock4 = jest.spyOn(console, 'warn').mockImplementation(() => void 0);
   logger2.warn('warn');
   expect(console.warn).toHaveBeenCalledTimes(1);
   expect(console.warn).toHaveBeenLastCalledWith(`ns | warn`);

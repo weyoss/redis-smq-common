@@ -7,12 +7,12 @@
  * in the root directory of this source tree.
  */
 
-import { RedisClient } from '../redis-client';
 import IORedis, { Redis, RedisOptions } from 'ioredis';
-import { ICallback } from '../../../types';
-import { RedisClientError } from '../errors';
-import { IoredisClientMulti } from './ioredis-client-multi';
-import { CallbackEmptyReplyError } from '../../errors';
+import { ICallback } from '../../../types/index.js';
+import { CallbackEmptyReplyError } from '../../errors/index.js';
+import { RedisClientError } from '../errors/index.js';
+import { RedisClient } from '../redis-client.js';
+import { IoredisClientMulti } from './ioredis-client-multi.js';
 
 export class IoredisClient extends RedisClient {
   protected client: Redis;

@@ -7,11 +7,11 @@
  * in the root directory of this source tree.
  */
 
-import { resolve } from 'path';
+const { resolve } = require('path');
 
-export default {
+module.exports = {
   rootDir: resolve('./'),
-  testMatch: ['<rootDir>/dist/esm/tests/**/*.test.js'],
-  setupFilesAfterEnv: ['<rootDir>/dist/esm/tests/jest.setup.js'],
+  testMatch: ['<rootDir>/dist/cjs/tests/**/*.test.js'],
+  setupFilesAfterEnv: ['<rootDir>/dist/cjs/tests/jest.setup.js'],
   coverageDirectory: '<rootDir>/coverage',
 };

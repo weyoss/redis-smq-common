@@ -7,13 +7,13 @@
  * in the root directory of this source tree.
  */
 
-import { promisify, promisifyAll } from 'bluebird';
-import { RedisClient } from '../src/redis-client/redis-client';
-import { redisConfig } from './config';
-import { redis } from '../src/redis-client';
+import bluebird from 'bluebird';
+import { redis } from '../src/redis-client/index.js';
+import { RedisClient } from '../src/redis-client/redis-client.js';
+import { redisConfig } from './config.js';
 
 const redisClients: RedisClient[] = [];
-const createClientInstanceAsync = promisify(redis.createInstance);
+const createClientInstanceAsync = bluebird.promisify(redis.createInstance);
 
 export async function startUp(): Promise<void> {
   const redisClient = await getRedisInstance();
@@ -24,13 +24,14 @@ export async function shutdown(): Promise<void> {
   while (redisClients.length) {
     const redisClient = redisClients.pop();
     if (redisClient) {
-      await promisifyAll(redisClient).haltAsync();
+      await bluebird.promisifyAll(redisClient).haltAsync();
     }
   }
 }
 
 export async function getRedisInstance(config = redisConfig) {
-  const c = promisifyAll(await createClientInstanceAsync(config));
+  const instance = await createClientInstanceAsync(config);
+  const c = bluebird.promisifyAll(instance);
   redisClients.push(c);
   return c;
 }

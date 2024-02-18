@@ -7,6 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { RedisSMQError } from './redis-smq.error';
+import { RedisSMQError } from './redis-smq.error.js';
 
 export class PanicError extends RedisSMQError {}
