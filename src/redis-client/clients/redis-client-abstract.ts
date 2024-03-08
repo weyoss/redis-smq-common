@@ -8,19 +8,19 @@
  */
 
 import {
-  ICallback,
   IRedisClient,
   IRedisTransaction,
   TRedisClientEvent,
-} from '../../types/index.js';
-import { CallbackEmptyReplyError } from '../errors/index.js';
-import { EventEmitter } from '../event/index.js';
-import { RedisClientError } from './errors/index.js';
-import { ELuaScriptName, LuaScript } from './lua-script.js';
+} from '../types/index.js';
+import { CallbackEmptyReplyError } from '../../errors/index.js';
+import { EventEmitter } from '../../event/index.js';
+import { RedisClientError } from '../errors/index.js';
+import { ELuaScriptName, LuaScript } from '../lua-scripts/lua-script.js';
+import { ICallback } from '../../common/index.js';
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 
-export abstract class RedisClient
+export abstract class RedisClientAbstract
   extends EventEmitter<TRedisClientEvent>
   implements IRedisClient
 {
@@ -28,15 +28,15 @@ export abstract class RedisClient
   protected connectionClosed = true;
 
   validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
-    if (!RedisClient.redisServerVersion) {
+    if (!RedisClientAbstract.redisServerVersion) {
       this.emit('error', new RedisClientError('UNKNOWN_REDIS_SERVER_VERSION'));
       return false;
     }
     return (
-      RedisClient.redisServerVersion[0] > major ||
-      (RedisClient.redisServerVersion[0] === major &&
-        RedisClient.redisServerVersion[1] >= feature &&
-        RedisClient.redisServerVersion[2] >= minor)
+      RedisClientAbstract.redisServerVersion[0] > major ||
+      (RedisClientAbstract.redisServerVersion[0] === major &&
+        RedisClientAbstract.redisServerVersion[1] >= feature &&
+        RedisClientAbstract.redisServerVersion[2] >= minor)
     );
   }
 
@@ -47,7 +47,7 @@ export abstract class RedisClient
         cb(new RedisClientError('UNSUPPORTED_REDIS_SERVER_VERSION'));
       else cb();
     };
-    if (!RedisClient.redisServerVersion) {
+    if (!RedisClientAbstract.redisServerVersion) {
       this.updateServerVersion((err) => {
         if (err) cb(err);
         else validate(cb);
@@ -322,17 +322,17 @@ export abstract class RedisClient
 
   abstract end(flush: boolean): void;
 
-  abstract quit(cb: ICallback<void>): void;
+  abstract shutDown(cb: ICallback<void>): void;
 
   abstract getInfo(cb: ICallback<string>): void;
 
   updateServerVersion(cb: ICallback<void>): void {
-    if (!RedisClient.redisServerVersion) {
+    if (!RedisClientAbstract.redisServerVersion) {
       this.getInfo((err, res) => {
         if (err) cb(err);
         else if (!res) cb(new CallbackEmptyReplyError());
         else {
-          RedisClient.redisServerVersion = res
+          RedisClientAbstract.redisServerVersion = res
             .split('\r\n')[1]
             .split(':')[1]
             .split('.')

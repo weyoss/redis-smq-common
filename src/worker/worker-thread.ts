@@ -24,7 +24,7 @@ import {
   TWorkerFn,
   TWorkerThreadMessage,
   TWorkerThreadMessageCode,
-} from '../../types/worker/index.js';
+} from './types/index.js';
 
 function importWorkerFn(
   filename: string,
@@ -40,8 +40,7 @@ function importWorkerFn(
         exit(EWorkerThreadExitCode.INVALID_WORKER_TYPE);
       } else cb(fn);
     })
-    .catch((err: unknown) => {
-      console.error(err);
+    .catch(() => {
       exit(EWorkerThreadExitCode.FILE_IMPORT_ERROR);
     });
 }

@@ -8,5 +8,4 @@
  */
 
 export * from './event-emitter.js';
-export * from './event-bus-redis/event-bus-redis.js';
-export * from './event-bus/event-bus.js';
+export * from './types/index.js';

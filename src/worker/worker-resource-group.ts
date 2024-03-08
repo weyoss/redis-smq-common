@@ -9,43 +9,41 @@
 
 import { readdir } from 'fs';
 import path from 'path';
-import { ICallback, IEventBus, ILogger } from '../../types/index.js';
-import { async } from '../async/async.js';
-import { CallbackEmptyReplyError } from '../errors/callback-empty-reply.error.js';
-import { EventBus } from '../event/event-bus/event-bus.js';
-import { Locker, TLockerEvent } from '../locker/locker.js';
-import { PowerSwitch } from '../power-switch/power-switch.js';
-import { RedisClient } from '../redis-client/redis-client.js';
-import { Runnable } from '../runnable/runnable.js';
+import { async } from '../async/index.js';
+import { ICallback } from '../common/index.js';
+import { AbortError } from '../errors/index.js';
+import { Locker } from '../locker/locker.js';
+import { ILogger } from '../logger/index.js';
+import { PowerSwitch } from '../power-switch/index.js';
+import { IRedisClient } from '../redis-client/index.js';
+import { Runnable } from '../runnable/index.js';
 import { WorkerRunnable } from './worker-runnable.js';
 
-export type TWorkerResourceGroupEvent = TLockerEvent & {
-  'workerResourceGroup.error': (
-    err: Error,
-    workerResourceGroupId: string,
-  ) => void;
+export type TWorkerResourceGroupEvent = {
+  'workerResourceGroup.error': (err: Error) => void;
 };
 
-export class WorkerResourceGroup extends Runnable {
-  protected readonly powerManager: PowerSwitch;
-  protected readonly locker: Locker;
-  protected readonly redisClient: RedisClient;
+export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
+  protected readonly powerManager;
+  protected readonly locker;
+  protected readonly redisClient;
+  protected readonly logger;
   protected workers: { instance: WorkerRunnable<unknown>; payload: unknown }[] =
     [];
-  protected eventBus: IEventBus<TWorkerResourceGroupEvent> | null = null;
+  protected runWorkersLocked = false;
 
   constructor(
-    redisClient: RedisClient,
+    redisClient: IRedisClient,
     logger: ILogger,
     resourceGroupId: string,
   ) {
-    super(logger);
+    super();
     this.powerManager = new PowerSwitch();
     this.logger = logger;
 
     //
     this.redisClient = redisClient;
-    this.redisClient.on('error', (err) => this.handleError(err));
+    this.redisClient.once('error', (err) => this.handleError(err));
 
     // Locker
     this.locker = new Locker(
@@ -56,76 +54,79 @@ export class WorkerResourceGroup extends Runnable {
       true,
       15000,
     );
-    this.eventBus?.on('locker.error', (err, id) => {
-      if (id === this.locker.getId()) this.handleError(err);
+    this.locker.on('locker.error', (err) => {
+      this.handleError(err);
     });
   }
 
-  protected setUpEventBus = (cb: ICallback<void>): void => {
-    if (!this.eventBus) {
-      EventBus.getInstance<TWorkerResourceGroupEvent>((err, instance) => {
-        if (err) cb(err);
-        else if (!instance) cb(new CallbackEmptyReplyError());
-        else {
-          this.eventBus = instance;
-          cb();
-        }
-      });
-    } else cb();
+  protected lock = (cb: ICallback<void>) => {
+    this.locker.acquireLock((err) => {
+      if (err) cb(err);
+      else {
+        this.logger.info(
+          `Workers are exclusively running from this instance (Lock ID ${this.locker.getId()}).`,
+        );
+        cb();
+      }
+    });
   };
 
-  protected tearDownEventBus = (cb: ICallback<void>): void => {
-    if (this.eventBus) this.eventBus.disconnect(cb);
-    else cb();
-  };
-
-  protected runWorkers = (): void => {
-    async.waterfall(
-      [
-        (cb: ICallback<void>) => {
-          this.locker.acquireLock((err) => {
-            if (err) cb(err);
-            else {
-              this.logger.info(
-                `Workers are exclusively running from this instance (Lock ID ${this.locker.getId()}).`,
-              );
-              cb();
-            }
-          });
+  protected runWorkers = (cb: ICallback<void>) => {
+    if (!this.runWorkersLocked) {
+      this.runWorkersLocked = true;
+      async.each(
+        this.workers,
+        (worker, _, done) => {
+          const { instance, payload } = worker;
+          instance.run(payload, done);
         },
-        (cb: ICallback<void>) => {
-          async.each(
-            this.workers,
-            (worker, _, done) => {
-              const { instance, payload } = worker;
-              instance.run(payload, done);
-            },
-            cb,
-          );
+        (err) => {
+          this.runWorkersLocked = false;
+          cb(err);
         },
-      ],
-      (err) => {
-        if (err) this.handleError(err);
-      },
-    );
+      );
+    } else cb(new AbortError());
   };
 
   protected shutDownWorkers = (cb: ICallback<void>): void => {
-    async.each(
-      this.workers,
-      (worker, _, done) => {
-        worker.instance.quit(() => done());
-      },
-      () => {
-        this.workers = [];
-        cb();
-      },
-    );
+    if (!this.runWorkersLocked) {
+      this.runWorkersLocked = true;
+      async.each(
+        this.workers,
+        (worker, _, done) => {
+          worker.instance.shutDown(() => done());
+        },
+        () => {
+          this.workers = [];
+          this.runWorkersLocked = false;
+          cb();
+        },
+      );
+    } else setTimeout(() => this.shutDownWorkers(cb), 1000);
   };
 
   protected releaseLock = (cb: ICallback<void>) => {
-    this.locker.releaseLock((err) => cb(err));
+    this.locker.releaseLock(cb);
   };
+
+  protected override getLogger(): ILogger {
+    return this.logger;
+  }
+
+  protected override goingUp(): ((cb: ICallback<void>) => void)[] {
+    return super.goingUp().concat([this.lock, this.runWorkers]);
+  }
+
+  protected override goingDown(): ((cb: ICallback<void>) => void)[] {
+    return [this.shutDownWorkers, this.releaseLock].concat(super.goingDown());
+  }
+
+  protected override handleError(err: Error) {
+    if (this.isRunning()) {
+      this.emit('workerResourceGroup.error', err);
+      super.handleError(err);
+    }
+  }
 
   addWorker = (filename: string, payload: unknown): void => {
     const worker = new WorkerRunnable(filename);
@@ -138,45 +139,23 @@ export class WorkerResourceGroup extends Runnable {
     payload: unknown,
     cb: ICallback<void>,
   ): void => {
-    readdir(workersDir, (err, files) => {
-      if (err) cb(err);
-      else {
-        async.each(
-          files ?? [],
-          (file, _, done) => {
-            if (file.endsWith('.worker.js')) {
-              const filepath = path.resolve(workersDir, file);
-              this.addWorker(filepath, payload);
-              done();
-            } else done();
-          },
-          (err) => cb(err),
-        );
-      }
-    });
+    if (this.isDown() && !this.isGoingUp()) {
+      readdir(workersDir, (err, files) => {
+        if (err) cb(err);
+        else {
+          async.each(
+            files ?? [],
+            (file, _, done) => {
+              if (file.endsWith('.worker.js')) {
+                const filepath = path.resolve(workersDir, file);
+                this.addWorker(filepath, payload);
+                done();
+              } else done();
+            },
+            (err) => cb(err),
+          );
+        }
+      });
+    }
   };
-
-  protected override goingUp(): ((cb: ICallback<void>) => void)[] {
-    return super.goingUp().concat([this.setUpEventBus]);
-  }
-
-  protected override goingDown(): ((cb: ICallback<void>) => void)[] {
-    return [
-      this.shutDownWorkers,
-      this.releaseLock,
-      this.tearDownEventBus,
-    ].concat(super.goingDown());
-  }
-
-  protected override up(cb: ICallback<boolean>): void {
-    super.up(() => {
-      this.runWorkers();
-      cb();
-    });
-  }
-
-  protected override handleError(err: Error) {
-    this.eventBus?.emit('workerResourceGroup.error', err, this.id);
-    super.handleError(err);
-  }
 }

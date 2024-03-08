@@ -8,7 +8,7 @@
  */
 
 import { it } from '@jest/globals';
-import { ERedisConfigClient } from '../../types/index.js';
+import { ERedisConfigClient } from '../../src/redis-client/index.js';
 import {
   pubSubChannel,
   pubSubPattern,

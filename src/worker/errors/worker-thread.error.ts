@@ -11,7 +11,7 @@ import {
   EWorkerThreadExecutionCode,
   EWorkerThreadExitCode,
   TWorkerThreadMessage,
-} from '../../../types/worker/index.js';
+} from '../types/index.js';
 import { WorkerError } from './worker-error.js';
 
 export class WorkerThreadError extends WorkerError {

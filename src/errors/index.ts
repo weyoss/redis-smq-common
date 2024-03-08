@@ -11,3 +11,4 @@ export { CallbackEmptyReplyError } from './callback-empty-reply.error.js';
 export { CallbackInvalidReplyError } from './callback-invalid-reply.error.js';
 export { PanicError } from './panic.error.js';
 export { RedisSMQError } from './redis-smq.error.js';
+export { AbortError } from './abort.error.js';

@@ -8,7 +8,6 @@
  */
 
 export { LockError } from './lock.error.js';
-export { LockAbortError } from './lock-abort.error.js';
 export { LockAcquireError } from './lock-acquire.error.js';
 export { LockExtendError } from './lock-extend.error.js';
 export { LockMethodNotAllowedError } from './lock-method-not-allowed.error.js';

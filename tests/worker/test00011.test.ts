@@ -20,7 +20,7 @@ import { WorkerRunnable } from '../../src/worker/worker-runnable.js';
 const dir = getDirname();
 
 it('WorkerRunnable', async () => {
-  const filename = resolve(dir, './workers/worker-runnable-ok.worker.js');
+  const filename = resolve(dir, './workers/runnable/runnable1.worker.js');
   const worker = bluebird.promisifyAll(new WorkerRunnable<string>(filename));
   // will emit an error upon shutdown
   worker.on('worker.error', (err) => {
@@ -32,9 +32,9 @@ it('WorkerRunnable', async () => {
     WorkerAlreadyRunningError,
   );
 
-  await worker.quitAsync();
+  await worker.shutDownAsync();
 
-  await expect(async () => worker.quitAsync()).rejects.toThrow(
+  await expect(async () => worker.shutDownAsync()).rejects.toThrow(
     WorkerAlreadyDownError,
   );
 });

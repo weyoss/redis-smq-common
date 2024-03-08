@@ -9,23 +9,21 @@
 
 import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
-import { EventBusConnectionError } from '../../src/event/errors/index.js';
-import { EventBusRedis } from '../../src/event/index.js';
+import { EventBusNotConnectedError } from '../../src/event-bus/errors/index.js';
+import { EventBusRedis } from '../../src/event-bus/event-bus-redis.js';
 import { redisConfig } from '../config.js';
 
 type TEvent = {
   e1: (arg: string) => void;
+  error: (err: Error) => void;
 };
 
+const getInstanceAsync = bluebird.promisify(EventBusRedis.createInstance);
+
 it('EventBusRedis: case 1', async () => {
-  const getInstanceAsync = await bluebird.promisify(EventBusRedis.getInstance);
-  const eventBusAsync0 = bluebird.promisifyAll(
-    await getInstanceAsync<TEvent>(redisConfig),
-  );
   const eventBusAsync = bluebird.promisifyAll(
     await getInstanceAsync<TEvent>(redisConfig),
   );
-  expect(eventBusAsync).toBe(eventBusAsync0);
 
   // on
   const callback = jest.fn();
@@ -80,27 +78,34 @@ it('EventBusRedis: case 1', async () => {
   eventBusAsync.emit('e1', 'hello7');
   expect(callback5).toHaveBeenCalledTimes(1);
 
-  await eventBusAsync.disconnectAsync();
+  await eventBusAsync.shutDownAsync();
 
   // second time
-  await eventBusAsync.disconnectAsync();
+  await eventBusAsync.shutDownAsync();
 
-  expect(() => eventBusAsync.on('e1', () => void 0)).toThrow(
-    EventBusConnectionError,
-  );
-  expect(() => eventBusAsync.once('e1', () => void 0)).toThrow(
-    EventBusConnectionError,
-  );
-  expect(() => eventBusAsync.removeListener('e1', () => void 0)).toThrow(
-    EventBusConnectionError,
-  );
-  expect(() => eventBusAsync.removeAllListeners('e1')).toThrow(
-    EventBusConnectionError,
-  );
-  expect(() => eventBusAsync.removeAllListeners()).toThrow(
-    EventBusConnectionError,
-  );
-  expect(() => eventBusAsync.emit('e1', 'hello8')).toThrow(
-    EventBusConnectionError,
-  );
+  const errors: Error[] = [];
+  eventBusAsync.once('error', (e) => errors.push(e));
+
+  eventBusAsync.on('e1', () => void 0);
+  expect(errors[0]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.on('error', (e) => errors.push(e));
+
+  eventBusAsync.once('e1', () => void 0);
+  expect(errors[1]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.removeListener('e1', () => void 0);
+  expect(errors[2]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.removeAllListeners('e1');
+  expect(errors[3]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.removeAllListeners();
+  expect(errors[4]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.emit('e1', 'hello8');
+  expect(errors[5]).toBeInstanceOf(EventBusNotConnectedError);
+
+  eventBusAsync.removeListener('error', () => void 0);
+  eventBusAsync.removeAllListeners('error');
 });

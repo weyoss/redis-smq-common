@@ -7,8 +7,8 @@
  * in the root directory of this source tree.
  */
 
-import { TFunction } from '../../types/index.js';
-import { TTimer, TTimerEvent } from '../../types/timer/index.js';
+import { TFunction } from '../common/index.js';
+import { TTimer, TTimerEvent } from './types/index.js';
 import { EventEmitter } from '../event/index.js';
 import { TimerError } from './errors/index.js';
 

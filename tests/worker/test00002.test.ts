@@ -25,6 +25,8 @@ it('WorkerCallable: case 2', async () => {
     'Error code: FILE_READ_ERROR',
   );
 
+  await bluebird.delay(1000);
+
   await expect(worker.callAsync('Hello world!')).rejects.toThrow(
     'Error code: FILE_READ_ERROR',
   );
@@ -44,7 +46,7 @@ it('WorkerCallable: case 2', async () => {
   await expect(worker3.callAsync('Hello world!')).rejects.toThrow(
     'Error code: PROCESSING_ERROR',
   );
-  await worker3.quitAsync();
+  await worker3.shutDownAsync();
 
   const filename4 = resolve(dir, './workers/worker-exception.worker.js');
   const worker4 = bluebird.promisifyAll(
@@ -53,7 +55,7 @@ it('WorkerCallable: case 2', async () => {
   await expect(worker4.callAsync('Hello world!')).rejects.toThrow(
     'Error code: PROCESSING_CAUGHT_ERROR',
   );
-  await worker4.quitAsync();
+  await worker4.shutDownAsync();
 
   const filename5 = resolve(dir, './workers/worker-faulty.worker.js');
   const worker5 = bluebird.promisifyAll(

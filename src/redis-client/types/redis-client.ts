@@ -14,7 +14,8 @@ import {
   RedisModules,
   RedisScripts,
 } from '@redis/client';
-import { ICallback } from '../common.js';
+import { ICallback } from '../../common/index.js';
+import { EventEmitter } from '../../event/index.js';
 
 export * from './config.js';
 
@@ -38,7 +39,7 @@ export type TRedisClientNodeRedis = RedisClientType<
   RedisScripts
 >;
 
-export interface IRedisClient {
+export interface IRedisClient extends EventEmitter<TRedisClientEvent> {
   validateRedisVersion(
     major: number,
     feature?: number,
@@ -85,11 +86,11 @@ export interface IRedisClient {
 
   psubscribe(pattern: string): void;
 
-  punsubscribe(channel: string): void;
+  punsubscribe(channel?: string): void;
 
   subscribe(channel: string): void;
 
-  unsubscribe(channel: string): void;
+  unsubscribe(channel?: string): void;
 
   zrangebyscore(
     key: string,
@@ -245,7 +246,7 @@ export interface IRedisClient {
 
   end(flush: boolean): void;
 
-  quit(cb: ICallback<void>): void;
+  shutDown(cb: ICallback<void>): void;
 
   getInfo(cb: ICallback<string>): void;
 

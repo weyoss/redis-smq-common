@@ -12,7 +12,7 @@ import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
 import { getDirname } from '../../src/env/environment.js';
-import { EWorkerThreadExitCode, EWorkerType } from '../../types/index.js';
+import { EWorkerThreadExitCode, EWorkerType } from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
 const dir = getDirname();

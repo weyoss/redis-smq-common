@@ -7,5 +7,4 @@
  * in the root directory of this source tree.
  */
 
-export * from './event-emitter.js';
 export * from './event-bus.js';

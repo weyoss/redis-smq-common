@@ -9,8 +9,8 @@
 
 import fs from 'fs';
 import { resolve } from 'path';
-import { getDirname } from '../../env/environment.js';
-import { RedisClient } from '../../redis-client/redis-client.js';
+import { getDirname } from '../../../env/environment.js';
+import { RedisClientAbstract } from '../../../redis-client/clients/redis-client-abstract.js';
 
 export enum ELuaScript {
   RELEASE_LOCK = 'RELEASE_LOCK',
@@ -19,11 +19,11 @@ export enum ELuaScript {
 
 const dir = getDirname();
 
-RedisClient.addScript(
+RedisClientAbstract.addScript(
   ELuaScript.RELEASE_LOCK,
-  fs.readFileSync(resolve(dir, './lua/release-lock.lua')).toString(),
+  fs.readFileSync(resolve(dir, './scripts/release-lock.lua')).toString(),
 );
-RedisClient.addScript(
+RedisClientAbstract.addScript(
   ELuaScript.EXTEND_LOCK,
-  fs.readFileSync(resolve(dir, './lua/extend-lock.lua')).toString(),
+  fs.readFileSync(resolve(dir, './scripts/extend-lock.lua')).toString(),
 );

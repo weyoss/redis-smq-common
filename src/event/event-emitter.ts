@@ -8,7 +8,7 @@
  */
 
 import { EventEmitter as NodeEventEmitter } from 'events';
-import { IEventEmitter, TEventEmitterEvent } from '../../types/index.js';
+import { IEventEmitter, TEventEmitterEvent } from './types/index.js';
 
 // A typed EventEmitter around Node's EventEmitter with a limited set of methods
 export class EventEmitter<Events extends TEventEmitterEvent>

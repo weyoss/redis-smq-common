@@ -7,14 +7,6 @@
  * in the root directory of this source tree.
  */
 
-import { TFunction } from '../common.js';
+import { EventBusError } from './event-bus.error.js';
 
-export type TTimerEvent = {
-  error: (err: Error) => void;
-};
-
-export type TTimer = {
-  timer: NodeJS.Timeout;
-  periodic: boolean;
-  fn: TFunction;
-};
+export class EventBusNotConnectedError extends EventBusError {}

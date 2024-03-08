@@ -9,13 +9,13 @@
 
 import { resolve } from 'path';
 import { Worker as WorkerThread } from 'worker_threads';
-import { ICallback } from '../../types/index.js';
+import { ICallback } from '../common/index.js';
 import {
   EWorkerThreadExecutionCode,
   EWorkerThreadExitCode,
   EWorkerType,
   TWorkerThreadMessage,
-} from '../../types/worker/index.js';
+} from './types/index.js';
 import { getDirname } from '../env/environment.js';
 import { EventEmitter } from '../event/index.js';
 import { WorkerThreadError } from './errors/index.js';
@@ -75,7 +75,6 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
     const onMessage = (msg: TWorkerThreadMessage) => {
       cleanUp();
       if (msg.code !== EWorkerThreadExecutionCode.OK) {
-        console.error(`WorkerThreadError`, msg);
         callback(new WorkerThreadError(msg));
       } else callback(null, msg.data);
     };
@@ -85,7 +84,6 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
         code: EWorkerThreadExitCode.TERMINATED,
         error: null,
       };
-      console.error('WorkerThreadError', msg);
       callback(new WorkerThreadError(msg));
     };
     worker.once('message', onMessage);
@@ -98,7 +96,7 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
       this.getWorkerThread().postMessage(payload);
   }
 
-  quit(cb: ICallback<void>) {
+  shutDown(cb: ICallback<void>) {
     const callback = () => {
       this.workerThread = null;
       cb();

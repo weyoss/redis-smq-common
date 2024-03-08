@@ -8,7 +8,8 @@
  */
 
 import { Pipeline, Redis } from 'ioredis';
-import { ICallback, IRedisTransaction } from '../../../types/index.js';
+import { ICallback } from '../../common/index.js';
+import { IRedisTransaction } from '../types/index.js';
 import { RedisClientError, WatchedKeysChangedError } from '../errors/index.js';
 
 export class IoredisClientMulti implements IRedisTransaction {

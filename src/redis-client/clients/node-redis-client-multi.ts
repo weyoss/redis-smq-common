@@ -8,12 +8,12 @@
  */
 
 import { WatchError } from '@redis/client';
+import { ICallback } from '../../common/index.js';
 import {
-  ICallback,
   IRedisTransaction,
   TRedisClientNodeRedis,
   TRedisTransactionNodeRedis,
-} from '../../../types/index.js';
+} from '../types/index.js';
 import { WatchedKeysChangedError } from '../errors/index.js';
 
 export class NodeRedisClientMulti implements IRedisTransaction {

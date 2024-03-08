@@ -8,12 +8,11 @@
  */
 
 import bluebird from 'bluebird';
-import { redis } from '../src/redis-client/index.js';
-import { RedisClient } from '../src/redis-client/redis-client.js';
+import { createRedisClient, IRedisClient } from '../src/redis-client/index.js';
 import { redisConfig } from './config.js';
 
-const redisClients: RedisClient[] = [];
-const createClientInstanceAsync = bluebird.promisify(redis.createInstance);
+const redisClients: IRedisClient[] = [];
+const createClientInstanceAsync = bluebird.promisify(createRedisClient);
 
 export async function startUp(): Promise<void> {
   const redisClient = await getRedisInstance();

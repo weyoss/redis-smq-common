@@ -22,7 +22,7 @@ it('WorkerResourceGroup: loadFromDir()', async () => {
     new WorkerResourceGroup(redisClient, console, 'mygroupid'),
   );
 
-  const workersPath = resolve(dir, './workers');
+  const workersPath = resolve(dir, './workers/runnable');
   await workerRunnableResourceGroup.loadFromDirAsync(
     workersPath,
     'hello world',

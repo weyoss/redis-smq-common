@@ -7,8 +7,8 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../../types/index.js';
-import { EWorkerType, IWorkerRunnable } from '../../types/worker/index.js';
+import { ICallback } from '../common/index.js';
+import { EWorkerType, IWorkerRunnable } from './types/index.js';
 import { PowerSwitch } from '../power-switch/power-switch.js';
 import {
   WorkerAlreadyDownError,
@@ -44,10 +44,10 @@ export class WorkerRunnable<Payload>
     } else cb(new WorkerAlreadyRunningError());
   }
 
-  override quit(cb: ICallback<void>) {
+  override shutDown(cb: ICallback<void>) {
     const r = this.powerSwitch.goingDown();
     if (r) {
-      super.quit(() => {
+      super.shutDown(() => {
         this.powerSwitch.commit();
         cb();
       });

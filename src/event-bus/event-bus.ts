@@ -7,19 +7,15 @@
  * in the root directory of this source tree.
  */
 
-import {
-  ICallback,
-  IEventBus,
-  TEventEmitterEvent,
-} from '../../../types/index.js';
-import { EventBusConnectionError } from '../errors/index.js';
-import { EventEmitter } from '../event-emitter.js';
+import { ICallback } from '../common/index.js';
+import { IEventBus, TEventBusEvent } from './types/index.js';
+import { EventBusNotConnectedError } from './errors/index.js';
+import { EventEmitter } from '../event/event-emitter.js';
 
-export class EventBus<Events extends TEventEmitterEvent>
+export class EventBus<Events extends TEventBusEvent>
   extends EventEmitter<Events>
   implements IEventBus<Events>
 {
-  protected static instance: IEventBus<TEventEmitterEvent> | null = null;
   protected connected = false;
 
   protected constructor() {
@@ -32,22 +28,33 @@ export class EventBus<Events extends TEventEmitterEvent>
     ...args: Parameters<Events[E]>
   ): boolean {
     if (!this.connected) {
-      throw new EventBusConnectionError();
+      this.eventEmitter.emit('error', new EventBusNotConnectedError());
+      return false;
     }
     return super.emit(event, ...args);
   }
 
   override on<E extends keyof Events>(event: E, listener: Events[E]): this {
+    if (event === 'error') {
+      super.on('error', listener);
+      return this;
+    }
     if (!this.connected) {
-      throw new EventBusConnectionError();
+      this.eventEmitter.emit('error', new EventBusNotConnectedError());
+      return this;
     }
     super.on(event, listener);
     return this;
   }
 
   override once<E extends keyof Events>(event: E, listener: Events[E]): this {
+    if (event === 'error') {
+      super.once('error', listener);
+      return this;
+    }
     if (!this.connected) {
-      throw new EventBusConnectionError();
+      this.eventEmitter.emit('error', new EventBusNotConnectedError());
+      return this;
     }
     super.once(event, listener);
     return this;
@@ -56,8 +63,13 @@ export class EventBus<Events extends TEventEmitterEvent>
   override removeAllListeners<E extends keyof Events>(
     event?: Extract<E, string>,
   ): this {
+    if (event === 'error') {
+      super.removeAllListeners('error');
+      return this;
+    }
     if (!this.connected) {
-      throw new EventBusConnectionError();
+      this.eventEmitter.emit('error', new EventBusNotConnectedError());
+      return this;
     }
     super.removeAllListeners(event);
     return this;
@@ -67,27 +79,27 @@ export class EventBus<Events extends TEventEmitterEvent>
     event: E,
     listener: Events[E],
   ): this {
+    if (event === 'error') {
+      super.removeListener('error', listener);
+      return this;
+    }
     if (!this.connected) {
-      throw new EventBusConnectionError();
+      this.eventEmitter.emit('error', new EventBusNotConnectedError());
+      return this;
     }
     super.removeListener(event, listener);
     return this;
   }
 
-  disconnect(cb: ICallback<void>) {
-    if (this.connected) {
-      this.connected = false;
-      if (this === EventBus.instance) EventBus.instance = null;
-    }
+  shutDown(cb: ICallback<void>) {
+    if (this.connected) this.connected = false;
     cb();
   }
 
-  static getInstance<T extends TEventEmitterEvent>(
+  static createInstance<T extends TEventBusEvent>(
     cb: ICallback<IEventBus<T>>,
   ): void {
-    if (!EventBus.instance) {
-      EventBus.instance = new EventBus<T>();
-    }
-    cb(null, EventBus.instance);
+    const instance = new EventBus<T>();
+    cb(null, instance);
   }
 }

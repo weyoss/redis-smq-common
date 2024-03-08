@@ -22,7 +22,7 @@ it('WorkerResourceGroup: addWorker()', async () => {
     new WorkerResourceGroup(redisClient, console, 'mygroupid'),
   );
 
-  const filename = resolve(dir, './workers/worker-runnable-ok.worker.js');
+  const filename = resolve(dir, './workers/runnable/runnable1.worker.js');
   workerRunnableResourceGroup.addWorker(filename, 'hello world');
   await workerRunnableResourceGroup.runAsync();
 

@@ -31,13 +31,13 @@ it('Locker: locker(), extend(), releaseLock()', async () => {
 
   await expect(lock.extendLockAsync()).rejects.toThrow(LockExtendError);
   await expect(lock.acquireLockAsync()).resolves.toBe(true);
-  await expect(lock.extendLockAsync()).resolves.toBeUndefined();
-  await expect(lock.releaseLockAsync()).resolves.toBe(true);
+  await lock.extendLockAsync();
+  await lock.releaseLockAsync();
   expect(lock.isLocked()).toBe(false);
   expect(lock.isReleased()).toBe(true);
-  await expect(lock.releaseLockAsync()).resolves.toBe(false);
+  await lock.releaseLockAsync();
   expect(lock.isReleased()).toBe(true);
   await expect(lock.extendLockAsync()).rejects.toThrow(LockNotAcquiredError);
   await expect(lock.acquireLockAsync()).resolves.toBe(true);
-  await expect(lock.releaseLockAsync()).resolves.toBe(true);
+  await lock.releaseLockAsync();
 });

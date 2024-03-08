@@ -10,7 +10,7 @@
 import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
-import { EWorkerThreadExitCode } from '../../types/index.js';
+import { EWorkerThreadExitCode } from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
 it('WorkerCallable: case 8', async () => {

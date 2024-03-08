@@ -7,10 +7,5 @@
  * in the root directory of this source tree.
  */
 
-import { LockError } from './lock.error.js';
-
-export class LockAbortError extends LockError {
-  constructor(message = `releaseLock() may have been called. Abandoning.`) {
-    super(message);
-  }
-}
+export { EventBusError } from './event-bus.error.js';
+export { EventBusNotConnectedError } from './event-bus-not-connected.error.js';

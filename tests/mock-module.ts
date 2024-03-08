@@ -8,7 +8,7 @@
  */
 
 import { jest } from '@jest/globals';
-import { TFunction } from '../types/common.js';
+import { TFunction } from '../src/common/index.js';
 
 export function mockModule(moduleName: string, mockFactory: TFunction) {
   if (process.env['NODE_OPTIONS']?.includes('--experimental-vm-modules')) {

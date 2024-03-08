@@ -8,13 +8,13 @@
  */
 
 import IORedis, { Redis, RedisOptions } from 'ioredis';
-import { ICallback } from '../../../types/index.js';
 import { CallbackEmptyReplyError } from '../../errors/index.js';
 import { RedisClientError } from '../errors/index.js';
-import { RedisClient } from '../redis-client.js';
+import { RedisClientAbstract } from './redis-client-abstract.js';
 import { IoredisClientMulti } from './ioredis-client-multi.js';
+import { ICallback } from '../../common/index.js';
 
-export class IoredisClient extends RedisClient {
+export class IoredisClient extends RedisClientAbstract {
   protected client: Redis;
 
   constructor(config: RedisOptions = {}) {
@@ -389,7 +389,7 @@ export class IoredisClient extends RedisClient {
     }
   }
 
-  quit(cb: ICallback<void> = () => void 0): void {
+  shutDown(cb: ICallback<void> = () => void 0): void {
     if (!this.connectionClosed) {
       this.client.once('end', cb);
       this.client.quit();

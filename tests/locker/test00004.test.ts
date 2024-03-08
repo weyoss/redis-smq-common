@@ -8,14 +8,14 @@
  */
 
 import { expect, it, jest } from '@jest/globals';
+import { AbortError } from '../../src/errors/index.js';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'path';
 import { getDirname } from '../../src/env/environment.js';
-import { LockAbortError } from '../../src/locker/errors/index.js';
 import { Locker } from '../../src/locker/locker.js';
 import { IoredisClient } from '../../src/redis-client/clients/ioredis-client.js';
-import { ICallback, TFunction } from '../../types/index.js';
+import { ICallback, TFunction } from '../../src/common/index.js';
 import { mockModule } from '../mock-module.js';
 
 const dir = getDirname();
@@ -96,5 +96,5 @@ it('Locker: extendLock() -> LockAbortError', async () => {
   await expect(lock.acquireLockAsync()).resolves.toBe(true);
   await expect(
     Promise.all([lock.extendLockAsync(), lock.shutdownAsync()]),
-  ).rejects.toThrow(LockAbortError);
+  ).rejects.toThrow(AbortError);
 });

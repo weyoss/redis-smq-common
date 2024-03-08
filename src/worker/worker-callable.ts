@@ -7,8 +7,8 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback } from '../../types/index.js';
-import { EWorkerType, IWorkerCallable } from '../../types/worker/index.js';
+import { ICallback } from '../common/index.js';
+import { EWorkerType, IWorkerCallable } from './types/index.js';
 import { WorkerPayloadRequiredError } from './errors/index.js';
 import { Worker } from './worker.js';
 

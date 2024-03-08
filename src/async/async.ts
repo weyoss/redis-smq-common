@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { ICallback, TFunction } from '../../types/index.js';
+import { ICallback, TFunction } from '../common/index.js';
 
 const eachOf = <T>(
   collection: T[],

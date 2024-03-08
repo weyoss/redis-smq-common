@@ -9,11 +9,12 @@
 
 import fs from 'fs';
 import { resolve } from 'path';
-import type { ICallback, IRedisClient } from '../../types/index.js';
-import { async } from '../async/async.js';
-import { getDirname } from '../env/environment.js';
-import { CallbackEmptyReplyError } from '../errors/index.js';
-import { RedisClientError } from './errors/index.js';
+import { async } from '../../async/index.js';
+import { ICallback } from '../../common/index.js';
+import { getDirname } from '../../env/environment.js';
+import { CallbackEmptyReplyError } from '../../errors/index.js';
+import { RedisClientError } from '../errors/index.js';
+import { IRedisClient } from '../types/index.js';
 
 const dir = getDirname();
 
@@ -31,11 +32,11 @@ export class LuaScript {
     this.scripts = new Map<string, { id?: string; content: string }>();
     this.addScript(
       ELuaScriptName.ZPOPRPUSH,
-      fs.readFileSync(resolve(dir, './lua/zpoprpush.lua')).toString(),
+      fs.readFileSync(resolve(dir, './scripts/zpoprpush.lua')).toString(),
     );
     this.addScript(
       ELuaScriptName.LPOPRPUSH,
-      fs.readFileSync(resolve(dir, './lua/lpoprpush.lua')).toString(),
+      fs.readFileSync(resolve(dir, './scripts/lpoprpush.lua')).toString(),
     );
   }
 

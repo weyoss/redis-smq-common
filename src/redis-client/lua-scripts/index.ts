@@ -7,5 +7,4 @@
  * in the root directory of this source tree.
  */
 
-export { EventBusError } from './event-bus.error.js';
-export { EventBusConnectionError } from './event-bus-connection.error.js';
+export * from './lua-script.js';

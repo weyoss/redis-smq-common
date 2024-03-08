@@ -9,8 +9,10 @@
 
 import { expect } from '@jest/globals';
 import bluebird from 'bluebird';
-import { RedisClient } from '../../src/redis-client/redis-client.js';
-import { IRedisConfig } from '../../types/index.js';
+import {
+  IRedisConfig,
+  RedisClientAbstract,
+} from '../../src/redis-client/index.js';
 import { getRedisInstance } from '../common.js';
 
 export async function standardCommands(config: IRedisConfig) {
@@ -182,13 +184,13 @@ export async function standardCommands(config: IRedisConfig) {
     );
   }
 
-  await client.quitAsync(); // does exec quit command
-  await client.quitAsync(); // does not exec quit
+  await client.shutDownAsync(); // does exec quit command
+  await client.shutDownAsync(); // does not exec quit
 }
 
 export async function scriptRunning(config: IRedisConfig) {
   const client = await getRedisInstance(config);
-  RedisClient.addScript('test_script', 'return 1');
+  RedisClientAbstract.addScript('test_script', 'return 1');
   await client.loadScriptsAsync();
   const r = await client.runScriptAsync('test_script', [], []);
   expect(r).toBe(1);
