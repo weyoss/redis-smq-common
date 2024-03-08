@@ -10,13 +10,23 @@
 
 ## Hierarchy
 
-- `EventEmitter`
+- **`EventEmitter`**
 
-  ↳ **`EventEmitter`**
+  ↳ [`EventBus`](EventBus.md)
 
-  ↳↳ [`Ticker`](Ticker.md)
+  ↳ [`EventBusRedis`](EventBusRedis.md)
 
-  ↳↳ [`WorkerRunner`](WorkerRunner.md)
+  ↳ [`IRedisClient`](../interfaces/IRedisClient.md)
+
+  ↳ [`RedisClientAbstract`](RedisClientAbstract.md)
+
+  ↳ [`Runnable`](Runnable.md)
+
+  ↳ [`Timer`](Timer.md)
+
+## Implements
+
+- [`IEventEmitter`](../interfaces/IEventEmitter.md)\<`Events`\>
 
 ## Table of contents
 
@@ -30,12 +40,13 @@
 - [on](EventEmitter.md#on)
 - [once](EventEmitter.md#once)
 - [removeAllListeners](EventEmitter.md#removealllisteners)
+- [removeListener](EventEmitter.md#removelistener)
 
 ## Constructors
 
 ### constructor
 
-• **new EventEmitter**\<`Events`\>(`options?`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
+• **new EventEmitter**\<`Events`\>(): [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
 #### Type parameters
 
@@ -43,19 +54,9 @@
 | :------ | :------ |
 | `Events` | extends [`TEventEmitterEvent`](../README.md#teventemitterevent) |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `options?` | `EventEmitterOptions` |
-
 #### Returns
 
 [`EventEmitter`](EventEmitter.md)\<`Events`\>
-
-#### Inherited from
-
-Base.constructor
 
 ## Methods
 
@@ -80,9 +81,9 @@ Base.constructor
 
 `boolean`
 
-#### Overrides
+#### Implementation of
 
-Base.emit
+[IEventEmitter](../interfaces/IEventEmitter.md).[emit](../interfaces/IEventEmitter.md#emit)
 
 ___
 
@@ -107,9 +108,9 @@ ___
 
 [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
-#### Overrides
+#### Implementation of
 
-Base.on
+[IEventEmitter](../interfaces/IEventEmitter.md).[on](../interfaces/IEventEmitter.md#on)
 
 ___
 
@@ -134,9 +135,9 @@ ___
 
 [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
-#### Overrides
+#### Implementation of
 
-Base.once
+[IEventEmitter](../interfaces/IEventEmitter.md).[once](../interfaces/IEventEmitter.md#once)
 
 ___
 
@@ -154,12 +155,39 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `event?` | `E` |
+| `event?` | `Extract`\<`E`, `string`\> |
 
 #### Returns
 
 [`EventEmitter`](EventEmitter.md)\<`Events`\>
 
-#### Overrides
+#### Implementation of
 
-Base.removeAllListeners
+[IEventEmitter](../interfaces/IEventEmitter.md).[removeAllListeners](../interfaces/IEventEmitter.md#removealllisteners)
+
+___
+
+### removeListener
+
+▸ **removeListener**\<`E`\>(`event`, `listener`): [`EventEmitter`](EventEmitter.md)\<`Events`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends `string` \| `number` \| `symbol` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | `Events`[`E`] |
+
+#### Returns
+
+[`EventEmitter`](EventEmitter.md)\<`Events`\>
+
+#### Implementation of
+
+[IEventEmitter](../interfaces/IEventEmitter.md).[removeListener](../interfaces/IEventEmitter.md#removelistener)

@@ -1,12 +1,16 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClientAbstract
 
-# Class: RedisClient
+# Class: RedisClientAbstract
 
 ## Hierarchy
 
-- `EventEmitter`
+- [`EventEmitter`](EventEmitter.md)\<[`TRedisClientEvent`](../README.md#tredisclientevent)\>
 
-  ↳ **`RedisClient`**
+  ↳ **`RedisClientAbstract`**
+
+  ↳↳ [`IoredisClient`](IoredisClient.md)
+
+  ↳↳ [`NodeRedisClient`](NodeRedisClient.md)
 
 ## Implements
 
@@ -16,87 +20,86 @@
 
 ### Constructors
 
-- [constructor](RedisClient.md#constructor)
+- [constructor](RedisClientAbstract.md#constructor)
 
 ### Methods
 
-- [brpoplpush](RedisClient.md#brpoplpush)
-- [del](RedisClient.md#del)
-- [end](RedisClient.md#end)
-- [evalsha](RedisClient.md#evalsha)
-- [flushall](RedisClient.md#flushall)
-- [get](RedisClient.md#get)
-- [getInfo](RedisClient.md#getinfo)
-- [halt](RedisClient.md#halt)
-- [hdel](RedisClient.md#hdel)
-- [hget](RedisClient.md#hget)
-- [hgetall](RedisClient.md#hgetall)
-- [hkeys](RedisClient.md#hkeys)
-- [hlen](RedisClient.md#hlen)
-- [hmget](RedisClient.md#hmget)
-- [hscan](RedisClient.md#hscan)
-- [hscanAll](RedisClient.md#hscanall)
-- [hset](RedisClient.md#hset)
-- [llen](RedisClient.md#llen)
-- [lmove](RedisClient.md#lmove)
-- [loadScript](RedisClient.md#loadscript)
-- [loadScripts](RedisClient.md#loadscripts)
-- [lpoprpush](RedisClient.md#lpoprpush)
-- [lrange](RedisClient.md#lrange)
-- [lrem](RedisClient.md#lrem)
-- [multi](RedisClient.md#multi)
-- [psubscribe](RedisClient.md#psubscribe)
-- [publish](RedisClient.md#publish)
-- [punsubscribe](RedisClient.md#punsubscribe)
-- [quit](RedisClient.md#quit)
-- [rpop](RedisClient.md#rpop)
-- [rpoplpush](RedisClient.md#rpoplpush)
-- [runScript](RedisClient.md#runscript)
-- [sadd](RedisClient.md#sadd)
-- [set](RedisClient.md#set)
-- [sismember](RedisClient.md#sismember)
-- [smembers](RedisClient.md#smembers)
-- [srem](RedisClient.md#srem)
-- [sscan](RedisClient.md#sscan)
-- [sscanAll](RedisClient.md#sscanall)
-- [subscribe](RedisClient.md#subscribe)
-- [unsubscribe](RedisClient.md#unsubscribe)
-- [unwatch](RedisClient.md#unwatch)
-- [updateServerVersion](RedisClient.md#updateserverversion)
-- [validateRedisServerSupport](RedisClient.md#validateredisserversupport)
-- [validateRedisVersion](RedisClient.md#validateredisversion)
-- [watch](RedisClient.md#watch)
-- [zadd](RedisClient.md#zadd)
-- [zcard](RedisClient.md#zcard)
-- [zpoprpush](RedisClient.md#zpoprpush)
-- [zrange](RedisClient.md#zrange)
-- [zrangebyscore](RedisClient.md#zrangebyscore)
-- [zrangebyscorewithscores](RedisClient.md#zrangebyscorewithscores)
-- [zrem](RedisClient.md#zrem)
-- [zremrangebyscore](RedisClient.md#zremrangebyscore)
-- [zrevrange](RedisClient.md#zrevrange)
-- [zscan](RedisClient.md#zscan)
-- [addScript](RedisClient.md#addscript)
+- [brpoplpush](RedisClientAbstract.md#brpoplpush)
+- [del](RedisClientAbstract.md#del)
+- [emit](RedisClientAbstract.md#emit)
+- [end](RedisClientAbstract.md#end)
+- [evalsha](RedisClientAbstract.md#evalsha)
+- [flushall](RedisClientAbstract.md#flushall)
+- [get](RedisClientAbstract.md#get)
+- [getInfo](RedisClientAbstract.md#getinfo)
+- [halt](RedisClientAbstract.md#halt)
+- [hdel](RedisClientAbstract.md#hdel)
+- [hget](RedisClientAbstract.md#hget)
+- [hgetall](RedisClientAbstract.md#hgetall)
+- [hkeys](RedisClientAbstract.md#hkeys)
+- [hlen](RedisClientAbstract.md#hlen)
+- [hmget](RedisClientAbstract.md#hmget)
+- [hscan](RedisClientAbstract.md#hscan)
+- [hscanAll](RedisClientAbstract.md#hscanall)
+- [hset](RedisClientAbstract.md#hset)
+- [llen](RedisClientAbstract.md#llen)
+- [lmove](RedisClientAbstract.md#lmove)
+- [loadScript](RedisClientAbstract.md#loadscript)
+- [loadScripts](RedisClientAbstract.md#loadscripts)
+- [lpoprpush](RedisClientAbstract.md#lpoprpush)
+- [lrange](RedisClientAbstract.md#lrange)
+- [lrem](RedisClientAbstract.md#lrem)
+- [multi](RedisClientAbstract.md#multi)
+- [on](RedisClientAbstract.md#on)
+- [once](RedisClientAbstract.md#once)
+- [psubscribe](RedisClientAbstract.md#psubscribe)
+- [publish](RedisClientAbstract.md#publish)
+- [punsubscribe](RedisClientAbstract.md#punsubscribe)
+- [removeAllListeners](RedisClientAbstract.md#removealllisteners)
+- [removeListener](RedisClientAbstract.md#removelistener)
+- [rpop](RedisClientAbstract.md#rpop)
+- [rpoplpush](RedisClientAbstract.md#rpoplpush)
+- [runScript](RedisClientAbstract.md#runscript)
+- [sadd](RedisClientAbstract.md#sadd)
+- [set](RedisClientAbstract.md#set)
+- [shutDown](RedisClientAbstract.md#shutdown)
+- [sismember](RedisClientAbstract.md#sismember)
+- [smembers](RedisClientAbstract.md#smembers)
+- [srem](RedisClientAbstract.md#srem)
+- [sscan](RedisClientAbstract.md#sscan)
+- [sscanAll](RedisClientAbstract.md#sscanall)
+- [subscribe](RedisClientAbstract.md#subscribe)
+- [unsubscribe](RedisClientAbstract.md#unsubscribe)
+- [unwatch](RedisClientAbstract.md#unwatch)
+- [updateServerVersion](RedisClientAbstract.md#updateserverversion)
+- [validateRedisServerSupport](RedisClientAbstract.md#validateredisserversupport)
+- [validateRedisVersion](RedisClientAbstract.md#validateredisversion)
+- [watch](RedisClientAbstract.md#watch)
+- [zadd](RedisClientAbstract.md#zadd)
+- [zcard](RedisClientAbstract.md#zcard)
+- [zpoprpush](RedisClientAbstract.md#zpoprpush)
+- [zrange](RedisClientAbstract.md#zrange)
+- [zrangebyscore](RedisClientAbstract.md#zrangebyscore)
+- [zrangebyscorewithscores](RedisClientAbstract.md#zrangebyscorewithscores)
+- [zrem](RedisClientAbstract.md#zrem)
+- [zremrangebyscore](RedisClientAbstract.md#zremrangebyscore)
+- [zrevrange](RedisClientAbstract.md#zrevrange)
+- [zscan](RedisClientAbstract.md#zscan)
+- [addScript](RedisClientAbstract.md#addscript)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisClient**(`options?`): [`RedisClient`](RedisClient.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `options?` | `EventEmitterOptions` |
+• **new RedisClientAbstract**(): [`RedisClientAbstract`](RedisClientAbstract.md)
 
 #### Returns
 
-[`RedisClient`](RedisClient.md)
+[`RedisClientAbstract`](RedisClientAbstract.md)
 
 #### Inherited from
 
-EventEmitter.constructor
+[EventEmitter](EventEmitter.md).[constructor](EventEmitter.md#constructor)
 
 ## Methods
 
@@ -141,6 +144,37 @@ ___
 #### Implementation of
 
 [IRedisClient](../interfaces/IRedisClient.md).[del](../interfaces/IRedisClient.md#del)
+
+___
+
+### emit
+
+▸ **emit**\<`E`\>(`event`, `...args`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `...args` | `Parameters`\<[`TRedisClientEvent`](../README.md#tredisclientevent)[`E`]\> |
+
+#### Returns
+
+`boolean`
+
+#### Implementation of
+
+[IRedisClient](../interfaces/IRedisClient.md).[emit](../interfaces/IRedisClient.md#emit)
+
+#### Inherited from
+
+[EventEmitter](EventEmitter.md).[emit](EventEmitter.md#emit)
 
 ___
 
@@ -636,6 +670,68 @@ ___
 
 ___
 
+### on
+
+▸ **on**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Implementation of
+
+[IRedisClient](../interfaces/IRedisClient.md).[on](../interfaces/IRedisClient.md#on)
+
+#### Inherited from
+
+[EventEmitter](EventEmitter.md).[on](EventEmitter.md#on)
+
+___
+
+### once
+
+▸ **once**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Implementation of
+
+[IRedisClient](../interfaces/IRedisClient.md).[once](../interfaces/IRedisClient.md#once)
+
+#### Inherited from
+
+[EventEmitter](EventEmitter.md).[once](EventEmitter.md#once)
+
+___
+
 ### psubscribe
 
 ▸ **psubscribe**(`pattern`): `void`
@@ -680,13 +776,13 @@ ___
 
 ### punsubscribe
 
-▸ **punsubscribe**(`channel`): `void`
+▸ **punsubscribe**(`channel?`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `channel` | `string` |
+| `channel?` | `string` |
 
 #### Returns
 
@@ -698,23 +794,64 @@ ___
 
 ___
 
-### quit
+### removeAllListeners
 
-▸ **quit**(`cb`): `void`
+▸ **removeAllListeners**\<`E`\>(`event?`): [`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+| `event?` | `Extract`\<`E`, `string`\> |
 
 #### Returns
 
-`void`
+[`RedisClientAbstract`](RedisClientAbstract.md)
 
 #### Implementation of
 
-[IRedisClient](../interfaces/IRedisClient.md).[quit](../interfaces/IRedisClient.md#quit)
+[IRedisClient](../interfaces/IRedisClient.md).[removeAllListeners](../interfaces/IRedisClient.md#removealllisteners)
+
+#### Inherited from
+
+[EventEmitter](EventEmitter.md).[removeAllListeners](EventEmitter.md#removealllisteners)
+
+___
+
+### removeListener
+
+▸ **removeListener**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`RedisClientAbstract`](RedisClientAbstract.md)
+
+#### Implementation of
+
+[IRedisClient](../interfaces/IRedisClient.md).[removeListener](../interfaces/IRedisClient.md#removelistener)
+
+#### Inherited from
+
+[EventEmitter](EventEmitter.md).[removeListener](EventEmitter.md#removelistener)
 
 ___
 
@@ -830,6 +967,26 @@ ___
 #### Implementation of
 
 [IRedisClient](../interfaces/IRedisClient.md).[set](../interfaces/IRedisClient.md#set)
+
+___
+
+### shutDown
+
+▸ **shutDown**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[IRedisClient](../interfaces/IRedisClient.md).[shutDown](../interfaces/IRedisClient.md#shutdown)
 
 ___
 
@@ -969,13 +1126,13 @@ ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(`channel`): `void`
+▸ **unsubscribe**(`channel?`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `channel` | `string` |
+| `channel?` | `string` |
 
 #### Returns
 

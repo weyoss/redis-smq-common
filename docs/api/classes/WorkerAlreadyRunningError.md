@@ -1,54 +1,48 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / LockExtendError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerAlreadyRunningError
 
-# Class: LockExtendError
+# Class: WorkerAlreadyRunningError
 
 ## Hierarchy
 
-- [`LockError`](LockError.md)
+- [`WorkerError`](WorkerError.md)
 
-  ↳ **`LockExtendError`**
+  ↳ **`WorkerAlreadyRunningError`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](LockExtendError.md#constructor)
+- [constructor](WorkerAlreadyRunningError.md#constructor)
 
 ### Properties
 
-- [cause](LockExtendError.md#cause)
-- [message](LockExtendError.md#message)
-- [stack](LockExtendError.md#stack)
-- [prepareStackTrace](LockExtendError.md#preparestacktrace)
-- [stackTraceLimit](LockExtendError.md#stacktracelimit)
+- [cause](WorkerAlreadyRunningError.md#cause)
+- [message](WorkerAlreadyRunningError.md#message)
+- [stack](WorkerAlreadyRunningError.md#stack)
+- [prepareStackTrace](WorkerAlreadyRunningError.md#preparestacktrace)
+- [stackTraceLimit](WorkerAlreadyRunningError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](LockExtendError.md#name)
+- [name](WorkerAlreadyRunningError.md#name)
 
 ### Methods
 
-- [captureStackTrace](LockExtendError.md#capturestacktrace)
+- [captureStackTrace](WorkerAlreadyRunningError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new LockExtendError**(`message?`): [`LockExtendError`](LockExtendError.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `message` | `string` |
+• **new WorkerAlreadyRunningError**(): [`WorkerAlreadyRunningError`](WorkerAlreadyRunningError.md)
 
 #### Returns
 
-[`LockExtendError`](LockExtendError.md)
+[`WorkerAlreadyRunningError`](WorkerAlreadyRunningError.md)
 
 #### Overrides
 
-[LockError](LockError.md).[constructor](LockError.md#constructor)
+[WorkerError](WorkerError.md).[constructor](WorkerError.md#constructor)
 
 ## Properties
 
@@ -58,7 +52,7 @@
 
 #### Inherited from
 
-[LockError](LockError.md).[cause](LockError.md#cause)
+[WorkerError](WorkerError.md).[cause](WorkerError.md#cause)
 
 ___
 
@@ -68,7 +62,7 @@ ___
 
 #### Inherited from
 
-[LockError](LockError.md).[message](LockError.md#message)
+[WorkerError](WorkerError.md).[message](WorkerError.md#message)
 
 ___
 
@@ -78,7 +72,7 @@ ___
 
 #### Inherited from
 
-[LockError](LockError.md).[stack](LockError.md#stack)
+[WorkerError](WorkerError.md).[stack](WorkerError.md#stack)
 
 ___
 
@@ -109,7 +103,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[LockError](LockError.md).[prepareStackTrace](LockError.md#preparestacktrace)
+[WorkerError](WorkerError.md).[prepareStackTrace](WorkerError.md#preparestacktrace)
 
 ___
 
@@ -119,7 +113,7 @@ ___
 
 #### Inherited from
 
-[LockError](LockError.md).[stackTraceLimit](LockError.md#stacktracelimit)
+[WorkerError](WorkerError.md).[stackTraceLimit](WorkerError.md#stacktracelimit)
 
 ## Accessors
 
@@ -133,7 +127,7 @@ ___
 
 #### Inherited from
 
-LockError.name
+WorkerError.name
 
 ## Methods
 
@@ -156,4 +150,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[LockError](LockError.md).[captureStackTrace](LockError.md#capturestacktrace)
+[WorkerError](WorkerError.md).[captureStackTrace](WorkerError.md#capturestacktrace)

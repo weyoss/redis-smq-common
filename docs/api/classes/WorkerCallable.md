@@ -1,0 +1,238 @@
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerCallable
+
+# Class: WorkerCallable\<Payload, Reply\>
+
+## Type parameters
+
+| Name |
+| :------ |
+| `Payload` |
+| `Reply` |
+
+## Hierarchy
+
+- `Worker`
+
+  ↳ **`WorkerCallable`**
+
+## Implements
+
+- [`IWorkerCallable`](../interfaces/IWorkerCallable.md)\<`Payload`, `Reply`\>
+
+## Table of contents
+
+### Constructors
+
+- [constructor](WorkerCallable.md#constructor)
+
+### Methods
+
+- [call](WorkerCallable.md#call)
+- [emit](WorkerCallable.md#emit)
+- [on](WorkerCallable.md#on)
+- [once](WorkerCallable.md#once)
+- [removeAllListeners](WorkerCallable.md#removealllisteners)
+- [removeListener](WorkerCallable.md#removelistener)
+- [shutDown](WorkerCallable.md#shutdown)
+
+## Constructors
+
+### constructor
+
+• **new WorkerCallable**\<`Payload`, `Reply`\>(`workerFilename`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `Payload` |
+| `Reply` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `workerFilename` | `string` |
+
+#### Returns
+
+[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Inherited from
+
+Worker.constructor
+
+## Methods
+
+### call
+
+▸ **call**(`payload`, `cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `payload` | `Payload` |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`Reply`\> |
+
+#### Returns
+
+`void`
+
+#### Implementation of
+
+[IWorkerCallable](../interfaces/IWorkerCallable.md).[call](../interfaces/IWorkerCallable.md#call)
+
+___
+
+### emit
+
+▸ **emit**\<`E`\>(`event`, `...args`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof `TWorkerEvent` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `...args` | `Parameters`\<`TWorkerEvent`[`E`]\> |
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+Worker.emit
+
+___
+
+### on
+
+▸ **on**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof `TWorkerEvent` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | `TWorkerEvent`[`E`] |
+
+#### Returns
+
+[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Inherited from
+
+Worker.on
+
+___
+
+### once
+
+▸ **once**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof `TWorkerEvent` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | `TWorkerEvent`[`E`] |
+
+#### Returns
+
+[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Inherited from
+
+Worker.once
+
+___
+
+### removeAllListeners
+
+▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof `TWorkerEvent` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event?` | `Extract`\<`E`, `string`\> |
+
+#### Returns
+
+[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Inherited from
+
+Worker.removeAllListeners
+
+___
+
+### removeListener
+
+▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof `TWorkerEvent` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | `TWorkerEvent`[`E`] |
+
+#### Returns
+
+[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+
+#### Inherited from
+
+Worker.removeListener
+
+___
+
+### shutDown
+
+▸ **shutDown**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Worker.shutDown

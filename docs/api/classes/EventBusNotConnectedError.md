@@ -1,42 +1,40 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClientError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / EventBusNotConnectedError
 
-# Class: RedisClientError
+# Class: EventBusNotConnectedError
 
 ## Hierarchy
 
-- [`RedisSMQError`](RedisSMQError.md)
+- [`EventBusError`](EventBusError.md)
 
-  ↳ **`RedisClientError`**
-
-  ↳↳ [`WatchedKeysChangedError`](WatchedKeysChangedError.md)
+  ↳ **`EventBusNotConnectedError`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](RedisClientError.md#constructor)
+- [constructor](EventBusNotConnectedError.md#constructor)
 
 ### Properties
 
-- [cause](RedisClientError.md#cause)
-- [message](RedisClientError.md#message)
-- [stack](RedisClientError.md#stack)
-- [prepareStackTrace](RedisClientError.md#preparestacktrace)
-- [stackTraceLimit](RedisClientError.md#stacktracelimit)
+- [cause](EventBusNotConnectedError.md#cause)
+- [message](EventBusNotConnectedError.md#message)
+- [stack](EventBusNotConnectedError.md#stack)
+- [prepareStackTrace](EventBusNotConnectedError.md#preparestacktrace)
+- [stackTraceLimit](EventBusNotConnectedError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](RedisClientError.md#name)
+- [name](EventBusNotConnectedError.md#name)
 
 ### Methods
 
-- [captureStackTrace](RedisClientError.md#capturestacktrace)
+- [captureStackTrace](EventBusNotConnectedError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisClientError**(`message?`): [`RedisClientError`](RedisClientError.md)
+• **new EventBusNotConnectedError**(`message?`): [`EventBusNotConnectedError`](EventBusNotConnectedError.md)
 
 #### Parameters
 
@@ -46,11 +44,11 @@
 
 #### Returns
 
-[`RedisClientError`](RedisClientError.md)
+[`EventBusNotConnectedError`](EventBusNotConnectedError.md)
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
+[EventBusError](EventBusError.md).[constructor](EventBusError.md#constructor)
 
 ## Properties
 
@@ -60,7 +58,7 @@
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[cause](RedisSMQError.md#cause)
+[EventBusError](EventBusError.md).[cause](EventBusError.md#cause)
 
 ___
 
@@ -70,7 +68,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[message](RedisSMQError.md#message)
+[EventBusError](EventBusError.md).[message](EventBusError.md#message)
 
 ___
 
@@ -80,7 +78,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[stack](RedisSMQError.md#stack)
+[EventBusError](EventBusError.md).[stack](EventBusError.md#stack)
 
 ___
 
@@ -111,7 +109,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[prepareStackTrace](RedisSMQError.md#preparestacktrace)
+[EventBusError](EventBusError.md).[prepareStackTrace](EventBusError.md#preparestacktrace)
 
 ___
 
@@ -121,7 +119,7 @@ ___
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[stackTraceLimit](RedisSMQError.md#stacktracelimit)
+[EventBusError](EventBusError.md).[stackTraceLimit](EventBusError.md#stacktracelimit)
 
 ## Accessors
 
@@ -135,7 +133,7 @@ ___
 
 #### Inherited from
 
-RedisSMQError.name
+EventBusError.name
 
 ## Methods
 
@@ -158,4 +156,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-[RedisSMQError](RedisSMQError.md).[captureStackTrace](RedisSMQError.md#capturestacktrace)
+[EventBusError](EventBusError.md).[captureStackTrace](EventBusError.md#capturestacktrace)

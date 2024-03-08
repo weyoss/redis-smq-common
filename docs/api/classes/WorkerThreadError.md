@@ -1,70 +1,54 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisSMQError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerThreadError
 
-# Class: RedisSMQError
+# Class: WorkerThreadError
 
 ## Hierarchy
 
-- `Error`
+- [`WorkerError`](WorkerError.md)
 
-  ↳ **`RedisSMQError`**
-
-  ↳↳ [`PanicError`](PanicError.md)
-
-  ↳↳ [`AbortError`](AbortError.md)
-
-  ↳↳ [`EventBusError`](EventBusError.md)
-
-  ↳↳ [`LockError`](LockError.md)
-
-  ↳↳ [`LoggerError`](LoggerError.md)
-
-  ↳↳ [`RedisClientError`](RedisClientError.md)
-
-  ↳↳ [`TimerError`](TimerError.md)
-
-  ↳↳ [`WorkerError`](WorkerError.md)
+  ↳ **`WorkerThreadError`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](RedisSMQError.md#constructor)
+- [constructor](WorkerThreadError.md#constructor)
 
 ### Properties
 
-- [cause](RedisSMQError.md#cause)
-- [message](RedisSMQError.md#message)
-- [stack](RedisSMQError.md#stack)
-- [prepareStackTrace](RedisSMQError.md#preparestacktrace)
-- [stackTraceLimit](RedisSMQError.md#stacktracelimit)
+- [cause](WorkerThreadError.md#cause)
+- [message](WorkerThreadError.md#message)
+- [stack](WorkerThreadError.md#stack)
+- [prepareStackTrace](WorkerThreadError.md#preparestacktrace)
+- [stackTraceLimit](WorkerThreadError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](RedisSMQError.md#name)
+- [name](WorkerThreadError.md#name)
 
 ### Methods
 
-- [captureStackTrace](RedisSMQError.md#capturestacktrace)
+- [captureStackTrace](WorkerThreadError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisSMQError**(`message?`): [`RedisSMQError`](RedisSMQError.md)
+• **new WorkerThreadError**(`msg`): [`WorkerThreadError`](WorkerThreadError.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `message?` | `string` |
+| `msg` | [`TWorkerThreadMessage`](../README.md#tworkerthreadmessage) |
 
 #### Returns
 
-[`RedisSMQError`](RedisSMQError.md)
+[`WorkerThreadError`](WorkerThreadError.md)
 
 #### Overrides
 
-Error.constructor
+[WorkerError](WorkerError.md).[constructor](WorkerError.md#constructor)
 
 ## Properties
 
@@ -74,7 +58,7 @@ Error.constructor
 
 #### Inherited from
 
-Error.cause
+[WorkerError](WorkerError.md).[cause](WorkerError.md#cause)
 
 ___
 
@@ -84,7 +68,7 @@ ___
 
 #### Inherited from
 
-Error.message
+[WorkerError](WorkerError.md).[message](WorkerError.md#message)
 
 ___
 
@@ -94,7 +78,7 @@ ___
 
 #### Inherited from
 
-Error.stack
+[WorkerError](WorkerError.md).[stack](WorkerError.md#stack)
 
 ___
 
@@ -125,7 +109,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-Error.prepareStackTrace
+[WorkerError](WorkerError.md).[prepareStackTrace](WorkerError.md#preparestacktrace)
 
 ___
 
@@ -135,7 +119,7 @@ ___
 
 #### Inherited from
 
-Error.stackTraceLimit
+[WorkerError](WorkerError.md).[stackTraceLimit](WorkerError.md#stacktracelimit)
 
 ## Accessors
 
@@ -147,9 +131,9 @@ Error.stackTraceLimit
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-Error.name
+WorkerError.name
 
 ## Methods
 
@@ -172,4 +156,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-Error.captureStackTrace
+[WorkerError](WorkerError.md).[captureStackTrace](WorkerError.md#capturestacktrace)

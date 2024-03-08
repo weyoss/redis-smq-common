@@ -2,9 +2,15 @@
 
 # Interface: IRedisClient
 
+## Hierarchy
+
+- [`EventEmitter`](../classes/EventEmitter.md)\<[`TRedisClientEvent`](../README.md#tredisclientevent)\>
+
+  ↳ **`IRedisClient`**
+
 ## Implemented by
 
-- [`RedisClient`](../classes/RedisClient.md)
+- [`RedisClientAbstract`](../classes/RedisClientAbstract.md)
 
 ## Table of contents
 
@@ -12,6 +18,7 @@
 
 - [brpoplpush](IRedisClient.md#brpoplpush)
 - [del](IRedisClient.md#del)
+- [emit](IRedisClient.md#emit)
 - [end](IRedisClient.md#end)
 - [evalsha](IRedisClient.md#evalsha)
 - [flushall](IRedisClient.md#flushall)
@@ -35,15 +42,19 @@
 - [lrange](IRedisClient.md#lrange)
 - [lrem](IRedisClient.md#lrem)
 - [multi](IRedisClient.md#multi)
+- [on](IRedisClient.md#on)
+- [once](IRedisClient.md#once)
 - [psubscribe](IRedisClient.md#psubscribe)
 - [publish](IRedisClient.md#publish)
 - [punsubscribe](IRedisClient.md#punsubscribe)
-- [quit](IRedisClient.md#quit)
+- [removeAllListeners](IRedisClient.md#removealllisteners)
+- [removeListener](IRedisClient.md#removelistener)
 - [rpop](IRedisClient.md#rpop)
 - [rpoplpush](IRedisClient.md#rpoplpush)
 - [runScript](IRedisClient.md#runscript)
 - [sadd](IRedisClient.md#sadd)
 - [set](IRedisClient.md#set)
+- [shutDown](IRedisClient.md#shutdown)
 - [sismember](IRedisClient.md#sismember)
 - [smembers](IRedisClient.md#smembers)
 - [srem](IRedisClient.md#srem)
@@ -102,6 +113,33 @@ ___
 #### Returns
 
 `void`
+
+___
+
+### emit
+
+▸ **emit**\<`E`\>(`event`, `...args`): `boolean`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `...args` | `Parameters`\<[`TRedisClientEvent`](../README.md#tredisclientevent)[`E`]\> |
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[EventEmitter](../classes/EventEmitter.md).[emit](../classes/EventEmitter.md#emit)
 
 ___
 
@@ -505,6 +543,60 @@ ___
 
 ___
 
+### on
+
+▸ **on**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`IRedisClient`](IRedisClient.md)
+
+#### Inherited from
+
+[EventEmitter](../classes/EventEmitter.md).[on](../classes/EventEmitter.md#on)
+
+___
+
+### once
+
+▸ **once**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`IRedisClient`](IRedisClient.md)
+
+#### Inherited from
+
+[EventEmitter](../classes/EventEmitter.md).[once](../classes/EventEmitter.md#once)
+
+___
+
 ### psubscribe
 
 ▸ **psubscribe**(`pattern`): `void`
@@ -541,13 +633,13 @@ ___
 
 ### punsubscribe
 
-▸ **punsubscribe**(`channel`): `void`
+▸ **punsubscribe**(`channel?`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `channel` | `string` |
+| `channel?` | `string` |
 
 #### Returns
 
@@ -555,19 +647,56 @@ ___
 
 ___
 
-### quit
+### removeAllListeners
 
-▸ **quit**(`cb`): `void`
+▸ **removeAllListeners**\<`E`\>(`event?`): [`IRedisClient`](IRedisClient.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](ICallback.md)\<`void`\> |
+| `event?` | `Extract`\<`E`, `string`\> |
 
 #### Returns
 
-`void`
+[`IRedisClient`](IRedisClient.md)
+
+#### Inherited from
+
+[EventEmitter](../classes/EventEmitter.md).[removeAllListeners](../classes/EventEmitter.md#removealllisteners)
+
+___
+
+### removeListener
+
+▸ **removeListener**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `E` | extends keyof [`TRedisClientEvent`](../README.md#tredisclientevent) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | `E` |
+| `listener` | [`TRedisClientEvent`](../README.md#tredisclientevent)[`E`] |
+
+#### Returns
+
+[`IRedisClient`](IRedisClient.md)
+
+#### Inherited from
+
+[EventEmitter](../classes/EventEmitter.md).[removeListener](../classes/EventEmitter.md#removelistener)
 
 ___
 
@@ -659,6 +788,22 @@ ___
 | `options.expire.mode` | ``"EX"`` \| ``"PX"`` |
 | `options.expire.value` | `number` |
 | `cb` | [`ICallback`](ICallback.md)\<``null`` \| `string`\> |
+
+#### Returns
+
+`void`
+
+___
+
+### shutDown
+
+▸ **shutDown**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](ICallback.md)\<`void`\> |
 
 #### Returns
 
@@ -778,13 +923,13 @@ ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(`channel`): `void`
+▸ **unsubscribe**(`channel?`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `channel` | `string` |
+| `channel?` | `string` |
 
 #### Returns
 

@@ -4,7 +4,7 @@
 
 ## API
 
-See for [API](api/README.md) reference for more details.
+See for [API reference](api/README.md) for more details.
 
 ## Misc
 

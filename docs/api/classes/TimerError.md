@@ -1,56 +1,40 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisSMQError
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / TimerError
 
-# Class: RedisSMQError
+# Class: TimerError
 
 ## Hierarchy
 
-- `Error`
+- [`RedisSMQError`](RedisSMQError.md)
 
-  ↳ **`RedisSMQError`**
-
-  ↳↳ [`PanicError`](PanicError.md)
-
-  ↳↳ [`AbortError`](AbortError.md)
-
-  ↳↳ [`EventBusError`](EventBusError.md)
-
-  ↳↳ [`LockError`](LockError.md)
-
-  ↳↳ [`LoggerError`](LoggerError.md)
-
-  ↳↳ [`RedisClientError`](RedisClientError.md)
-
-  ↳↳ [`TimerError`](TimerError.md)
-
-  ↳↳ [`WorkerError`](WorkerError.md)
+  ↳ **`TimerError`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](RedisSMQError.md#constructor)
+- [constructor](TimerError.md#constructor)
 
 ### Properties
 
-- [cause](RedisSMQError.md#cause)
-- [message](RedisSMQError.md#message)
-- [stack](RedisSMQError.md#stack)
-- [prepareStackTrace](RedisSMQError.md#preparestacktrace)
-- [stackTraceLimit](RedisSMQError.md#stacktracelimit)
+- [cause](TimerError.md#cause)
+- [message](TimerError.md#message)
+- [stack](TimerError.md#stack)
+- [prepareStackTrace](TimerError.md#preparestacktrace)
+- [stackTraceLimit](TimerError.md#stacktracelimit)
 
 ### Accessors
 
-- [name](RedisSMQError.md#name)
+- [name](TimerError.md#name)
 
 ### Methods
 
-- [captureStackTrace](RedisSMQError.md#capturestacktrace)
+- [captureStackTrace](TimerError.md#capturestacktrace)
 
 ## Constructors
 
 ### constructor
 
-• **new RedisSMQError**(`message?`): [`RedisSMQError`](RedisSMQError.md)
+• **new TimerError**(`message?`): [`TimerError`](TimerError.md)
 
 #### Parameters
 
@@ -60,11 +44,11 @@
 
 #### Returns
 
-[`RedisSMQError`](RedisSMQError.md)
+[`TimerError`](TimerError.md)
 
-#### Overrides
+#### Inherited from
 
-Error.constructor
+[RedisSMQError](RedisSMQError.md).[constructor](RedisSMQError.md#constructor)
 
 ## Properties
 
@@ -74,7 +58,7 @@ Error.constructor
 
 #### Inherited from
 
-Error.cause
+[RedisSMQError](RedisSMQError.md).[cause](RedisSMQError.md#cause)
 
 ___
 
@@ -84,7 +68,7 @@ ___
 
 #### Inherited from
 
-Error.message
+[RedisSMQError](RedisSMQError.md).[message](RedisSMQError.md#message)
 
 ___
 
@@ -94,7 +78,7 @@ ___
 
 #### Inherited from
 
-Error.stack
+[RedisSMQError](RedisSMQError.md).[stack](RedisSMQError.md#stack)
 
 ___
 
@@ -125,7 +109,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 #### Inherited from
 
-Error.prepareStackTrace
+[RedisSMQError](RedisSMQError.md).[prepareStackTrace](RedisSMQError.md#preparestacktrace)
 
 ___
 
@@ -135,7 +119,7 @@ ___
 
 #### Inherited from
 
-Error.stackTraceLimit
+[RedisSMQError](RedisSMQError.md).[stackTraceLimit](RedisSMQError.md#stacktracelimit)
 
 ## Accessors
 
@@ -147,9 +131,9 @@ Error.stackTraceLimit
 
 `string`
 
-#### Overrides
+#### Inherited from
 
-Error.name
+RedisSMQError.name
 
 ## Methods
 
@@ -172,4 +156,4 @@ Create .stack property on a target object
 
 #### Inherited from
 
-Error.captureStackTrace
+[RedisSMQError](RedisSMQError.md).[captureStackTrace](RedisSMQError.md#capturestacktrace)

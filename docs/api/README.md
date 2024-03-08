@@ -6,64 +6,95 @@
 
 ### Enumerations
 
+- [ELuaScriptName](enums/ELuaScriptName.md)
 - [ERedisConfigClient](enums/ERedisConfigClient.md)
+- [EWorkerThreadExecutionCode](enums/EWorkerThreadExecutionCode.md)
+- [EWorkerThreadExitCode](enums/EWorkerThreadExitCode.md)
+- [EWorkerType](enums/EWorkerType.md)
 
 ### Classes
 
+- [AbortError](classes/AbortError.md)
 - [CallbackEmptyReplyError](classes/CallbackEmptyReplyError.md)
 - [CallbackInvalidReplyError](classes/CallbackInvalidReplyError.md)
+- [EventBus](classes/EventBus.md)
+- [EventBusError](classes/EventBusError.md)
+- [EventBusNotConnectedError](classes/EventBusNotConnectedError.md)
+- [EventBusRedis](classes/EventBusRedis.md)
 - [EventEmitter](classes/EventEmitter.md)
-- [Lock](classes/Lock.md)
-- [LockAbortError](classes/LockAbortError.md)
+- [IoredisClient](classes/IoredisClient.md)
+- [IoredisClientMulti](classes/IoredisClientMulti.md)
 - [LockAcquireError](classes/LockAcquireError.md)
 - [LockError](classes/LockError.md)
 - [LockExtendError](classes/LockExtendError.md)
 - [LockMethodNotAllowedError](classes/LockMethodNotAllowedError.md)
 - [LockNotAcquiredError](classes/LockNotAcquiredError.md)
-- [LockNotReleasedError](classes/LockNotReleasedError.md)
+- [Locker](classes/Locker.md)
 - [LoggerError](classes/LoggerError.md)
+- [LuaScript](classes/LuaScript.md)
+- [NodeRedisClient](classes/NodeRedisClient.md)
+- [NodeRedisClientMulti](classes/NodeRedisClientMulti.md)
 - [PanicError](classes/PanicError.md)
 - [PowerSwitch](classes/PowerSwitch.md)
-- [RedisClient](classes/RedisClient.md)
+- [RedisClientAbstract](classes/RedisClientAbstract.md)
 - [RedisClientError](classes/RedisClientError.md)
 - [RedisSMQError](classes/RedisSMQError.md)
-- [Ticker](classes/Ticker.md)
-- [TickerError](classes/TickerError.md)
+- [Runnable](classes/Runnable.md)
+- [Timer](classes/Timer.md)
+- [TimerError](classes/TimerError.md)
 - [WatchedKeysChangedError](classes/WatchedKeysChangedError.md)
-- [Worker](classes/Worker.md)
+- [WorkerAlreadyDownError](classes/WorkerAlreadyDownError.md)
+- [WorkerAlreadyRunningError](classes/WorkerAlreadyRunningError.md)
+- [WorkerCallable](classes/WorkerCallable.md)
 - [WorkerError](classes/WorkerError.md)
-- [WorkerPool](classes/WorkerPool.md)
-- [WorkerRunner](classes/WorkerRunner.md)
+- [WorkerPayloadRequiredError](classes/WorkerPayloadRequiredError.md)
+- [WorkerResourceGroup](classes/WorkerResourceGroup.md)
+- [WorkerRunnable](classes/WorkerRunnable.md)
+- [WorkerThreadError](classes/WorkerThreadError.md)
 
 ### Interfaces
 
 - [ICallback](interfaces/ICallback.md)
+- [IEventBus](interfaces/IEventBus.md)
+- [IEventEmitter](interfaces/IEventEmitter.md)
 - [ILogger](interfaces/ILogger.md)
 - [ILoggerConfig](interfaces/ILoggerConfig.md)
 - [IRedisClient](interfaces/IRedisClient.md)
 - [IRedisConfigIORedis](interfaces/IRedisConfigIORedis.md)
 - [IRedisConfigNodeRedis](interfaces/IRedisConfigNodeRedis.md)
 - [IRedisTransaction](interfaces/IRedisTransaction.md)
+- [IWorkerCallable](interfaces/IWorkerCallable.md)
+- [IWorkerData](interfaces/IWorkerData.md)
+- [IWorkerRunnable](interfaces/IWorkerRunnable.md)
 
 ### Type Aliases
 
 - [IRedisConfig](README.md#iredisconfig)
-- [TEvent](README.md#tevent)
+- [TEventBusEvent](README.md#teventbusevent)
 - [TEventEmitterEvent](README.md#teventemitterevent)
 - [TFunction](README.md#tfunction)
+- [TLockerEvent](README.md#tlockerevent)
+- [TRedisClientEvent](README.md#tredisclientevent)
 - [TRedisClientNodeRedis](README.md#tredisclientnoderedis)
 - [TRedisTransactionNodeRedis](README.md#tredistransactionnoderedis)
+- [TTimer](README.md#ttimer)
+- [TTimerEvent](README.md#ttimerevent)
 - [TUnaryFunction](README.md#tunaryfunction)
+- [TWorkerFn](README.md#tworkerfn)
+- [TWorkerResourceGroupEvent](README.md#tworkerresourcegroupevent)
+- [TWorkerThreadError](README.md#tworkerthreaderror)
+- [TWorkerThreadMessage](README.md#tworkerthreadmessage)
+- [TWorkerThreadMessageCode](README.md#tworkerthreadmessagecode)
 
 ### Variables
 
 - [async](README.md#async)
 - [logger](README.md#logger)
-- [redis](README.md#redis)
 
 ### Functions
 
-- [getEventBusInstance](README.md#geteventbusinstance)
+- [createRedisClient](README.md#createredisclient)
+- [getDirname](README.md#getdirname)
 
 ## Type Aliases
 
@@ -73,27 +104,15 @@
 
 ___
 
-### TEvent
+### TEventBusEvent
 
-Ƭ **TEvent**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `down` | () => `void` |
-| `error` | (`err`: `Error`) => `void` |
-| `goingDown` | () => `void` |
-| `goingUp` | () => `void` |
-| `next` | () => `void` |
-| `tick` | () => `void` |
-| `up` | () => `void` |
+Ƭ **TEventBusEvent**: [`TEventEmitterEvent`](README.md#teventemitterevent) & \{ `error`: (`err`: `Error`) => `void`  }
 
 ___
 
 ### TEventEmitterEvent
 
-Ƭ **TEventEmitterEvent**: `Record`\<`string` \| `symbol`, (...`args`: `any`) => `any`\>
+Ƭ **TEventEmitterEvent**: `Record`\<`string`, (...`args`: `any`[]) => `void`\>
 
 ___
 
@@ -124,6 +143,38 @@ ___
 
 ___
 
+### TLockerEvent
+
+Ƭ **TLockerEvent**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `locker.down` | (`id`: `string`) => `void` |
+| `locker.error` | (`error`: `Error`, `id`: `string`) => `void` |
+| `locker.goingDown` | (`id`: `string`) => `void` |
+| `locker.goingUp` | (`id`: `string`) => `void` |
+| `locker.up` | (`id`: `string`) => `void` |
+
+___
+
+### TRedisClientEvent
+
+Ƭ **TRedisClientEvent**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `end` | () => `void` |
+| `error` | (`err`: `Error`) => `void` |
+| `message` | (`channel`: `string`, `message`: `string`) => `void` |
+| `pmessage` | (`pattern`: `string`, `channel`: `string`, `message`: `string`) => `void` |
+| `ready` | () => `void` |
+
+___
+
 ### TRedisClientNodeRedis
 
 Ƭ **TRedisClientNodeRedis**: `RedisClientType`\<`RedisModules`, `RedisFunctions`, `RedisScripts`\>
@@ -133,6 +184,32 @@ ___
 ### TRedisTransactionNodeRedis
 
 Ƭ **TRedisTransactionNodeRedis**: `RedisClientMultiCommandType`\<`RedisModules`, `RedisFunctions`, `RedisScripts`\>
+
+___
+
+### TTimer
+
+Ƭ **TTimer**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `fn` | [`TFunction`](README.md#tfunction) |
+| `periodic` | `boolean` |
+| `timer` | `NodeJS.Timeout` |
+
+___
+
+### TTimerEvent
+
+Ƭ **TTimerEvent**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `error` | (`err`: `Error`) => `void` |
 
 ___
 
@@ -160,6 +237,71 @@ ___
 ##### Returns
 
 `E`
+
+___
+
+### TWorkerFn
+
+Ƭ **TWorkerFn**: (...`args`: [...any[], [`ICallback`](interfaces/ICallback.md)\<`any`\>]) => `void`
+
+#### Type declaration
+
+▸ (`...args`): `void`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | [...any[], [`ICallback`](interfaces/ICallback.md)\<`any`\>] |
+
+##### Returns
+
+`void`
+
+___
+
+### TWorkerResourceGroupEvent
+
+Ƭ **TWorkerResourceGroupEvent**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `workerResourceGroup.error` | (`err`: `Error`) => `void` |
+
+___
+
+### TWorkerThreadError
+
+Ƭ **TWorkerThreadError**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `name` | `string` |
+
+___
+
+### TWorkerThreadMessage
+
+Ƭ **TWorkerThreadMessage**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `code` | [`TWorkerThreadMessageCode`](README.md#tworkerthreadmessagecode) |
+| `data?` | `unknown` |
+| `error?` | [`TWorkerThreadError`](README.md#tworkerthreaderror) \| ``null`` |
+
+___
+
+### TWorkerThreadMessageCode
+
+Ƭ **TWorkerThreadMessageCode**: [`EWorkerThreadExitCode`](enums/EWorkerThreadExitCode.md) \| [`EWorkerThreadExecutionCode`](enums/EWorkerThreadExecutionCode.md)
 
 ## Variables
 
@@ -190,30 +332,29 @@ ___
 | `getLogger` | (`cfg`: [`ILoggerConfig`](interfaces/ILoggerConfig.md), `ns?`: `string`) => [`ILogger`](interfaces/ILogger.md) |
 | `setLogger` | \<T\>(`logger`: `T`) => `void` |
 
-___
-
-### redis
-
-• `Const` **redis**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `createInstance` | (`config`: [`IRedisConfig`](README.md#iredisconfig), `cb`: [`ICallback`](interfaces/ICallback.md)\<[`RedisClient`](classes/RedisClient.md)\>) => `void` |
-
 ## Functions
 
-### getEventBusInstance
+### createRedisClient
 
-▸ **getEventBusInstance**\<`T`\>(): [`EventEmitter`](classes/EventEmitter.md)\<[`TEvent`](README.md#tevent)\>
+▸ **createRedisClient**(`config`, `cb`): `void`
 
-#### Type parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`TEvent`](README.md#tevent) |
+| `config` | [`IRedisConfig`](README.md#iredisconfig) |
+| `cb` | [`ICallback`](interfaces/ICallback.md)\<[`IRedisClient`](interfaces/IRedisClient.md)\> |
 
 #### Returns
 
-[`EventEmitter`](classes/EventEmitter.md)\<[`TEvent`](README.md#tevent)\>
+`void`
+
+___
+
+### getDirname
+
+▸ **getDirname**(): `string`
+
+#### Returns
+
+`string`
