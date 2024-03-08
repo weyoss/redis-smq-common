@@ -1,5 +1,39 @@
 
 
+## [3.0.0-rc.13](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.12...v3.0.0-rc.13) (2024-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* improve and clean up codebase, refactor typings
+* enable esm and cjs module exports
+* reorganize and rewrite shared components
+
+### Features
+
+* enable esm and cjs module exports ([2d28c41](https://github.com/weyoss/redis-smq-common/commit/2d28c41b67ab7798bc74a75b27fa3c43ec60a604))
+
+
+### Documentation
+
+* update API reference ([cca5214](https://github.com/weyoss/redis-smq-common/commit/cca521481c74ba9eca3af9c6cf74dbc7dd01f1d9))
+
+
+### Codebase Refactoring
+
+* improve and clean up codebase, refactor typings ([71cfe06](https://github.com/weyoss/redis-smq-common/commit/71cfe06c61f01106f5b85aa652d6cb6e520d4743))
+* reorganize and rewrite shared components ([66d59e9](https://github.com/weyoss/redis-smq-common/commit/66d59e98c46b0c9f6727358351bb808d45524cec))
+
+
+### Tests
+
+* reorganize and rewrite shared components ([e98dc77](https://github.com/weyoss/redis-smq-common/commit/e98dc7779490252e1ab5201dd965fec685f2d234))
+
+
+### Misc
+
+* update .npmignore file ([9b26c78](https://github.com/weyoss/redis-smq-common/commit/9b26c783a7e93edbda4bf9d5d82228901f10c61c))
+
 ## [3.0.0-rc.12](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.11...v3.0.0-rc.12) (2024-02-03)
 
 
