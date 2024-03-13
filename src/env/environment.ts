@@ -27,7 +27,12 @@ export function getDirname(): string {
   Error.prepareStackTrace = prepareStackTrace;
   if (isStackTraces(stack)) {
     const filename = stack[1].getFileName();
-    if (filename) return dirname(filename);
+    if (filename) {
+      const cleanFilename = filename.startsWith('file://')
+        ? filename.substring(7)
+        : filename;
+      return dirname(cleanFilename);
+    }
   }
   throw new PanicError(`Could not get current dir`);
 }
