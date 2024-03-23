@@ -1,5 +1,26 @@
 
 
+## [3.0.0-rc.14](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.13...v3.0.0-rc.14) (2024-03-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* rewrite and optimize worker logic, clean up
+
+### Bug Fixes
+
+* strip 'file://' from filename ([39367b0](https://github.com/weyoss/redis-smq-common/commit/39367b01b19e2f5d5cdadb20d68d95dc9ab3f72e))
+
+
+### Documentation
+
+* update API reference ([e79899a](https://github.com/weyoss/redis-smq-common/commit/e79899a6316d14042bee5eaa94be86f6816833e6))
+
+
+### Codebase Refactoring
+
+* rewrite and optimize worker logic, clean up ([f9120de](https://github.com/weyoss/redis-smq-common/commit/f9120de0bc45929ab19aa4eb724ebc3b6159a0b3))
+
 ## [3.0.0-rc.13](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.12...v3.0.0-rc.13) (2024-03-08)
 
 
