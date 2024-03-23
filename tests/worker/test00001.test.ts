@@ -28,8 +28,8 @@ it('WorkerCallable: case 1', async () => {
     WorkerPayloadRequiredError,
   );
 
-  await worker.shutDownAsync();
+  await worker.shutdownAsync();
 
   // second timer is OK
-  await worker.shutDownAsync();
+  await worker.shutdownAsync();
 });

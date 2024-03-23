@@ -26,15 +26,15 @@ it('WorkerRunnable', async () => {
   worker.on('worker.error', (err) => {
     console.error(err);
   });
-  await worker.runAsync('Hello world!');
+  await worker.runAsync();
 
-  await expect(async () => worker.runAsync('Hello world!')).rejects.toThrow(
+  await expect(async () => worker.runAsync()).rejects.toThrow(
     WorkerAlreadyRunningError,
   );
 
-  await worker.shutDownAsync();
+  await worker.shutdownAsync();
 
-  await expect(async () => worker.shutDownAsync()).rejects.toThrow(
+  await expect(async () => worker.shutdownAsync()).rejects.toThrow(
     WorkerAlreadyDownError,
   );
 });

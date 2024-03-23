@@ -119,7 +119,7 @@ export class EventBusRedis<Events extends TEventBusEvent>
     return this;
   }
 
-  shutDown(cb: ICallback<void>) {
+  shutdown(cb: ICallback<void>) {
     if (this.connected) {
       async.waterfall(
         [

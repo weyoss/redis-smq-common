@@ -8,8 +8,18 @@
  */
 
 import { ICallback } from '../../../../src/common/index.js';
+import { IWorkerRunnable } from '../../../../src/worker/types/worker.js';
 
-export default function myWorkerRunnable(msg: string, cb: ICallback<void>) {
-  setInterval(() => void 0, 1000);
-  cb();
+export default function myWorkerRunnable(): IWorkerRunnable {
+  let interval: NodeJS.Timeout | null = null;
+  return {
+    run(cb: ICallback<void>) {
+      interval = setInterval(() => void 0, 1000);
+      cb();
+    },
+    shutdown(cb: ICallback<void>) {
+      if (interval) clearInterval(interval);
+      cb();
+    },
+  };
 }

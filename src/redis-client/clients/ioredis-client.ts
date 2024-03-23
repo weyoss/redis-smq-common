@@ -389,7 +389,7 @@ export class IoredisClient extends RedisClientAbstract {
     }
   }
 
-  shutDown(cb: ICallback<void> = () => void 0): void {
+  shutdown(cb: ICallback<void> = () => void 0): void {
     if (!this.connectionClosed) {
       this.client.once('end', cb);
       this.client.quit();

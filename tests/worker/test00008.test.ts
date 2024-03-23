@@ -10,7 +10,10 @@
 import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
-import { EWorkerThreadExitCode } from '../../src/worker/index.js';
+import {
+  EWorkerThreadChildExitCode,
+  EWorkerThreadParentMessage,
+} from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
 it('WorkerCallable: case 8', async () => {
@@ -30,11 +33,14 @@ it('WorkerCallable: case 8', async () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
 
-  await import('../../src/worker/worker-thread.js');
+  await import('../../src/worker/worker-thread/worker-thread.js');
 
   await bluebird.delay(5000);
 
-  mockParentPort.emit('message', '123456789');
+  mockParentPort.emit('message', {
+    type: EWorkerThreadParentMessage.CALL,
+    payload: '123456',
+  });
 
   await bluebird.delay(5000);
 
@@ -42,7 +48,7 @@ it('WorkerCallable: case 8', async () => {
   // But process.exit is mocked so getHandlerFn() is called with empty workerData
   expect(mockParentPort.postMessage).toHaveBeenCalledTimes(1);
   expect(mockParentPort.postMessage).toHaveBeenNthCalledWith(1, {
-    code: EWorkerThreadExitCode.WORKER_DATA_REQUIRED,
+    code: EWorkerThreadChildExitCode.WORKER_DATA_REQUIRED,
     error: null,
   });
 
@@ -55,6 +61,6 @@ it('WorkerCallable: case 8', async () => {
   // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     1,
-    EWorkerThreadExitCode.WORKER_DATA_REQUIRED,
+    EWorkerThreadChildExitCode.WORKER_DATA_REQUIRED,
   );
 });

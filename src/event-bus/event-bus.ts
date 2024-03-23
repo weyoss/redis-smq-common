@@ -91,7 +91,7 @@ export class EventBus<Events extends TEventBusEvent>
     return this;
   }
 
-  shutDown(cb: ICallback<void>) {
+  shutdown(cb: ICallback<void>) {
     if (this.connected) this.connected = false;
     cb();
   }

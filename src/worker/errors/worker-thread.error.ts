@@ -8,17 +8,17 @@
  */
 
 import {
-  EWorkerThreadExecutionCode,
-  EWorkerThreadExitCode,
-  TWorkerThreadMessage,
+  EWorkerThreadChildExecutionCode,
+  EWorkerThreadChildExitCode,
+  TWorkerThreadChildMessage,
 } from '../types/index.js';
 import { WorkerError } from './worker-error.js';
 
 export class WorkerThreadError extends WorkerError {
-  constructor(msg: TWorkerThreadMessage) {
+  constructor(msg: TWorkerThreadChildMessage) {
     const { code, error } = msg;
     const messageStr = `Error code: ${
-      EWorkerThreadExitCode[code] ?? EWorkerThreadExecutionCode[code]
+      EWorkerThreadChildExitCode[code] ?? EWorkerThreadChildExecutionCode[code]
     }.${error ? ` Cause: ${error.name}(${error.message})` : ''}`;
     super(messageStr);
   }

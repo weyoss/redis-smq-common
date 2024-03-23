@@ -11,10 +11,11 @@ import { resolve } from 'path';
 import { Worker as WorkerThread } from 'worker_threads';
 import { ICallback } from '../common/index.js';
 import {
-  EWorkerThreadExecutionCode,
-  EWorkerThreadExitCode,
+  EWorkerThreadChildExecutionCode,
+  EWorkerThreadChildExitCode,
   EWorkerType,
-  TWorkerThreadMessage,
+  TWorkerThreadChildMessage,
+  TWorkerThreadParentMessage,
 } from './types/index.js';
 import { getDirname } from '../env/environment.js';
 import { EventEmitter } from '../event/index.js';
@@ -27,21 +28,33 @@ export type TWorkerEvent = {
 
 const dir = getDirname();
 
-export abstract class Worker extends EventEmitter<TWorkerEvent> {
+export abstract class Worker<
+  Payload,
+  Reply,
+> extends EventEmitter<TWorkerEvent> {
   protected abstract readonly type: EWorkerType;
   protected readonly workerFilename;
+  protected readonly initialPayload;
   protected workerThread: WorkerThread | null = null;
 
-  constructor(workerFilename: string) {
+  constructor(workerFilename: string, initialPayload?: unknown) {
     super();
     this.workerFilename = workerFilename;
+    this.initialPayload = initialPayload;
   }
 
   protected getWorkerThread(): WorkerThread {
     if (!this.workerThread) {
-      this.workerThread = new WorkerThread(resolve(dir, './worker-thread.js'), {
-        workerData: { filename: this.workerFilename, type: this.type },
-      });
+      this.workerThread = new WorkerThread(
+        resolve(dir, './worker-thread/worker-thread.js'),
+        {
+          workerData: {
+            filename: this.workerFilename,
+            initialPayload: this.initialPayload,
+            type: this.type,
+          },
+        },
+      );
       this.workerThread.on('messageerror', (err) => {
         console.error(err);
       });
@@ -55,14 +68,16 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
     return this.workerThread;
   }
 
-  protected registerEvents(cb: ICallback<unknown> | Worker): void {
+  protected registerEvents(
+    cb: ICallback<Reply> | Worker<Payload, Reply>,
+  ): void {
     const worker = this.getWorkerThread();
     const cleanUp = () => {
       worker
         .removeListener('message', onMessage)
         .removeListener('exit', onExit);
     };
-    const callback: ICallback<unknown> = (err, data) => {
+    const callback: ICallback<Reply> = (err, data) => {
       if (err) {
         if (cb instanceof Worker) {
           this.emit('worker.error', err);
@@ -72,16 +87,16 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
         else cb(null, data);
       }
     };
-    const onMessage = (msg: TWorkerThreadMessage) => {
+    const onMessage = (msg: TWorkerThreadChildMessage<Reply>) => {
       cleanUp();
-      if (msg.code !== EWorkerThreadExecutionCode.OK) {
+      if (msg.code !== EWorkerThreadChildExecutionCode.OK) {
         callback(new WorkerThreadError(msg));
       } else callback(null, msg.data);
     };
     const onExit = () => {
       cleanUp();
       const msg = {
-        code: EWorkerThreadExitCode.TERMINATED,
+        code: EWorkerThreadChildExitCode.TERMINATED,
         error: null,
       };
       callback(new WorkerThreadError(msg));
@@ -90,13 +105,11 @@ export abstract class Worker extends EventEmitter<TWorkerEvent> {
     worker.once('exit', onExit);
   }
 
-  protected exec(payload: unknown, cb: ICallback<unknown>): void {
-    this.registerEvents(cb);
-    if (!(payload === null || payload === undefined))
-      this.getWorkerThread().postMessage(payload);
+  postMessage(message: TWorkerThreadParentMessage): void {
+    this.getWorkerThread().postMessage(message);
   }
 
-  shutDown(cb: ICallback<void>) {
+  shutdown(cb: ICallback<void>) {
     const callback = () => {
       this.workerThread = null;
       cb();

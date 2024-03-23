@@ -322,7 +322,7 @@ export abstract class RedisClientAbstract
 
   abstract end(flush: boolean): void;
 
-  abstract shutDown(cb: ICallback<void>): void;
+  abstract shutdown(cb: ICallback<void>): void;
 
   abstract getInfo(cb: ICallback<string>): void;
 

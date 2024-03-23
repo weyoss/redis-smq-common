@@ -67,7 +67,7 @@ it('EventBus: case 1', async () => {
   eventBusAsync.emit('e1', 'hello7');
   expect(callback5).toHaveBeenCalledTimes(1);
 
-  await eventBusAsync.shutDownAsync();
+  await eventBusAsync.shutdownAsync();
 
   const errors: Error[] = [];
   eventBusAsync.once('error', (e) => errors.push(e));

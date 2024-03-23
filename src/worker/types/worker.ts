@@ -14,49 +14,24 @@ export enum EWorkerType {
   RUNNABLE,
 }
 
-// eslint-disable-next-line
-export type TWorkerFn = (...args: [...any[], ICallback<any>]) => void; // type-coverage:ignore-line
+export type TWorkerCallableFunction = (
+  args: unknown,
+  cb: ICallback<unknown>,
+) => void;
 
-export interface IWorkerRunnable<Payload> {
-  run(initialPayload: Payload, cb: ICallback<void>): void;
+export type TWorkerRunnableFunctionFactory = (
+  initialPayload: unknown,
+) => IWorkerRunnable;
+
+export type TWorkerFunction =
+  | TWorkerRunnableFunctionFactory
+  | TWorkerCallableFunction;
+
+export interface IWorkerRunnable {
+  run(cb: ICallback<void>): void;
+  shutdown(cb: ICallback<void>): void;
 }
 
 export interface IWorkerCallable<Payload, Reply> {
-  call(payload: Payload, cb: ICallback<Reply>): void;
+  call(args: Payload, cb: ICallback<Reply>): void;
 }
-
-export interface IWorkerData {
-  type: EWorkerType;
-  filename: string;
-}
-
-export enum EWorkerThreadExitCode {
-  WORKER_DATA_REQUIRED = 100,
-  INVALID_WORKER_TYPE,
-  FILE_IMPORT_ERROR,
-  UNCAUGHT_EXCEPTION,
-  FILE_EXTENSION_ERROR,
-  FILE_READ_ERROR,
-  TERMINATED,
-}
-
-export enum EWorkerThreadExecutionCode {
-  OK = 200,
-  PROCESSING_ERROR,
-  PROCESSING_CAUGHT_ERROR,
-}
-
-export type TWorkerThreadMessageCode =
-  | EWorkerThreadExitCode
-  | EWorkerThreadExecutionCode;
-
-export type TWorkerThreadError = {
-  name: string;
-  message: string;
-};
-
-export type TWorkerThreadMessage = {
-  code: TWorkerThreadMessageCode;
-  data?: unknown;
-  error?: TWorkerThreadError | null;
-};

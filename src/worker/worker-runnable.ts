@@ -8,7 +8,11 @@
  */
 
 import { ICallback } from '../common/index.js';
-import { EWorkerType, IWorkerRunnable } from './types/index.js';
+import {
+  EWorkerThreadParentMessage,
+  EWorkerType,
+  IWorkerRunnable,
+} from './types/index.js';
 import { PowerSwitch } from '../power-switch/power-switch.js';
 import {
   WorkerAlreadyDownError,
@@ -16,38 +20,32 @@ import {
 } from './errors/index.js';
 import { Worker } from './worker.js';
 
-export class WorkerRunnable<Payload>
-  extends Worker
-  implements IWorkerRunnable<Payload>
+export class WorkerRunnable<InitialPayload>
+  extends Worker<void, void>
+  implements IWorkerRunnable
 {
   protected readonly type: EWorkerType = EWorkerType.RUNNABLE;
   protected readonly powerSwitch;
 
-  constructor(workerFilename: string) {
-    super(workerFilename);
+  constructor(workerFilename: string, initialPayload?: InitialPayload) {
+    super(workerFilename, initialPayload);
     this.powerSwitch = new PowerSwitch();
   }
 
-  run(initialPayload: Payload, cb: ICallback<void>) {
+  run(cb: ICallback<void>) {
     const r = this.powerSwitch.goingUp();
     if (r) {
-      this.exec(initialPayload, (err) => {
-        if (err) {
-          this.powerSwitch.rollback();
-          cb(err);
-        } else {
-          this.powerSwitch.commit();
-          this.registerEvents(this);
-          cb();
-        }
-      });
+      this.registerEvents(this);
+      this.postMessage({ type: EWorkerThreadParentMessage.RUN });
+      this.powerSwitch.commit();
+      cb();
     } else cb(new WorkerAlreadyRunningError());
   }
 
-  override shutDown(cb: ICallback<void>) {
+  override shutdown(cb: ICallback<void>) {
     const r = this.powerSwitch.goingDown();
     if (r) {
-      super.shutDown(() => {
+      super.shutdown(() => {
         this.powerSwitch.commit();
         cb();
       });

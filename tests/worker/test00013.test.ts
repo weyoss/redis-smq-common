@@ -28,8 +28,6 @@ it('WorkerResourceGroup: loadFromDir()', async () => {
     'hello world',
   );
   await workerRunnableResourceGroup.runAsync();
-
   await bluebird.delay(10000);
-
   await workerRunnableResourceGroup.shutdownAsync();
 });

@@ -12,7 +12,11 @@ import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
 import { getDirname } from '../../src/env/environment.js';
-import { EWorkerThreadExitCode, EWorkerType } from '../../src/worker/index.js';
+import {
+  EWorkerThreadChildExitCode,
+  EWorkerThreadParentMessage,
+  EWorkerType,
+} from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
 const dir = getDirname();
@@ -37,11 +41,14 @@ it('WorkerCallable: case 10', async () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
 
-  await import('../../src/worker/worker-thread.js');
+  await import('../../src/worker/worker-thread/worker-thread.js');
 
   await bluebird.delay(5000);
 
-  mockParentPort.emit('message', '123456789');
+  mockParentPort.emit('message', {
+    type: EWorkerThreadParentMessage.CALL,
+    payload: '123456',
+  });
 
   await bluebird.delay(5000);
 
@@ -54,18 +61,18 @@ it('WorkerCallable: case 10', async () => {
   // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     1,
-    EWorkerThreadExitCode.FILE_EXTENSION_ERROR,
+    EWorkerThreadChildExitCode.FILE_EXTENSION_ERROR,
   );
 
   // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     2,
-    EWorkerThreadExitCode.FILE_READ_ERROR,
+    EWorkerThreadChildExitCode.FILE_READ_ERROR,
   );
 
   // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     3,
-    EWorkerThreadExitCode.FILE_IMPORT_ERROR,
+    EWorkerThreadChildExitCode.FILE_IMPORT_ERROR,
   );
 });

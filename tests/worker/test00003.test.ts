@@ -13,8 +13,10 @@ import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
 import { getDirname } from '../../src/env/environment.js';
 import {
-  EWorkerThreadExecutionCode,
+  EWorkerThreadChildExecutionCode,
+  EWorkerThreadParentMessage,
   EWorkerType,
+  TWorkerThreadParentMessage,
 } from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
@@ -40,18 +42,22 @@ it('WorkerCallable: case 3', async () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
 
-  await import('../../src/worker/worker-thread.js');
+  await import('../../src/worker/worker-thread/worker-thread.js');
 
   await bluebird.delay(5000);
 
-  mockParentPort.emit('message', '123456789');
+  const message: TWorkerThreadParentMessage = {
+    type: EWorkerThreadParentMessage.CALL,
+    payload: '123456',
+  };
+  mockParentPort.emit('message', message);
 
   await bluebird.delay(5000);
 
   expect(mockParentPort.postMessage).toHaveBeenCalledTimes(1);
   expect(mockParentPort.postMessage).toHaveBeenCalledWith({
-    code: EWorkerThreadExecutionCode.OK,
-    data: '123456789',
+    code: EWorkerThreadChildExecutionCode.OK,
+    data: message.payload,
   });
 
   expect(mockExit).toHaveBeenCalledTimes(0); // type-coverage:ignore-line

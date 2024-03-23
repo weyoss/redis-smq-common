@@ -19,5 +19,5 @@ export type TEventBusEvent = TEventEmitterEvent & {
 
 export interface IEventBus<Events extends TEventBusEvent>
   extends IEventEmitter<Events> {
-  shutDown(cb: ICallback<void>): void;
+  shutdown(cb: ICallback<void>): void;
 }

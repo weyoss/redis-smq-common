@@ -246,7 +246,7 @@ export interface IRedisClient extends EventEmitter<TRedisClientEvent> {
 
   end(flush: boolean): void;
 
-  shutDown(cb: ICallback<void>): void;
+  shutdown(cb: ICallback<void>): void;
 
   getInfo(cb: ICallback<string>): void;
 

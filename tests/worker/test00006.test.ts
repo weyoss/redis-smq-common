@@ -12,7 +12,11 @@ import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
 import { getDirname } from '../../src/env/environment.js';
-import { EWorkerThreadExitCode, EWorkerType } from '../../src/worker/index.js';
+import {
+  EWorkerThreadChildExitCode,
+  EWorkerThreadParentMessage,
+  EWorkerType,
+} from '../../src/worker/index.js';
 import { mockModule } from '../mock-module.js';
 
 const dir = getDirname();
@@ -37,17 +41,20 @@ it('WorkerCallable: case 6', async () => {
   // @ts-ignore
   const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
 
-  await import('../../src/worker/worker-thread.js');
+  await import('../../src/worker/worker-thread/worker-thread.js');
 
   await bluebird.delay(5000);
 
-  mockParentPort.emit('message', '123456789');
+  mockParentPort.emit('message', {
+    type: EWorkerThreadParentMessage.CALL,
+    payload: '123456',
+  });
 
   await bluebird.delay(5000);
 
   expect(mockParentPort.postMessage).toHaveBeenCalledTimes(1);
   expect(mockParentPort.postMessage).toHaveBeenCalledWith({
-    code: EWorkerThreadExitCode.INVALID_WORKER_TYPE,
+    code: EWorkerThreadChildExitCode.INVALID_WORKER_TYPE,
     error: null,
   });
 
@@ -56,6 +63,6 @@ it('WorkerCallable: case 6', async () => {
 
   // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenCalledWith(
-    EWorkerThreadExitCode.INVALID_WORKER_TYPE,
+    EWorkerThreadChildExitCode.INVALID_WORKER_TYPE,
   );
 });

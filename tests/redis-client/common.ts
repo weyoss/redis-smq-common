@@ -184,8 +184,8 @@ export async function standardCommands(config: IRedisConfig) {
     );
   }
 
-  await client.shutDownAsync(); // does exec quit command
-  await client.shutDownAsync(); // does not exec quit
+  await client.shutdownAsync(); // does exec quit command
+  await client.shutdownAsync(); // does not exec quit
 }
 
 export async function scriptRunning(config: IRedisConfig) {

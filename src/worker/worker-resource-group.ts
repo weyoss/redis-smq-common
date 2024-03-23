@@ -28,8 +28,7 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
   protected readonly locker;
   protected readonly redisClient;
   protected readonly logger;
-  protected workers: { instance: WorkerRunnable<unknown>; payload: unknown }[] =
-    [];
+  protected workers: WorkerRunnable<unknown>[] = [];
   protected runWorkersLocked = false;
 
   constructor(
@@ -77,8 +76,7 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
       async.each(
         this.workers,
         (worker, _, done) => {
-          const { instance, payload } = worker;
-          instance.run(payload, done);
+          worker.run(done);
         },
         (err) => {
           this.runWorkersLocked = false;
@@ -94,7 +92,7 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
       async.each(
         this.workers,
         (worker, _, done) => {
-          worker.instance.shutDown(() => done());
+          worker.shutdown(() => done());
         },
         () => {
           this.workers = [];
@@ -129,9 +127,9 @@ export class WorkerResourceGroup extends Runnable<TWorkerResourceGroupEvent> {
   }
 
   addWorker = (filename: string, payload: unknown): void => {
-    const worker = new WorkerRunnable(filename);
+    const worker = new WorkerRunnable(filename, payload);
     worker.on('worker.error', (err) => this.handleError(err));
-    this.workers.push({ instance: worker, payload });
+    this.workers.push(worker);
   };
 
   loadFromDir = (
