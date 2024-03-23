@@ -8,8 +8,9 @@
 
 - [ELuaScriptName](enums/ELuaScriptName.md)
 - [ERedisConfigClient](enums/ERedisConfigClient.md)
-- [EWorkerThreadExecutionCode](enums/EWorkerThreadExecutionCode.md)
-- [EWorkerThreadExitCode](enums/EWorkerThreadExitCode.md)
+- [EWorkerThreadChildExecutionCode](enums/EWorkerThreadChildExecutionCode.md)
+- [EWorkerThreadChildExitCode](enums/EWorkerThreadChildExitCode.md)
+- [EWorkerThreadParentMessage](enums/EWorkerThreadParentMessage.md)
 - [EWorkerType](enums/EWorkerType.md)
 
 ### Classes
@@ -64,8 +65,8 @@
 - [IRedisConfigNodeRedis](interfaces/IRedisConfigNodeRedis.md)
 - [IRedisTransaction](interfaces/IRedisTransaction.md)
 - [IWorkerCallable](interfaces/IWorkerCallable.md)
-- [IWorkerData](interfaces/IWorkerData.md)
 - [IWorkerRunnable](interfaces/IWorkerRunnable.md)
+- [IWorkerThreadData](interfaces/IWorkerThreadData.md)
 
 ### Type Aliases
 
@@ -80,11 +81,17 @@
 - [TTimer](README.md#ttimer)
 - [TTimerEvent](README.md#ttimerevent)
 - [TUnaryFunction](README.md#tunaryfunction)
-- [TWorkerFn](README.md#tworkerfn)
+- [TWorkerCallableFunction](README.md#tworkercallablefunction)
+- [TWorkerFunction](README.md#tworkerfunction)
 - [TWorkerResourceGroupEvent](README.md#tworkerresourcegroupevent)
-- [TWorkerThreadError](README.md#tworkerthreaderror)
-- [TWorkerThreadMessage](README.md#tworkerthreadmessage)
-- [TWorkerThreadMessageCode](README.md#tworkerthreadmessagecode)
+- [TWorkerRunnableFunctionFactory](README.md#tworkerrunnablefunctionfactory)
+- [TWorkerThreadChildError](README.md#tworkerthreadchilderror)
+- [TWorkerThreadChildMessage](README.md#tworkerthreadchildmessage)
+- [TWorkerThreadChildMessageCode](README.md#tworkerthreadchildmessagecode)
+- [TWorkerThreadParentMessage](README.md#tworkerthreadparentmessage)
+- [TWorkerThreadParentMessageCall](README.md#tworkerthreadparentmessagecall)
+- [TWorkerThreadParentMessageRun](README.md#tworkerthreadparentmessagerun)
+- [TWorkerThreadParentMessageShutdown](README.md#tworkerthreadparentmessageshutdown)
 
 ### Variables
 
@@ -240,23 +247,30 @@ ___
 
 ___
 
-### TWorkerFn
+### TWorkerCallableFunction
 
-Ƭ **TWorkerFn**: (...`args`: [...any[], [`ICallback`](interfaces/ICallback.md)\<`any`\>]) => `void`
+Ƭ **TWorkerCallableFunction**: (`args`: `unknown`, `cb`: [`ICallback`](interfaces/ICallback.md)\<`unknown`\>) => `void`
 
 #### Type declaration
 
-▸ (`...args`): `void`
+▸ (`args`, `cb`): `void`
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...args` | [...any[], [`ICallback`](interfaces/ICallback.md)\<`any`\>] |
+| `args` | `unknown` |
+| `cb` | [`ICallback`](interfaces/ICallback.md)\<`unknown`\> |
 
 ##### Returns
 
 `void`
+
+___
+
+### TWorkerFunction
+
+Ƭ **TWorkerFunction**: [`TWorkerRunnableFunctionFactory`](README.md#tworkerrunnablefunctionfactory) \| [`TWorkerCallableFunction`](README.md#tworkercallablefunction)
 
 ___
 
@@ -272,9 +286,29 @@ ___
 
 ___
 
-### TWorkerThreadError
+### TWorkerRunnableFunctionFactory
 
-Ƭ **TWorkerThreadError**: `Object`
+Ƭ **TWorkerRunnableFunctionFactory**: (`initialPayload`: `unknown`) => [`IWorkerRunnable`](interfaces/IWorkerRunnable.md)
+
+#### Type declaration
+
+▸ (`initialPayload`): [`IWorkerRunnable`](interfaces/IWorkerRunnable.md)
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `initialPayload` | `unknown` |
+
+##### Returns
+
+[`IWorkerRunnable`](interfaces/IWorkerRunnable.md)
+
+___
+
+### TWorkerThreadChildError
+
+Ƭ **TWorkerThreadChildError**: `Object`
 
 #### Type declaration
 
@@ -285,23 +319,72 @@ ___
 
 ___
 
-### TWorkerThreadMessage
+### TWorkerThreadChildMessage
 
-Ƭ **TWorkerThreadMessage**: `Object`
+Ƭ **TWorkerThreadChildMessage**\<`Data`\>: `Object`
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `Data` | `unknown` |
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `code` | [`TWorkerThreadMessageCode`](README.md#tworkerthreadmessagecode) |
-| `data?` | `unknown` |
-| `error?` | [`TWorkerThreadError`](README.md#tworkerthreaderror) \| ``null`` |
+| `code` | [`TWorkerThreadChildMessageCode`](README.md#tworkerthreadchildmessagecode) |
+| `data?` | `Data` |
+| `error?` | [`TWorkerThreadChildError`](README.md#tworkerthreadchilderror) \| ``null`` |
 
 ___
 
-### TWorkerThreadMessageCode
+### TWorkerThreadChildMessageCode
 
-Ƭ **TWorkerThreadMessageCode**: [`EWorkerThreadExitCode`](enums/EWorkerThreadExitCode.md) \| [`EWorkerThreadExecutionCode`](enums/EWorkerThreadExecutionCode.md)
+Ƭ **TWorkerThreadChildMessageCode**: [`EWorkerThreadChildExitCode`](enums/EWorkerThreadChildExitCode.md) \| [`EWorkerThreadChildExecutionCode`](enums/EWorkerThreadChildExecutionCode.md)
+
+___
+
+### TWorkerThreadParentMessage
+
+Ƭ **TWorkerThreadParentMessage**: [`TWorkerThreadParentMessageCall`](README.md#tworkerthreadparentmessagecall) \| [`TWorkerThreadParentMessageRun`](README.md#tworkerthreadparentmessagerun) \| [`TWorkerThreadParentMessageShutdown`](README.md#tworkerthreadparentmessageshutdown)
+
+___
+
+### TWorkerThreadParentMessageCall
+
+Ƭ **TWorkerThreadParentMessageCall**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `payload` | `unknown` |
+| `type` | [`CALL`](enums/EWorkerThreadParentMessage.md#call) |
+
+___
+
+### TWorkerThreadParentMessageRun
+
+Ƭ **TWorkerThreadParentMessageRun**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `type` | [`RUN`](enums/EWorkerThreadParentMessage.md#run) |
+
+___
+
+### TWorkerThreadParentMessageShutdown
+
+Ƭ **TWorkerThreadParentMessageShutdown**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `type` | [`SHUTDOWN`](enums/EWorkerThreadParentMessage.md#shutdown) |
 
 ## Variables
 

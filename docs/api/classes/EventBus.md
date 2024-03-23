@@ -27,7 +27,7 @@
 - [once](EventBus.md#once)
 - [removeAllListeners](EventBus.md#removealllisteners)
 - [removeListener](EventBus.md#removelistener)
-- [shutDown](EventBus.md#shutdown)
+- [shutdown](EventBus.md#shutdown)
 - [createInstance](EventBus.md#createinstance)
 
 ## Methods
@@ -186,9 +186,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
@@ -202,7 +202,7 @@ ___
 
 #### Implementation of
 
-[IEventBus](../interfaces/IEventBus.md).[shutDown](../interfaces/IEventBus.md#shutdown)
+[IEventBus](../interfaces/IEventBus.md).[shutdown](../interfaces/IEventBus.md#shutdown)
 
 ___
 

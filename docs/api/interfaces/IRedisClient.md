@@ -54,7 +54,7 @@
 - [runScript](IRedisClient.md#runscript)
 - [sadd](IRedisClient.md#sadd)
 - [set](IRedisClient.md#set)
-- [shutDown](IRedisClient.md#shutdown)
+- [shutdown](IRedisClient.md#shutdown)
 - [sismember](IRedisClient.md#sismember)
 - [smembers](IRedisClient.md#smembers)
 - [srem](IRedisClient.md#srem)
@@ -795,9 +795,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 

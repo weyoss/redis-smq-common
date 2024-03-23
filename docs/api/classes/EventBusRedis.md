@@ -27,7 +27,7 @@
 - [once](EventBusRedis.md#once)
 - [removeAllListeners](EventBusRedis.md#removealllisteners)
 - [removeListener](EventBusRedis.md#removelistener)
-- [shutDown](EventBusRedis.md#shutdown)
+- [shutdown](EventBusRedis.md#shutdown)
 - [createInstance](EventBusRedis.md#createinstance)
 
 ## Methods
@@ -186,9 +186,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
@@ -202,7 +202,7 @@ ___
 
 #### Implementation of
 
-[IEventBus](../interfaces/IEventBus.md).[shutDown](../interfaces/IEventBus.md#shutdown)
+[IEventBus](../interfaces/IEventBus.md).[shutdown](../interfaces/IEventBus.md#shutdown)
 
 ___
 

@@ -54,7 +54,7 @@
 - [runScript](NodeRedisClient.md#runscript)
 - [sadd](NodeRedisClient.md#sadd)
 - [set](NodeRedisClient.md#set)
-- [shutDown](NodeRedisClient.md#shutdown)
+- [shutdown](NodeRedisClient.md#shutdown)
 - [sismember](NodeRedisClient.md#sismember)
 - [smembers](NodeRedisClient.md#smembers)
 - [srem](NodeRedisClient.md#srem)
@@ -936,9 +936,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb?`): `void`
+▸ **shutdown**(`cb?`): `void`
 
 #### Parameters
 
@@ -952,7 +952,7 @@ ___
 
 #### Overrides
 
-[RedisClientAbstract](RedisClientAbstract.md).[shutDown](RedisClientAbstract.md#shutdown)
+[RedisClientAbstract](RedisClientAbstract.md).[shutdown](RedisClientAbstract.md#shutdown)
 
 ___
 

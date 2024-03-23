@@ -62,7 +62,7 @@
 - [runScript](RedisClientAbstract.md#runscript)
 - [sadd](RedisClientAbstract.md#sadd)
 - [set](RedisClientAbstract.md#set)
-- [shutDown](RedisClientAbstract.md#shutdown)
+- [shutdown](RedisClientAbstract.md#shutdown)
 - [sismember](RedisClientAbstract.md#sismember)
 - [smembers](RedisClientAbstract.md#smembers)
 - [srem](RedisClientAbstract.md#srem)
@@ -970,9 +970,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
@@ -986,7 +986,7 @@ ___
 
 #### Implementation of
 
-[IRedisClient](../interfaces/IRedisClient.md).[shutDown](../interfaces/IRedisClient.md#shutdown)
+[IRedisClient](../interfaces/IRedisClient.md).[shutdown](../interfaces/IRedisClient.md#shutdown)
 
 ___
 

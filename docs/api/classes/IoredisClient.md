@@ -54,7 +54,7 @@
 - [runScript](IoredisClient.md#runscript)
 - [sadd](IoredisClient.md#sadd)
 - [set](IoredisClient.md#set)
-- [shutDown](IoredisClient.md#shutdown)
+- [shutdown](IoredisClient.md#shutdown)
 - [sismember](IoredisClient.md#sismember)
 - [smembers](IoredisClient.md#smembers)
 - [srem](IoredisClient.md#srem)
@@ -936,9 +936,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb?`): `void`
+▸ **shutdown**(`cb?`): `void`
 
 #### Parameters
 
@@ -952,7 +952,7 @@ ___
 
 #### Overrides
 
-[RedisClientAbstract](RedisClientAbstract.md).[shutDown](RedisClientAbstract.md#shutdown)
+[RedisClientAbstract](RedisClientAbstract.md).[shutdown](RedisClientAbstract.md#shutdown)
 
 ___
 

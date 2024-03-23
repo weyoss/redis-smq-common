@@ -14,21 +14,9 @@
 
 - [constructor](WatchedKeysChangedError.md#constructor)
 
-### Properties
-
-- [cause](WatchedKeysChangedError.md#cause)
-- [message](WatchedKeysChangedError.md#message)
-- [stack](WatchedKeysChangedError.md#stack)
-- [prepareStackTrace](WatchedKeysChangedError.md#preparestacktrace)
-- [stackTraceLimit](WatchedKeysChangedError.md#stacktracelimit)
-
 ### Accessors
 
 - [name](WatchedKeysChangedError.md#name)
-
-### Methods
-
-- [captureStackTrace](WatchedKeysChangedError.md#capturestacktrace)
 
 ## Constructors
 
@@ -50,77 +38,6 @@
 
 [RedisClientError](RedisClientError.md).[constructor](RedisClientError.md#constructor)
 
-## Properties
-
-### cause
-
-• `Optional` **cause**: `unknown`
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[cause](RedisClientError.md#cause)
-
-___
-
-### message
-
-• **message**: `string`
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[message](RedisClientError.md#message)
-
-___
-
-### stack
-
-• `Optional` **stack**: `string`
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[stack](RedisClientError.md#stack)
-
-___
-
-### prepareStackTrace
-
-▪ `Static` `Optional` **prepareStackTrace**: (`err`: `Error`, `stackTraces`: `CallSite`[]) => `any`
-
-#### Type declaration
-
-▸ (`err`, `stackTraces`): `any`
-
-Optional override for formatting stack traces
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `err` | `Error` |
-| `stackTraces` | `CallSite`[] |
-
-##### Returns
-
-`any`
-
-**`See`**
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[prepareStackTrace](RedisClientError.md#preparestacktrace)
-
-___
-
-### stackTraceLimit
-
-▪ `Static` **stackTraceLimit**: `number`
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[stackTraceLimit](RedisClientError.md#stacktracelimit)
-
 ## Accessors
 
 ### name
@@ -134,26 +51,3 @@ ___
 #### Inherited from
 
 RedisClientError.name
-
-## Methods
-
-### captureStackTrace
-
-▸ **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
-
-Create .stack property on a target object
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `targetObject` | `object` |
-| `constructorOpt?` | `Function` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[RedisClientError](RedisClientError.md).[captureStackTrace](RedisClientError.md#capturestacktrace)

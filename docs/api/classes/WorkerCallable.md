@@ -11,7 +11,7 @@
 
 ## Hierarchy
 
-- `Worker`
+- `Worker`\<`Payload`, `Reply`\>
 
   ↳ **`WorkerCallable`**
 
@@ -31,9 +31,10 @@
 - [emit](WorkerCallable.md#emit)
 - [on](WorkerCallable.md#on)
 - [once](WorkerCallable.md#once)
+- [postMessage](WorkerCallable.md#postmessage)
 - [removeAllListeners](WorkerCallable.md#removealllisteners)
 - [removeListener](WorkerCallable.md#removelistener)
-- [shutDown](WorkerCallable.md#shutdown)
+- [shutdown](WorkerCallable.md#shutdown)
 
 ## Constructors
 
@@ -58,9 +59,9 @@
 
 [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
 
-#### Inherited from
+#### Overrides
 
-Worker.constructor
+Worker\&lt;Payload, Reply\&gt;.constructor
 
 ## Methods
 
@@ -166,6 +167,26 @@ Worker.once
 
 ___
 
+### postMessage
+
+▸ **postMessage**(`message`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | [`TWorkerThreadParentMessage`](../README.md#tworkerthreadparentmessage) |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Worker.postMessage
+
+___
+
 ### removeAllListeners
 
 ▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
@@ -219,9 +240,9 @@ Worker.removeListener
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
@@ -235,4 +256,4 @@ ___
 
 #### Inherited from
 
-Worker.shutDown
+Worker.shutdown

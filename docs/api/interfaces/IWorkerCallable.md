@@ -23,13 +23,13 @@
 
 ### call
 
-▸ **call**(`payload`, `cb`): `void`
+▸ **call**(`args`, `cb`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `payload` | `Payload` |
+| `args` | `Payload` |
 | `cb` | [`ICallback`](ICallback.md)\<`Reply`\> |
 
 #### Returns

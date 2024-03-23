@@ -1,12 +1,6 @@
 [RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IWorkerRunnable
 
-# Interface: IWorkerRunnable\<Payload\>
-
-## Type parameters
-
-| Name |
-| :------ |
-| `Payload` |
+# Interface: IWorkerRunnable
 
 ## Implemented by
 
@@ -17,18 +11,34 @@
 ### Methods
 
 - [run](IWorkerRunnable.md#run)
+- [shutdown](IWorkerRunnable.md#shutdown)
 
 ## Methods
 
 ### run
 
-▸ **run**(`initialPayload`, `cb`): `void`
+▸ **run**(`cb`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `initialPayload` | `Payload` |
+| `cb` | [`ICallback`](ICallback.md)\<`void`\> |
+
+#### Returns
+
+`void`
+
+___
+
+### shutdown
+
+▸ **shutdown**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
 | `cb` | [`ICallback`](ICallback.md)\<`void`\> |
 
 #### Returns

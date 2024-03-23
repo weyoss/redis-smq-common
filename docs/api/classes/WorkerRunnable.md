@@ -1,22 +1,22 @@
 [RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerRunnable
 
-# Class: WorkerRunnable\<Payload\>
+# Class: WorkerRunnable\<InitialPayload\>
 
 ## Type parameters
 
 | Name |
 | :------ |
-| `Payload` |
+| `InitialPayload` |
 
 ## Hierarchy
 
-- `Worker`
+- `Worker`\<`void`, `void`\>
 
   ↳ **`WorkerRunnable`**
 
 ## Implements
 
-- [`IWorkerRunnable`](../interfaces/IWorkerRunnable.md)\<`Payload`\>
+- [`IWorkerRunnable`](../interfaces/IWorkerRunnable.md)
 
 ## Table of contents
 
@@ -29,36 +29,38 @@
 - [emit](WorkerRunnable.md#emit)
 - [on](WorkerRunnable.md#on)
 - [once](WorkerRunnable.md#once)
+- [postMessage](WorkerRunnable.md#postmessage)
 - [removeAllListeners](WorkerRunnable.md#removealllisteners)
 - [removeListener](WorkerRunnable.md#removelistener)
 - [run](WorkerRunnable.md#run)
-- [shutDown](WorkerRunnable.md#shutdown)
+- [shutdown](WorkerRunnable.md#shutdown)
 
 ## Constructors
 
 ### constructor
 
-• **new WorkerRunnable**\<`Payload`\>(`workerFilename`): [`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+• **new WorkerRunnable**\<`InitialPayload`\>(`workerFilename`, `initialPayload?`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Type parameters
 
 | Name |
 | :------ |
-| `Payload` |
+| `InitialPayload` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `workerFilename` | `string` |
+| `initialPayload?` | `InitialPayload` |
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Overrides
 
-Worker.constructor
+Worker\&lt;void, void\&gt;.constructor
 
 ## Methods
 
@@ -91,7 +93,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+▸ **on**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Type parameters
 
@@ -108,7 +110,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Inherited from
 
@@ -118,7 +120,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+▸ **once**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Type parameters
 
@@ -135,7 +137,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Inherited from
 
@@ -143,9 +145,29 @@ Worker.once
 
 ___
 
+### postMessage
+
+▸ **postMessage**(`message`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message` | [`TWorkerThreadParentMessage`](../README.md#tworkerthreadparentmessage) |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Worker.postMessage
+
+___
+
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Type parameters
 
@@ -161,7 +183,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Inherited from
 
@@ -171,7 +193,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Type parameters
 
@@ -188,7 +210,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`Payload`\>
+[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
 
 #### Inherited from
 
@@ -198,13 +220,12 @@ ___
 
 ### run
 
-▸ **run**(`initialPayload`, `cb`): `void`
+▸ **run**(`cb`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `initialPayload` | `Payload` |
 | `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
 
 #### Returns
@@ -217,9 +238,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
@@ -231,6 +252,10 @@ ___
 
 `void`
 
+#### Implementation of
+
+[IWorkerRunnable](../interfaces/IWorkerRunnable.md).[shutdown](../interfaces/IWorkerRunnable.md#shutdown)
+
 #### Overrides
 
-Worker.shutDown
+Worker.shutdown

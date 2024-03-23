@@ -28,7 +28,7 @@
 - [once](IEventBus.md#once)
 - [removeAllListeners](IEventBus.md#removealllisteners)
 - [removeListener](IEventBus.md#removelistener)
-- [shutDown](IEventBus.md#shutdown)
+- [shutdown](IEventBus.md#shutdown)
 
 ## Methods
 
@@ -166,9 +166,9 @@ ___
 
 ___
 
-### shutDown
+### shutdown
 
-▸ **shutDown**(`cb`): `void`
+▸ **shutdown**(`cb`): `void`
 
 #### Parameters
 
