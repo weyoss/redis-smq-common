@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.15](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.14...v3.0.0-rc.15) (2024-03-24)
+
+
+### Bug Fixes
+
+* include missing enums when exporting esm/cjs modules ([6dbfa0a](https://github.com/weyoss/redis-smq-common/commit/6dbfa0abfe4129611c9cef0d5f9d850ed7d7937e))
+
 ## [3.0.0-rc.14](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.13...v3.0.0-rc.14) (2024-03-23)
 
 
