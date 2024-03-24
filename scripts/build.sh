@@ -29,6 +29,3 @@ cat >dist/cjs/package.json <<!EOF
 !EOF
 cp -r src/redis-client/lua-scripts/scripts dist/cjs/src/redis-client/lua-scripts/
 cp -r src/locker/redis-client/lua-scripts/scripts dist/cjs/src/locker/redis-client/lua-scripts/
-
-# types
-tsc -p ./tsconfig.types.json
