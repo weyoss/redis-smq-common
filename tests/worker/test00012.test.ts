@@ -10,8 +10,8 @@
 import { it } from '@jest/globals';
 import bluebird from 'bluebird';
 import { resolve } from 'node:path';
-import { getDirname } from '../../src/env/environment.js';
-import { WorkerResourceGroup } from '../../src/worker/worker-resource-group.js';
+import { getDirname } from '../../src/env/index.js';
+import { WorkerResourceGroup } from '../../src/worker/index.js';
 import { getRedisInstance } from '../common.js';
 
 const dir = getDirname();

@@ -8,7 +8,7 @@
  */
 
 import { ICallback } from '../../../../src/common/index.js';
-import { IWorkerRunnable } from '../../../../src/worker/types/worker.js';
+import { IWorkerRunnable } from '../../../../src/worker/index.js';
 
 export default function myWorkerRunnable(): IWorkerRunnable {
   let interval: NodeJS.Timeout | null = null;

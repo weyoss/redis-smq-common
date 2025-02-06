@@ -29,10 +29,8 @@ it('WorkerCallable: case 8', async () => {
     };
   });
 
-  // eslint-disable-next-line
-  // @ts-ignore
-  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
-
+  // @ts-expect-error any
+  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
   await import('../../src/worker/worker-thread/worker-thread.js');
 
   await bluebird.delay(5000);
@@ -55,10 +53,8 @@ it('WorkerCallable: case 8', async () => {
   // In real world the thread would exit when workerData is empty
   // But process.exit is mocked so getHandlerFn() is called with empty workerData
 
-  // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenCalledTimes(1);
 
-  // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     1,
     EWorkerThreadChildExitCode.WORKER_DATA_REQUIRED,

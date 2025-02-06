@@ -11,7 +11,7 @@ import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
-import { getDirname } from '../../src/env/environment.js';
+import { getDirname } from '../../src/env/index.js';
 import {
   EWorkerThreadChildExitCode,
   EWorkerThreadParentMessage,
@@ -39,7 +39,7 @@ it('WorkerCallable: case 7', async () => {
 
   // eslint-disable-next-line
   // @ts-ignore
-  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
+  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
 
   await import('../../src/worker/worker-thread/worker-thread.js');
 
@@ -56,13 +56,10 @@ it('WorkerCallable: case 7', async () => {
   // But process.exit is mocked so getHandlerFn() continues and trigger a second
   // exit call
 
-  // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenCalledTimes(2);
 
-  // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(1, 333);
 
-  // type-coverage:ignore-next-line
   expect(mockExit).toHaveBeenNthCalledWith(
     2,
     EWorkerThreadChildExitCode.INVALID_WORKER_TYPE,

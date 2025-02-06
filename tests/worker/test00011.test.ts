@@ -10,12 +10,12 @@
 import { expect, it } from '@jest/globals';
 import bluebird from 'bluebird';
 import { resolve } from 'node:path';
-import { getDirname } from '../../src/env/environment.js';
+import { getDirname } from '../../src/env/index.js';
 import {
   WorkerAlreadyDownError,
   WorkerAlreadyRunningError,
-} from '../../src/worker/errors/index.js';
-import { WorkerRunnable } from '../../src/worker/worker-runnable.js';
+} from '../../src/worker/index.js';
+import { WorkerRunnable } from '../../src/worker/index.js';
 
 const dir = getDirname();
 

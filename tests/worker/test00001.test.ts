@@ -10,9 +10,9 @@
 import { expect, it } from '@jest/globals';
 import bluebird from 'bluebird';
 import { resolve } from 'node:path';
-import { getDirname } from '../../src/env/environment.js';
-import { WorkerPayloadRequiredError } from '../../src/worker/errors/index.js';
-import { WorkerCallable } from '../../src/worker/worker-callable.js';
+import { getDirname } from '../../src/env/index.js';
+import { WorkerPayloadRequiredError } from '../../src/worker/index.js';
+import { WorkerCallable } from '../../src/worker/index.js';
 
 const dir = getDirname();
 

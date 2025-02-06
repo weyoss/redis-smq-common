@@ -12,7 +12,7 @@ import bluebird from 'bluebird';
 import {
   LockExtendError,
   LockNotAcquiredError,
-} from '../../src/locker/errors/index.js';
+} from '../../src/locker/index.js';
 import { Locker } from '../../src/locker/locker.js';
 import { getRedisInstance } from '../common.js';
 

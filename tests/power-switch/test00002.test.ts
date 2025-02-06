@@ -8,7 +8,7 @@
  */
 
 import { expect, it } from '@jest/globals';
-import { PowerSwitch } from '../../src/power-switch/power-switch.js';
+import { PowerSwitch } from '../../src/power-switch/index.js';
 
 it('PowerSwitch: case 2', () => {
   const powerSwitch = new PowerSwitch();

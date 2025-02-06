@@ -9,7 +9,7 @@
 
 import { expect, it } from '@jest/globals';
 import bluebird from 'bluebird';
-import { LockMethodNotAllowedError } from '../../src/locker/errors/index.js';
+import { LockMethodNotAllowedError } from '../../src/locker/index.js';
 import { Locker } from '../../src/locker/locker.js';
 import { getRedisInstance } from '../common.js';
 

@@ -9,8 +9,8 @@
 
 import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
-import { EventBusNotConnectedError } from '../../src/event-bus/errors/index.js';
-import { EventBus } from '../../src/event-bus/event-bus.js';
+import { EventBusNotConnectedError } from '../../src/event-bus/index.js';
+import { EventBus } from '../../src/event-bus/index.js';
 
 type TEvent = {
   e1: (arg: string) => void;

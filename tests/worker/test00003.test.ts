@@ -11,7 +11,7 @@ import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'node:path';
-import { getDirname } from '../../src/env/environment.js';
+import { getDirname } from '../../src/env/index.js';
 import {
   EWorkerThreadChildExecutionCode,
   EWorkerThreadParentMessage,
@@ -38,9 +38,8 @@ it('WorkerCallable: case 3', async () => {
     };
   });
 
-  // eslint-disable-next-line
-  // @ts-ignore
-  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {}); // type-coverage:ignore-line
+  // @ts-expect-error any
+  const mockExit = jest.spyOn(process, 'exit').mockImplementation(() => {});
 
   await import('../../src/worker/worker-thread/worker-thread.js');
 
@@ -60,5 +59,5 @@ it('WorkerCallable: case 3', async () => {
     data: message.payload,
   });
 
-  expect(mockExit).toHaveBeenCalledTimes(0); // type-coverage:ignore-line
+  expect(mockExit).toHaveBeenCalledTimes(0);
 });
