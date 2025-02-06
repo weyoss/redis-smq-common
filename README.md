@@ -9,14 +9,18 @@ A High-Performance Redis Simple Message Queue for Node.js
 
 ## RedisSMQ Common Library
 
-RedisSMQ Common Library provides many components that are mainly used by [RedisSMQ](https://github.com/weyoss/redis-smq) and [RedisSMQ Monitor](https://github.com/weyoss/redis-smq-monitor).
+RedisSMQ Common Library provides essential components that are used by [RedisSMQ](https://github.com/weyoss/redis-smq) and other RedisSMQ-based applications.
 
 This library is included as part of RedisSMQ and not intended to be installed separately as a stand-alone package.
 
 ## Documentation
 
-See [Docs](docs/README.md) for more details.
+For more detailed information about the library's components and their usage, visit the [Documentation](docs/README.md).
+
+## Contributions
+
+We welcome contributions to this project! If you're interested in contributing, please check out our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
 
 ## License
 
-[MIT](https://github.com/weyoss/redis-smq/blob/master/LICENSE)
+This project is licensed under the [MIT License](https://github.com/weyoss/redis-smq/blob/master/LICENSE)
