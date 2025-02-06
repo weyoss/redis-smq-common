@@ -7,13 +7,13 @@
  * in the root directory of this source tree.
  */
 
-import { Pipeline, Redis } from 'ioredis';
+import { Redis } from 'ioredis';
 import { ICallback } from '../../common/index.js';
 import { IRedisTransaction } from '../types/index.js';
 import { RedisClientError, WatchedKeysChangedError } from '../errors/index.js';
 
 export class IoredisClientMulti implements IRedisTransaction {
-  protected multi: Pipeline;
+  protected multi;
 
   constructor(client: Redis) {
     this.multi = client.multi();
@@ -111,29 +111,31 @@ export class IoredisClientMulti implements IRedisTransaction {
   }
 
   exec(cb: ICallback<unknown[]>): void {
-    this.multi.exec((err, reply: [Error | null, unknown][]) => {
-      if (err) cb(err);
-      else if (!reply) cb(new WatchedKeysChangedError());
-      else {
-        const lengths: unknown[] = [];
-        let err: Error | null = null;
-        for (const i of reply) {
-          if (!Array.isArray(i)) {
-            err = new RedisClientError(
-              'Expected an array reply from multi.exec()',
-            );
-            break;
-          }
-          const [error, result] = i;
-          if (error instanceof Error) {
-            err = error;
-            break;
-          }
-          lengths.push(result);
-        }
+    this.multi.exec(
+      (err, reply: [Error | null, unknown][] | null | undefined) => {
         if (err) cb(err);
-        else cb(null, lengths);
-      }
-    });
+        else if (!reply) cb(new WatchedKeysChangedError());
+        else {
+          const lengths: unknown[] = [];
+          let err: Error | null = null;
+          for (const i of reply) {
+            if (!Array.isArray(i)) {
+              err = new RedisClientError(
+                'Expected an array reply from multi.exec()',
+              );
+              break;
+            }
+            const [error, result] = i;
+            if (error instanceof Error) {
+              err = error;
+              break;
+            }
+            lengths.push(result);
+          }
+          if (err) cb(err);
+          else cb(null, lengths);
+        }
+      },
+    );
   }
 }

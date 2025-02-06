@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import IORedis, { Redis, RedisOptions } from 'ioredis';
+import { Redis, RedisOptions } from 'ioredis';
 import { CallbackEmptyReplyError } from '../../errors/index.js';
 import { RedisClientError } from '../errors/index.js';
 import { RedisClientAbstract } from './redis-client-abstract.js';
@@ -19,7 +19,7 @@ export class IoredisClient extends RedisClientAbstract {
 
   constructor(config: RedisOptions = {}) {
     super();
-    this.client = new IORedis(config);
+    this.client = new Redis(config);
     this.client.once('ready', () => {
       this.connectionClosed = false;
       this.emit('ready');
@@ -43,6 +43,7 @@ export class IoredisClient extends RedisClientAbstract {
       this.client.set(
         key,
         value,
+        // @ts-expect-error any
         options.expire.mode,
         options.expire.value,
         options.exists,
@@ -52,11 +53,13 @@ export class IoredisClient extends RedisClientAbstract {
       this.client.set(
         key,
         value,
+        // @ts-expect-error any
         options.expire.mode,
         options.expire.value,
         cb,
       );
     } else if (options.exists) {
+      // @ts-expect-error any
       this.client.set(key, value, options.exists, cb);
     } else {
       this.client.set(key, value, cb);
@@ -97,9 +100,11 @@ export class IoredisClient extends RedisClientAbstract {
     const args: [string, string] = [key, cursor];
     if (options.MATCH) args.push('MATCH', options.MATCH);
     if (options.COUNT) args.push('COUNT', String(options.COUNT));
-    this.client.sscan(...args, (err, [cursor, items]) => {
-      if (err) cb(err);
-      else cb(null, { cursor, items });
+    this.client.sscan(...args, (err, reply) => {
+      if (err) return cb(err);
+      const [cursor, items] = reply ?? [];
+      if (!cursor || !items) return cb(new RedisClientError());
+      cb(null, { cursor, items });
     });
   }
 
@@ -204,16 +209,16 @@ export class IoredisClient extends RedisClientAbstract {
     const args: [string, string] = [key, cursor];
     if (options.MATCH) args.push('MATCH', options.MATCH);
     if (options.COUNT) args.push('COUNT', String(options.COUNT));
-    this.client.hscan(...args, (err, [cursor, items]) => {
-      if (err) cb(err);
-      else {
-        const result: Record<string, string> = {};
-        while (items.length) {
-          const key = String(items.shift());
-          result[key] = String(items.shift());
-        }
-        cb(null, { cursor, result });
+    this.client.hscan(...args, (err, reply) => {
+      if (err) return cb(err);
+      const [cursor, items] = reply ?? [];
+      if (!cursor || !items) return cb(new RedisClientError());
+      const result: Record<string, string> = {};
+      while (items.length) {
+        const key = String(items.shift());
+        result[key] = String(items.shift());
       }
+      cb(null, { cursor, result });
     });
   }
 
@@ -231,7 +236,9 @@ export class IoredisClient extends RedisClientAbstract {
   }
 
   hdel(key: string, fields: string | string[], cb: ICallback<number>): void {
-    this.client.hdel(key, fields, cb);
+    // Normalize key to always be an array of strings
+    const f = Array.isArray(fields) ? fields : [fields];
+    this.client.hdel(key, ...f, cb);
   }
 
   lrange(
@@ -315,7 +322,12 @@ export class IoredisClient extends RedisClientAbstract {
 
   loadScript(script: string, cb: ICallback<string>): void {
     // type-coverage:ignore-next-line
-    this.client.script('load', script, cb);
+    this.client.script('LOAD', script, (err, data) => {
+      if (err) return cb(err);
+      if (!data) return cb(new CallbackEmptyReplyError());
+      if (typeof data !== 'string') return cb(new RedisClientError());
+      cb(null, data);
+    });
   }
 
   evalsha(
@@ -323,10 +335,11 @@ export class IoredisClient extends RedisClientAbstract {
     args: (string | number)[] | string | number,
     cb: (err?: Error | null, res?: unknown) => void,
   ): void {
-    const arrHash: (string | number)[] = [hash];
-    const arrArgs = Array.isArray(args) ? args : [args];
-    // type-coverage:ignore-next-line
-    this.client.evalsha(arrHash.concat(arrArgs), cb);
+    const arrArgs = Array.isArray(args)
+      ? args.map((i) => String(i))
+      : [String(args)];
+    const [numKeys, ...keysAndArgs] = arrArgs;
+    this.client.evalsha(hash, numKeys, keysAndArgs, cb);
   }
 
   get(key: string, cb: ICallback<string | null>): void {
@@ -334,7 +347,9 @@ export class IoredisClient extends RedisClientAbstract {
   }
 
   del(key: string | string[], cb: ICallback<number>): void {
-    this.client.del(key, cb);
+    // Normalize key to always be an array of strings
+    const keys = Array.isArray(key) ? key : [key];
+    this.client.del(...keys, cb);
   }
 
   llen(key: string, cb: ICallback<number>): void {
@@ -355,7 +370,17 @@ export class IoredisClient extends RedisClientAbstract {
         ),
       );
     } else {
-      this.client.lmove(source, destination, from, to, cb);
+      if (from === 'LEFT' && to === 'RIGHT') {
+        this.client.lmove(source, destination, from, to, cb);
+      } else if (from === 'RIGHT' && to === 'LEFT') {
+        this.client.lmove(source, destination, from, to, cb);
+      } else {
+        cb(
+          new RedisClientError(
+            'Invalid move direction. Use LEFT -> RIGHT or RIGHT -> LEFT.',
+          ),
+        );
+      }
     }
   }
 
@@ -373,7 +398,7 @@ export class IoredisClient extends RedisClientAbstract {
     keys: string[],
     cb: ICallback<(string | null)[]>,
   ): void {
-    this.client.hmget(source, keys, cb);
+    this.client.hmget(source, ...keys, cb);
   }
 
   halt(cb: ICallback<void>): void {
