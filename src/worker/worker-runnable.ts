@@ -13,7 +13,7 @@ import {
   EWorkerType,
   IWorkerRunnable,
 } from './types/index.js';
-import { PowerSwitch } from '../power-switch/power-switch.js';
+import { PowerSwitch } from '../power-switch/index.js';
 import {
   WorkerAlreadyDownError,
   WorkerAlreadyRunningError,

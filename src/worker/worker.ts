@@ -17,7 +17,7 @@ import {
   TWorkerThreadChildMessage,
   TWorkerThreadParentMessage,
 } from './types/index.js';
-import { getDirname } from '../env/environment.js';
+import { getDirname } from '../env/index.js';
 import { EventEmitter } from '../event/index.js';
 import { WorkerThreadError } from './errors/index.js';
 

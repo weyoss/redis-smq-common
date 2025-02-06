@@ -11,7 +11,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import { async } from '../../async/index.js';
 import { ICallback } from '../../common/index.js';
-import { getDirname } from '../../env/environment.js';
+import { getDirname } from '../../env/index.js';
 import { CallbackEmptyReplyError } from '../../errors/index.js';
 import { RedisClientError } from '../errors/index.js';
 import { IRedisClient } from '../types/index.js';

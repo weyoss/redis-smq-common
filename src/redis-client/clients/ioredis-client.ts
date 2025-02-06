@@ -321,7 +321,6 @@ export class IoredisClient extends RedisClientAbstract {
   }
 
   loadScript(script: string, cb: ICallback<string>): void {
-    // type-coverage:ignore-next-line
     this.client.script('LOAD', script, (err, data) => {
       if (err) return cb(err);
       if (!data) return cb(new CallbackEmptyReplyError());

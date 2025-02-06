@@ -8,10 +8,7 @@
  */
 
 import { ICallback } from '../../common/index.js';
-import {
-  IEventEmitter,
-  TEventEmitterEvent,
-} from '../../event/types/event-emitter.js';
+import { IEventEmitter, TEventEmitterEvent } from '../../event/index.js';
 
 export type TEventBusEvent = TEventEmitterEvent & {
   error: (err: Error) => void;

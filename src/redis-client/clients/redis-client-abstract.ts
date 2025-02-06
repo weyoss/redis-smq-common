@@ -15,7 +15,7 @@ import {
 import { CallbackEmptyReplyError } from '../../errors/index.js';
 import { EventEmitter } from '../../event/index.js';
 import { RedisClientError } from '../errors/index.js';
-import { ELuaScriptName, LuaScript } from '../lua-scripts/lua-script.js';
+import { ELuaScriptName, LuaScript } from '../lua-scripts/index.js';
 import { ICallback } from '../../common/index.js';
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];

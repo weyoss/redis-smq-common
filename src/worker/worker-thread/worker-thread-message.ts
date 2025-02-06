@@ -11,7 +11,7 @@ import {
   EWorkerThreadChildExecutionCode,
   TWorkerThreadChildMessage,
   TWorkerThreadChildMessageCode,
-} from '../types/worker-thread.js';
+} from '../types/index.js';
 
 function formatErrorMessage(
   code: TWorkerThreadChildMessageCode,

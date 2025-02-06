@@ -7,7 +7,7 @@
  * in the root directory of this source tree.
  */
 
-import { PanicError } from '../errors/panic.error.js';
+import { PanicError } from '../errors/index.js';
 import { dirname } from 'path';
 
 function isStackTraces(stack: unknown): stack is NodeJS.CallSite[] {

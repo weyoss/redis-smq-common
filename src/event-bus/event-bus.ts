@@ -10,7 +10,7 @@
 import { ICallback } from '../common/index.js';
 import { IEventBus, TEventBusEvent } from './types/index.js';
 import { EventBusNotConnectedError } from './errors/index.js';
-import { EventEmitter } from '../event/event-emitter.js';
+import { EventEmitter } from '../event/index.js';
 
 export class EventBus<Events extends TEventBusEvent>
   extends EventEmitter<Events>

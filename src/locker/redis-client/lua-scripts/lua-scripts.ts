@@ -9,8 +9,8 @@
 
 import fs from 'fs';
 import { resolve } from 'path';
-import { getDirname } from '../../../env/environment.js';
-import { RedisClientAbstract } from '../../../redis-client/clients/redis-client-abstract.js';
+import { getDirname } from '../../../env/index.js';
+import { RedisClientAbstract } from '../../../redis-client/index.js';
 
 export enum ELuaScript {
   RELEASE_LOCK = 'RELEASE_LOCK',
