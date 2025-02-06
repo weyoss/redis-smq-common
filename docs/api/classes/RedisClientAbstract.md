@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / RedisClientAbstract
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / RedisClientAbstract
 
 # Class: RedisClientAbstract
 
@@ -672,7 +672,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -689,7 +689,7 @@ ___
 
 #### Returns
 
-[`RedisClientAbstract`](RedisClientAbstract.md)
+`this`
 
 #### Implementation of
 
@@ -703,7 +703,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -720,7 +720,7 @@ ___
 
 #### Returns
 
-[`RedisClientAbstract`](RedisClientAbstract.md)
+`this`
 
 #### Implementation of
 
@@ -796,7 +796,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`RedisClientAbstract`](RedisClientAbstract.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -812,7 +812,7 @@ ___
 
 #### Returns
 
-[`RedisClientAbstract`](RedisClientAbstract.md)
+`this`
 
 #### Implementation of
 
@@ -826,7 +826,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`RedisClientAbstract`](RedisClientAbstract.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -843,7 +843,7 @@ ___
 
 #### Returns
 
-[`RedisClientAbstract`](RedisClientAbstract.md)
+`this`
 
 #### Implementation of
 

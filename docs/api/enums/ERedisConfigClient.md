@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ERedisConfigClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / ERedisConfigClient
 
 # Enumeration: ERedisConfigClient
 

@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / EventBus
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / EventBus
 
 # Class: EventBus\<Events\>
 
@@ -65,7 +65,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`EventBus`](EventBus.md)\<`Events`\>
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -82,7 +82,7 @@ ___
 
 #### Returns
 
-[`EventBus`](EventBus.md)\<`Events`\>
+`this`
 
 #### Implementation of
 
@@ -96,7 +96,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`EventBus`](EventBus.md)\<`Events`\>
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -113,7 +113,7 @@ ___
 
 #### Returns
 
-[`EventBus`](EventBus.md)\<`Events`\>
+`this`
 
 #### Implementation of
 
@@ -127,7 +127,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`EventBus`](EventBus.md)\<`Events`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -143,7 +143,7 @@ ___
 
 #### Returns
 
-[`EventBus`](EventBus.md)\<`Events`\>
+`this`
 
 #### Implementation of
 
@@ -157,7 +157,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`EventBus`](EventBus.md)\<`Events`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -174,7 +174,7 @@ ___
 
 #### Returns
 
-[`EventBus`](EventBus.md)\<`Events`\>
+`this`
 
 #### Implementation of
 

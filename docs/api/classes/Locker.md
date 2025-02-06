@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / Locker
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / Locker
 
 # Class: Locker
 
@@ -58,7 +58,7 @@
 
 #### Overrides
 
-Runnable\&lt;TLockerEvent\&gt;.constructor
+Runnable\<TLockerEvent\>.constructor
 
 ## Methods
 
@@ -227,7 +227,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`Locker`](Locker.md)
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -244,7 +244,7 @@ ___
 
 #### Returns
 
-[`Locker`](Locker.md)
+`this`
 
 #### Inherited from
 
@@ -254,7 +254,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`Locker`](Locker.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -271,7 +271,7 @@ ___
 
 #### Returns
 
-[`Locker`](Locker.md)
+`this`
 
 #### Inherited from
 
@@ -297,7 +297,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`Locker`](Locker.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -313,7 +313,7 @@ ___
 
 #### Returns
 
-[`Locker`](Locker.md)
+`this`
 
 #### Inherited from
 
@@ -323,7 +323,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`Locker`](Locker.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -340,7 +340,7 @@ ___
 
 #### Returns
 
-[`Locker`](Locker.md)
+`this`
 
 #### Inherited from
 

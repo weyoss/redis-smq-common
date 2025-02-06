@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IRedisConfigNodeRedis
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IRedisConfigNodeRedis
 
 # Interface: IRedisConfigNodeRedis
 
@@ -19,4 +19,4 @@ ___
 
 ### options
 
-• `Optional` **options**: [`RedisClientOptions`<`RedisModules`, `RedisFunctions`, `RedisScripts`>](https://github.com/redis/node-redis/blob/master/docs/client-configuration.md#createclient-configuration)
+• `Optional` **options**: `RedisClientOptions`\<`RedisModules`, `RedisFunctions`, `RedisScripts`\>

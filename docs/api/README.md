@@ -1,6 +1,6 @@
-[RedisSMQ Common Library](../../README.md) / [Docs](../README.md) / API
+[RedisSMQ Common Library](../../README.md) / [Docs](../README.md) / API Reference
 
-# API
+# API Reference
 
 ## Table of contents
 
@@ -15,42 +15,45 @@
 
 ### Classes
 
-- [AbortError](classes/AbortError.md)
-- [CallbackEmptyReplyError](classes/CallbackEmptyReplyError.md)
-- [CallbackInvalidReplyError](classes/CallbackInvalidReplyError.md)
 - [EventBus](classes/EventBus.md)
-- [EventBusError](classes/EventBusError.md)
-- [EventBusNotConnectedError](classes/EventBusNotConnectedError.md)
 - [EventBusRedis](classes/EventBusRedis.md)
 - [EventEmitter](classes/EventEmitter.md)
 - [IoredisClient](classes/IoredisClient.md)
 - [IoredisClientMulti](classes/IoredisClientMulti.md)
+- [Locker](classes/Locker.md)
+- [LuaScript](classes/LuaScript.md)
+- [NodeRedisClient](classes/NodeRedisClient.md)
+- [NodeRedisClientMulti](classes/NodeRedisClientMulti.md)
+- [PowerSwitch](classes/PowerSwitch.md)
+- [RedisClientAbstract](classes/RedisClientAbstract.md)
+- [Runnable](classes/Runnable.md)
+- [Timer](classes/Timer.md)
+- [WorkerCallable](classes/WorkerCallable.md)
+- [WorkerResourceGroup](classes/WorkerResourceGroup.md)
+- [WorkerRunnable](classes/WorkerRunnable.md)
+
+### Error Classes
+
+- [AbortError](classes/AbortError.md)
+- [CallbackEmptyReplyError](classes/CallbackEmptyReplyError.md)
+- [CallbackInvalidReplyError](classes/CallbackInvalidReplyError.md)
+- [EventBusError](classes/EventBusError.md)
+- [EventBusNotConnectedError](classes/EventBusNotConnectedError.md)
 - [LockAcquireError](classes/LockAcquireError.md)
 - [LockError](classes/LockError.md)
 - [LockExtendError](classes/LockExtendError.md)
 - [LockMethodNotAllowedError](classes/LockMethodNotAllowedError.md)
 - [LockNotAcquiredError](classes/LockNotAcquiredError.md)
-- [Locker](classes/Locker.md)
 - [LoggerError](classes/LoggerError.md)
-- [LuaScript](classes/LuaScript.md)
-- [NodeRedisClient](classes/NodeRedisClient.md)
-- [NodeRedisClientMulti](classes/NodeRedisClientMulti.md)
 - [PanicError](classes/PanicError.md)
-- [PowerSwitch](classes/PowerSwitch.md)
-- [RedisClientAbstract](classes/RedisClientAbstract.md)
 - [RedisClientError](classes/RedisClientError.md)
 - [RedisSMQError](classes/RedisSMQError.md)
-- [Runnable](classes/Runnable.md)
-- [Timer](classes/Timer.md)
 - [TimerError](classes/TimerError.md)
 - [WatchedKeysChangedError](classes/WatchedKeysChangedError.md)
 - [WorkerAlreadyDownError](classes/WorkerAlreadyDownError.md)
 - [WorkerAlreadyRunningError](classes/WorkerAlreadyRunningError.md)
-- [WorkerCallable](classes/WorkerCallable.md)
 - [WorkerError](classes/WorkerError.md)
 - [WorkerPayloadRequiredError](classes/WorkerPayloadRequiredError.md)
-- [WorkerResourceGroup](classes/WorkerResourceGroup.md)
-- [WorkerRunnable](classes/WorkerRunnable.md)
 - [WorkerThreadError](classes/WorkerThreadError.md)
 
 ### Interfaces
@@ -85,7 +88,6 @@
 - [TWorkerFunction](README.md#tworkerfunction)
 - [TWorkerResourceGroupEvent](README.md#tworkerresourcegroupevent)
 - [TWorkerRunnableFunctionFactory](README.md#tworkerrunnablefunctionfactory)
-- [TWorkerThreadChildError](README.md#tworkerthreadchilderror)
 - [TWorkerThreadChildMessage](README.md#tworkerthreadchildmessage)
 - [TWorkerThreadChildMessageCode](README.md#tworkerthreadchildmessagecode)
 - [TWorkerThreadParentMessage](README.md#tworkerthreadparentmessage)

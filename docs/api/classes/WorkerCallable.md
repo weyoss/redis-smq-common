@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerCallable
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / WorkerCallable
 
 # Class: WorkerCallable\<Payload, Reply\>
 
@@ -61,7 +61,7 @@
 
 #### Overrides
 
-Worker\&lt;Payload, Reply\&gt;.constructor
+Worker\<Payload, Reply\>.constructor
 
 ## Methods
 
@@ -115,7 +115,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -132,7 +132,7 @@ ___
 
 #### Returns
 
-[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+`this`
 
 #### Inherited from
 
@@ -142,7 +142,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -159,7 +159,7 @@ ___
 
 #### Returns
 
-[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+`this`
 
 #### Inherited from
 
@@ -189,7 +189,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -205,7 +205,7 @@ ___
 
 #### Returns
 
-[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+`this`
 
 #### Inherited from
 
@@ -215,7 +215,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -232,7 +232,7 @@ ___
 
 #### Returns
 
-[`WorkerCallable`](WorkerCallable.md)\<`Payload`, `Reply`\>
+`this`
 
 #### Inherited from
 

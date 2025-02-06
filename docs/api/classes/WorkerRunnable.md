@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerRunnable
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / WorkerRunnable
 
 # Class: WorkerRunnable\<InitialPayload\>
 
@@ -60,7 +60,7 @@
 
 #### Overrides
 
-Worker\&lt;void, void\&gt;.constructor
+Worker\<void, void\>.constructor
 
 ## Methods
 
@@ -93,7 +93,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -110,7 +110,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+`this`
 
 #### Inherited from
 
@@ -120,7 +120,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -137,7 +137,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+`this`
 
 #### Inherited from
 
@@ -167,7 +167,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -183,7 +183,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+`this`
 
 #### Inherited from
 
@@ -193,7 +193,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -210,7 +210,7 @@ ___
 
 #### Returns
 
-[`WorkerRunnable`](WorkerRunnable.md)\<`InitialPayload`\>
+`this`
 
 #### Inherited from
 

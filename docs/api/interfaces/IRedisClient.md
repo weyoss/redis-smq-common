@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IRedisClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IRedisClient
 
 # Interface: IRedisClient
 
@@ -545,7 +545,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -562,7 +562,7 @@ ___
 
 #### Returns
 
-[`IRedisClient`](IRedisClient.md)
+`this`
 
 #### Inherited from
 
@@ -572,7 +572,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -589,7 +589,7 @@ ___
 
 #### Returns
 
-[`IRedisClient`](IRedisClient.md)
+`this`
 
 #### Inherited from
 
@@ -649,7 +649,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`IRedisClient`](IRedisClient.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -665,7 +665,7 @@ ___
 
 #### Returns
 
-[`IRedisClient`](IRedisClient.md)
+`this`
 
 #### Inherited from
 
@@ -675,7 +675,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`IRedisClient`](IRedisClient.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -692,7 +692,7 @@ ___
 
 #### Returns
 
-[`IRedisClient`](IRedisClient.md)
+`this`
 
 #### Inherited from
 

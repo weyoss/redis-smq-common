@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / Runnable
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / Runnable
 
 # Class: Runnable\<Event\>
 
@@ -127,7 +127,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`Runnable`](Runnable.md)\<`Event`\>
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -144,7 +144,7 @@ ___
 
 #### Returns
 
-[`Runnable`](Runnable.md)\<`Event`\>
+`this`
 
 #### Inherited from
 
@@ -154,7 +154,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`Runnable`](Runnable.md)\<`Event`\>
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -171,7 +171,7 @@ ___
 
 #### Returns
 
-[`Runnable`](Runnable.md)\<`Event`\>
+`this`
 
 #### Inherited from
 
@@ -181,7 +181,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`Runnable`](Runnable.md)\<`Event`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -197,7 +197,7 @@ ___
 
 #### Returns
 
-[`Runnable`](Runnable.md)\<`Event`\>
+`this`
 
 #### Inherited from
 
@@ -207,7 +207,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`Runnable`](Runnable.md)\<`Event`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -224,7 +224,7 @@ ___
 
 #### Returns
 
-[`Runnable`](Runnable.md)\<`Event`\>
+`this`
 
 #### Inherited from
 

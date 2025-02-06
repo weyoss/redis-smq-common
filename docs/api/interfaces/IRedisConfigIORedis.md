@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IRedisConfigIORedis
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IRedisConfigIORedis
 
 # Interface: IRedisConfigIORedis
 
@@ -19,4 +19,4 @@ ___
 
 ### options
 
-• `Optional` **options**: [`RedisOptions`](https://github.com/redis/ioredis/blob/v4.28.5/API.md#new_Redis_new)
+• `Optional` **options**: `RedisOptions`

@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IoredisClientMulti
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IoredisClientMulti
 
 # Class: IoredisClientMulti
 
@@ -53,7 +53,7 @@
 
 ### del
 
-▸ **del**(`key`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **del**(`key`): `this`
 
 #### Parameters
 
@@ -63,7 +63,7 @@
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -93,7 +93,7 @@ ___
 
 ### expire
 
-▸ **expire**(`key`, `secs`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **expire**(`key`, `secs`): `this`
 
 #### Parameters
 
@@ -104,7 +104,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -114,7 +114,7 @@ ___
 
 ### hdel
 
-▸ **hdel**(`key`, `field`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **hdel**(`key`, `field`): `this`
 
 #### Parameters
 
@@ -125,7 +125,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -135,7 +135,7 @@ ___
 
 ### hincrby
 
-▸ **hincrby**(`key`, `field`, `by`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **hincrby**(`key`, `field`, `by`): `this`
 
 #### Parameters
 
@@ -147,7 +147,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -157,7 +157,7 @@ ___
 
 ### hset
 
-▸ **hset**(`key`, `field`, `value`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **hset**(`key`, `field`, `value`): `this`
 
 #### Parameters
 
@@ -169,7 +169,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -179,7 +179,7 @@ ___
 
 ### lpop
 
-▸ **lpop**(`key`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **lpop**(`key`): `this`
 
 #### Parameters
 
@@ -189,7 +189,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -199,7 +199,7 @@ ___
 
 ### lpush
 
-▸ **lpush**(`key`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **lpush**(`key`, `element`): `this`
 
 #### Parameters
 
@@ -210,7 +210,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -220,7 +220,7 @@ ___
 
 ### lrem
 
-▸ **lrem**(`key`, `count`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **lrem**(`key`, `count`, `element`): `this`
 
 #### Parameters
 
@@ -232,7 +232,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -242,7 +242,7 @@ ___
 
 ### ltrim
 
-▸ **ltrim**(`key`, `start`, `stop`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **ltrim**(`key`, `start`, `stop`): `this`
 
 #### Parameters
 
@@ -254,7 +254,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -264,7 +264,7 @@ ___
 
 ### pexpire
 
-▸ **pexpire**(`key`, `millis`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **pexpire**(`key`, `millis`): `this`
 
 #### Parameters
 
@@ -275,7 +275,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -285,7 +285,7 @@ ___
 
 ### rpop
 
-▸ **rpop**(`key`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **rpop**(`key`): `this`
 
 #### Parameters
 
@@ -295,7 +295,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -305,7 +305,7 @@ ___
 
 ### rpoplpush
 
-▸ **rpoplpush**(`source`, `destination`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **rpoplpush**(`source`, `destination`): `this`
 
 #### Parameters
 
@@ -316,7 +316,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -326,7 +326,7 @@ ___
 
 ### rpush
 
-▸ **rpush**(`key`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **rpush**(`key`, `element`): `this`
 
 #### Parameters
 
@@ -337,7 +337,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -347,7 +347,7 @@ ___
 
 ### sadd
 
-▸ **sadd**(`key`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **sadd**(`key`, `element`): `this`
 
 #### Parameters
 
@@ -358,7 +358,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -368,7 +368,7 @@ ___
 
 ### srem
 
-▸ **srem**(`key`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **srem**(`key`, `element`): `this`
 
 #### Parameters
 
@@ -379,7 +379,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -389,7 +389,7 @@ ___
 
 ### zadd
 
-▸ **zadd**(`key`, `score`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **zadd**(`key`, `score`, `element`): `this`
 
 #### Parameters
 
@@ -401,7 +401,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 
@@ -411,7 +411,7 @@ ___
 
 ### zrem
 
-▸ **zrem**(`key`, `element`): [`IoredisClientMulti`](IoredisClientMulti.md)
+▸ **zrem**(`key`, `element`): `this`
 
 #### Parameters
 
@@ -422,7 +422,7 @@ ___
 
 #### Returns
 
-[`IoredisClientMulti`](IoredisClientMulti.md)
+`this`
 
 #### Implementation of
 

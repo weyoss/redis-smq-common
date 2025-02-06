@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / WorkerResourceGroup
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / WorkerResourceGroup
 
 # Class: WorkerResourceGroup
 
@@ -52,7 +52,7 @@
 
 #### Overrides
 
-Runnable\&lt;TWorkerResourceGroupEvent\&gt;.constructor
+Runnable\<TWorkerResourceGroupEvent\>.constructor
 
 ## Methods
 
@@ -204,7 +204,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`WorkerResourceGroup`](WorkerResourceGroup.md)
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -221,7 +221,7 @@ ___
 
 #### Returns
 
-[`WorkerResourceGroup`](WorkerResourceGroup.md)
+`this`
 
 #### Inherited from
 
@@ -231,7 +231,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`WorkerResourceGroup`](WorkerResourceGroup.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -248,7 +248,7 @@ ___
 
 #### Returns
 
-[`WorkerResourceGroup`](WorkerResourceGroup.md)
+`this`
 
 #### Inherited from
 
@@ -258,7 +258,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`WorkerResourceGroup`](WorkerResourceGroup.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -274,7 +274,7 @@ ___
 
 #### Returns
 
-[`WorkerResourceGroup`](WorkerResourceGroup.md)
+`this`
 
 #### Inherited from
 
@@ -284,7 +284,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`WorkerResourceGroup`](WorkerResourceGroup.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -301,7 +301,7 @@ ___
 
 #### Returns
 
-[`WorkerResourceGroup`](WorkerResourceGroup.md)
+`this`
 
 #### Inherited from
 

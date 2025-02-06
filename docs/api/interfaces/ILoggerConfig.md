@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / ILoggerConfig
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / ILoggerConfig
 
 # Interface: ILoggerConfig
 
@@ -19,4 +19,4 @@ ___
 
 ### options
 
-• `Optional` **options**: `Partial`<[`LoggerOptions`](https://github.com/trentm/node-bunyan#constructor-api)>
+• `Optional` **options**: `Partial`\<`LoggerOptions`\>

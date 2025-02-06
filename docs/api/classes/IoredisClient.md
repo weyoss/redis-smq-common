@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IoredisClient
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IoredisClient
 
 # Class: IoredisClient
 
@@ -660,7 +660,7 @@ ___
 
 ### on
 
-▸ **on**(`event`, `listener`): [`IoredisClient`](IoredisClient.md)
+▸ **on**(`event`, `listener`): `this`
 
 #### Parameters
 
@@ -671,7 +671,7 @@ ___
 
 #### Returns
 
-[`IoredisClient`](IoredisClient.md)
+`this`
 
 #### Overrides
 
@@ -681,7 +681,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`IoredisClient`](IoredisClient.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -698,7 +698,7 @@ ___
 
 #### Returns
 
-[`IoredisClient`](IoredisClient.md)
+`this`
 
 #### Inherited from
 
@@ -770,7 +770,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`IoredisClient`](IoredisClient.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -786,7 +786,7 @@ ___
 
 #### Returns
 
-[`IoredisClient`](IoredisClient.md)
+`this`
 
 #### Inherited from
 
@@ -796,7 +796,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`IoredisClient`](IoredisClient.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -813,7 +813,7 @@ ___
 
 #### Returns
 
-[`IoredisClient`](IoredisClient.md)
+`this`
 
 #### Inherited from
 

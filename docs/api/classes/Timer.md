@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / Timer
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / Timer
 
 # Class: Timer
 
@@ -70,7 +70,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`Timer`](Timer.md)
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -87,7 +87,7 @@ ___
 
 #### Returns
 
-[`Timer`](Timer.md)
+`this`
 
 #### Inherited from
 
@@ -97,7 +97,7 @@ ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`Timer`](Timer.md)
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -114,7 +114,7 @@ ___
 
 #### Returns
 
-[`Timer`](Timer.md)
+`this`
 
 #### Inherited from
 
@@ -124,7 +124,7 @@ ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`Timer`](Timer.md)
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -140,7 +140,7 @@ ___
 
 #### Returns
 
-[`Timer`](Timer.md)
+`this`
 
 #### Inherited from
 
@@ -150,7 +150,7 @@ ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`Timer`](Timer.md)
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -167,7 +167,7 @@ ___
 
 #### Returns
 
-[`Timer`](Timer.md)
+`this`
 
 #### Inherited from
 

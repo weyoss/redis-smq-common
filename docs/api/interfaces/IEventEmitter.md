@@ -1,4 +1,4 @@
-[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API](../README.md) / IEventEmitter
+[RedisSMQ Common Library](../../../README.md) / [Docs](../../README.md) / [API Reference](../README.md) / IEventEmitter
 
 # Interface: IEventEmitter\<Events\>
 
@@ -55,7 +55,7 @@ ___
 
 ### on
 
-▸ **on**\<`E`\>(`event`, `listener`): [`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+▸ **on**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -72,13 +72,13 @@ ___
 
 #### Returns
 
-[`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+`this`
 
 ___
 
 ### once
 
-▸ **once**\<`E`\>(`event`, `listener`): [`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+▸ **once**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -95,13 +95,13 @@ ___
 
 #### Returns
 
-[`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+`this`
 
 ___
 
 ### removeAllListeners
 
-▸ **removeAllListeners**\<`E`\>(`event?`): [`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+▸ **removeAllListeners**\<`E`\>(`event?`): `this`
 
 #### Type parameters
 
@@ -117,13 +117,13 @@ ___
 
 #### Returns
 
-[`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+`this`
 
 ___
 
 ### removeListener
 
-▸ **removeListener**\<`E`\>(`event`, `listener`): [`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+▸ **removeListener**\<`E`\>(`event`, `listener`): `this`
 
 #### Type parameters
 
@@ -140,4 +140,4 @@ ___
 
 #### Returns
 
-[`IEventEmitter`](IEventEmitter.md)\<`Events`\>
+`this`
