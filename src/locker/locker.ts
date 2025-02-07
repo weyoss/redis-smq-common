@@ -32,12 +32,12 @@ export type TLockerEvent = {
   'locker.error': (error: Error, id: string) => void;
 };
 
-export enum ELuaScript {
+enum ELuaScript {
   RELEASE_LOCK = 'RELEASE_LOCK',
   EXTEND_LOCK = 'EXTEND_LOCK',
 }
 
-export const luaScriptMap = {
+const luaScriptMap = {
   [ELuaScript.RELEASE_LOCK]: resolve(dir, './lua-scripts/release-lock.lua'),
   [ELuaScript.EXTEND_LOCK]: resolve(dir, './lua-scripts/extend-lock.lua'),
 };
