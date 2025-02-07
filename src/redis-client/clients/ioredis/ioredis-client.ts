@@ -8,11 +8,11 @@
  */
 
 import { Redis, RedisOptions } from 'ioredis';
-import { CallbackEmptyReplyError } from '../../errors/index.js';
-import { RedisClientError } from '../errors/index.js';
-import { RedisClientAbstract } from './redis-client-abstract.js';
+import { ICallback } from '../../../common/index.js';
+import { CallbackEmptyReplyError } from '../../../errors/index.js';
+import { RedisClientError } from '../../errors/index.js';
+import { RedisClientAbstract } from '../redis-client-abstract.js';
 import { IoredisClientMulti } from './ioredis-client-multi.js';
-import { ICallback } from '../../common/index.js';
 
 export class IoredisClient extends RedisClientAbstract {
   protected client: Redis;
@@ -22,7 +22,7 @@ export class IoredisClient extends RedisClientAbstract {
     this.client = new Redis(config);
     this.client.once('ready', () => {
       this.connectionClosed = false;
-      this.emit('ready');
+      this.init();
     });
     this.client.once('end', () => {
       this.connectionClosed = true;

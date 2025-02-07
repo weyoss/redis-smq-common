@@ -7,14 +7,28 @@
  * in the root directory of this source tree.
  */
 
-import { WatchError } from '@redis/client';
-import { ICallback } from '../../common/index.js';
 import {
-  IRedisTransaction,
-  TRedisClientNodeRedis,
-  TRedisTransactionNodeRedis,
-} from '../types/index.js';
-import { WatchedKeysChangedError } from '../errors/index.js';
+  RedisClientType,
+  RedisFunctions,
+  RedisModules,
+  RedisScripts,
+  WatchError,
+} from '@redis/client';
+import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command.js';
+import { ICallback } from '../../../common/index.js';
+import { WatchedKeysChangedError } from '../../errors/index.js';
+import { IRedisTransaction } from '../../types/index.js';
+
+export type TRedisTransactionNodeRedis = RedisClientMultiCommandType<
+  RedisModules,
+  RedisFunctions,
+  RedisScripts
+>;
+export type TRedisClientNodeRedis = RedisClientType<
+  RedisModules,
+  RedisFunctions,
+  RedisScripts
+>;
 
 export class NodeRedisClientMulti implements IRedisTransaction {
   protected multi: TRedisTransactionNodeRedis;

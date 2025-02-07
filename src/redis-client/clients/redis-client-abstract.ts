@@ -7,16 +7,31 @@
  * in the root directory of this source tree.
  */
 
+import fs from 'fs';
+import { resolve } from 'path';
+import { async } from '../../async/index.js';
+import { ICallback } from '../../common/index.js';
+import { getDirname } from '../../env/index.js';
+import { CallbackEmptyReplyError } from '../../errors/index.js';
+import { EventEmitter } from '../../event/index.js';
+import { RedisClientError } from '../errors/index.js';
 import {
   IRedisClient,
   IRedisTransaction,
   TRedisClientEvent,
 } from '../types/index.js';
-import { CallbackEmptyReplyError } from '../../errors/index.js';
-import { EventEmitter } from '../../event/index.js';
-import { RedisClientError } from '../errors/index.js';
-import { ELuaScriptName, LuaScript } from '../lua-scripts/index.js';
-import { ICallback } from '../../common/index.js';
+
+const dir = getDirname();
+
+export enum ELuaScriptName {
+  LPOPRPUSH = 'LPOPRPUSH',
+  ZPOPRPUSH = 'ZPOPRPUSH',
+}
+
+const luaScriptMap = {
+  [ELuaScriptName.LPOPRPUSH]: resolve(dir, '../lua-scripts/lpoprpush.lua'),
+  [ELuaScriptName.ZPOPRPUSH]: resolve(dir, '../lua-scripts/zpoprpush.lua'),
+};
 
 const minimalSupportedVersion: [number, number, number] = [4, 0, 0];
 
@@ -24,8 +39,22 @@ export abstract class RedisClientAbstract
   extends EventEmitter<TRedisClientEvent>
   implements IRedisClient
 {
+  protected static scripts: Record<string, string> = {};
   protected static redisServerVersion: number[] | null = null;
   protected connectionClosed = true;
+
+  protected init(): void {
+    async.waterfall(
+      [
+        (cb: ICallback<void>) => this.validateRedisServerSupport(cb),
+        (cb: ICallback<void>) => this.loadBuiltInScriptFiles(cb),
+      ],
+      (err) => {
+        if (err) this.emit('error', err);
+        else this.emit('ready');
+      },
+    );
+  }
 
   validateRedisVersion(major: number, feature = 0, minor = 0): boolean {
     if (!RedisClientAbstract.redisServerVersion) {
@@ -343,8 +372,46 @@ export abstract class RedisClientAbstract
     } else cb();
   }
 
-  loadScripts(cb: ICallback<void>): void {
-    LuaScript.getInstance().loadScripts(this, cb);
+  loadBuiltInScriptFiles(cb: ICallback<void>): void {
+    this.loadScriptFiles(luaScriptMap, (err) => cb(err));
+  }
+
+  loadScriptFiles(
+    scriptMap: Record<string, string>,
+    cb: ICallback<Record<string, string>>,
+  ): void {
+    const tasks: ((cb: ICallback<void>) => void)[] = [];
+    const loadedScripts: Record<string, string> = {};
+
+    for (const name in scriptMap) {
+      if (!RedisClientAbstract.scripts[name]) {
+        tasks.push((cb: ICallback<void>) => {
+          fs.readFile(scriptMap[name], 'utf8', (err, content) => {
+            if (err) return cb(err);
+            this.loadScript(content, (err, sha) => {
+              if (err) return cb(err);
+              if (!sha) return cb(new CallbackEmptyReplyError());
+              loadedScripts[name] = sha;
+              RedisClientAbstract.scripts[name] = sha;
+              cb();
+            });
+          });
+        });
+      }
+    }
+    if (!tasks.length) return cb(null, loadedScripts);
+    async.waterfall(tasks, (err) => {
+      if (err) return cb(err);
+      cb(null, loadedScripts);
+    });
+  }
+
+  getScriptId(name: string): string | RedisClientError {
+    const id = RedisClientAbstract.scripts[name];
+    if (!id) {
+      return new RedisClientError(`ID of script [${name}] is missing`);
+    }
+    return id;
   }
 
   runScript(
@@ -353,7 +420,7 @@ export abstract class RedisClientAbstract
     args: (string | number)[],
     cb: ICallback<unknown>,
   ): void {
-    const sha = LuaScript.getInstance().getScriptId(scriptName);
+    const sha = this.getScriptId(scriptName);
     if (sha instanceof Error) cb(sha);
     else {
       this.evalsha(
@@ -364,12 +431,6 @@ export abstract class RedisClientAbstract
           else cb(null, res);
         },
       );
-    }
-  }
-
-  static addScript(name: string, content: string): void {
-    if (!LuaScript.getInstance().addScript(name, content)) {
-      throw new RedisClientError(`A script with name [${name}] already exists`);
     }
   }
 }

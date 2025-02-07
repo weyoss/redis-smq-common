@@ -7,15 +7,9 @@
  * in the root directory of this source tree.
  */
 
-import { RedisClientMultiCommandType } from '@redis/client/dist/lib/client/multi-command.js';
-import {
-  RedisClientType,
-  RedisFunctions,
-  RedisModules,
-  RedisScripts,
-} from '@redis/client';
 import { ICallback } from '../../common/index.js';
 import { EventEmitter } from '../../event/index.js';
+import { RedisClientError } from '../errors/index.js';
 
 export * from './config.js';
 
@@ -26,18 +20,6 @@ export type TRedisClientEvent = {
   message: (channel: string, message: string) => void;
   pmessage: (pattern: string, channel: string, message: string) => void;
 };
-
-export type TRedisTransactionNodeRedis = RedisClientMultiCommandType<
-  RedisModules,
-  RedisFunctions,
-  RedisScripts
->;
-
-export type TRedisClientNodeRedis = RedisClientType<
-  RedisModules,
-  RedisFunctions,
-  RedisScripts
->;
 
 export interface IRedisClient extends EventEmitter<TRedisClientEvent> {
   validateRedisVersion(
@@ -211,8 +193,6 @@ export interface IRedisClient extends EventEmitter<TRedisClientEvent> {
 
   flushall(cb: ICallback<string>): void;
 
-  loadScript(script: string, cb: ICallback<string>): void;
-
   evalsha(
     hash: string,
     args: (string | number)[] | string | number,
@@ -252,7 +232,16 @@ export interface IRedisClient extends EventEmitter<TRedisClientEvent> {
 
   updateServerVersion(cb: ICallback<void>): void;
 
-  loadScripts(cb: ICallback<void>): void;
+  loadBuiltInScriptFiles(cb: ICallback<void>): void;
+
+  loadScriptFiles(
+    scriptMap: Record<string, string>,
+    cb: ICallback<Record<string, string>>,
+  ): void;
+
+  loadScript(script: string, cb: ICallback<string>): void;
+
+  getScriptId(name: string): string | RedisClientError;
 
   runScript(
     scriptName: string,

@@ -9,6 +9,4 @@
 
 export * from './types/index.js';
 export * from './errors/index.js';
-export * from './clients/index.js';
-export * from './lua-scripts/index.js';
 export * from './create-redis-client.js';

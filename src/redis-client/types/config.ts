@@ -7,22 +7,43 @@
  * in the root directory of this source tree.
  */
 
-import { RedisOptions } from 'ioredis';
-import { RedisClientOptions } from '@redis/client';
-
 export interface IRedisConfigIORedis {
+  /**
+   * Specifies that this configuration is for the ioredis client.
+   */
   client: ERedisConfigClient.IOREDIS;
-  options?: RedisOptions;
+
+  /**
+   * Optional property to provide configuration options specific to the ioredis
+   * client. Refer to the ioredis documentation for detailed options.
+   *
+   * @see https://github.com/luin/ioredis/blob/master/API.md#new_Redis
+   */
+  options?: Record<string, unknown>;
 }
 
 export enum ERedisConfigClient {
+  // Represents the ioredis client.
   IOREDIS = 'ioredis',
+
+  // Represents the @redis/client.
   REDIS = 'redis',
 }
 
 export interface IRedisConfigNodeRedis {
+  /**
+   * Specifies that this configuration is for the @redis/client.
+   */
   client: ERedisConfigClient.REDIS;
-  options?: RedisClientOptions;
+
+  /**
+   * Optional property to provide configuration options specific to the
+   * @redis/client. Refer to the @redis/client
+   * documentation for detailed options.
+   *
+   * @see https://github.com/redis/node-redis/blob/master/docs/client-configuration.md
+   */
+  options?: Record<string, unknown>;
 }
 
 export type IRedisConfig = IRedisConfigIORedis | IRedisConfigNodeRedis;

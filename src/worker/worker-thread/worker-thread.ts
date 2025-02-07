@@ -13,8 +13,7 @@ import {
   isMainThread,
   MessagePort,
   parentPort,
-  // type-coverage:ignore-next-line
-  workerData,
+  workerData, // type-coverage:ignore-line
 } from 'worker_threads';
 import {
   EWorkerThreadChildExitCode,

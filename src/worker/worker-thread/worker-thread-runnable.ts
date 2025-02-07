@@ -13,8 +13,8 @@ import {
   EWorkerThreadChildExitCode,
   EWorkerThreadParentMessage,
   IWorkerRunnable,
-  TWorkerThreadParentMessage,
   TWorkerRunnableFunctionFactory,
+  TWorkerThreadParentMessage,
 } from '../types/index.js';
 import { exit } from './worker-thread-message.js';
 

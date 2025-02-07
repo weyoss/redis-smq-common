@@ -7,20 +7,18 @@
  * in the root directory of this source tree.
  */
 
-import { createLogger } from 'bunyan';
-import { ILogger, ILoggerConfig } from './types/index.js';
 import { LoggerError } from './errors/index.js';
+import { ILogger, ILoggerConfig } from './types/index.js';
 
+let instance: ILogger | null = null;
 const noop = () => void 0;
+
 const dummyLogger = {
   debug: noop,
   warn: noop,
   info: noop,
   error: noop,
 };
-
-let instance: ILogger | null = null;
-
 function destroy(): void {
   instance = null;
 }
@@ -37,14 +35,14 @@ function getLogger(cfg: ILoggerConfig, ns?: string): ILogger {
     return dummyLogger;
   }
   if (!instance) {
-    instance = createLogger({ ...(cfg.options ?? {}), name: 'redis-smq' });
+    // use Node.js console as default logger
+    instance = console;
   }
   if (ns) {
     const wrap =
       (key: keyof ILogger, logger: ILogger) =>
       (message: unknown, ...params: unknown[]): void => {
-        const msg =
-          typeof message === 'string' ? `${ns} | ${message}` : message;
+        const msg = typeof message === 'string' ? `${ns}: ${message}` : message;
         return logger[key](msg, ...params);
       };
     return {

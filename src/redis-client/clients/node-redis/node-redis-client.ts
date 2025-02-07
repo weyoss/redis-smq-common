@@ -8,10 +8,10 @@
  */
 
 import { createClient, RedisClientOptions } from '@redis/client';
-import { RedisClientError } from '../errors/index.js';
-import { RedisClientAbstract } from './redis-client-abstract.js';
+import { ICallback } from '../../../common/index.js';
+import { RedisClientError } from '../../errors/index.js';
+import { RedisClientAbstract } from '../redis-client-abstract.js';
 import { NodeRedisClientMulti } from './node-redis-client-multi.js';
-import { ICallback } from '../../common/index.js';
 
 export class NodeRedisClient extends RedisClientAbstract {
   protected client;
@@ -21,7 +21,7 @@ export class NodeRedisClient extends RedisClientAbstract {
     this.client = createClient(config);
     this.client.once('ready', () => {
       this.connectionClosed = false;
-      this.emit('ready');
+      this.init();
     });
     this.client.once('end', () => {
       this.connectionClosed = true;

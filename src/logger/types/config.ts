@@ -7,9 +7,10 @@
  * in the root directory of this source tree.
  */
 
-import * as Logger from 'bunyan';
-
 export interface ILoggerConfig {
+  /**
+   * This property determines whether the logger is enabled or not.
+   * If set to false, logging operations will be disabled.
+   */
   enabled: boolean;
-  options?: Partial<Logger.LoggerOptions>;
 }

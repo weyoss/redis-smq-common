@@ -8,9 +8,12 @@
  */
 
 import { Redis } from 'ioredis';
-import { ICallback } from '../../common/index.js';
-import { IRedisTransaction } from '../types/index.js';
-import { RedisClientError, WatchedKeysChangedError } from '../errors/index.js';
+import { ICallback } from '../../../common/index.js';
+import {
+  RedisClientError,
+  WatchedKeysChangedError,
+} from '../../errors/index.js';
+import { IRedisTransaction } from '../../types/index.js';
 
 export class IoredisClientMulti implements IRedisTransaction {
   protected multi;

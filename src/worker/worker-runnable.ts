@@ -8,16 +8,16 @@
  */
 
 import { ICallback } from '../common/index.js';
-import {
-  EWorkerThreadParentMessage,
-  EWorkerType,
-  IWorkerRunnable,
-} from './types/index.js';
 import { PowerSwitch } from '../power-switch/index.js';
 import {
   WorkerAlreadyDownError,
   WorkerAlreadyRunningError,
 } from './errors/index.js';
+import {
+  EWorkerThreadParentMessage,
+  EWorkerType,
+  IWorkerRunnable,
+} from './types/index.js';
 import { Worker } from './worker.js';
 
 export class WorkerRunnable<InitialPayload>

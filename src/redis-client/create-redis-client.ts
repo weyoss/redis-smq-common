@@ -7,37 +7,74 @@
  * in the root directory of this source tree.
  */
 
-import { async } from '../async/index.js';
 import { ICallback } from '../common/index.js';
-import { IoredisClient, NodeRedisClient } from './clients/index.js';
+import { CallbackEmptyReplyError } from '../errors/index.js';
+import { RedisClientError } from './errors/index.js';
 import {
   ERedisConfigClient,
   IRedisClient,
   IRedisConfig,
 } from './types/index.js';
 
-function getClient(config: IRedisConfig) {
+function createRedisClientInstance(
+  config: IRedisConfig,
+  cb: ICallback<IRedisClient>,
+): void {
   if (config.client === ERedisConfigClient.REDIS) {
-    return new NodeRedisClient(config.options);
+    return void import('./clients/node-redis/node-redis-client.js')
+      .then(({ NodeRedisClient }): void => {
+        const client = new NodeRedisClient(config.options);
+        cb(null, client);
+      })
+      .catch(() =>
+        cb(
+          new RedisClientError(
+            'REDIS client is not available. Please install node-redis.',
+          ),
+        ),
+      );
   }
-  return new IoredisClient(config.options);
+  if (config.client === ERedisConfigClient.IOREDIS) {
+    return void import('./clients/ioredis/ioredis-client.js')
+      .then(({ IoredisClient }): void => {
+        const client = new IoredisClient(config.options);
+        cb(null, client);
+      })
+      .catch(() =>
+        cb(
+          new RedisClientError(
+            'IOREDIS client is not available. Please install ioredis.',
+          ),
+        ),
+      );
+  }
+  cb(
+    new RedisClientError(
+      'Unsupported Redis client type. Supported types are: REDIS, IOREDIS.',
+    ),
+  );
 }
 
 export function createRedisClient(
   config: IRedisConfig,
   cb: ICallback<IRedisClient>,
 ): void {
-  const client = getClient(config);
-  client.once('ready', () => {
-    async.waterfall(
-      [
-        (cb: ICallback<void>) => client.validateRedisServerSupport(cb),
-        (cb: ICallback<void>) => client.loadScripts(cb),
-      ],
-      (err) => {
-        if (err) cb(err);
-        else cb(null, client);
-      },
-    );
+  createRedisClientInstance(config, (err, client) => {
+    if (err) return cb(err);
+    if (!client) return cb(new CallbackEmptyReplyError());
+    const onReady = () => {
+      removeListeners();
+      cb(null, client);
+    };
+    const onError = (err: Error) => {
+      removeListeners();
+      cb(err);
+    };
+    const removeListeners = () => {
+      client.removeListener('ready', onReady);
+      client.removeListener('error', onError);
+    };
+    client.once('ready', onReady);
+    client.once('error', onError);
   });
 }

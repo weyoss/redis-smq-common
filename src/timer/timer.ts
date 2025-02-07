@@ -8,9 +8,9 @@
  */
 
 import { TFunction } from '../common/index.js';
-import { TTimer, TTimerEvent } from './types/index.js';
 import { EventEmitter } from '../event/index.js';
 import { TimerError } from './errors/index.js';
+import { TTimer, TTimerEvent } from './types/index.js';
 
 export class Timer extends EventEmitter<TTimerEvent> {
   protected timer: TTimer | null = null;

@@ -10,6 +10,9 @@
 import { resolve } from 'path';
 import { Worker as WorkerThread } from 'worker_threads';
 import { ICallback } from '../common/index.js';
+import { getDirname } from '../env/index.js';
+import { EventEmitter } from '../event/index.js';
+import { WorkerThreadError } from './errors/index.js';
 import {
   EWorkerThreadChildExecutionCode,
   EWorkerThreadChildExitCode,
@@ -17,9 +20,6 @@ import {
   TWorkerThreadChildMessage,
   TWorkerThreadParentMessage,
 } from './types/index.js';
-import { getDirname } from '../env/index.js';
-import { EventEmitter } from '../event/index.js';
-import { WorkerThreadError } from './errors/index.js';
 
 export type TWorkerEvent = {
   'worker.error': (err: Error) => void;
@@ -28,6 +28,14 @@ export type TWorkerEvent = {
 
 const dir = getDirname();
 
+/**
+ * Abstract class representing a worker that executes in a separate thread.
+ *
+ * @template Payload - The type of payload that the worker accepts.
+ * @template Reply - The type of reply that the worker returns.
+ *
+ * @extends EventEmitter<TWorkerEvent>
+ */
 export abstract class Worker<
   Payload,
   Reply,
@@ -43,6 +51,20 @@ export abstract class Worker<
     this.initialPayload = initialPayload;
   }
 
+  /**
+   * Retrieves the worker thread instance. If the worker thread does not exist, it creates a new one.
+   *
+   * @returns The worker thread instance.
+   *
+   * @remarks
+   * This method ensures that only one worker thread is created per instance of the `Worker` class.
+   * If the worker thread has already been created, it returns the existing instance.
+   * If the worker thread has been terminated, it creates a new one.
+   *
+   * The worker thread is initialized with the provided worker filename and initial payload.
+   * It also sets up event listeners for 'messageerror', 'error', and 'exit' events.
+   * If the worker thread exits, it sets the `workerThread` property to `null`.
+   */
   protected getWorkerThread(): WorkerThread {
     if (!this.workerThread) {
       this.workerThread = new WorkerThread(
@@ -68,6 +90,20 @@ export abstract class Worker<
     return this.workerThread;
   }
 
+  /**
+   * Registers event listeners for the worker thread and handles the callback function.
+   *
+   * @param cb - The callback function or worker instance to handle the response.
+   *
+   * @remarks
+   * This function sets up event listeners for the worker thread's 'message' and 'exit' events.
+   * It also cleans up the event listeners after receiving a response or when the worker thread exits.
+   *
+   * If the provided callback is an instance of the `Worker` class, it emits 'worker.error' or 'worker.data' events.
+   * Otherwise, it calls the callback function with an error or the received data.
+   *
+   * If the worker thread exits unexpectedly, it calls the callback function with a `WorkerThreadError` indicating termination.
+   */
   protected registerEvents(
     cb: ICallback<Reply> | Worker<Payload, Reply>,
   ): void {

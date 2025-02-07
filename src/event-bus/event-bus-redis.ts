@@ -9,12 +9,12 @@
 
 import { async } from '../async/index.js';
 import { ICallback } from '../common/index.js';
+import { EventEmitter, IEventBus, TEventBusEvent } from '../event/index.js';
 import {
   createRedisClient,
-  IRedisConfig,
   IRedisClient,
+  IRedisConfig,
 } from '../redis-client/index.js';
-import { EventEmitter, IEventBus, TEventBusEvent } from '../event/index.js';
 import { EventBusNotConnectedError } from './errors/index.js';
 
 export class EventBusRedis<Events extends TEventBusEvent>
