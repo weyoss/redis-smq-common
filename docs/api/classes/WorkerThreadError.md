@@ -40,7 +40,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `msg` | [`TWorkerThreadChildMessage`](../README.md#tworkerthreadchildmessage) |
+| `msg` | [`TWorkerThreadChildMessage`](../README.md#tworkerthreadchildmessage)\<`unknown`\> |
 
 #### Returns
 

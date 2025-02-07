@@ -2,6 +2,9 @@
 
 # Class: Locker
 
+Represents a distributed locking mechanism using Redis.
+Extends the Runnable class and implements locking, extending, and releasing operations.
+
 ## Hierarchy
 
 - [`Runnable`](Runnable.md)\<[`TLockerEvent`](../README.md#tlockerevent)\>
@@ -66,11 +69,21 @@ Runnable\<TLockerEvent\>.constructor
 
 ▸ **acquireLock**(`cb`): `void`
 
+Attempts to acquire a lock for the current instance.
+
+This method attempts to acquire a lock for the current instance using the Redis client.
+If the lock is successfully acquired, the callback is invoked with `true`.
+If the lock acquisition fails due to a lock already being held by another instance,
+the callback is invoked with `false`. If an error occurs during the lock acquisition process,
+the callback is invoked with the corresponding error.
+
+If auto-extension is enabled, the lock's TTL will be extended automatically at regular intervals.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`boolean`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`boolean`\> | A callback function that will be invoked with a boolean indicating the lock acquisition result, or an error (if any) upon successful execution. |
 
 #### Returns
 
@@ -109,15 +122,28 @@ ___
 
 ▸ **extendLock**(`cb`): `void`
 
+Attempts to extend the lock's time-to-live (TTL) if auto-extension is not enabled.
+
+This function extends the lock's TTL by the specified time, provided that auto-extension is not enabled.
+If auto-extension is enabled, an error is returned. If the lock is not currently held, an error is returned.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> | A callback function that will be invoked with an error (if any) or `undefined` upon successful execution. |
 
 #### Returns
 
 `void`
+
+**`Throws`**
+
+- If auto-extension is enabled.
+
+**`Throws`**
+
+- If the lock is not currently held.
 
 ___
 
@@ -125,9 +151,13 @@ ___
 
 ▸ **getId**(): `string`
 
+Retrieves the unique identifier of the Runnable instance.
+
 #### Returns
 
 `string`
+
+- The unique identifier of the Runnable instance.
 
 #### Inherited from
 
@@ -139,9 +169,13 @@ ___
 
 ▸ **isDown**(): `boolean`
 
+Checks if the Runnable instance is currently down.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the Runnable instance is down, `false` otherwise.
 
 #### Inherited from
 
@@ -153,9 +187,13 @@ ___
 
 ▸ **isGoingDown**(): `boolean`
 
+Checks if the Runnable instance is currently going down.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the Runnable instance is going down, `false` otherwise.
 
 #### Inherited from
 
@@ -167,9 +205,13 @@ ___
 
 ▸ **isGoingUp**(): `boolean`
 
+Checks if the Runnable instance is currently going up.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the Runnable instance is going up, `false` otherwise.
 
 #### Inherited from
 
@@ -181,9 +223,15 @@ ___
 
 ▸ **isLocked**(): `boolean`
 
+Checks if the lock is currently held.
+
+This method returns a boolean indicating whether the lock is currently held by this instance.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the lock is held, `false` otherwise.
 
 ___
 
@@ -191,9 +239,15 @@ ___
 
 ▸ **isReleased**(): `boolean`
 
+Checks if the lock is released.
+
+This method returns a boolean indicating whether the lock is currently released.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the lock is released, `false` otherwise.
 
 ___
 
@@ -201,9 +255,13 @@ ___
 
 ▸ **isRunning**(): `boolean`
 
+Checks if the Runnable instance is currently running or going up.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the Runnable instance is running or going up, `false` otherwise.
 
 #### Inherited from
 
@@ -215,9 +273,13 @@ ___
 
 ▸ **isUp**(): `boolean`
 
+Checks if the Runnable instance is currently up.
+
 #### Returns
 
 `boolean`
+
+- Returns `true` if the Runnable instance is up, `false` otherwise.
 
 #### Inherited from
 
@@ -283,11 +345,17 @@ ___
 
 ▸ **releaseLock**(`cb`): `void`
 
+Releases the lock held by the current instance.
+
+This method attempts to release the lock held by the current instance.
+If the lock is not currently held, the method does nothing and invokes the callback with `undefined`.
+If an error occurs during the release process, the callback is invoked with the corresponding error.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> | A callback function that will be invoked with an error (if any) or `undefined` upon successful execution. |
 
 #### Returns
 
@@ -352,15 +420,27 @@ ___
 
 ▸ **run**(`cb`): `void`
 
+Overrides the `run` method from the `Runnable` class to handle the lock acquisition process.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`boolean`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`boolean`\> | A callback function that will be invoked with a boolean indicating the lock acquisition result, or an error (if any) upon successful execution. |
 
 #### Returns
 
 `void`
+
+**`Remarks`**
+
+This method attempts to acquire a lock for the current instance using the Redis client.
+If the lock is successfully acquired, the callback is invoked with `true`.
+If the lock acquisition fails due to a lock already being held by another instance,
+the callback is invoked with `false`. If an error occurs during the lock acquisition process,
+the callback is invoked with the corresponding error.
+
+If auto-extension is enabled, the lock's TTL will be extended automatically at regular intervals.
 
 #### Overrides
 
@@ -372,11 +452,19 @@ ___
 
 ▸ **shutdown**(`cb`): `void`
 
+Performs a graceful shutdown of the Runnable instance.
+
+The shutdown process involves executing the `goingDown` tasks, which are responsible for cleaning up resources.
+The shutdown behavior depends on the current state of the Runnable instance:
+- If the Runnable is running (`isRunning()`) and going up (`isGoingUp()`), the shutdown process will rollback the going up state.
+- If the Runnable is running (`isRunning()`) and up (`isUp()`), the shutdown process will mark the Runnable as going down.
+- After executing the `goingDown` tasks, the Runnable will call the `down` method to finalize the shutdown process.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cb` | [`ICallback`](../interfaces/ICallback.md)\<`void`\> | A callback function that will be called after the shutdown process is completed. If an error occurs during the shutdown process, the error will be passed as the first parameter to the callback. If the shutdown process is successful, the callback will be called with no arguments. |
 
 #### Returns
 

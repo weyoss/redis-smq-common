@@ -1,149 +1,53 @@
-[RedisSMQ Common Library](../README.md) / Docs
+[RedisSMQ Common Library](../README.md) / Documentation
 
-# Docs
+# Documentation
 
 ## API
 
-See for [API reference](api/README.md) for more details.
+For detailed information, refer to the [API reference](api/README.md).
 
-## Misc
+## Guides
 
-### Redis
+Learn how to use specific components of the RedisSMQ Common Library:
 
-#### Configuration Parameters
+- [Using the Logger](./logger.md): A guide on how to effectively use the logging system.
+- [Redis Client Usage Guide](./redis.md): Instructions on working with the Redis client.
 
-See [IRedisConfig](api/README.md#iredisconfig) for more details.
+## Components
 
-##### Configuration Example
+The RedisSMQ Common Library consists of several key components that provide essential functionality for Redis-based messaging and queueing systems:
 
-```javascript
-'use strict';
-const { ERedisConfigClient } = require('redis-smq-common');
+1. **EventBus**: 
+   - Implements a publish-subscribe pattern for event handling.
+   - Allows components to communicate through events without direct coupling.
 
-module.exports = {
-    redis: {
-        client: ERedisConfigClient.IOREDIS,
-        options: {
-            host: '127.0.0.1',
-            port: 6379,
-            connect_timeout: 3600000,
-        },
-    },
-};
-```
+2. **Locker**: 
+   - Provides distributed locking mechanisms.
+   - Ensures synchronization in distributed systems using Redis as a centralized lock manager.
 
-###### Parameters
+3. **RedisClient**: 
+   - A wrapper for Redis operations.
+   - Supports both node-redis and ioredis clients.
+   - Provides a unified interface for Redis commands, transactions, and pub/sub operations.
 
-- `redis` *(object): Optional.* Redis client parameters. If not provided the `redis` client would be used by default.
-- `redis.client` *(string): Optional.* Redis client name. Can be either `ERedisConfigClient.IOREDIS` or `ERedisConfigClient.REDIS`.
-- `redis.options` *(object): Optional.* Redis client options.
+4. **Timer**: 
+   - Utilities for time-based operations and scheduling.
+   - Helps in implementing delayed tasks and periodic jobs.
 
-  - See https://github.com/luin/ioredis/blob/v4/API.md#new-redisport-host-options for `ioredis` options.
-  - See https://github.com/redis/node-redis/blob/master/docs/client-configuration.md for `node-redis` options.
+5. **Logger**: 
+   - A flexible logging system.
+   - Supports various log levels and can be customized for different output formats.
 
-### Logs
+6. **PowerSwitch**:
+   - Manages the power state of components.
+   - Provides methods for graceful shutdown and restart of services.
 
-> By default, logging is disabled. Logging can affect message processing performance (due to I/O operations). To enable logging, set `logger.enabled` to true in your configuration object.
+7. **Runnable**:
+   - An abstract base class for implementing runnable components.
+   - Provides lifecycle management (start, stop, pause, resume) for long-running processes.
 
-#### Built-in RedisSMQ logger
+8. **Worker**:
+   - Implements a worker pattern for processing tasks.
+   - Can be extended to create specialized workers for different types of jobs.
 
-RedisSMQ comes with a built-in JSON logger using [Bunyan](https://github.com/trentm/node-bunyan).
-
-You can make use of the built-in RedisSMQ logger by enabled it and also setting up its configuration parameters.
-
-When the built-in logger is used, you can make use of the bunyan utility to pretty format the output:
-
-```text
-$ node consumer | ./node_modules/.bin/bunyan
-```
-
-#### Configuration
-
-##### Configuration Parameters
-
-See [ILoggerConfig](api/interfaces/ILoggerConfig.md) for more details.
-
-##### Configuration Example
-
-```javascript
-'use strict';
-
-const path = require('path');
-
-module.exports = {
-    logger: {
-        enabled: false,
-        options: {
-            level: 'info',
-            /*
-            streams: [
-                {
-                    path: path.normalize(`${__dirname}/../logs/redis-smq.log`)
-                },
-            ],
-            */
-        },
-    },
-};
-```
-
-###### Parameters
-
-- `logger` *(object): Optional.* Configuration placeholder object for logging parameters.
-- `logger.enabled` *(boolean): Optional.* Enable/disable logging. By default logging is disabled.
-- `logger.options` *(object): Optional.* All valid Bunyan configuration options are accepted. See [Bunyan repository](https://github.com/trentm/node-bunyan) for more details.
-
-#### Setting up a custom logger
-
-You can tell RedisSMQ to use your own logger instance by registering it using `setLogger()` method.
-
-Any Node.js logging package, such as Winston, can be used. The logger instance is required to have the following methods:
-
-```javascript
-info(message, ...optionalParams);
-warn(message, ...optionalParams);
-error(message, ...optionalParams);
-debug(message, ...optionalParams);
-```
-
-A winston logger instance, for example, can be registered as shown bellow:
-
-```javascript
-const { setLogger } = require('redis-smq-common');
-const winston = require('winston');
-
-
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console(),
-  ]
-});
-
-setLogger(logger);
-```
-
-#### Example log file
-
-```text
-[2022-01-27T14:04:29.199Z]  INFO: redis-smq/165159 on leno: [MonitorServer] Going up...
-[2022-01-27T14:04:29.328Z]  INFO: redis-smq/165159 on leno: [MonitorServer] Up and running on 127.0.0.1:3000...
-[2022-01-27T14:04:29.331Z]  INFO: redis-smq/165159 on leno: [Producer/97b68c1f-8c31-4fe6-8606-7a28cb3f8435] Going up...
-[2022-01-27T14:04:29.331Z]  INFO: redis-smq/165159 on leno: [Producer/97b68c1f-8c31-4fe6-8606-7a28cb3f8435] Up and running...
-[2022-01-27T14:04:29.360Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Message handler with parameters ({"queue":{"name":"test_queue","ns":"testing"},"usePriorityQueuing":false}) has been registered.
-[2022-01-27T14:04:29.435Z]  INFO: redis-smq/165159 on leno: [Producer/97b68c1f-8c31-4fe6-8606-7a28cb3f8435] Message (ID 63326dab-20a2-46f7-b196-8163380d9b71) has been enqueued.
-[2022-01-27T14:04:29.436Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Going up...
-[2022-01-27T14:04:29.437Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Up and running...
-[2022-01-27T14:04:30.538Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Created a new instance (ID: 4f8bae2f-27a1-4953-9131-ba1fe216ade0) for MessageHandler ({"queue":{"name":"test_queue","ns":"testing"},"usePriorityQueuing":false}).
-[2022-01-27T14:04:30.546Z]  INFO: redis-smq/165159 on leno: [MessageHandler/4f8bae2f-27a1-4953-9131-ba1fe216ade0] Up and running...
-[2022-01-27T14:04:30.549Z]  INFO: redis-smq/165159 on leno: [MessageHandler/4f8bae2f-27a1-4953-9131-ba1fe216ade0] Consuming message (ID 63326dab-20a2-46f7-b196-8163380d9b71) with properties ({"queue":{"name":"test_queue","ns":"testing"},"ttl":0,"retryThreshold":3,"retryDelay":0,"consumeTimeout":0,"body":{"hello":"world"},"priority":null,"scheduledCron":null,"scheduledDelay":null,"scheduledRepeatPeriod":null,"scheduledRepeat":0,"publishedAt":1643292269426,"scheduledAt":null,"scheduledCronFired":false,"attempts":0,"scheduledRepeatCount":0,"delayed":false,"expired":false,"createdAt":1643292269362,"uuid":"63326dab-20a2-46f7-b196-8163380d9b71"})
-[2022-01-27T14:04:30.551Z]  INFO: redis-smq/165159 on leno: [MessageHandler/4f8bae2f-27a1-4953-9131-ba1fe216ade0] Message (ID 63326dab-20a2-46f7-b196-8163380d9b71) acknowledged
-[2022-01-27T14:04:30.580Z]  INFO: redis-smq/165159 on leno: [MessageManager] Acknowledged message (ID 63326dab-20a2-46f7-b196-8163380d9b71) has been deleted
-[2022-01-27T14:04:30.590Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Going down...
-[2022-01-27T14:04:30.590Z]  INFO: redis-smq/165159 on leno: [Consumer/eec6061a-b60f-4bb7-a5f9-066d4b5022cf] Down.
-[2022-01-27T14:04:30.647Z]  INFO: redis-smq/165159 on leno: [MessageHandler/4f8bae2f-27a1-4953-9131-ba1fe216ade0] Down.
-[2022-01-27T14:04:30.652Z]  INFO: redis-smq/165159 on leno: [Producer/97b68c1f-8c31-4fe6-8606-7a28cb3f8435] Going down...
-[2022-01-27T14:04:30.652Z]  INFO: redis-smq/165159 on leno: [Producer/97b68c1f-8c31-4fe6-8606-7a28cb3f8435] Down.
-[2022-01-27T14:04:30.654Z]  INFO: redis-smq/165159 on leno: [MonitorServer] Going down...
-[2022-01-27T14:04:30.675Z]  INFO: redis-smq/165159 on leno: [MonitorServer] Down.
-
-```
+For more detailed information on each component, including methods and usage examples, please refer to the [API reference](api/README.md).

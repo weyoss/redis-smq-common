@@ -8,10 +8,6 @@
 
   ↳ **`IRedisClient`**
 
-## Implemented by
-
-- [`RedisClientAbstract`](../classes/RedisClientAbstract.md)
-
 ## Table of contents
 
 ### Methods
@@ -24,6 +20,7 @@
 - [flushall](IRedisClient.md#flushall)
 - [get](IRedisClient.md#get)
 - [getInfo](IRedisClient.md#getinfo)
+- [getScriptId](IRedisClient.md#getscriptid)
 - [halt](IRedisClient.md#halt)
 - [hdel](IRedisClient.md#hdel)
 - [hget](IRedisClient.md#hget)
@@ -36,8 +33,9 @@
 - [hset](IRedisClient.md#hset)
 - [llen](IRedisClient.md#llen)
 - [lmove](IRedisClient.md#lmove)
+- [loadBuiltInScriptFiles](IRedisClient.md#loadbuiltinscriptfiles)
 - [loadScript](IRedisClient.md#loadscript)
-- [loadScripts](IRedisClient.md#loadscripts)
+- [loadScriptFiles](IRedisClient.md#loadscriptfiles)
 - [lpoprpush](IRedisClient.md#lpoprpush)
 - [lrange](IRedisClient.md#lrange)
 - [lrem](IRedisClient.md#lrem)
@@ -223,6 +221,22 @@ ___
 #### Returns
 
 `void`
+
+___
+
+### getScriptId
+
+▸ **getScriptId**(`name`): `string` \| [`RedisClientError`](../classes/RedisClientError.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+
+#### Returns
+
+`string` \| [`RedisClientError`](../classes/RedisClientError.md)
 
 ___
 
@@ -444,6 +458,22 @@ ___
 
 ___
 
+### loadBuiltInScriptFiles
+
+▸ **loadBuiltInScriptFiles**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `cb` | [`ICallback`](ICallback.md)\<`void`\> |
+
+#### Returns
+
+`void`
+
+___
+
 ### loadScript
 
 ▸ **loadScript**(`script`, `cb`): `void`
@@ -461,15 +491,16 @@ ___
 
 ___
 
-### loadScripts
+### loadScriptFiles
 
-▸ **loadScripts**(`cb`): `void`
+▸ **loadScriptFiles**(`scriptMap`, `cb`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `cb` | [`ICallback`](ICallback.md)\<`void`\> |
+| `scriptMap` | `Record`\<`string`, `string`\> |
+| `cb` | [`ICallback`](ICallback.md)\<`Record`\<`string`, `string`\>\> |
 
 #### Returns
 

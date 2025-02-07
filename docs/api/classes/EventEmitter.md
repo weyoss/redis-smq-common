@@ -18,8 +18,6 @@
 
   ↳ [`IRedisClient`](../interfaces/IRedisClient.md)
 
-  ↳ [`RedisClientAbstract`](RedisClientAbstract.md)
-
   ↳ [`Runnable`](Runnable.md)
 
   ↳ [`Timer`](Timer.md)

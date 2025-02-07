@@ -6,7 +6,6 @@
 
 ### Enumerations
 
-- [ELuaScriptName](enums/ELuaScriptName.md)
 - [ERedisConfigClient](enums/ERedisConfigClient.md)
 - [EWorkerThreadChildExecutionCode](enums/EWorkerThreadChildExecutionCode.md)
 - [EWorkerThreadChildExitCode](enums/EWorkerThreadChildExitCode.md)
@@ -18,14 +17,8 @@
 - [EventBus](classes/EventBus.md)
 - [EventBusRedis](classes/EventBusRedis.md)
 - [EventEmitter](classes/EventEmitter.md)
-- [IoredisClient](classes/IoredisClient.md)
-- [IoredisClientMulti](classes/IoredisClientMulti.md)
 - [Locker](classes/Locker.md)
-- [LuaScript](classes/LuaScript.md)
-- [NodeRedisClient](classes/NodeRedisClient.md)
-- [NodeRedisClientMulti](classes/NodeRedisClientMulti.md)
 - [PowerSwitch](classes/PowerSwitch.md)
-- [RedisClientAbstract](classes/RedisClientAbstract.md)
 - [Runnable](classes/Runnable.md)
 - [Timer](classes/Timer.md)
 - [WorkerCallable](classes/WorkerCallable.md)
@@ -64,8 +57,7 @@
 - [ILogger](interfaces/ILogger.md)
 - [ILoggerConfig](interfaces/ILoggerConfig.md)
 - [IRedisClient](interfaces/IRedisClient.md)
-- [IRedisConfigIORedis](interfaces/IRedisConfigIORedis.md)
-- [IRedisConfigNodeRedis](interfaces/IRedisConfigNodeRedis.md)
+- [IRedisConfig](interfaces/IRedisConfig.md)
 - [IRedisTransaction](interfaces/IRedisTransaction.md)
 - [IWorkerCallable](interfaces/IWorkerCallable.md)
 - [IWorkerRunnable](interfaces/IWorkerRunnable.md)
@@ -73,14 +65,11 @@
 
 ### Type Aliases
 
-- [IRedisConfig](README.md#iredisconfig)
 - [TEventBusEvent](README.md#teventbusevent)
 - [TEventEmitterEvent](README.md#teventemitterevent)
 - [TFunction](README.md#tfunction)
 - [TLockerEvent](README.md#tlockerevent)
 - [TRedisClientEvent](README.md#tredisclientevent)
-- [TRedisClientNodeRedis](README.md#tredisclientnoderedis)
-- [TRedisTransactionNodeRedis](README.md#tredistransactionnoderedis)
 - [TTimer](README.md#ttimer)
 - [TTimerEvent](README.md#ttimerevent)
 - [TUnaryFunction](README.md#tunaryfunction)
@@ -106,12 +95,6 @@
 - [getDirname](README.md#getdirname)
 
 ## Type Aliases
-
-### IRedisConfig
-
-Ƭ **IRedisConfig**: [`IRedisConfigIORedis`](interfaces/IRedisConfigIORedis.md) \| [`IRedisConfigNodeRedis`](interfaces/IRedisConfigNodeRedis.md)
-
-___
 
 ### TEventBusEvent
 
@@ -181,18 +164,6 @@ ___
 | `message` | (`channel`: `string`, `message`: `string`) => `void` |
 | `pmessage` | (`pattern`: `string`, `channel`: `string`, `message`: `string`) => `void` |
 | `ready` | () => `void` |
-
-___
-
-### TRedisClientNodeRedis
-
-Ƭ **TRedisClientNodeRedis**: `RedisClientType`\<`RedisModules`, `RedisFunctions`, `RedisScripts`\>
-
-___
-
-### TRedisTransactionNodeRedis
-
-Ƭ **TRedisTransactionNodeRedis**: `RedisClientMultiCommandType`\<`RedisModules`, `RedisFunctions`, `RedisScripts`\>
 
 ___
 
@@ -401,7 +372,7 @@ ___
 | `each` | \<T\>(`collection`: `Record`\<`string`, `T`\> \| `T`[], `iteratee`: (`item`: `T`, `key`: `string` \| `number`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void` |
 | `eachIn` | \<T\>(`collection`: `Record`\<`string`, `T`\>, `iteratee`: (`item`: `T`, `key`: `string`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void` |
 | `eachOf` | \<T\>(`collection`: `T`[], `iteratee`: (`item`: `T`, `key`: `number`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void`, `callback`: [`ICallback`](interfaces/ICallback.md)\<`void`\>) => `void` |
-| `waterfall` | \<T\>(`tasks`: [`TFunction`](README.md#tfunction)[], `callback`: [`ICallback`](interfaces/ICallback.md)\<`T`\>) => `void` |
+| `waterfall` | \<T\>(`tasks`: [`TFunction`](README.md#tfunction)\<`void`, `any`\>[], `callback`: [`ICallback`](interfaces/ICallback.md)\<`T`\>) => `void` |
 
 ___
 
@@ -427,7 +398,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `config` | [`IRedisConfig`](README.md#iredisconfig) |
+| `config` | [`IRedisConfig`](interfaces/IRedisConfig.md) |
 | `cb` | [`ICallback`](interfaces/ICallback.md)\<[`IRedisClient`](interfaces/IRedisClient.md)\> |
 
 #### Returns

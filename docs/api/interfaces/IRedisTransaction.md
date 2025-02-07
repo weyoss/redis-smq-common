@@ -2,11 +2,6 @@
 
 # Interface: IRedisTransaction
 
-## Implemented by
-
-- [`IoredisClientMulti`](../classes/IoredisClientMulti.md)
-- [`NodeRedisClientMulti`](../classes/NodeRedisClientMulti.md)
-
 ## Table of contents
 
 ### Methods

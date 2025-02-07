@@ -7,7 +7,6 @@
 ### Properties
 
 - [enabled](ILoggerConfig.md#enabled)
-- [options](ILoggerConfig.md#options)
 
 ## Properties
 
@@ -15,8 +14,5 @@
 
 • **enabled**: `boolean`
 
-___
-
-### options
-
-• `Optional` **options**: `Partial`\<`LoggerOptions`\>
+This property determines whether the logger is enabled or not.
+If set to false, logging operations will be disabled.

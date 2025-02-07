@@ -220,7 +220,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `config` | [`IRedisConfig`](../README.md#iredisconfig) |
+| `config` | [`IRedisConfig`](../interfaces/IRedisConfig.md) |
 | `cb` | [`ICallback`](../interfaces/ICallback.md)\<[`IEventBus`](../interfaces/IEventBus.md)\<`T`\>\> |
 
 #### Returns
