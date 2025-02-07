@@ -1,5 +1,37 @@
 
 
+## [3.0.0-rc.16](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.15...v3.0.0-rc.16) (2025-02-07)
+
+
+### Documentation
+
+* **api:** update class documentation to include Error properties and methods ([4a204d9](https://github.com/weyoss/redis-smq-common/commit/4a204d9980ce6dec569d2925782e2db6b010a775))
+* **api:** update type references and clean up ([d697550](https://github.com/weyoss/redis-smq-common/commit/d6975503a883d653e495b35cee53f3b2584db099))
+* **README:** update layout and add badges ([0e9d58a](https://github.com/weyoss/redis-smq-common/commit/0e9d58a09450494faeccb3e888d9cff484547db2))
+* update README and add CONTRIBUTING guide ([4708653](https://github.com/weyoss/redis-smq-common/commit/47086530a87cb10d40090caeb7db01eddb7ec1ad))
+
+
+### Codebase Refactoring
+
+* **config:** consolidate Redis client configuration interface ([b1039ac](https://github.com/weyoss/redis-smq-common/commit/b1039ac98b6e230a30f2ccda8ab94174b6d25d64))
+* **imports:** update import paths to use index.js ([004b4a4](https://github.com/weyoss/redis-smq-common/commit/004b4a4e7f4c6aa09fb5afa2415c2e4da1ccb06c))
+* **ioredis-client:** improve type safety and error handling ([cc02dde](https://github.com/weyoss/redis-smq-common/commit/cc02ddedf6cbb7652066bfd99c0a9c1628f07b43))
+* **redis-client:** simplify script loading, use dynamic imports ([7ef3593](https://github.com/weyoss/redis-smq-common/commit/7ef35930a327ee00448a1c2fb83aca0cec003b56))
+* **tests:** update import paths and remove type-coverage comments ([26e7775](https://github.com/weyoss/redis-smq-common/commit/26e77755e20a4f6756a2e07b6a1cd2090d6550e0))
+
+
+### Tests
+
+* improve test coverage and refactor test scripts ([acc563e](https://github.com/weyoss/redis-smq-common/commit/acc563e1d71a6042b3cbe57d5a1e9213f4cd70c8))
+
+
+### Misc
+
+* **deps:** make redis & ioredis as peer dependencies, remove bunyan ([9095343](https://github.com/weyoss/redis-smq-common/commit/9095343ce9bdce5346e0b0b4375c70d7c52cee83))
+* **deps:** update dependencies and add peer dependencies ([36f3170](https://github.com/weyoss/redis-smq-common/commit/36f3170df08253cf288fe8d6a39b18ae0101018a))
+* **deps:** update dependencies and remove @types/ioredis ([08922e4](https://github.com/weyoss/redis-smq-common/commit/08922e4a6e0888043f3fdde95285dacb59bbfb74))
+* update deprecated packages ([b0074cf](https://github.com/weyoss/redis-smq-common/commit/b0074cf5c789716dbf6c0b25960717f267bea34b))
+
 ## [3.0.0-rc.15](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.14...v3.0.0-rc.15) (2024-03-24)
 
 
