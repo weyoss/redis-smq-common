@@ -9,10 +9,9 @@
 
 import { expect } from '@jest/globals';
 import bluebird from 'bluebird';
-import {
-  IRedisConfig,
-  RedisClientAbstract,
-} from '../../src/redis-client/index.js';
+import { resolve } from 'node:path';
+import { getDirname } from '../../src/env/index.js';
+import { IRedisConfig } from '../../src/redis-client/index.js';
 import { getRedisInstance } from '../common.js';
 
 export async function standardCommands(config: IRedisConfig) {
@@ -189,9 +188,11 @@ export async function standardCommands(config: IRedisConfig) {
 }
 
 export async function scriptRunning(config: IRedisConfig) {
+  const dir = getDirname();
   const client = await getRedisInstance(config);
-  RedisClientAbstract.addScript('test_script', 'return 1');
-  await client.loadScriptsAsync();
+  await client.loadScriptFilesAsync({
+    test_script: resolve(dir, './lua-scripts/test_script.lua'),
+  });
   const r = await client.runScriptAsync('test_script', [], []);
   expect(r).toBe(1);
 }

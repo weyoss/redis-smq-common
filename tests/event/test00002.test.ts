@@ -9,8 +9,10 @@
 
 import { expect, it, jest } from '@jest/globals';
 import bluebird from 'bluebird';
-import { EventBusNotConnectedError } from '../../src/event-bus/index.js';
-import { EventBusRedis } from '../../src/event-bus/index.js';
+import {
+  EventBusNotConnectedError,
+  EventBusRedis,
+} from '../../src/event-bus/index.js';
 import { redisConfig } from '../config.js';
 
 type TEvent = {

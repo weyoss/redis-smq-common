@@ -8,13 +8,12 @@
  */
 
 import { expect, it, jest } from '@jest/globals';
-import Logger from 'bunyan';
 import { logger } from '../../src/logger/logger.js';
 
 it('Logger', async () => {
   logger.destroy();
   const logger0 = logger.getLogger({ enabled: true });
-  expect(logger0 instanceof Logger).toBe(true);
+  expect(logger0 === console).toBe(true);
 
   expect(() => {
     logger.setLogger(console);
@@ -38,24 +37,24 @@ it('Logger', async () => {
   const mock1 = jest.spyOn(console, 'info').mockImplementation(() => void 0);
   logger2.info('info');
   expect(console.info).toHaveBeenCalledTimes(1);
-  expect(console.info).toHaveBeenLastCalledWith(`ns | info`);
+  expect(console.info).toHaveBeenLastCalledWith(`ns: info`);
   mock1.mockRestore();
 
   const mock2 = jest.spyOn(console, 'error').mockImplementation(() => void 0);
   logger2.error('error');
   expect(console.error).toHaveBeenCalledTimes(1);
-  expect(console.error).toHaveBeenLastCalledWith(`ns | error`);
+  expect(console.error).toHaveBeenLastCalledWith(`ns: error`);
   mock2.mockRestore();
 
   const mock3 = jest.spyOn(console, 'debug').mockImplementation(() => void 0);
   logger2.debug('debug');
   expect(console.debug).toHaveBeenCalledTimes(1);
-  expect(console.debug).toHaveBeenLastCalledWith(`ns | debug`);
+  expect(console.debug).toHaveBeenLastCalledWith(`ns: debug`);
   mock3.mockRestore();
 
   const mock4 = jest.spyOn(console, 'warn').mockImplementation(() => void 0);
   logger2.warn('warn');
   expect(console.warn).toHaveBeenCalledTimes(1);
-  expect(console.warn).toHaveBeenLastCalledWith(`ns | warn`);
+  expect(console.warn).toHaveBeenLastCalledWith(`ns: warn`);
   mock4.mockRestore();
 });

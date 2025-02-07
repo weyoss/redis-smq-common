@@ -8,14 +8,14 @@
  */
 
 import { expect, it, jest } from '@jest/globals';
-import { AbortError } from '../../src/errors/index.js';
 import bluebird from 'bluebird';
 import { EventEmitter } from 'events';
 import { resolve } from 'path';
-import { getDirname } from '../../src/env/index.js';
-import { Locker } from '../../src/locker/locker.js';
-import { IoredisClient } from '../../src/redis-client/index.js';
 import { ICallback, TFunction } from '../../src/common/index.js';
+import { getDirname } from '../../src/env/index.js';
+import { AbortError } from '../../src/errors/index.js';
+import { Locker } from '../../src/locker/locker.js';
+import { IoredisClient } from '../../src/redis-client/clients/ioredis/ioredis-client.js';
 import { mockModule } from '../mock-module.js';
 
 const dir = getDirname();
@@ -67,6 +67,17 @@ it('Locker: acquireLock() -> LockAbortError', async () => {
     },
   );
 
+  const mockLoadScriptFiles = jest
+    .fn<TFunction>()
+    .mockImplementationOnce(
+      (
+        scriptMap: Record<string, string>,
+        cb: ICallback<Record<string, string>>,
+      ): void => {
+        setTimeout(() => cb(null, {}), 5000);
+      },
+    );
+
   mockModule(modulePath, () => {
     return {
       getRedisInstance() {
@@ -76,6 +87,7 @@ it('Locker: acquireLock() -> LockAbortError', async () => {
             runScript: mockRunScript,
             halt: mockHalt,
             set: mockSet,
+            loadScriptFiles: mockLoadScriptFiles,
           }),
         );
       },

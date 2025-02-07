@@ -14,8 +14,8 @@ import { getDirname } from '../../src/env/index.js';
 import {
   WorkerAlreadyDownError,
   WorkerAlreadyRunningError,
+  WorkerRunnable,
 } from '../../src/worker/index.js';
-import { WorkerRunnable } from '../../src/worker/index.js';
 
 const dir = getDirname();
 
