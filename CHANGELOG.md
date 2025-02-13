@@ -1,5 +1,12 @@
 
 
+## [3.0.0-rc.17](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.16...v3.0.0-rc.17) (2025-02-13)
+
+
+### Codebase Refactoring
+
+* **src:** improve Redis client creation logic ([12ede86](https://github.com/weyoss/redis-smq-common/commit/12ede86eb20fe8a9934597e1ef7c9570fc7cace3))
+
 ## [3.0.0-rc.16](https://github.com/weyoss/redis-smq-common/compare/v3.0.0-rc.15...v3.0.0-rc.16) (2025-02-07)
 
 
