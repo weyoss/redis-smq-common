@@ -16,37 +16,48 @@ import {
   IRedisConfig,
 } from './types/index.js';
 
-function createRedisClientInstance(
+function createNodeRedisClient(
   config: IRedisConfig,
   cb: ICallback<IRedisClient>,
 ): void {
-  if (config.client === ERedisConfigClient.REDIS) {
-    return void import('./clients/node-redis/node-redis-client.js')
-      .then(({ NodeRedisClient }): void => {
-        const client = new NodeRedisClient(config.options);
-        cb(null, client);
-      })
-      .catch(() =>
-        cb(
-          new RedisClientError(
-            'REDIS client is not available. Please install node-redis.',
-          ),
+  import('./clients/node-redis/node-redis-client.js')
+    .then(({ NodeRedisClient }): void => {
+      const client = new NodeRedisClient(config.options);
+      cb(null, client);
+    })
+    .catch(() =>
+      cb(
+        new RedisClientError(
+          'REDIS client is not available. Please install node-redis.',
         ),
-      );
+      ),
+    );
+}
+
+function createIORedisClient(
+  config: IRedisConfig,
+  cb: ICallback<IRedisClient>,
+): void {
+  import('./clients/ioredis/ioredis-client.js')
+    .then(({ IoredisClient }): void => {
+      const client = new IoredisClient(config.options);
+      cb(null, client);
+    })
+    .catch(() =>
+      cb(
+        new RedisClientError(
+          'IOREDIS client is not available. Please install ioredis.',
+        ),
+      ),
+    );
+}
+
+function createClient(config: IRedisConfig, cb: ICallback<IRedisClient>): void {
+  if (config.client === ERedisConfigClient.REDIS) {
+    return createNodeRedisClient(config, cb);
   }
   if (config.client === ERedisConfigClient.IOREDIS) {
-    return void import('./clients/ioredis/ioredis-client.js')
-      .then(({ IoredisClient }): void => {
-        const client = new IoredisClient(config.options);
-        cb(null, client);
-      })
-      .catch(() =>
-        cb(
-          new RedisClientError(
-            'IOREDIS client is not available. Please install ioredis.',
-          ),
-        ),
-      );
+    return createIORedisClient(config, cb);
   }
   cb(
     new RedisClientError(
@@ -59,7 +70,7 @@ export function createRedisClient(
   config: IRedisConfig,
   cb: ICallback<IRedisClient>,
 ): void {
-  createRedisClientInstance(config, (err, client) => {
+  createClient(config, (err, client) => {
     if (err) return cb(err);
     if (!client) return cb(new CallbackEmptyReplyError());
     const onReady = () => {
