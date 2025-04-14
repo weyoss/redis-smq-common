@@ -7,6 +7,16 @@ A High-Performance Redis Simple Message Queue for Node.js
 [![Code Coverage](https://img.shields.io/codecov/c/github/weyoss/redis-smq-common?style=flat-square)](https://codecov.io/github/weyoss/redis-smq-common?branch=master)
 [![Latest Release](https://img.shields.io/github/v/release/weyoss/redis-smq-common?include_prereleases&label=release&color=green&style=flat-square)](https://github.com/weyoss/redis-smq-common/releases)
 
+> **Important Notice**
+>
+> This repository has been archived and is no longer maintained. The RedisSMQ Monitor functionality has been moved to the main [redis-smq repository](https://github.com/weyoss/redis-smq). Please refer to the main repository for the latest updates and documentation.
+>
+> **What this means:**
+>
+> - No further issues or pull requests will be accepted in this repository
+> - All future updates and improvements will be made in the main redis-smq repository
+> - Please direct all questions and contributions to the main repository
+
 ## RedisSMQ Common Library
 
 RedisSMQ Common Library provides essential components that are used by [RedisSMQ](https://github.com/weyoss/redis-smq) and other RedisSMQ-based applications.
